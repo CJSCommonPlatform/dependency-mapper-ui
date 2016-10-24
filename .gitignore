@@ -3,3 +3,5 @@
 /out/
 ## File-based project format:
 *.iws
+# Netbeans
+nbproject
