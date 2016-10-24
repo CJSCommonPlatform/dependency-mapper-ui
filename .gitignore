@@ -7,3 +7,4 @@
 *.iws
 # Netbeans
 nbproject
+dependency-mapper-ui.iml
