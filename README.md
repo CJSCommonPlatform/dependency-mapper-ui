@@ -14,4 +14,4 @@ Execute following steps to build and start the service
 
 Note:
 
-1. Default HTTP port in '9999', can be changed by setting system property e.g -Dserver.port=9998
+1. Default HTTP port is '9999', can be changed by setting system property e.g -Dserver.port=9998

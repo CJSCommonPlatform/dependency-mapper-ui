@@ -1,2 +1,2 @@
 Manifest-Version: 1.0
-Main-Class: uk.gov.justice.tools.ui.ContextDependencyService
+Main-Class: uk.gov.justice.tools.ui.ContextDependencyServiceBoot
