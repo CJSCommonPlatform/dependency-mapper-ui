@@ -2,13 +2,13 @@
 
 Prerequisites:
 
-1. File `contexts.json` is in the rootDirectory, default is "/opt/". This can be overridden by sending the system property as a parameter e.g.:
+1. File `contexts.json` is in the rootDirectory, default is "/opt/". This can be overridden by sending the system property as a parameter (ensure you include the trailing slash) e.g.:
 
-`java -DrootDirectory='/home/robert/dev/dependency-mapper-ui/src/test/resources/' -jar dependency-mapper-ui-0.0.1-SNAPSHOT.jar`
+`java -DrootDirectory='/home/robert/dev/dependency-mapper-ui/src/test/resources/' -jar target/dependency-mapper-ui-0.0.1-SNAPSHOT.jar`
 
 Execute following steps to build and start the service
 
-1. `mnv package`
+1. `mvn package`
 2. `java -jar target/dependency-mapper-ui-0.0.1-SNAPSHOT.jar` 
 3. Open URL "http://localhost:9999/contextGraph", should return JSON payload
 
