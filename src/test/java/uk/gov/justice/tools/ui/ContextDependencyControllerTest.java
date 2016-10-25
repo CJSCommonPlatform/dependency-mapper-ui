@@ -20,8 +20,8 @@ public class ContextDependencyControllerTest {
     @Test
     public void getDependencyGraph() throws IOException {
 
-        String contextMapResponse = testObj.getDependencyGraph();
-        assertTrue(contextMapResponse.contains("referencedata"));
+        final String contextMapResponse = testObj.getDependencyGraph();
+        assertTrue(contextMapResponse.contains("dependencies"));
 
     }
 

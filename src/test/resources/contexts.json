@@ -1,41 +1,39 @@
 {
-  "contexts": [
+  "createdOn": "2016-10-25",
+  "map": [
     {
-      "name": "referencedata",
-      "version": "0.1",
-      "usedby": [
+      "microService": "lifecycle-event-processor",
+      "version": "1.0.20",
+      "dependencies": [
         {
-          "name": "structure",
-          "version": "0.1"
+          "microService": "structure-command-api",
+          "version": "1.0.20"
         },
         {
-          "name": "hearing",
-          "version": "0.1"
-        },
-        {
-          "name": "material",
-          "version": "0.1"
+          "microService": "structure-query-api",
+          "version": "1.0.20"
         }
       ]
     },
     {
-      "name": "usersgroup",
-      "version": "0.3",
-      "usedby": [
+      "microService": "lifecycle-command-query",
+      "version": "1.0.20",
+      "dependencies": [
         {
-          "name": "structure",
-          "version": "0.3"
-        },
+          "microService": "structure-query-api",
+          "version": "1.0.20"
+        }
+      ]
+    },
+    {
+      "microService": "structure-command-controller",
+      "version": "1.0.20",
+      "dependencies": [
         {
-          "name": "hearing",
-          "version": "0.2"
-        },
-        {
-          "name": "material",
-          "version": "0.1"
+          "microService": "people-query-api",
+          "version": "1.0.20"
         }
       ]
     }
   ]
 }
-
