@@ -2,5 +2,5 @@
 $.ajax({
     url: "/contextGraph"
 }).done(function(data) {
-    $('#content').append(data.contexts[0].name);
+    $('#content').append(data.map[0].microService);
 });
