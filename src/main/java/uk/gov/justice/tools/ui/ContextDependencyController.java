@@ -16,10 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/contextGraph")
 public class ContextDependencyController implements InitializingBean {
 
-    static String FILENAME = "contexts.json";
-    static String DEFAULT_ROOT_DIRECTORY = "/opt/";
-    static String ROOT_DIRECTORY = System.getProperty("rootDirectory", DEFAULT_ROOT_DIRECTORY);
-    static String FILE_URL = ROOT_DIRECTORY + FILENAME;
+    static String DEFAULT_FILE_URL = "/opt/contexts.json";
+    static String FILE_URL = System.getProperty("filePath", DEFAULT_FILE_URL);
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
@@ -31,7 +29,6 @@ public class ContextDependencyController implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        Assert.isTrue(Files.isReadable(Paths.get(ROOT_DIRECTORY)), "Please provide -DrootDirectory system property having read permission");
-        Assert.isTrue(Files.isReadable(Paths.get(FILE_URL)), "Root does not have valid context file called 'contexts.json', PATH provided by user:  " + FILE_URL);
+        Assert.isTrue(Files.isReadable(Paths.get(FILE_URL)), "Please provide -DfilePath system property with read permission, this must be for a valid context file provided by the user:  " + FILE_URL);
     }
 }

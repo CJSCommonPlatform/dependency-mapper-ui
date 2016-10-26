@@ -2,9 +2,9 @@
 
 Prerequisites:
 
-1. File `contexts.json` is in the rootDirectory, default is "/opt/". This can be overridden by sending the system property as a parameter (ensure you include the trailing slash) e.g.:
+1. File is at provided filePath, default is `/opt/contexts.json`. This can be overridden by sending the system property as a parameter  e.g.:
 
-`java -DrootDirectory='/home/robert/dev/dependency-mapper-ui/src/test/resources/' -jar target/dependency-mapper-ui-0.0.1-SNAPSHOT.jar`
+`java -DfilePath='/home/robert/dev/dependency-mapper-ui/src/test/resources/contexts.json' -jar target/dependency-mapper-ui-0.0.1-SNAPSHOT.jar`
 
 Execute following steps to build and start the service
 

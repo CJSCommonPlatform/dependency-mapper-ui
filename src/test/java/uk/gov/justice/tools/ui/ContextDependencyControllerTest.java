@@ -13,7 +13,7 @@ public class ContextDependencyControllerTest {
 
     @Before
     public void setup() {
-        System.setProperty("rootDirectory", "src/test/resources/");
+        System.setProperty("filePath", "src/test/resources/contexts.json");
         testObj = new ContextDependencyController();
     }
 
