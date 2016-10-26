@@ -1,5 +1,3 @@
-require(["requireconfig"]);
-
 define(["data/transform", "render/renderGraph"], function(transform, renderGraph) {
 
     $("#content").css("top", $(".navbar").outerHeight());

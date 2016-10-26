@@ -15,8 +15,11 @@ var enrichGraphData = function(graph) {
     return {
         edges: graph.edges,
 
-        nodes: graph.nodes.map(function(n) {
-            return $.extend(n, {size: 24, x: Math.random(), y: Math.random()});
+        nodes: graph.nodes.map(function(n, ix) {
+            var theta = ((2 * Math.PI)/graph.nodes.length)*ix
+            n.y = Math.cos(theta);
+            n.x = Math.sin(theta);
+            return $.extend(n, {size: 24});
         })};
 };
 
@@ -24,7 +27,7 @@ define([], function() {
     return function(graph) {
 
         sigma.settings.minArrowSize = 8;
-        sigma.settings.autoRescale = false;
+        //sigma.settings.autoRescale = false;
         sigma.settings.defaultNodeColor = "#9cf";
 
         sigma.settings.defaultEdgeType = "arrow";
