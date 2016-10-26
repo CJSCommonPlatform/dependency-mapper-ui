@@ -81,6 +81,32 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            <plugin>
+                <groupId>com.github.searls</groupId>
+                <artifactId>jasmine-maven-plugin</artifactId>
+                <version>2.2</version>
+
+                <configuration>
+                    <specRunnerTemplate>REQUIRE_JS</specRunnerTemplate>
+                    <preloadSources>
+                        <source>https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2/require.min.js</source>
+                        <source>requireconfig.js</source>
+                        <source>https://code.jquery.com/jquery.min.js</source>
+                    </preloadSources>
+
+                    <jsSrcDir>${project.basedir}/src/main/resources/static/js/</jsSrcDir>
+                    <jsTestSrcDir>${project.basedir}/src/main/resources/static/js-test/</jsTestSrcDir>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 

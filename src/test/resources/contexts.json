@@ -16,6 +16,15 @@
       ]
     },
     {
+      "microService": "structure-query-api",
+      "version": "1.0.20",
+      "dependencies": [
+        {
+          "microService": "lifecycle-event-processor",
+          "version": "1.0.20"
+        }]
+    },
+    {
       "microService": "lifecycle-command-query",
       "version": "1.0.20",
       "dependencies": [
