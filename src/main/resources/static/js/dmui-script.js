@@ -1,4 +1,9 @@
 (function(){
-    var myFlower = new CodeFlower("#visualization", 300, 200);
-    myflower.update(jsonData);
-})(jQuery)
+    var myFlower = new CodeFlower("#content", 800, 800);
+
+    $.getJSON("http://localhost:9999/contextGraph", function (data) {
+        myFlower.update(data);
+    });
+
+
+})(jQuery);
