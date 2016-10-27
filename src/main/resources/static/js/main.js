@@ -1,6 +1,7 @@
 define(["data/transform", "render/renderGraph"], function(transform, renderGraph) {
 
-    $("#content").css("top", $(".navbar").outerHeight());
+    //$("#content").css("top", $(".navbar").outerHeight());
+    
 
     $.ajax({
         url: "/contextGraph"

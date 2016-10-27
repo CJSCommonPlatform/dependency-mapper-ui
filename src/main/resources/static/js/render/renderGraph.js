@@ -39,6 +39,11 @@ define([], function() {
             $.extend(graphSettings, {graph: graphData})
         );
 
+        s.bind("clickNode",function(e){
+            var microserviceName = e.data.node.label;
+            $("#ramlDetails").load("/raml-report/assignment-command-api.html .row");
+        });
+
         var config = {
             nodeMargin: 12,
             scaleNodes: 1.3,
