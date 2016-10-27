@@ -5,7 +5,7 @@ define(["data/transform", "render/renderGraph"], function(transform, renderGraph
     $.ajax({
         url: "/contextGraph"
     }).done(function(data) {
-        var graph = transform(data.map);
+        var graph = transform(data.microServices);
         renderGraph(graph);
     });
 

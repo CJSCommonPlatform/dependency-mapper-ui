@@ -1,14 +1,14 @@
 define(["lodash", "data/graphObjectMapper"], function(_, graphObject) {
     var extract = function(context) {
-        var dependencies = context.dependencies ?
-            _.map(context.dependencies, function(d) {
+        var dependencies = context.consumedBy ?
+            _.map(context.consumedBy, function(d) {
                 return {microService: d.microService}
             }) : [];
 
         var rawNodes = _.concat(dependencies, context);
         var newNodes = _.map(rawNodes, graphObject.extractNode);
 
-        var newEdges = context.dependencies ? _.map(context.dependencies, _.curry(graphObject.extractEdge)(context)) : [];
+        var newEdges = context.consumedBy ? _.map(context.consumedBy, _.curry(graphObject.extractEdge)(context)) : [];
 
         return {
             nodes: newNodes,
@@ -26,9 +26,10 @@ define(["lodash", "data/graphObjectMapper"], function(_, graphObject) {
                 return node.id === newNode.id;
             });
 
-            if(possibleDuplicateNode) {
-                possibleDuplicateNode.version = possibleDuplicateNode.version || newNode.version
-            } else {
+            if(possibleDuplicateNode && !possibleDuplicateNode.version) {
+                possibleDuplicateNode.version = newNode.version;
+                possibleDuplicateNode.customHover = newNode.id + " (v" + newNode.version + ")";
+            } else if (!possibleDuplicateNode) {
                 currentListOfNodes.push(newNode);
             }
         });

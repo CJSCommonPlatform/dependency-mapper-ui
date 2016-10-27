@@ -1,14 +1,10 @@
 var graphSettings = {
-    sideMargin: 20,
-    enableEdgeHovering: true,
     renderers: [
         {
             container: document.getElementById('content'),
             type: 'canvas'
         }
-    ],
-    maxEdgeSize: 4,
-    labelThreshold: 1
+    ]
 };
 
 var enrichGraphData = function(graph) {
@@ -27,16 +23,29 @@ define([], function() {
     return function(graph) {
 
         sigma.settings.minArrowSize = 8;
-        //sigma.settings.autoRescale = false;
+        sigma.settings.autoRescale = true;
         sigma.settings.defaultNodeColor = "#9cf";
+        sigma.settings.labelThreshold = 1;
+        sigma.settings.minNodeSize = 24;
+        sigma.settings.minEdgeSize = 4;
+        sigma.settings.sideMargin = 24;
 
-        sigma.settings.defaultEdgeType = "arrow";
+        sigma.settings.defaultEdgeType = "curvedArrow";
 
         var graphData = enrichGraphData(graph);
 
         s = new sigma(
             $.extend(graphSettings, {graph: graphData})
         );
+
+        var config = {
+            nodeMargin: 12,
+            scaleNodes: 1.3,
+            duration: 2000
+        };
+
+        var listener = s.configNoverlap(config);
+        s.startNoverlap();
 
         var dragListener = sigma.plugins.dragNodes(s, s.renderers[0]);
     }

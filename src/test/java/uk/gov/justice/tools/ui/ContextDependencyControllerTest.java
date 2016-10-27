@@ -21,7 +21,7 @@ public class ContextDependencyControllerTest {
     public void getDependencyGraph() throws IOException {
 
         final String contextMapResponse = testObj.getDependencyGraph();
-        assertTrue(contextMapResponse.contains("dependencies"));
+        assertTrue(contextMapResponse.contains("consumedBy"));
 
     }
 

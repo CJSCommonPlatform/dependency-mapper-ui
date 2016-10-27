@@ -1,48 +1,51 @@
 {
-  "createdOn": "2016-10-25",
-  "map": [
-    {
-      "microService": "lifecycle-event-processor",
-      "version": "1.0.20",
-      "dependencies": [
-        {
-          "microService": "structure-command-api",
-          "version": "1.0.20"
-        },
-        {
-          "microService": "structure-query-api",
-          "version": "1.0.20"
-        }
-      ]
-    },
-    {
-      "microService": "structure-query-api",
-      "version": "1.0.20",
-      "dependencies": [
-        {
-          "microService": "lifecycle-event-processor",
-          "version": "1.0.20"
-        }]
-    },
-    {
-      "microService": "lifecycle-command-query",
-      "version": "1.0.20",
-      "dependencies": [
-        {
-          "microService": "structure-query-api",
-          "version": "1.0.20"
-        }
-      ]
-    },
-    {
-      "microService": "structure-command-controller",
-      "version": "1.0.20",
-      "dependencies": [
-        {
-          "microService": "people-query-api",
-          "version": "1.0.20"
-        }
-      ]
-    }
-  ]
+  "microServices": [{
+    "microService": "A",
+    "version": "4.0",
+    "consumedBy": [{
+      "microService": "B",
+      "usingVersion": "5.0"
+    }, {
+      "microService": "E",
+      "usingVersion": "8.0"
+    }]
+  }, {
+    "microService": "B",
+    "version": "5.0",
+    "consumedBy": [{
+      "microService": "A",
+      "usingVersion": "4.0"
+    }, {
+      "microService": "C",
+      "usingVersion": "6.0"
+    }]
+  }, {
+    "microService": "C",
+    "version": "6.0",
+    "consumedBy": [{
+      "microService": "C",
+      "usingVersion": "6.0"
+    }, {
+      "microService": "D",
+      "usingVersion": "7.0"
+    }]
+  }, {
+    "microService": "D",
+    "version": "7.0",
+    "consumedBy": [{
+      "microService": "A",
+      "usingVersion": "4.0"
+    }, {
+      "microService": "C",
+      "usingVersion": "6.0"
+    }]
+  }, {
+    "microService": "E",
+    "version": "8.0",
+    "consumedBy": [{
+      "microService": "B",
+      "usingVersion": "5.0"
+    }]
+  }],
+  "dateCreated": "2016-10-26T15:57:08.765"
 }

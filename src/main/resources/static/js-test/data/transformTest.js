@@ -50,10 +50,10 @@ define(["data/transform", "lodash"], function (transform, _) {
             var microservice = [{
                 microService: microserviceNames[0],
                 version: "1.0",
-                dependencies: [
+                consumedBy: [
                     {
                         microService: microserviceNames[1],
-                        version: "1.0"
+                        usingVersion: "1.0"
                     }
                 ]
             }];
@@ -106,10 +106,10 @@ define(["data/transform", "lodash"], function (transform, _) {
             var microservice = [{
                 microService: microserviceNames[0],
                 version: "1.0",
-                dependencies: [
+                consumedBy: [
                     {
                         microService: microserviceNames[1],
-                        version: "1.0"
+                        usingVersion: "1.0"
                     }
                 ],
             }, {
@@ -143,6 +143,13 @@ define(["data/transform", "lodash"], function (transform, _) {
                     expect(microservice2.version).toBe("2.0");
                 });
 
+                it("then the nodes should have the versions displayed on hover", function() {
+                    var microservice1 = _.find(result.nodes, ["id", microserviceNames[0]]);
+                    var microservice2 = _.find(result.nodes, ["id", microserviceNames[1]]);
+
+                    expect(microservice1.customHover).toContain("1.0");
+                    expect(microservice2.customHover).toContain("2.0");
+                });
 
                 it("then there should be one relationship between nodes", function () {
                     expect(result.edges.length).toBe(1);
@@ -163,10 +170,10 @@ define(["data/transform", "lodash"], function (transform, _) {
             var microservice = [{
                 microService: microserviceNames[0],
                 version: "1.0",
-                dependencies: [
+                consumedBy: [
                     {
                         microService: microserviceNames[1],
-                        version: "0.9"
+                        usingVersion: "0.9"
                     }
                 ],
             }];

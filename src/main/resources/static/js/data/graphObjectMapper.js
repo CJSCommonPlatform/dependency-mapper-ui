@@ -9,11 +9,11 @@ define([], function() {
     };
 
     var extractEdge = function(context, consumer) {
-        var isCurrentVersion = context.version === consumer.version;
+        var isCurrentVersion = context.version === consumer.usingVersion;
 
         return {
             id: "e" + Math.random(),
-            label: "Version: " + consumer.version + (isCurrentVersion ? "" :  " (OUTDATED)"),
+            label: "Version: " + consumer.usingVersion + (isCurrentVersion ? "" :  " (OUTDATED)"),
             source: context.microService,
             target: consumer.microService,
             color: isCurrentVersion ?  "#9cf" : "#f00"
