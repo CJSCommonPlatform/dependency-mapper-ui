@@ -1,6 +1,6 @@
 package uk.gov.justice.tools.ui;
 
-import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 
@@ -13,8 +13,9 @@ public class ContextDependencyControllerTest {
 
     @Before
     public void setup() {
-        System.setProperty("filePath", "src/test/resources/contexts.json");
-        testObj = new ContextDependencyController();
+        final UIConfig uiConfig = new UIConfig();
+        uiConfig.setFilePath("src/test/resources/contexts.json");
+        testObj = new ContextDependencyController(uiConfig);
     }
 
     @Test
