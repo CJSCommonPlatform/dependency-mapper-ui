@@ -29,6 +29,7 @@ define([], function() {
         sigma.settings.minNodeSize = 24;
         sigma.settings.minEdgeSize = 4;
         sigma.settings.sideMargin = 24;
+        sigma.settings.mouseWheelEnabled = false;
 
         sigma.settings.defaultEdgeType = "curvedArrow";
 
