@@ -1,21 +1,43 @@
 package uk.gov.justice.tools.ui;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
-@SpringBootApplication
-public class ContextDependencyServiceBoot extends SpringBootServletInitializer {
+import io.dropwizard.Application;
+import io.dropwizard.Configuration;
+import io.dropwizard.assets.AssetsBundle;
+import io.dropwizard.setup.Bootstrap;
+import io.dropwizard.setup.Environment;
 
-    public static void main(String[] args) {
-        SpringApplication.run(ContextDependencyServiceBoot.class, args);
+public class ContextDependencyServiceBoot extends Application<Configuration> {
+    //TODO : requires refactoring here, Suggested option would be one application.yml file having all properties defined there
+
+    static String DEFAULT_RAML_REPORT_DIR = "/opt/raml-reports/";
+    static String RAML_REPORT_DIR = System.getProperty("ramlReportDir", DEFAULT_RAML_REPORT_DIR);
+    static String DEFAULT_FILE_URL = "/opt/contexts.json";
+    static String FILE_URL = System.getProperty("filePath", DEFAULT_FILE_URL);
+
+    static {
+        if (null == System.getProperty("dw.server.applicationConnectors[0].port")) {
+            System.setProperty("dw.server.applicationConnectors[0].port", "9999");
+        }
+    }
+    //END TODO
+
+    private final UIConfig uiConfig = new UIConfig();
+
+    public static void main(String[] args) throws Exception {
+        new ContextDependencyServiceBoot().run(args);
     }
 
     @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(ContextDependencyServiceBoot.class);
+    public void initialize(Bootstrap<Configuration> bootstrap) {
+        uiConfig.setFilePath(FILE_URL);
+        uiConfig.setRamlReportDir(RAML_REPORT_DIR);
+        bootstrap.addBundle(new AssetsBundle("/static", "/contextual", "index.html", "static"));
+        //bootstrap.addBundle(new AssetsBundle("file:" +RAML_REPORT_DIR, "/raml-report*//**"));
     }
 
+    @Override
+    public void run(Configuration c, Environment environment) throws Exception {
+        environment.jersey().register(new ContextDependencyController(uiConfig));
+    }
 }

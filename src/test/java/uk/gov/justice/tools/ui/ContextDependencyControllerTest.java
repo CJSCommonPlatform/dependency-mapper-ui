@@ -1,6 +1,7 @@
 package uk.gov.justice.tools.ui;
 
-import static junit.framework.TestCase.assertTrue;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
 
@@ -13,15 +14,16 @@ public class ContextDependencyControllerTest {
 
     @Before
     public void setup() {
-        System.setProperty("filePath", "src/test/resources/contexts.json");
-        testObj = new ContextDependencyController();
+        UIConfig uiConfig = new UIConfig();
+        uiConfig.setFilePath("src/test/resources/contexts.json");
+        testObj = new ContextDependencyController(uiConfig);
     }
 
     @Test
     public void getDependencyGraph() throws IOException {
 
         final String contextMapResponse = testObj.getDependencyGraph();
-        assertTrue(contextMapResponse.contains("dependencies"));
+        assertThat(contextMapResponse.contains("dependencies"), is(true));
 
     }
 
