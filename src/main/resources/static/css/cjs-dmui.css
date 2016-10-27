@@ -1,3 +1,4 @@
+/*********** Bootstrap overrides *******************/
 .navbar-toggle{
     margin-bottom: 27px;
     margin-top: 27px;
@@ -39,10 +40,9 @@
 }
 
 
-#content {
-  height: 800px;
-}
 
+
+/********** RAML Doc styles start ****************/
  .hljs {
      background: transparent;
  }
@@ -158,4 +158,12 @@ pre code {
     overflow: auto;
     word-wrap: normal;
     white-space: pre;
+}
+/************ RAML Docs styles end *********************/
+
+/************ Apps ****************/
+
+.graph-container {
+    height: 800px;
+    border: 3px solid #f3f3f6;
 }
