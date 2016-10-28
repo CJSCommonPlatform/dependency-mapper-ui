@@ -19,3 +19,4 @@ Execute following steps to build and start the service
 Note:
 
 1. Default HTTP port is '9999', can be changed by setting system property e.g -Ddw.server.applicationConnectors[0].port=9090
+2. Added raml report microservice http://localhost:9999/ramlReport?ramlFileName=index.html, which takes ramlFileName as query parameter and return html contents. 
