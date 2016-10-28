@@ -41,7 +41,7 @@ define([], function() {
 
         s.bind("clickNode",function(e){
             var microserviceName = e.data.node.label;
-            $("#ramlDetails").load("/ramlReport?ramlFileName=progression_command_api.html .row");
+            $("#ramlDetails").load("/ramlReport?ramlFileName=assignment-command-api.html .row");
         });
 
         var config = {
