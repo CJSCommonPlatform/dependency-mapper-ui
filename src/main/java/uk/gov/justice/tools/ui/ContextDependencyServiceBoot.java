@@ -18,21 +18,22 @@ public class ContextDependencyServiceBoot extends Application<Configuration> {
 
     private final UIConfig uiConfig = new UIConfig();
 
-    public static void main(String[] args) throws Exception {
-        new ContextDependencyServiceBoot().run(new String[] {"server", "src/main/resources/configuration.yaml"});
+    public static void main(final String[] args) throws Exception {
+        new ContextDependencyServiceBoot()
+                        .run(new String[] {"server", "src/main/resources/configuration.yaml"});
     }
 
     @Override
-    public void initialize(Bootstrap<Configuration> bootstrap) {
+    public void initialize(final Bootstrap<Configuration> bootstrap) {
         uiConfig.setFilePath(FILE_URL);
         uiConfig.setRamlReportDir(RAML_REPORT_DIR);
-        bootstrap.addBundle(new AssetsBundle("/static", "/contextual", "index.html", "static"));
-        //bootstrap.addBundle(new AssetsBundle("file:" +RAML_REPORT_DIR, "/raml-report*//**"));
-     
+        bootstrap.addBundle(new AssetsBundle("/static", "/static", "index.html", "static"));
+        // bootstrap.addBundle(new AssetsBundle("file:" +RAML_REPORT_DIR, "/raml-report*//**"));
+
     }
 
     @Override
-    public void run(Configuration c, Environment environment) throws Exception {
+    public void run(final Configuration c, final Environment environment) throws Exception {
         environment.jersey().register(new ContextDependencyController(uiConfig));
         environment.jersey().register(new RamlStaticFileService(uiConfig));
     }
