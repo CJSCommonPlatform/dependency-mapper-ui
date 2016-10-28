@@ -12,7 +12,7 @@ Prerequisites:
 Execute following steps to build and start the service
 
 1. `mvn clean package`
-2. `java -jar target/dependency-mapper-ui-0.0.1-SNAPSHOT.jar server` 
+2. `java -jar target/dependency-mapper-ui-0.0.1-SNAPSHOT.jar ` 
 3. Open URL "http://localhost:9999/contextGraph", should return JSON payload
 4. Open URL "http://localhost:9999/static/", should return home page.
 
