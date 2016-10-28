@@ -120,6 +120,10 @@ define(["data/transform", "lodash"], function (transform, _) {
             describe("when I apply the transform function", function() {
                 var result = transform(microservice);
 
+                it("should not work", function() {
+                    expect(2).toBe(3);
+                });
+
                 it("then I expect to see two nodes created", function () {
                     expect(result.nodes.length).toBe(2);
                 });
