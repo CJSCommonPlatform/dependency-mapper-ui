@@ -35,6 +35,7 @@ public class ContextDependencyServiceBoot extends Application<Configuration> {
     @Override
     public void run(final Configuration c, final Environment environment) throws Exception {
         environment.jersey().register(new ContextDependencyController(uiConfig));
+        environment.jersey().register(new VersionController());
         environment.jersey().register(new RamlStaticFileService(uiConfig));
     }
 }
