@@ -9,3 +9,6 @@
 nbproject
 dependency-mapper-ui.iml
 *.iml
+/.classpath
+/.project
+/.settings/
