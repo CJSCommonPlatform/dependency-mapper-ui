@@ -1,11 +1,13 @@
 package uk.gov.justice.tools.ui;
 
 
+
 import io.dropwizard.Application;
 import io.dropwizard.Configuration;
 import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import uk.gov.justice.tools.healthcheck.HealthCheckController;
 
 public class ContextDependencyServiceBoot extends Application<Configuration> {
 
@@ -28,13 +30,13 @@ public class ContextDependencyServiceBoot extends Application<Configuration> {
         uiConfig.setFilePath(FILE_URL);
         uiConfig.setRamlReportDir(RAML_REPORT_DIR);
         bootstrap.addBundle(new AssetsBundle("/static", "/static", "index.html", "static"));
-        // bootstrap.addBundle(new AssetsBundle("file:" +RAML_REPORT_DIR, "/raml-report*//**"));
-
     }
 
     @Override
     public void run(final Configuration c, final Environment environment) throws Exception {
         environment.jersey().register(new ContextDependencyController(uiConfig));
         environment.jersey().register(new RamlStaticFileService(uiConfig));
+     // Run multiple health checks
+        environment.jersey().register(new HealthCheckController(environment.healthChecks()));
     }
 }
