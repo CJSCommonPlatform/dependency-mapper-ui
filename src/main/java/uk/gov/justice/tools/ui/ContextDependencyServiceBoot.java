@@ -1,6 +1,8 @@
 package uk.gov.justice.tools.ui;
 
 
+import uk.gov.justice.tools.healthcheck.HealthCheckService;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -10,7 +12,7 @@ import io.dropwizard.Configuration;
 import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-import uk.gov.justice.tools.healthcheck.HealthCheckController;
+
 
 public class ContextDependencyServiceBoot extends Application<Configuration> {
 
@@ -41,5 +43,9 @@ public class ContextDependencyServiceBoot extends Application<Configuration> {
     public void run(final Configuration c, final Environment environment) throws Exception {
         environment.jersey().register(new ContextDependencyController(uiConfig));
         environment.jersey().register(new RamlStaticFileService(uiConfig));
+
+        // Run multiple health checks
+        environment.healthChecks().register("JSON_ROOT_DIRECTORY_CHECK",new HealthCheckService(uiConfig));
+
     }
 }
