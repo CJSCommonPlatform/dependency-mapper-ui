@@ -8,11 +8,11 @@ import java.nio.file.Paths;
 
 import com.codahale.metrics.health.HealthCheck;
 
-public class HealthCheckService extends HealthCheck {
+public class JsonFileHealthCheckService extends HealthCheck {
 
 	UIConfig uiConfig = new UIConfig();
 
-	public HealthCheckService(UIConfig uiConfig) {
+	public JsonFileHealthCheckService(UIConfig uiConfig) {
 		this.uiConfig = uiConfig;
 	}
 
