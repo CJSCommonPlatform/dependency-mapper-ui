@@ -12,6 +12,7 @@ import io.dropwizard.Configuration;
 import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import uk.gov.justice.tools.healthcheck.HealthCheckController;
 
 
 public class ContextDependencyServiceBoot extends Application<Configuration> {
@@ -47,5 +48,7 @@ public class ContextDependencyServiceBoot extends Application<Configuration> {
         // Run multiple health checks
         environment.healthChecks().register("JSON_ROOT_DIRECTORY_CHECK",new HealthCheckService(uiConfig));
 
+     // Run multiple health checks
+        environment.jersey().register(new HealthCheckController(environment.healthChecks()));
     }
 }
