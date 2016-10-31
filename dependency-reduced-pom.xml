@@ -45,7 +45,7 @@
           <transformers>
             <transformer />
             <transformer>
-              <mainClass>uk.gov.justice.tools.ui.ContextDependencyServiceBoot</mainClass>
+              <mainClass>uk.gov.justice.tools.Bootstrap</mainClass>
             </transformer>
           </transformers>
         </configuration>
