@@ -1,6 +1,10 @@
 package uk.gov.justice.tools.ui;
 
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 import io.dropwizard.Application;
 import io.dropwizard.Configuration;
 import io.dropwizard.assets.AssetsBundle;
@@ -15,12 +19,11 @@ public class ContextDependencyServiceBoot extends Application<Configuration> {
     static String FILE_URL = System.getProperty("filePath", DEFAULT_FILE_URL);
 
 
-
     private final UIConfig uiConfig = new UIConfig();
 
     public static void main(final String[] args) throws Exception {
         new ContextDependencyServiceBoot()
-                        .run(new String[] {"server", "src/main/resources/configuration.yaml"});
+                .run(new String[]{"server", "src/main/resources/configuration.yaml"});
     }
 
     @Override
@@ -35,7 +38,26 @@ public class ContextDependencyServiceBoot extends Application<Configuration> {
     @Override
     public void run(final Configuration c, final Environment environment) throws Exception {
         environment.jersey().register(new ContextDependencyController(uiConfig));
-        environment.jersey().register(new VersionController());
+        environment.jersey().register(new VersionController(getVersion()));
         environment.jersey().register(new RamlStaticFileService(uiConfig));
+    }
+
+    public VersionNumber getVersion() throws IOException {
+
+        // try to load from maven properties
+        Properties p = new Properties();
+        VersionNumber versionNumber =  new VersionNumber();
+
+        InputStream is = getClass().getResourceAsStream("/version.txt");
+
+        if (is != null) {
+            p.load(is);
+            versionNumber = new VersionNumber();
+            versionNumber.setVersion(p.getProperty("version"));
+            versionNumber.setBuildDateTime(p.getProperty("build.date"));
+        }
+
+        return versionNumber;
+
     }
 }
