@@ -13,6 +13,7 @@ import com.codahale.metrics.health.HealthCheckRegistry;
 
 @Produces(MediaType.APPLICATION_JSON)
 @Path("/status")
+@Deprecated
 public class HealthCheckController 
 {
 	private HealthCheckRegistry registry;
