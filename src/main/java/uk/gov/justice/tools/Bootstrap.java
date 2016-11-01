@@ -12,36 +12,45 @@ import uk.gov.justice.tools.ui.UIConfig;
 
 public class Bootstrap extends Application<Configuration> {
 
-	static String DEFAULT_RAML_REPORT_DIR = "/opt/raml-reports/";
-	static String RAML_REPORT_DIR = System.getProperty("ramlReportDir", DEFAULT_RAML_REPORT_DIR);
-	static String DEFAULT_FILE_URL = "/opt/contexts.json";
-	static String FILE_URL = System.getProperty("filePath", DEFAULT_FILE_URL);
+    static String DEFAULT_RAML_REPORT_DIR = "/opt/raml-reports/";
+    static String RAML_REPORT_DIR = System.getProperty("ramlReportDir", DEFAULT_RAML_REPORT_DIR);
+    static String DEFAULT_FILE_URL = "/opt/contexts.json";
+    static String FILE_URL = System.getProperty("filePath", DEFAULT_FILE_URL);
 
-	private final UIConfig uiConfig = new UIConfig();
+    private final UIConfig uiConfig = new UIConfig();
 
-	public static void main(final String[] args) throws Exception {
-		new Bootstrap().run(new String[] { "server", "src/main/resources/configuration.yaml" });
-	}
+    static {
+        if (null == System.getProperty("dw.server.applicationConnectors[0].port")) {
+            System.setProperty("dw.server.applicationConnectors[0].port", "9999");
+        }
+        if (null == System.getProperty("dw.server.adminConnectors[0].port")) {
+            System.setProperty("dw.server.adminConnectors[0].port", "9998");
+        }
+    }
 
-	@Override
-	public void initialize(final io.dropwizard.setup.Bootstrap bootstrap) {
-		uiConfig.setFilePath(FILE_URL);
-		uiConfig.setRamlReportDir(RAML_REPORT_DIR);
-		bootstrap.addBundle(new AssetsBundle("/static", "/static", "index.html", "static"));
-		// bootstrap.addBundle(new AssetsBundle("file:" +RAML_REPORT_DIR,
-		// "/raml-report*//**"));
 
-	}
+    public static void main(final String[] args) throws Exception {
+        new Bootstrap().run(new String[] {"server"});
+    }
 
-	@Override
-	public void run(final Configuration c, final Environment environment) throws Exception {
-		environment.jersey().register(new ContextDependencyController(uiConfig));
-		environment.jersey().register(new RamlStaticFileService(uiConfig));
+    @Override
+    public void initialize(final io.dropwizard.setup.Bootstrap bootstrap) {
+        uiConfig.setFilePath(FILE_URL);
+        uiConfig.setRamlReportDir(RAML_REPORT_DIR);
+        bootstrap.addBundle(new AssetsBundle("/static", "/static", "index.html", "static"));
 
-		// Run multiple health checks
-		environment.healthChecks().register("JSON_ROOT_DIRECTORY_CHECK", new JsonFileHealthCheckService(uiConfig));
-		environment.healthChecks().register("RAML_REPORT_ROOT_DIRECTORY_CHECK",
-				new RamlReportHealthCheckService(uiConfig));
+    }
 
-	}
+    @Override
+    public void run(final Configuration c, final Environment environment) throws Exception {
+        environment.jersey().register(new ContextDependencyController(uiConfig));
+        environment.jersey().register(new RamlStaticFileService(uiConfig));
+
+        // Run multiple health checks
+        environment.healthChecks().register("JSON_ROOT_DIRECTORY_CHECK",
+                        new JsonFileHealthCheckService(uiConfig));
+        environment.healthChecks().register("RAML_REPORT_ROOT_DIRECTORY_CHECK",
+                        new RamlReportHealthCheckService(uiConfig));
+
+    }
 }
