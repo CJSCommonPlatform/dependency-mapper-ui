@@ -9,6 +9,7 @@ Prerequisites:
 
 `java -DfilePath='/home/robert/dev/dependency-mapper-ui/src/test/resources/contexts.json' -DramlReportDir='/opt/ext-resources/' -jar target/dependency-mapper-ui-0.0.1-SNAPSHOT.jar `
 
+
 Execute following steps to build and start the service
 
 1. `mvn clean package`
