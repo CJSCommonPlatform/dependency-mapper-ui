@@ -21,7 +21,7 @@ public class RamlStaticFileService {
     }
 
     @GET
-    public String getDependencyGraph(@QueryParam("ramlFileName")String ramlFileName) throws IOException {
+    public String getRamlReport(@QueryParam("ramlFileName")String ramlFileName) throws IOException {
         return new String(Files.readAllBytes(Paths.get(uiConfig.getRamlReportDir().concat(ramlFileName))));
     }
 }
