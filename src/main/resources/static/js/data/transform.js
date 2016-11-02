@@ -41,13 +41,12 @@ define(["lodash", "data/graphObjectMapper"], function(_, graphObject) {
         }
     };
 
-    return function (microserviceList)  {
+    return function(microserviceList, predicate)  {
         var emptyGraph = {
             nodes: [],
             edges: []
         };
 
-        return _.reduce(microserviceList, reduce, emptyGraph);
+        return _.reduce(_.filter(microserviceList, predicate), reduce, emptyGraph);
     }
 });
-

@@ -1,5 +1,6 @@
 define(["data/transform", "lodash"], function (transform, _) {
-    var microserviceNames = ["ms-1", "ms-2"];
+
+    var microserviceNames = ["ms-1", "ms-2", "ms-3"];
 
     describe("", function () {
 
@@ -164,6 +165,96 @@ define(["data/transform", "lodash"], function (transform, _) {
                     expect(result.edges[0].target).toBe(microserviceNames[1]);
                 })
             })
+
+            describe("when I apply the transform function with a predicate present", function() {
+                var result = transform(microservice, function(node) {
+                    return node.microService === microserviceNames[0];
+                });
+
+                it("then I expect to see two nodes created", function () {
+                    expect(result.nodes.length).toBe(2);
+                });
+
+                it("then the nodes should have the microservice names", function () {
+                    var microserviceNames = _.map(result.nodes, "id");
+
+                    expect(microserviceNames).toContain(microserviceNames[0]);
+                    expect(microserviceNames).toContain(microserviceNames[1]);
+                });
+
+                it("then the top level microservice should have its version defined", function () {
+                    var microservice1 = _.find(result.nodes, ["id", microserviceNames[0]]);
+
+                    expect(microservice1.version).toBe("1.0");
+                });
+
+                it("then there should be one relationship between nodes", function () {
+                    expect(result.edges.length).toBe(1);
+                });
+
+                it("then the relationship should have its label defined", function() {
+                    expect(result.edges[0].label).toContain("1.0");
+                });
+
+                it("then the relationship should be between the two microservices", function () {
+                    expect(result.edges[0].source).toBe(microserviceNames[0]);
+                    expect(result.edges[0].target).toBe(microserviceNames[1]);
+                })
+            })
+        });
+
+        describe("Given a list of many microservices", function () {
+
+            var microservice = [{
+                microService: microserviceNames[0],
+                version: "1.0",
+                consumedBy: [
+                    {
+                        microService: microserviceNames[1],
+                        usingVersion: "1.0"
+                    }
+                ],
+            }, {
+                microService: microserviceNames[2],
+                version: "2.0"
+            }];
+
+            describe("when I apply the transform function with a predicate present", function() {
+                var result = transform(microservice, function(node) {
+                    return node.microService === microserviceNames[0];
+                });
+
+                it("then I expect to see two nodes created", function () {
+                    expect(result.nodes.length).toBe(2);
+                });
+
+                it("then the nodes should have the microservice names", function () {
+                    var microserviceNames = _.map(result.nodes, "id");
+
+                    expect(microserviceNames).toContain(microserviceNames[0]);
+                    expect(microserviceNames).toContain(microserviceNames[1]);
+                });
+
+                it("then the top level microservice should have its version defined", function () {
+                    var microservice1 = _.find(result.nodes, ["id", microserviceNames[0]]);
+
+                    expect(microservice1.version).toBe("1.0");
+                });
+
+                it("then there should be one relationship between nodes", function () {
+                    expect(result.edges.length).toBe(1);
+                });
+
+                it("then the relationship should have its label defined", function() {
+                    expect(result.edges[0].label).toContain("1.0");
+                });
+
+                it("then the relationship should be between the two microservices", function () {
+                    expect(result.edges[0].source).toBe(microserviceNames[0]);
+                    expect(result.edges[0].target).toBe(microserviceNames[1]);
+                })
+            })
+
         });
 
         describe("Given a microservice dependency that is outdated", function() {

@@ -50,9 +50,6 @@ define([], function() {
             duration: 2000
         };
 
-        var listener = s.configNoverlap(config);
-        s.startNoverlap();
-
         var dragListener = sigma.plugins.dragNodes(s, s.renderers[0]);
     }
 });
