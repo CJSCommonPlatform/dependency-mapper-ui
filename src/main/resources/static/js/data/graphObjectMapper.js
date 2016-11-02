@@ -13,7 +13,7 @@ define([], function() {
 
         return {
             id: "e" + Math.random(),
-            label: "Version: " + consumer.usingVersion + (isCurrentVersion ? "" :  " (OUTDATED)"),
+            label: "is consumed using v" + consumer.usingVersion + " from",
             source: context.microService,
             target: consumer.microService,
             color: isCurrentVersion ?  "#9cf" : "#f00"

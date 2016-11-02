@@ -289,8 +289,7 @@ define(["data/transform", "lodash"], function (transform, _) {
                     expect(result.edges[0].label).toContain("0.9");
                 });
 
-                it("then the relationship should have 'OUTDATED' printed on the edge and be red", function () {
-                    expect(result.edges[0].label).toContain("OUTDATED");
+                it("then the relationship should be red", function () {
                     expect(result.edges[0].color).toBe("#f00");
                 });
             });
