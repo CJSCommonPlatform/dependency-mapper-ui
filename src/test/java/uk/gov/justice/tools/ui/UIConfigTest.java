@@ -10,6 +10,7 @@ import org.junit.Test;
 
 public class UIConfigTest {
 
+
     UIConfig testObj = new UIConfig();
     private final String ARBITRARY_TEXT = "foo";
 
@@ -23,6 +24,10 @@ public class UIConfigTest {
     public void configHaveRamlReportDirAttribute(){
         testObj.setRamlReportDir(ARBITRARY_TEXT) ;
         assertThat(testObj.getRamlReportDir(),is(ARBITRARY_TEXT));
+    }
+    @Test
+    public void getVersionTxtPath() {
+        assertThat(testObj.getVersionTxtPath(),is("/version.txt"));
     }
 
 }

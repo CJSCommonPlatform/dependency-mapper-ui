@@ -8,36 +8,32 @@ import java.nio.file.Paths;
 
 import com.codahale.metrics.health.HealthCheck;
 
-public class JsonFileHealthCheckService extends HealthCheck {
+public class JsonFileHealthCheckService extends HealthCheckService {
 
-	UIConfig uiConfig = new UIConfig();
+    private UIConfig uiConfig;
 
-	public JsonFileHealthCheckService(UIConfig uiConfig) {
-		this.uiConfig = uiConfig;
-	}
-
-	@Override
-	protected Result check() throws Exception {
-		Status status =null;
-		Path jsonFilePath = Paths.get(uiConfig.getFilePath());
-		if (!Files.exists(jsonFilePath)) {
-			status = new Status(false,"'filePath : " + uiConfig.getFilePath() + "' does not exists ");
-		} else if (!Files.isReadable(jsonFilePath)) {
-			status = new Status(false,uiConfig.getFilePath() + ": Permission  denied");
-		}else{
-			status = new Status(true,"");
-		}
-		return status.isHealthy ? Result.healthy() : Result.unhealthy(status.message);
-	}
+    public JsonFileHealthCheckService(UIConfig uiConfig) {
+        this.uiConfig = uiConfig;
+    }
 
 
-	private class Status{
-		boolean isHealthy ;
-		String message ;
+    @Override
+    protected Result check() throws Exception {
+        Status status = null;
+        Path jsonFilePath = Paths.get(uiConfig.getFilePath());
+        if (!Files.exists(jsonFilePath)) {
+            status = new Status(false, "'filePath : " + uiConfig.getFilePath() + "' does not exists ");
+        } else if (!Files.isReadable(jsonFilePath)) {
+            status = new Status(false, uiConfig.getFilePath() + ": Permission  denied");
+        } else {
+            status = new Status(true, "");
+        }
+        return getResult(status);
+    }
 
-		public Status(boolean isHealthy, String message) {
-			this.isHealthy = isHealthy;
-			this.message = message;
-		}
-	}
+
+    @Override
+    public String getName() {
+        return "JSON_ROOT_DIRECTORY_CHECK";
+    }
 }
