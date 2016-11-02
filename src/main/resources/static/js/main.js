@@ -1,10 +1,14 @@
-define(["data/transform", "render/renderGraph"], function(transform, renderGraph) {
+define(["data/transform", "data/predicates/oneLevelNamedNodePredicate", "render/renderGraph"], function(transform, oneLevelNamedNodePredicate, renderGraph) {
 
     $.ajax({
         url: "/contextGraph"
     }).done(function(data) {
-        var contextName = getQueryVariable("nodeName");
-        var predicate = contextName ? function(node) { return node.microService === contextName; } : function() {return true;};
+
+        if(getQueryVariable("nodeName")) {
+            var predicate = oneLevelNamedNodePredicate(getQueryVariable("nodeName"));
+        } else {
+            var predicate = function() {return true;}
+        }
 
         var graph = transform(data.microServices, predicate);
         renderGraph(graph);

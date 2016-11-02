@@ -2,7 +2,7 @@ define(["data/transform", "lodash"], function (transform, _) {
 
     var microserviceNames = ["ms-1", "ms-2", "ms-3"];
 
-    describe("", function () {
+    describe("The Transform Function", function () {
 
         describe("Given an empty list of microservices,", function () {
 
@@ -266,7 +266,7 @@ define(["data/transform", "lodash"], function (transform, _) {
                         microService: microserviceNames[1],
                         usingVersion: "0.9"
                     }
-                ],
+                ]
             }];
 
             describe("when I apply the transform function", function() {
