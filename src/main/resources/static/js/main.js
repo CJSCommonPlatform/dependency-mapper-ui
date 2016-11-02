@@ -1,4 +1,4 @@
-define(["data/transform", "data/predicates/oneLevelNamedNodePredicate", "render/renderGraph"], function(transform, oneLevelNamedNodePredicate, renderGraph) {
+define(["data/transform", "data/sigmaFormat/contextGraphModeller", "data/predicates/oneLevelNamedNodePredicate", "render/renderGraph"], function(transform, graphObjectMapper, oneLevelNamedNodePredicate, renderGraph) {
 
     $.ajax({
         url: "/contextGraph"
@@ -10,7 +10,7 @@ define(["data/transform", "data/predicates/oneLevelNamedNodePredicate", "render/
             var predicate = function() {return true;}
         }
 
-        var graph = transform(data.microServices, predicate);
+        var graph = transform(data.microServices, predicate, graphObjectMapper);
         renderGraph(graph);
     });
 
