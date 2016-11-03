@@ -16,7 +16,11 @@ define(["gateway/contextGraphGateway", "data/transform", "data/sigmaFormat/conte
             .renderWithData(graph);
 
         $("#breadcrumbs").off("click");
-        $("#breadcrumbs").click(function() {renderInitialGraph(data)});
+
+        $("#breadcrumbs").click(function() {
+            renderInitialGraph(data);
+            $("#ramlDetails").empty();
+        });
     };
 
     gateway.requestData(renderInitialGraph)

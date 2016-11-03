@@ -9,18 +9,15 @@ define([], function() {
     };
 
     var extractEdge = function(context, consumer) {
-        var isCurrentVersion = context.version === consumer.usingVersion;
-
         if(context.microService.split("-")[0] === consumer.microService.split("-")[0]) {
             return;
         }
 
         return {
             id: "e" + Math.random(),
-            label: "is consumed using v" + consumer.usingVersion + " from",
             source: context.microService.split("-")[0],
             target: consumer.microService.split("-")[0],
-            color: isCurrentVersion ?  "#9cf" : "#f00"
+            color: "#9cf"
         }
     };
 
