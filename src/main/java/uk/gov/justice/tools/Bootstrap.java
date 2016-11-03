@@ -21,9 +21,10 @@ import uk.gov.justice.tools.ui.VersionNumber;
 public class Bootstrap extends Application<Configuration> {
 
     static String DEFAULT_RAML_REPORT_DIR = "/opt/raml-reports/";
-    static String RAML_REPORT_DIR = System.getProperty("ramlReportDir", DEFAULT_RAML_REPORT_DIR);
+    static String RAML_REPORT_DIR =
+                    System.getProperty("dmx.raml.reports.dir", DEFAULT_RAML_REPORT_DIR);
     static String DEFAULT_FILE_URL = "/opt/contexts.json";
-    static String FILE_URL = System.getProperty("filePath", DEFAULT_FILE_URL);
+    static String FILE_URL = System.getProperty("dmx.contexts.map.file", DEFAULT_FILE_URL);
 
     private final UIConfig uiConfig = new UIConfig();
 

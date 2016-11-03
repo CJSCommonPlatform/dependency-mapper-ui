@@ -1,18 +1,16 @@
 package uk.gov.justice.tools.healthcheck;
 
-import uk.gov.justice.tools.ui.UIConfig;
-
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import com.codahale.metrics.health.HealthCheck;
+import uk.gov.justice.tools.ui.UIConfig;
 
 public class JsonFileHealthCheckService extends HealthCheckService {
 
-    private UIConfig uiConfig;
+    private final UIConfig uiConfig;
 
-    public JsonFileHealthCheckService(UIConfig uiConfig) {
+    public JsonFileHealthCheckService(final UIConfig uiConfig) {
         this.uiConfig = uiConfig;
     }
 
@@ -20,9 +18,10 @@ public class JsonFileHealthCheckService extends HealthCheckService {
     @Override
     protected Result check() throws Exception {
         Status status = null;
-        Path jsonFilePath = Paths.get(uiConfig.getFilePath());
+        final Path jsonFilePath = Paths.get(uiConfig.getFilePath());
         if (!Files.exists(jsonFilePath)) {
-            status = new Status(false, "'filePath : " + uiConfig.getFilePath() + "' does not exists ");
+            status = new Status(false,
+                            "'filePath : " + uiConfig.getFilePath() + "' does not exists ");
         } else if (!Files.isReadable(jsonFilePath)) {
             status = new Status(false, uiConfig.getFilePath() + ": Permission  denied");
         } else {
@@ -34,6 +33,6 @@ public class JsonFileHealthCheckService extends HealthCheckService {
 
     @Override
     public String getName() {
-        return "JSON_ROOT_DIRECTORY_CHECK";
+        return "CHECK_CONTEXT_JSON";
     }
 }

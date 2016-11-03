@@ -2,12 +2,12 @@
 
 Prerequisites:
 
-1. Context map file is at provided filePath, default is `/opt/contexts.json`. This can be overridden by sending the system property as a parameter  e.g.:
+1. Context map file is at provided dmx.contexts.map.file, default is `/opt/contexts.json`. This can be overridden by sending the system property as a parameter  e.g.:
 
-`java -DfilePath='/home/robert/dev/dependency-mapper-ui/src/test/resources/contexts.json' -jar target/dependency-mapper-ui-0.0.1-SNAPSHOT.jar `
-2. RAML report dir is at provided ramlReportDir, default is `/opt/raml-reports/`. This can be overridden by sending the system property as a parameter  e.g.:
+`java -Ddmx.contexts.map.file='/home/robert/dev/dependency-mapper-ui/src/test/resources/contexts.json' -jar target/dependency-mapper-ui-0.0.1-SNAPSHOT.jar `
+2. RAML report dir is at provided dmx.raml.reports.dir, default is `/opt/raml-reports/`. This can be overridden by sending the system property as a parameter  e.g.:
 
-`java -DfilePath='/home/robert/dev/dependency-mapper-ui/src/test/resources/contexts.json' -DramlReportDir='/opt/ext-resources/' -jar target/dependency-mapper-ui-0.0.1-SNAPSHOT.jar `
+`java -Ddmx.contexts.map.file='/home/robert/dev/dependency-mapper-ui/src/test/resources/contexts.json' -Ddmx.raml.reports.dir='/opt/ext-resources/' -jar target/dependency-mapper-ui-0.0.1-SNAPSHOT.jar `
 
 
 Execute following steps to build and start the service

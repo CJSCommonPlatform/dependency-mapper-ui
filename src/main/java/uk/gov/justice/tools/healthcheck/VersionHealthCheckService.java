@@ -1,25 +1,25 @@
 package uk.gov.justice.tools.healthcheck;
 
 
-import uk.gov.justice.tools.ui.UIConfig;
-
 import java.io.InputStream;
 
-public class VersionHealthCheckService extends HealthCheckService{
+import uk.gov.justice.tools.ui.UIConfig;
 
-    private UIConfig uiConfig;
+public class VersionHealthCheckService extends HealthCheckService {
 
-    public VersionHealthCheckService(UIConfig uiConfig) {
+    private final UIConfig uiConfig;
+
+    public VersionHealthCheckService(final UIConfig uiConfig) {
         this.uiConfig = uiConfig;
     }
 
     @Override
     protected Result check() throws Exception {
         Status status = null;
-        InputStream is = getClass().getResourceAsStream(uiConfig.getVersionTxtPath());
+        final InputStream is = getClass().getResourceAsStream(uiConfig.getVersionTxtPath());
         if (is != null) {
             status = new Status(true, "");
-        }else{
+        } else {
             status = new Status(false, uiConfig.getVersionTxtPath() + " : Not found at classpath");
         }
         return getResult(status);
@@ -27,6 +27,6 @@ public class VersionHealthCheckService extends HealthCheckService{
 
     @Override
     public String getName() {
-        return "VERSION_TXT_CHECK";
+        return "CHECK_VERSION_TXT";
     }
 }
