@@ -61,8 +61,8 @@ define([], function() {
 
                 if (_noverlap) {
                     var config = {
-                        nodeMargin: 12,
-                        scaleNodes: 1.3,
+                        nodeMargin: 6,
+                        // scaleNodes: 1.3,
                         duration: 2000
                     };
 

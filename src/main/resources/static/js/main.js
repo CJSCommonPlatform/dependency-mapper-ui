@@ -30,9 +30,9 @@ define(["gateway/contextGraphGateway", "data/transform", "data/sigmaFormat/conte
             edges: graph.edges,
 
             nodes: graph.nodes.map(function(n, ix) {
-                /*var theta = ((2 * Math.PI)/graph.nodes.length)*ix
+                var theta = ((2 * Math.PI)/graph.nodes.length)*ix
                 n.y = Math.cos(theta);
-                n.x = Math.sin(theta);*/
+                n.x = Math.sin(theta);
                 return $.extend(n, {size: 24});
             })};
     };
