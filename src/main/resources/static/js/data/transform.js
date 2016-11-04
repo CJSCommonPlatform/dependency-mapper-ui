@@ -1,11 +1,11 @@
 define(["lodash"], function(_) {
-    var extract = function(graphObject, context) {
+    var extract = function(graphModeller, context) {
         var dependencies = context.consumedBy ? context.consumedBy : [];
 
         var rawNodes = _.concat(dependencies, context);
-        var newNodes = _.map(rawNodes, graphObject.extractNode);
+        var newNodes = _.map(rawNodes, graphModeller.extractNode);
 
-        var newEdges = _.filter(context.consumedBy ? _.map(context.consumedBy, _.curry(graphObject.extractEdge)(context)) : []);
+        var newEdges = _.filter(context.consumedBy ? _.map(context.consumedBy, _.curry(graphModeller.extractEdge)(context)) : []);
 
         return {
             nodes: newNodes,
@@ -13,9 +13,9 @@ define(["lodash"], function(_) {
         };
     };
 
-    var reduceUsing = function(graphObjectMapper) {
-        return function (accumulatedGraph, newGraph) {
-            var processedGraph = extract(graphObjectMapper, newGraph);
+    var reduceUsing = function(graphModeller) {
+        return function (accumulatedGraph, newContext) {
+            var processedGraph = extract(graphModeller, newContext);
 
             var currentListOfNodes = accumulatedGraph.nodes;
 
@@ -39,7 +39,7 @@ define(["lodash"], function(_) {
         }
     };
 
-    return function(microserviceList, predicate, graphObjectMapper)  {
+    return function(microserviceList, predicate, graphModeller)  {
         var emptyGraph = {
             nodes: [],
             edges: []
@@ -47,6 +47,6 @@ define(["lodash"], function(_) {
 
         var filteredNodes = _.filter(microserviceList, predicate);
 
-        return _.reduce(filteredNodes, reduceUsing(graphObjectMapper), emptyGraph);
+        return _.reduce(filteredNodes, reduceUsing(graphModeller), emptyGraph);
     }
 });

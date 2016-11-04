@@ -2,6 +2,7 @@ define([], function () {
     return function (e) {
         var microserviceName = e.data.node.label,
             ramlFileName = "";
+
         if (microserviceName != "") {
             ramlFileName = microserviceName.replace(" ", "-");
             $("#ramlDetails").empty().load("/ramlReport?ramlFileName=" + ramlFileName + ".html .row");

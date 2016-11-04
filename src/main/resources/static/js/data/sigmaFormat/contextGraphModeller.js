@@ -22,7 +22,7 @@ define([], function() {
     };
 
     return {
-        extractNode: extractNode,
-        extractEdge: extractEdge
+        "extractNode": extractNode,
+        "extractEdge": extractEdge
     };
 });

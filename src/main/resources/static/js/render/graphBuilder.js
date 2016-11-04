@@ -46,12 +46,13 @@ define([], function() {
                 _preProcessor = preProcessor;
                 return graphBuilder;
             },
+
             renderWithData: function (graph) {
                 setDefaultSettings();
                 var graphData = _preProcessor(graph);
 
-                s = new sigma(
-                    $.extend(graphSettings, {graph: graphData})
+                var s = new sigma(
+                    $.extend(graphSettings, {"graph": graphData})
                 );
 
                 if (_clickHandler) {

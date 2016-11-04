@@ -1,8 +1,8 @@
 define(["gateway/contextGraphGateway", "data/transform", "data/sigmaFormat/contextGraphModeller", "render/graphBuilder", "render/bindings/renderServiceGraphEvent"],
-    function(gateway, transform, graphObjectMapper, graphBuilder, onNodeClick) {
+    function(gateway, transform, graphObjectMapper, graphBuilder, renderServiceGraphEvent) {
 
-    var renderInitialGraph = function(data) {
-        var graph = transform(data.microServices, function() {return true;}, graphObjectMapper);
+    var renderContextGraph = function(data) {
+        var formattedContextList = transform(data.microServices, function() {return true;}, graphObjectMapper);
 
         $("#content").empty();
         $("h1").text("Dependency graph");
@@ -12,28 +12,30 @@ define(["gateway/contextGraphGateway", "data/transform", "data/sigmaFormat/conte
             .withDraggableNodes()
             .usingNoverlapLayout()
             .withPreprocessor(enrichGraphData)
-            .withClickHandler(onNodeClick)
-            .renderWithData(graph);
+            .withClickHandler(renderServiceGraphEvent)
+            .renderWithData(formattedContextList);
 
         $("#breadcrumbs").off("click");
 
         $("#breadcrumbs").click(function() {
-            renderInitialGraph(data);
+            renderContextGraph(data);
             $("#ramlDetails").empty();
         });
     };
 
-    gateway.requestData(renderInitialGraph)
+    gateway.requestData(renderContextGraph)
+
+    var enrichGraphData = function(graph) {
+        return {
+            edges: graph.edges,
+
+            nodes: graph.nodes.map(function(n, ix) {
+                /*var theta = ((2 * Math.PI)/graph.nodes.length)*ix
+                n.y = Math.cos(theta);
+                n.x = Math.sin(theta);*/
+                return $.extend(n, {size: 24});
+            })};
+    };
 });
 
-var enrichGraphData = function(graph) {
-    return {
-        edges: graph.edges,
 
-        nodes: graph.nodes.map(function(n, ix) {
-            var theta = ((2 * Math.PI)/graph.nodes.length)*ix
-            n.y = Math.cos(theta);
-            n.x = Math.sin(theta);
-            return $.extend(n, {size: 24});
-        })};
-};
