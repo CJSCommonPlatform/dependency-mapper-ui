@@ -11,16 +11,14 @@ define([], function () {
                         $("#ramlDetails").empty().html("<h1>No RAML document found</h1>");
                     }
                 },
-                url:"/ramlReport?ramlFileName=" + ramlFileName + ".html .row",
+                url:"/ramlReport?ramlFileName=" + ramlFileName + ".html",
                 async: false,
                 success: function(data){
-                    if(data.response == "success"){
+                    if(!!data){
                         $("#ramlDetails").empty().load("/ramlReport?ramlFileName=" + ramlFileName + ".html .row");
-                    }else{
-                        console.log("Ajax call failed to the file on the file systme")
                     }
                 }
             });
         }
     }
-});
+}); 
