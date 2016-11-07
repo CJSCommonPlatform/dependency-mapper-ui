@@ -18,6 +18,7 @@ define(["gateway/contextGraphGateway", "data/transform", "data/sigmaFormat/conte
         $("#breadcrumbs").off("click");
 
         $("#breadcrumbs").click(function() {
+            $("[data-custom-event='shrinkable']").removeClass("col-md-6").addClass("col-md-12");
             renderContextGraph(data);
             $("#ramlDetails").empty();
         });
