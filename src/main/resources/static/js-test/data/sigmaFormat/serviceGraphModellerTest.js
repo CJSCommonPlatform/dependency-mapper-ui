@@ -86,12 +86,12 @@ define(["data/sigmaFormat/serviceGraphModeller"], function(serviceGraphModeller)
         });
 
         describe("Given two microservices from a different context", function () {
-            var source = {
+            var target  = {
                 microService: contextNames[0] + "-" + microserviceNames[0],
                 version: "1.0"
             };
 
-            var target = {
+            var source= {
                 microService: contextNames[1] + "-" + microserviceNames[0],
                 version: "1.0"
             };
@@ -119,12 +119,12 @@ define(["data/sigmaFormat/serviceGraphModeller"], function(serviceGraphModeller)
         })
 
         describe("Given two microservices from the same context", function() {
-            var source = {
+            var target= {
                 microService: contextNames[0] + "-" + microserviceNames[0],
                 version: "1.0"
             };
 
-            var target = {
+            var source = {
                 microService: contextNames[0] + "-" + microserviceNames[1],
                 version: "1.0"
             };
