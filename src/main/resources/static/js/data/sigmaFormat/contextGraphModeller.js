@@ -15,8 +15,8 @@ define([], function() {
 
         return {
             id: "e" + Math.random(),
-            source: context.microService.split("-")[0],
-            target: consumer.microService.split("-")[0],
+            target: context.microService.split("-")[0],
+            source: consumer.microService.split("-")[0],
             color: "#9cf"
         }
     };

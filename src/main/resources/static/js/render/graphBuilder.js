@@ -7,7 +7,7 @@ var setDefaultSettings = function() {
     sigma.settings.minEdgeSize = 4;
     sigma.settings.sideMargin = 24;
     sigma.settings.mouseWheelEnabled = false;
-    sigma.settings.defaultEdgeType = "curvedArrow";
+    sigma.settings.defaultEdgeType = "arrow";
 };
 
 var graphSettings = {

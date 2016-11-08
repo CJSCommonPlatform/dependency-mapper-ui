@@ -16,11 +16,16 @@ define([], function() {
             return;
         }
 
+        var edgeLabel = "consumes";
+        if(consumer.usingVersion && !consumer.usingVersion.startsWith("$") ){
+            edgeLabel += " using v" + consumer.usingVersion;
+        }
+
         return {
             id: "e" + Math.random(),
-            label: "is consumed using v" + consumer.usingVersion + " from",
-            source: context.microService,
-            target: consumer.microService,
+            label: edgeLabel,
+            target: context.microService,
+            source: consumer.microService,
             color: isCurrentVersion ?  "#9cf" : "#f00"
         }
     };
