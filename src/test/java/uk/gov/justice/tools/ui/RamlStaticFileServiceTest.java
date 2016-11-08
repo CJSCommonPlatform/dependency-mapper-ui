@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import javax.ws.rs.WebApplicationException;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -28,6 +30,21 @@ public class RamlStaticFileServiceTest {
 
     }
 
+    @Test
+    public void testGetRamlReportMissingThows404() throws IOException {
+
+        Throwable e = null;
+
+        try {
+            testObj.getRamlReport("non-existant.html");
+        } catch (Throwable ex) {
+            e = ex;
+        }
+
+        assertTrue(e instanceof WebApplicationException);
+        assertTrue(((WebApplicationException)e).getResponse().getStatus() == 404);
+
+    }
 
     @Test
     public void testGetRamlReportIndex() throws IOException {

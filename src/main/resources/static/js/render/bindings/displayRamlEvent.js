@@ -10,7 +10,7 @@ define([], function () {
 
             $.ajax({
                 statusCode: {
-                    500: function () {
+                    404: function () {
                         $("#ramlDetails").empty().html("<h1>No RAML document found</h1>");
                     }
                 },
