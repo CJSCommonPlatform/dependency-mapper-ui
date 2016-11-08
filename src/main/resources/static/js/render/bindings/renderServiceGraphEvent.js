@@ -1,5 +1,5 @@
-define(["lodash", "gateway/contextGraphGateway", "data/transform", "data/sigmaFormat/serviceGraphModeller", "render/graphBuilder", "data/predicates/isNeighbouringContextPredicate", "render/bindings/displayRamlEvent"],
-    function (_, gateway, transform, graphObjectMapper, graphBuilder, predicate, displayRamlEvent) {
+define(["lodash", "gateway/contextGraphGateway", "data/transform", "data/sigmaFormat/serviceGraphModeller", "render/graphBuilder", "data/predicates/isNeighbouringContextPredicate", "render/bindings/displayRamlEvent", "data/preProcessors/stripSecondLevelNodes"],
+    function (_, gateway, transform, graphObjectMapper, graphBuilder, predicate, displayRamlEvent, stripSecondLevelNodes) {
 
         var enrichGraphData = function (microserviceName) {
             return function (graph) {
@@ -27,15 +27,11 @@ define(["lodash", "gateway/contextGraphGateway", "data/transform", "data/sigmaFo
                             n.x = firstOrphanLocation.x;
                             orphanCount++;
                         } else {
-                            var theta = ((2 * Math.PI) / graph.nodes.length) * ix;
-                            n.y = Math.cos(theta);
-                            n.x = Math.sin(theta);
+                            var angleInRadians = ((2 * Math.PI) / graph.nodes.length) * ix;
+                            var radius = 75;
+                            n.y = Math.cos(angleInRadians) * radius;
+                            n.x = Math.sin(angleInRadians) * radius;
 
-
-                            // if (n.id.split("-")[0] === microserviceName) {
-                            //     n.y = Math.random();
-                            //     n.x = 0;
-                            // }
                         }
 
                         return n;
@@ -47,21 +43,21 @@ define(["lodash", "gateway/contextGraphGateway", "data/transform", "data/sigmaFo
 
 
         return function (e) {
-            var microserviceName = e.data.node.label;
+            var contextName = e.data.node.label;
 
             $("#content").empty();
 
-            $("h1").text("Dependency graph for " + microserviceName);
+            $("h1").text("Dependency graph for " + contextName);
             $("#breadcrumbs").css("display", "block");
 
             var renderContextGraph = function (data) {
-                var contextPredicate = predicate(microserviceName);
-                var graph = transform(data.microServices, contextPredicate, graphObjectMapper);
+                var contextPredicate = predicate(contextName);
+                var graph = transform(data.microServices, contextPredicate, graphObjectMapper, stripSecondLevelNodes(contextName));
 
                 graphBuilder()
                     .withDraggableNodes()
                     .usingNoverlapLayout()
-                    .withPreprocessor(enrichGraphData(microserviceName))
+                    .withPreprocessor(enrichGraphData(contextName))
                     .withClickHandler(displayRamlEvent)
                     .renderWithData(graph);
             };

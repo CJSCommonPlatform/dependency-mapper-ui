@@ -20,7 +20,7 @@ define(["data/transform", "lodash"], function (transform, _) {
             var emptyMicroservices = [];
 
             describe("when I apply the transform function,", function () {
-                var result = transform(emptyMicroservices, stubGraphObjectModeller);
+                var result = transform(emptyMicroservices, stubPredicate, stubGraphObjectModeller, _.identity);
 
                 it("then I expect to see an empty graph", function () {
                     expect(result.nodes).toEqual([]);
@@ -37,7 +37,7 @@ define(["data/transform", "lodash"], function (transform, _) {
             }];
 
             describe("when I apply the transform function", function () {
-                var result = transform(microservice, stubPredicate, stubGraphObjectModeller);
+                var result = transform(microservice, stubPredicate, stubGraphObjectModeller, _.identity);
 
                 it("then I expect to see a single node created", function () {
                     expect(result.nodes.length).toBe(1);
@@ -71,7 +71,7 @@ define(["data/transform", "lodash"], function (transform, _) {
 
             describe("when I apply the transform function,", function () {
 
-                var result = transform(microservice, stubPredicate, stubGraphObjectModeller);
+                var result = transform(microservice, stubPredicate, stubGraphObjectModeller, _.identity);
 
                 it("then I expect to see two nodes created", function () {
                     expect(result.nodes.length).toBe(2);
@@ -113,7 +113,7 @@ define(["data/transform", "lodash"], function (transform, _) {
             }];
 
             describe("when I apply the transform function", function() {
-                var result = transform(microservice, stubPredicate, stubGraphObjectModeller);
+                var result = transform(microservice, stubPredicate, stubGraphObjectModeller, _.identity);
 
                 it("then I expect to see two nodes created", function () {
                     expect(result.nodes.length).toBe(2);
@@ -139,7 +139,7 @@ define(["data/transform", "lodash"], function (transform, _) {
             describe("when I apply the transform function with a predicate present", function() {
                 var result = transform(microservice, function(node) {
                     return node.microService === microserviceNames[0];
-                }, stubGraphObjectModeller);
+                }, stubGraphObjectModeller, _.identity);
 
                 it("then I expect to see two nodes created", function () {
                     expect(result.nodes.length).toBe(2);
@@ -173,7 +173,7 @@ define(["data/transform", "lodash"], function (transform, _) {
                         microService: microserviceNames[1],
                         usingVersion: "1.0"
                     }
-                ],
+                ]
             }, {
                 microService: microserviceNames[2],
                 version: "2.0"
@@ -182,17 +182,17 @@ define(["data/transform", "lodash"], function (transform, _) {
             describe("when I apply the transform function with a predicate present", function() {
                 var result = transform(microservice, function(node) {
                     return node.microService === microserviceNames[0];
-                }, stubGraphObjectModeller);
+                }, stubGraphObjectModeller, _.identity);
 
                 it("then I expect to see two nodes created", function () {
                     expect(result.nodes.length).toBe(2);
                 });
 
                 it("then the nodes should have the microservice names", function () {
-                    var microserviceNames = _.map(result.nodes, "id");
+                    var actualMicroserviceNames = _.map(result.nodes, "id");
 
-                    expect(microserviceNames).toContain(microserviceNames[0]);
-                    expect(microserviceNames).toContain(microserviceNames[1]);
+                    expect(actualMicroserviceNames).toContain(microserviceNames[0]);
+                    expect(actualMicroserviceNames).toContain(microserviceNames[1]);
                 });
 
                 it("then there should be one relationship between nodes", function () {
@@ -203,6 +203,62 @@ define(["data/transform", "lodash"], function (transform, _) {
                     expect(result.edges[0].source.microService).toBe(microserviceNames[0]);
                     expect(result.edges[0].target.microService).toBe(microserviceNames[1]);
                 })
+            })
+
+        });
+
+        describe("Given a list of many microservices", function () {
+
+            var microservices = [{
+                microService: microserviceNames[0],
+                version: "1.0",
+                consumedBy: [
+                    {
+                        microService: microserviceNames[1],
+                        usingVersion: "1.0"
+                    }
+                ]
+            }, {
+                microService: microserviceNames[2],
+                version: "2.0"
+            }];
+
+            describe("when I apply the transform function with a predicate present", function() {
+
+                var prefix = "processed-";
+
+                var stubPreProcessor = function(microservice){
+                    return {
+                        microService: prefix + microservice.microService,
+                        version: microservice.version,
+                        consumedBy: microservice.consumedBy
+                    };
+                };
+
+                var result = transform(microservices, stubPredicate, stubGraphObjectModeller, stubPreProcessor);
+
+                it("then I expect to see three nodes created", function () {
+                    expect(result.nodes.length).toBe(3);
+                });
+
+                it("then the top level nodes should have been processed", function () {
+                    var actualMicroserviceNames = _.map(result.nodes, "id");
+
+                    expect(actualMicroserviceNames).toContain(prefix + microserviceNames[0]);
+                    expect(actualMicroserviceNames).toContain(prefix + microserviceNames[2]);
+                });
+
+                it("then the consumedBy nodes should NOT have been processed", function () {
+                    var actualMicroserviceNames = _.map(result.nodes, "id");
+
+                    expect(actualMicroserviceNames).not.toContain(prefix + microserviceNames[1]);
+                    expect(actualMicroserviceNames).toContain(microserviceNames[1]);
+                });
+
+                it("then there should be one relationship between nodes", function () {
+                    expect(result.edges.length).toBe(1);
+                });
+
             })
 
         });

@@ -39,13 +39,13 @@ define(["lodash"], function(_) {
         }
     };
 
-    return function(microserviceList, predicate, graphModeller)  {
+    return function(microserviceList, predicate, graphModeller, preProcessor)  {
         var emptyGraph = {
             nodes: [],
             edges: []
         };
 
-        var filteredNodes = _.filter(microserviceList, predicate);
+        var filteredNodes = _(microserviceList).filter(predicate).map(preProcessor).value();
 
         return _.reduce(filteredNodes, reduceUsing(graphModeller), emptyGraph);
     }
