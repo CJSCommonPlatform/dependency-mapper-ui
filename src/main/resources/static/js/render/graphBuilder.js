@@ -19,7 +19,7 @@ var graphSettings = {
     ]
 };
 
-define([], function() {
+define(["render/custom-sigma/sigma.addZoom"], function(addZoomCapability) {
 
     return function () {
         var _clickHandler;
@@ -70,6 +70,8 @@ define([], function() {
                     s.startNoverlap();
                 }
 
+                addZoomCapability(s);
+                
                 if (_draggableNodes) {
                     var dragListener = sigma.plugins.dragNodes(s, s.renderers[0]);
                 }
