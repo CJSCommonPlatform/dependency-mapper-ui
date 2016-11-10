@@ -7,21 +7,13 @@ define([], function () {
 
         if (microserviceName != "") {
             var ramlFileName = microserviceName.replace(" ", "-");
-
-            $.ajax({
-                statusCode: {
-                    404: function () {
-                        $("#ramlDetails").empty().html("<h1>No RAML document found</h1>");
-                    }
-                },
-                url:"/ramlReport?ramlFileName=" + ramlFileName + ".html",
-                async: false,
-                success: function(data){
-                    if(!!data){
-                        $("#ramlDetails").empty().load("/ramlReport?ramlFileName=" + ramlFileName + ".html .row");
+            $("#ramlDetails").load("/ramlReport?ramlFileName=" + ramlFileName + ".html",
+                function(response, status, xhr) {
+                    if (status == "error" || status == "timeout") {
+                        $(this).empty().html("<h1>No RAML document found</h1>");
                     }
                 }
-            });
+            );
         }
     }
 });
