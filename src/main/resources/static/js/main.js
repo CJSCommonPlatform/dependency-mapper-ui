@@ -1,8 +1,16 @@
-define(["gateway/contextGraphGateway", "data/transform", "data/sigmaFormat/contextGraphModeller", "render/graphBuilder", "render/bindings/renderServiceGraphEvent"],
+define(["gateway/contextGraphGateway",
+        "data/transform",
+        "data/sigmaFormat/contextGraphModeller",
+        "render/graphBuilder",
+        "render/bindings/renderServiceGraphEvent"],
+
     function(gateway, transform, graphObjectMapper, graphBuilder, renderServiceGraphEvent) {
 
     var renderContextGraph = function(data) {
-        var formattedContextList = transform(data.microServices, function() {return true;}, graphObjectMapper, _.identity);
+        var formattedContextList = transform(
+            data.microServices,
+            function() {return true;},
+            graphObjectMapper, _.identity);
 
         $("#content").empty();
         $("h1").text("Dependency graph");

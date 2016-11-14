@@ -8,6 +8,7 @@ var setDefaultSettings = function() {
     sigma.settings.sideMargin = 24;
     sigma.settings.mouseWheelEnabled = false;
     sigma.settings.defaultEdgeType = "arrow";
+    sigma.settings.replaceColor = '#ff0000';
 };
 
 var graphSettings = {
@@ -19,6 +20,44 @@ var graphSettings = {
     ]
 };
 
+/**
+ *  Helper method to retrieve graph indexes
+ */
+sigma.classes.graph.addMethod('retrieveIndexes', function() {
+    return {
+        'inIndex': this.inNeighborsIndex,
+        'outIndex': this.outNeighborsIndex,
+        'allIndex': this.allNeighborsIndex,
+        'inCount': this.inNeighborsCount,
+        'outCount': this.outNeighborsCount,
+        'allCount': this.allNeighborsCount
+    }
+});
+
+/**
+ * Helper function for replacing Nodes and edges colors
+ *
+ * @param s  Sigma instance
+ * @param obj Inbound nodes to the target
+ * @param color Overwrite color
+ * @param target String target id
+ */
+function replaceColor(s, obj, color, target) {
+    for (var i in obj) {
+        s.graph.nodes().forEach(function (n) {
+            if (i === n.id){
+                n.color = color;
+
+                console.log(n.id, target);
+                s.graph.edges().forEach(function (e) {
+                    if (n.id === e.source && target === e.target)
+                        e.color = color;
+                });
+            }
+        });
+    }
+}
+
 define([], function() {
 
     return function () {
@@ -28,6 +67,7 @@ define([], function() {
         var _preProcessor = function (x) {
             return x;
         };
+
 
         var graphBuilder = {
             withClickHandler: function (clickHandler) {
@@ -55,9 +95,28 @@ define([], function() {
                     $.extend(graphSettings, {"graph": graphData})
                 );
 
+                var g = new sigma.classes.graph();
+                g.read(graphData);
+                var index = g.retrieveIndexes();
+
+                var nodeId = '';
+                s.bind('overNodes',function(event){
+                    nodeId = event.data.nodes[0].id;
+                    var inNodes = index.inIndex[nodeId]
+                    replaceColor(s, inNodes, sigma.settings.replaceColor, nodeId);
+                    s.refresh();
+
+                }).bind('outNodes',function(){
+                    var inNodes = index.inIndex[nodeId];
+                    replaceColor(s, inNodes, sigma.settings.defaultNodeColor, nodeId);
+                    s.refresh();
+                });
+
+
                 if (_clickHandler) {
                     s.bind("clickNode", _clickHandler);
                 }
+
 
                 if (_noverlap) {
                     var config = {

@@ -1,5 +1,14 @@
-define(["lodash", "gateway/contextGraphGateway", "data/transform", "data/sigmaFormat/serviceGraphModeller", "render/graphBuilder", "data/predicates/isNeighbouringContextPredicate", "render/bindings/displayRamlEvent", "data/preProcessors/stripSecondLevelNodes"],
-    function (_, gateway, transform, graphObjectMapper, graphBuilder, predicate, displayRamlEvent, stripSecondLevelNodes) {
+define(["lodash",
+        "gateway/contextGraphGateway",
+        "data/transform",
+        "data/sigmaFormat/serviceGraphModeller",
+        "render/graphBuilder",
+        "data/predicates/isNeighbouringContextPredicate",
+        "render/bindings/displayRamlEvent",
+        "data/preProcessors/stripSecondLevelNodes"],
+
+    function (_, gateway, transform, graphObjectMapper, graphBuilder, predicate, displayRamlEvent,
+              stripSecondLevelNodes) {
 
         var enrichGraphData = function (microserviceName) {
             return function (graph) {
@@ -15,14 +24,16 @@ define(["lodash", "gateway/contextGraphGateway", "data/transform", "data/sigmaFo
                     edges: graph.edges,
 
                     nodes: _(graph.nodes).map(function (n, ix) {
-                        n.size=24;
+                        n.size = 24;
 
-                         if (n.id.split("-")[0] === microserviceName) {
-                             n.color = "#ff0";
-                             n.size = 36;
-                         }
-                        
-                        if (!_.some(graph.edges, function(edge) {return edge.source === n.id || edge.target === n.id;})) {
+                        if (n.id.split("-")[0] === microserviceName) {
+                            n.color = "#ff0";
+                            n.size = 36;
+                        }
+
+                        if (!_.some(graph.edges, function (edge) {
+                                return edge.source === n.id || edge.target === n.id;
+                            })) {
                             n.y = firstOrphanLocation.y + (orphanCount * 12);
                             n.x = firstOrphanLocation.x;
                             orphanCount++;
@@ -40,8 +51,6 @@ define(["lodash", "gateway/contextGraphGateway", "data/transform", "data/sigmaFo
             };
         };
 
-
-
         return function (e) {
             var contextName = e.data.node.label;
 
@@ -52,7 +61,11 @@ define(["lodash", "gateway/contextGraphGateway", "data/transform", "data/sigmaFo
 
             var renderContextGraph = function (data) {
                 var contextPredicate = predicate(contextName);
-                var graph = transform(data.microServices, contextPredicate, graphObjectMapper, stripSecondLevelNodes(contextName));
+                var graph = transform(
+                    data.microServices,
+                    contextPredicate,
+                    graphObjectMapper,
+                    stripSecondLevelNodes(contextName));
 
                 graphBuilder()
                     .withDraggableNodes()
