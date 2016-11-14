@@ -19,7 +19,7 @@
                 <div class="logo">
                     <img src="https://avatars1.githubusercontent.com/u/16131145?v=3&s=70">
                 </div>
-                <div class="brand">CJS common platform - Dependency Mapper UI - 1.0 </div>
+                <div class="brand">CJS common platform - Dependency Mapper UI <span id="version"></span> </div>
             </a>
         </div>
     </nav>
@@ -27,7 +27,12 @@
         <div class="row">
             <div class="col-md-12" data-custom-event="shrinkable">
                 <h1>Dependency graph</h1>
-                <a href="#" id="breadcrumbs" style="display:none">(Return to context-level view)</a>
+                <a href="#" id="breadcrumbs" style="display:none">(Return to context-level view)<br/></a>
+                <button type="button" class="btn btn-default btn-sm" id="zoomIn">
+                    <span class="glyphicon glyphicon-zoom-in"></span> Zoom-in
+                </button> <button type="button" class="btn btn-default btn-sm" id="zoomOut">
+                <span class="glyphicon glyphicon-zoom-out"></span> Zoom-out
+            </button>
                 <div id="content" class="graph-container"></div>
             </div>
             <div class="col-md-6">
@@ -38,50 +43,11 @@
 </body>
 
 <script src="https://code.jquery.com/jquery.min.js"></script>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"
-      type="text/css"/>
-
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="/static/css/cjs-dmui.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('.page-header pre code, .top-resource-description pre code, .modal-body pre code').each(function(i, block) {
-            hljs.highlightBlock(block);
-        });
-
-        $('[data-toggle]').click(function() {
-            var selector = $(this).data('target') + ' pre code';
-            $(selector).each(function(i, block) {
-                hljs.highlightBlock(block);
-            });
-        });
-
-        // open modal on hashes like #_action_get
-        $(window).bind('hashchange', function(e) {
-            var anchor_id = document.location.hash.substr(1); //strip #
-            var element = $('#' + anchor_id);
-
-            // do we have such element + is it a modal?  --> show it
-            if (element.length && element.hasClass('modal')) {
-                element.modal('show');
-            }
-        });
-
-        // execute hashchange on first page load
-        $(window).trigger('hashchange');
-
-        // remove url fragment on modal hide
-        $('.modal').on('hidden.bs.modal', function() {
-            try {
-                if (history && history.replaceState) {
-                    history.replaceState({}, '', '#');
-                }
-            } catch(e) {}
-        });
-    });
-</script>
 
 <script src="/static/js/lib/sigma/sigma.min.js"></script>
 <script src="/static/js/lib/sigma/plugins/sigma.plugins.animate.min.js"></script>
@@ -95,7 +61,7 @@
 
 <script>
     require(['/static/js/requireconfig.js'], function() {
-        require(['main']);
+        require(['main', 'fetchVersion']);
     });
 </script>
 

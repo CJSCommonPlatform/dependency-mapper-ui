@@ -1,14 +1,12 @@
 define(["lodash",
-        "gateway/contextGraphGateway",
-        "data/transform",
-        "data/sigmaFormat/serviceGraphModeller",
-        "render/graphBuilder",
-        "data/predicates/isNeighbouringContextPredicate",
-        "render/bindings/displayRamlEvent",
-        "data/preProcessors/stripSecondLevelNodes"],
-
-    function (_, gateway, transform, graphObjectMapper, graphBuilder, predicate, displayRamlEvent,
-              stripSecondLevelNodes) {
+    "gateway/contextGraphGateway",
+    "data/transform",
+    "data/sigmaFormat/serviceGraphModeller",
+    "render/graphBuilder",
+    "data/predicates/isNeighbouringContextPredicate",
+    "render/bindings/displayRamlEvent",
+    "data/preProcessors/stripSecondLevelNodes"],
+    function (_, gateway, transform, graphObjectMapper, graphBuilder, predicate, displayRamlEvent, stripSecondLevelNodes) {
 
         var enrichGraphData = function (microserviceName) {
             return function (graph) {
