@@ -8,7 +8,7 @@ define(["lodash",
     "data/preProcessors/stripSecondLevelNodes"],
     function (_, gateway, transform, graphObjectMapper, graphBuilder, predicate, displayRamlEvent, stripSecondLevelNodes) {
 
-        var enrichGraphData = function (microserviceName) {
+        var enrichGraphData = function (contextName) {
             return function (graph) {
 
                 var firstOrphanLocation = {
@@ -18,29 +18,97 @@ define(["lodash",
 
                 var orphanCount = 0;
 
+                var coreServices = [{
+                    "name": "command-api",
+                    "location": {
+                        "y": -30,
+                        "x": 0
+                    }
+                }, {
+                    "name": "command-controller",
+                    "location": {
+                        "y": -15,
+                        "x": 0
+                    }
+                }, {
+                    "name": "command-handler",
+                    "location": {
+                        "y": 0,
+                        "x": 0
+                    }
+                }, {
+                    "name": "event-api",
+                    "location": {
+                        "y": -30,
+                        "x": 30
+                    }
+                }, {
+                    "name": "event-processor",
+                    "location": {
+                        "y": -15,
+                        "x": 30
+                    }
+                }, {
+                    "name": "event-listener",
+                    "location": {
+                        "y": 0,
+                        "x": 30
+                    }
+                }, {
+                    "name": "query-api",
+                    "location": {
+                        "y": -30,
+                        "x": 60
+                    }
+                }, {
+                    "name": "query-controller",
+                    "location": {
+                        "y": -15,
+                        "x": 60
+                    }
+                }, {
+                    "name": "query-view",
+                    "location": {
+                        "y": 0,
+                        "x": 60
+                    }
+                }];
+
+                var serviceType = function(microServiceName){
+                    return microServiceName.split("-")[1] + "-" + microServiceName.split("-")[2];
+                };
+
+                var isCoreServiceInCurrentContext = function(microServiceName){
+                    var coreServiceNames = _.map(coreServices, "name");
+                    var isCore =  microServiceName.split("-")[0] === contextName &&
+                         _.includes(coreServiceNames, serviceType(microServiceName));
+                    return isCore;
+                }
+
                 return {
                     edges: graph.edges,
 
                     nodes: _(graph.nodes).map(function (n, ix) {
                         n.size = 24;
 
-                        if (n.id.split("-")[0] === microserviceName) {
-                            n.color = "#ff0";
-                            n.size = 36;
-                        }
+                        var scaleFactor = 1.5;
 
-                        if (!_.some(graph.edges, function (edge) {
-                                return edge.source === n.id || edge.target === n.id;
-                            })) {
-                            n.y = firstOrphanLocation.y + (orphanCount * 12);
+                         if (n.id.split("-")[0] === contextName) {
+                             n.color = "#ff0";
+                             n.size = 36;
+                         }
+
+                        if(isCoreServiceInCurrentContext(n.id)){
+                            var coreService = _.find(coreServices, { 'name': serviceType(n.id)});
+                            n.x = coreService.location.x * scaleFactor;
+                            n.y = coreService.location.y * scaleFactor;
+                        } else if (!_.some(graph.edges, function(edge) {return edge.source === n.id || edge.target === n.id;})) {
                             n.x = firstOrphanLocation.x;
+                            n.y = firstOrphanLocation.y + (orphanCount * 12);
                             orphanCount++;
-                        } else {
-                            var angleInRadians = ((2 * Math.PI) / graph.nodes.length) * ix;
-                            var radius = 75;
-                            n.y = Math.cos(angleInRadians) * radius;
-                            n.x = Math.sin(angleInRadians) * radius;
-
+                        }  else {
+                            n.x = 50;
+                            n.y = -100;
                         }
 
                         return n;

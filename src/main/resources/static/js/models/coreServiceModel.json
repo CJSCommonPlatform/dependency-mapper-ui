@@ -1,0 +1,55 @@
+{"coreServices" : [{
+    "name": "command-api",
+    "location": {
+        "y": -30,
+        "x": 0
+    }
+}, {
+    "name": "command-controller",
+    "location": {
+        "y": -15,
+        "x": 0
+    }
+}, {
+    "name": "command-handler",
+    "location": {
+        "y": 0,
+        "x": 0
+    }
+}, {
+    "name": "event-api",
+    "location": {
+        "y": -30,
+        "x": 30
+    }
+}, {
+    "name": "event-processor",
+    "location": {
+        "y": -15,
+        "x": 30
+    }
+}, {
+    "name": "event-listener",
+    "location": {
+        "y": 0,
+        "x": 30
+    }
+}, {
+    "name": "query-api",
+    "location": {
+        "y": -30,
+        "x": 60
+    }
+}, {
+    "name": "query-controller",
+    "location": {
+        "y": -15,
+        "x": 60
+    }
+}, {
+    "name": "query-view",
+    "location": {
+        "y": 0,
+        "x": 60
+    }
+}]}
