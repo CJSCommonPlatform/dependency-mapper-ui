@@ -47,8 +47,6 @@ function replaceColor(s, obj, color, target) {
         s.graph.nodes().forEach(function (n) {
             if (i === n.id){
                 n.color = color;
-
-                console.log(n.id, target);
                 s.graph.edges().forEach(function (e) {
                     if (n.id === e.source && target === e.target)
                         e.color = color;
