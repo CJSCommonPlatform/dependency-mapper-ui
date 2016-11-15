@@ -19,6 +19,6 @@ Execute following steps to build and start the service
 
 Note:
 
-1. Default HTTP port is '9999', can be changed by setting system property e.g -Ddw.server.applicationConnectors[0].port=9090
-2. Added raml report microservice http://localhost:9999/ramlReport?ramlFileName=index.html, which takes ramlFileName as query parameter and return html contents. 
-3. Health Check URL 'http://localhost:9998/healthcheck'
+1. Default HTTP port for the application is `9999` and for admin (healthcheck) it is `9998`. These can be changed by setting system properties e.g `-Ddw.server.applicationConnectors[0].port=9090 -Ddw.server.adminConnectors[0].port=9091`. If you get the startup error `java.net.BindException: Address already in use` then you may be running the application already, if you want to run two instances in parallel you must change both the application and the admin ports.
+2. Added raml report microservice `http://localhost:9999/ramlReport?ramlFileName=index.html`, which takes ramlFileName as query parameter and return html contents. 
+3. Health Check URL `http://localhost:9998/healthcheck?pretty=true`
