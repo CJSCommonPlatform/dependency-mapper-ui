@@ -8,7 +8,7 @@ var setDefaultSettings = function() {
     sigma.settings.sideMargin = 24;
     sigma.settings.mouseWheelEnabled = false;
     sigma.settings.defaultEdgeType = "arrow";
-    sigma.settings.replaceColor = '#ff0000';
+    sigma.settings.replaceColor = '#000';
 };
 
 var graphSettings = {
