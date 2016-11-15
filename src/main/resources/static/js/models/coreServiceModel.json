@@ -1,4 +1,4 @@
-{"coreServices" : [{
+{"coreService" : [{
     "name": "command-api",
     "location": {
         "y": -30,

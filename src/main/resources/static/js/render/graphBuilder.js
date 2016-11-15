@@ -8,7 +8,7 @@ var setDefaultSettings = function() {
     sigma.settings.sideMargin = 24;
     sigma.settings.mouseWheelEnabled = false;
     sigma.settings.defaultEdgeType = "arrow";
-    sigma.settings.replaceColor = '#ff0000';
+    sigma.settings.replaceColor = '#000';
 };
 
 var graphSettings = {
@@ -42,14 +42,32 @@ sigma.classes.graph.addMethod('retrieveIndexes', function() {
  * @param color Overwrite color
  * @param target String target id
  */
-function replaceColor(s, obj, color, target) {
+function updateColor(s, obj, target, replace) {
     for (var i in obj) {
         s.graph.nodes().forEach(function (n) {
             if (i === n.id){
-                n.color = color;
+                if(replace){
+                    if(typeof n.color !== "undefined" && n.color !== sigma.settings.replaceColor){
+                        n.defaultColor = n.color;
+                    }
+                    n.color = sigma.settings.replaceColor;
+                } else {
+                    // if defaultColor is not defined will fallback to global default color
+                    n.color = n.defaultColor;
+                }
+
                 s.graph.edges().forEach(function (e) {
-                    if (n.id === e.source && target === e.target)
-                        e.color = color;
+                    if (n.id === e.source && target === e.target){
+                        if(replace){
+                            if(typeof e.color !== "undefined" && e.color !== sigma.settings.replaceColor){
+                                e.defaultColor = e.color;
+                            }
+                            e.color = sigma.settings.replaceColor;
+                        } else {
+                            e.color = e.defaultColor;
+                        }
+                    }
+
                 });
             }
         });
@@ -101,12 +119,11 @@ define(["render/custom-sigma/sigma.addZoom"], function(addZoomCapability) {
                 s.bind('overNodes',function(event){
                     nodeId = event.data.nodes[0].id;
                     var inNodes = index.inIndex[nodeId]
-                    replaceColor(s, inNodes, sigma.settings.replaceColor, nodeId);
+                    updateColor(s, inNodes, nodeId, true);
                     s.refresh();
-
                 }).bind('outNodes',function(){
                     var inNodes = index.inIndex[nodeId];
-                    replaceColor(s, inNodes, sigma.settings.defaultNodeColor, nodeId);
+                    updateColor(s, inNodes,nodeId, false);
                     s.refresh();
                 });
 
