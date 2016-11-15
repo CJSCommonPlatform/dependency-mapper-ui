@@ -26,7 +26,7 @@ define([], function() {
             label: edgeLabel,
             target: context.microService,
             source: consumer.microService,
-            color: isCurrentVersion ?  "#9cf" : "#ffff00"
+            color: isCurrentVersion ?  "#9cf" : "#ff0000"
         }
     };
 
