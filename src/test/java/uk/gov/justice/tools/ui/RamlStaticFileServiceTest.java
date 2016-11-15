@@ -25,8 +25,8 @@ public class RamlStaticFileServiceTest {
     @Test
     public void testGetRamlReport() throws IOException {
 
-        final String response = testObj.getRamlReport("assignment-command-api.html");
-        assertTrue(response.equals(new String(Files.readAllBytes(Paths.get("src/test/resources/assignment-command-api.html")))));
+        final String response = testObj.getRamlReport("staging-command-api.html");
+        assertTrue(response.equals(new String(Files.readAllBytes(Paths.get("src/test/resources/staging-command-api.html")))));
 
     }
 
