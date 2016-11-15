@@ -1,0 +1,2250 @@
+<!DOCTYPE HTML><html><head><title>Structure - Command API API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/raml2html/raml2html 3.0.1"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script><script type="text/javascript">
+      $(document).ready(function() {
+        $('.page-header pre code, .top-resource-description pre code, .modal-body pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+
+        $('[data-toggle]').click(function() {
+          var selector = $(this).data('target') + ' pre code';
+          $(selector).each(function(i, block) {
+            hljs.highlightBlock(block);
+          });
+        });
+
+        // open modal on hashes like #_action_get
+        $(window).bind('hashchange', function(e) {
+          var anchor_id = document.location.hash.substr(1); //strip #
+          var element = $('#' + anchor_id);
+
+          // do we have such element + is it a modal?  --> show it
+          if (element.length && element.hasClass('modal')) {
+            element.modal('show');
+          }
+        });
+
+        // execute hashchange on first page load
+        $(window).trigger('hashchange');
+
+        // remove url fragment on modal hide
+        $('.modal').on('hidden.bs.modal', function() {
+          try {
+            if (history && history.replaceState) {
+                history.replaceState({}, '', '#');
+            }
+          } catch(e) {}
+        });
+      });
+    </script><style>
+      .hljs {
+        background: transparent;
+      }
+      .parent {
+        color: #999;
+      }
+      .list-group-item > .badge {
+        float: none;
+        margin-right: 6px;
+      }
+      .panel-title > .methods {
+        float: right;
+      }
+      .badge {
+        border-radius: 0;
+        text-transform: uppercase;
+        width: 70px;
+        font-weight: normal;
+        color: #f3f3f6;
+        line-height: normal;
+      }
+      .badge_get {
+        background-color: #63a8e2;
+      }
+      .badge_post {
+        background-color: #6cbd7d;
+      }
+      .badge_put {
+        background-color: #22bac4;
+      }
+      .badge_delete {
+        background-color: #d26460;
+      }
+      .badge_patch {
+        background-color: #ccc444;
+      }
+      .list-group, .panel-group {
+        margin-bottom: 0;
+      }
+      .panel-group .panel+.panel-white {
+        margin-top: 0;
+      }
+      .panel-group .panel-white {
+        border-bottom: 1px solid #F5F5F5;
+        border-radius: 0;
+      }
+      .panel-white:last-child {
+        border-bottom-color: white;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      .panel-white .panel-heading {
+        background: white;
+      }
+      .tab-pane ul {
+        padding-left: 2em;
+      }
+      .tab-pane h1 {
+        font-size: 1.3em;
+      }
+      .tab-pane h2 {
+        font-size: 1.2em;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #ddd;
+      }
+      .tab-pane h3 {
+        font-size: 1.1em;
+      }
+      .tab-content {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+      }
+      #sidebar {
+        margin-top: 30px;
+        padding-right: 5px;
+        overflow: auto;
+        height: 90%;
+      }
+      .top-resource-description {
+        border-bottom: 1px solid #ddd;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description {
+        border-bottom: 1px solid #fcfcfc;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description p:last-child {
+        margin: 0;
+      }
+      .list-group .badge {
+        float: left;
+      }
+      .method_description {
+        margin-left: 85px;
+      }
+      .method_description p:last-child {
+        margin: 0;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+      .list-group-item:hover {
+        background-color: #f5f5f5;
+      }
+
+      pre code {
+        overflow: auto;
+        word-wrap: normal;
+        white-space: pre;
+      }
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>Structure - Command API API documentation <small>version v1</small></h1><p>http://localhost:8080/structure-command-api/command/api/rest/structure</p></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases" class="panel-title">/cases</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases"><span class="parent"></span>/cases</a> <span class="methods"><a href="#cases_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Create a case ... (mapping): requestType: application/vnd.structure.command.create-case+json name: structure.command.create-case (mapping): requestType: application/vnd.structure.command.create-sjp-case+json name: structure.command.create-sjp-case ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases</h4></div><div class="modal-body"><div class="alert alert-info"><p>Create a case ... (mapping): requestType: application/vnd.structure.command.create-case+json name: structure.command.create-case (mapping): requestType: application/vnd.structure.command.create-sjp-case+json name: structure.command.create-sjp-case ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases_post_request" data-toggle="tab">Request</a></li><li><a href="#cases_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases_post_request"><h3>Body</h3><p><strong>Type: application/vnd.structure.command.create-case+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "urn": {
+      "id": "/urn",
+      "type": "string"
+    },
+    "id": {
+      "id": "/id",
+      "type": "string"
+    },
+    "ptiUrn": {
+      "id": "/ptiUrn",
+      "type": "string"
+    },
+    "initiationCode": {
+      "id": "/initiationCode",
+      "type": "string"
+    },
+    "summonsCode": {
+      "id": "/summonsCode",
+      "type": "string"
+    },
+    "prosecutor": {
+      "id": "/prosecutor",
+      "type": "string"
+    },
+    "libraOriginatingOrg": {
+      "id": "/libraOriginatingOrg",
+      "type": "string"
+    },
+    "libraHearingLocation": {
+      "id": "/libraHearingLocation",
+      "type": "string"
+    },
+    "dateOfHearing": {
+      "id": "/dateOfHearing",
+      "type": "string"
+    },
+    "timeOfHearing": {
+      "id": "/timeOfHearing",
+      "type": "string"
+    },
+    "personId": {
+      "id": "/personId",
+      "type": "string"
+    },
+    "offences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "prosecutorCaseId": {
+            "type": "string"
+          },
+          "offenceSequenceNo": {
+            "type": "integer"
+          },
+          "libraOffenceCode": {
+            "type": "string"
+          },
+          "chargeDate": {
+            "type": "string"
+          },
+          "libraOffenceDateCode": {
+            "type": "integer"
+          },
+          "offenceDate": {
+            "type": "string"
+          },
+          "offenceWording": {
+            "type": "string"
+          }
+        },
+        "required" : [
+          "prosecutorCaseId",
+          "offenceSequenceNo",
+          "libraOffenceCode",
+          "chargeDate",
+          "libraOffenceDateCode",
+          "offenceDate",
+          "offenceWording"
+        ]
+      }
+    },
+    "policeOfficerInCase": {
+      "id": "/policeOfficerInCase",
+      "type": "object",
+      "properties": {
+        "personId": {
+          "id": "/policeOfficerInCase/personId",
+          "type": "string"
+        },
+        "rank": {
+          "id": "/policeOfficerInCase/rank",
+          "type": "string"
+        },
+        "narrative": {
+          "id": "/policeOfficerInCase/narrative",
+          "type": "string"
+        },
+        "badgeNumber": {
+          "id": "/policeOfficerInCase/badgeNumber",
+          "type": "string"
+        }
+      }
+    },
+    "policeSupervisor": {
+      "id": "/policeSupervisor",
+      "type": "object",
+      "properties": {
+        "personId": {
+          "id": "/policeSupervisor/personId",
+          "type": "string"
+        },
+        "rank": {
+          "id": "/policeSupervisor/rank",
+          "type": "string"
+        },
+        "narrative": {
+          "id": "/policeSupervisor/narrative",
+          "type": "string"
+        },
+        "badgeNumber": {
+          "id": "/policeSupervisor/badgeNumber",
+          "type": "string"
+        }
+      }
+    },
+    "caseMarkers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "caseMarker": {
+            "type": "string",
+            "id": "http://jsonschema.net/caseMarkers/3/caseMarker"
+          }
+        },
+        "id": "http://jsonschema.net/caseMarkers/3",
+        "required": [
+          "caseMarker"
+        ]
+      },
+      "id": "http://jsonschema.net/caseMarkers"
+    }
+  },
+  "required": [
+    "urn",
+    "id",
+    "policeOfficerInCase",
+    "policeSupervisor",
+    "caseMarkers"
+  ]
+}
+
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "aa746921-d839-4867-bcf9-b41db8ebc852",
+  "urn": "22C22222222",
+  "policeOfficerInCase": {
+    "personId": "aa746921-d839-4867-bcf9-b41db8ebc852",
+    "rank": "constable",
+    "narrative": "",
+    "badgeNumber": "223"
+  },
+  "policeSupervisor": {
+    "personId": "ab746921-d839-4867-bcf9-b41db8ebc852",
+    "rank": "sergeant",
+    "narrative":"",
+    "badgeNumber": "223"
+  },
+  "caseMarkers" : [
+    {
+      "caseMarker" : "ASBOAppliedFor"
+    },
+    {
+      "caseMarker" : "ASBOGranted"
+    },
+    {
+      "caseMarker" : "AnimalRightsExtremism"
+    },
+    {
+      "caseMarker" : "AssetRecovery"
+    }
+  ]
+}
+</code></pre><p><strong>Type: application/vnd.structure.command.create-sjp-case+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "urn": {
+      "id": "/urn",
+      "type": "string"
+    },
+    "id": {
+      "id": "/id",
+      "type": "string"
+    },
+    "ptiUrn": {
+      "id": "/ptiUrn",
+      "type": "string"
+    },
+    "initiationCode": {
+      "id": "/initiationCode",
+      "type": "string"
+    },
+    "summonsCode": {
+      "id": "/summonsCode",
+      "type": "string"
+    },
+    "prosecutor": {
+      "id": "/prosecutor",
+      "type": "string"
+    },
+    "libraOriginatingOrg": {
+      "id": "/libraOriginatingOrg",
+      "type": "string"
+    },
+    "libraHearingLocation": {
+      "id": "/libraHearingLocation",
+      "type": "string"
+    },
+    "dateOfHearing": {
+      "id": "/dateOfHearing",
+      "type": "string"
+    },
+    "timeOfHearing": {
+      "id": "/timeOfHearing",
+      "type": "string"
+    },
+    "personId": {
+      "id": "/personId",
+      "type": "string"
+    },
+    "offences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "prosecutorCaseId": {
+            "type": "string"
+          },
+          "offenceSequenceNo": {
+            "type": "integer"
+          },
+          "libraOffenceCode": {
+            "type": "string"
+          },
+          "chargeDate": {
+            "type": "string"
+          },
+          "libraOffenceDateCode": {
+            "type": "integer"
+          },
+          "offenceDate": {
+            "type": "string"
+          },
+          "offenceWording": {
+            "type": "string"
+          }
+        },
+        "required" : [
+          "prosecutorCaseId",
+          "offenceSequenceNo",
+          "libraOffenceCode",
+          "chargeDate",
+          "libraOffenceDateCode",
+          "offenceDate",
+          "offenceWording"
+        ]
+      }
+    },
+    "policeOfficerInCase": {
+      "id": "/policeOfficerInCase",
+      "type": "object",
+      "properties": {
+        "personId": {
+          "id": "/policeOfficerInCase/personId",
+          "type": "string"
+        },
+        "rank": {
+          "id": "/policeOfficerInCase/rank",
+          "type": "string"
+        },
+        "narrative": {
+          "id": "/policeOfficerInCase/narrative",
+          "type": "string"
+        },
+        "badgeNumber": {
+          "id": "/policeOfficerInCase/badgeNumber",
+          "type": "integer"
+        }
+      }
+    },
+    "policeSupervisor": {
+      "id": "/policeSupervisor",
+      "type": "object",
+      "properties": {
+        "personId": {
+          "id": "/policeSupervisor/personId",
+          "type": "string"
+        },
+        "rank": {
+          "id": "/policeSupervisor/rank",
+          "type": "string"
+        },
+        "narrative": {
+          "id": "/policeSupervisor/narrative",
+          "type": "string"
+        },
+        "badgeNumber": {
+          "id": "/policeSupervisor/badgeNumber",
+          "type": "integer"
+        }
+      }
+    }
+  },
+  "required": [
+    "urn",
+    "id"
+  ]
+}
+
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "urn": "22C22222222",
+  "ptiUrn": "22C22222222",
+  "initiationCode": "J",
+  "summonsCode": "M",
+  "prosecutor": "Transport for London",
+  "libraOriginatingOrg": "GAFTL00",
+  "libraHearingLocation": "B01CE03",
+  "dateOfHearing": "2016-01-01",
+  "timeOfHearing": "11:00",
+  "personId": "7e2f843e-d639-40b3-8611-8015f3a18999",
+  "offences": [
+    {
+      "prosecutorCaseId": "TFL21345",
+      "offenceSequenceNo": 1,
+      "libraOffenceCode": "PS00001",
+      "chargeDate": "2016-01-01",
+      "libraOffenceDateCode": 1,
+      "offenceDate": "2016-01-01",
+      "offenceWording": "Committed some offence"
+    }
+  ]
+}
+</code></pre></div><div class="tab-pane" id="cases_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId_" class="panel-title">/cases/{caseId}</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId_"><span class="parent"></span>/cases/{caseId}</a> <span class="methods"><a href="#cases__caseId__post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases__caseId_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Mark a case as complete ... (mapping): requestType: application/vnd.structure.command.complete-case+json name: structure.command.complete-case ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases/{caseId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Mark a case as complete ... (mapping): requestType: application/vnd.structure.command.complete-case+json name: structure.command.complete-case ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__post_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__post_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>The ID of the case to mark as complete</p></li></ul><h3>Body</h3><p><strong>Type: application/vnd.structure.command.complete-case+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "type": "object",
+  "description": "Empty object only required because the CPP framework doesn&#39;t handle POST request without a payload"
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{}
+</code></pre></div><div class="tab-pane" id="cases__caseId__post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__defendant" class="panel-title">/cases/{caseId}/defendant</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__defendant"><span class="parent"></span>/cases/{caseId}/defendant</a> <span class="methods"><a href="#cases__caseId__defendant_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases__caseId__defendant" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__defendant_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Add defendant. ... (mapping): requestType: application/vnd.structure.command.add-defendant+json name: structure.command.add-defendant ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__defendant_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases/{caseId}/defendant</h4></div><div class="modal-body"><div class="alert alert-info"><p>Add defendant. ... (mapping): requestType: application/vnd.structure.command.add-defendant+json name: structure.command.add-defendant ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__defendant_post_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__defendant_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__defendant_post_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>The ID of the case to modify</p></li></ul><h3>Body</h3><p><strong>Type: application/vnd.structure.command.add-defendant+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "defendantId": {
+      "type": "string"
+    },
+    "version": {
+      "type": "integer"
+    },
+    "personId": {
+      "type": "string"
+    },
+    "policeDefendantId": {
+      "type": "string"
+    },
+    "offences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "policeOffenceId": {
+            "type": "string"
+          },
+          "cpr": {
+            "type": "object",
+            "properties": {
+              "defendantOffender": {
+                "type": "object",
+                "properties": {
+                  "year": {
+                    "type": "string"
+                  },
+                  "organisationUnit": {
+                    "type": "string"
+                  },
+                  "number": {
+                    "type": "string"
+                  },
+                  "checkDigit": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "year",
+                  "organisationUnit",
+                  "number",
+                  "checkDigit"
+                ]
+              },
+              "cjsCode": {
+                "type": "string"
+              },
+              "offenceSequence": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "defendantOffender",
+              "cjsCode",
+              "offenceSequence"
+            ]
+          },
+          "asnSequenceNumber": {
+            "type": "string"
+          },
+          "cjsCode": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "wording": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "arrestDate": {
+            "type": "string"
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "chargeDate": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "policeOffenceId",
+          "cpr",
+          "asnSequenceNumber",
+          "cjsCode",
+          "reason",
+          "description",
+          "wording",
+          "category",
+          "arrestDate",
+          "startDate",
+          "chargeDate"
+        ]
+      }
+    },
+    "nextHearing": {
+      "type": "object",
+      "properties": {
+        "courtID": {
+          "type": "string"
+        },
+        "courtRoom": {
+          "type": "string"
+        },
+        "typeOfCourt": {
+          "type": "string"
+        },
+        "dateAndTime": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "courtID",
+        "courtRoom",
+        "typeOfCourt",
+        "dateAndTime"
+      ]
+    }
+  },
+  "required": [
+    "defendantId",
+    "personId",
+    "policeDefendantId",
+    "offences",
+    "nextHearing"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "defendantId": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "version": 1,
+  "personId": "ba9a2765-e630-4d9a-923c-6b9fd29dbfc4",
+  "policeDefendantId": "BS2CM01ADEF1",
+  "offences": [{
+    "id": "7e2f843e-d639-40b3-8611-8015f3a18959",
+    "policeOffenceId": "A00PCD7073",
+    "cpr": {
+      "defendantOffender": {
+        "year": "09",
+        "organisationUnit": "XX45GD00",
+        "number": "10000000001",
+        "checkDigit": "A"
+      },
+      "cjsCode": "OF61131",
+      "offenceSequence": "001"
+    },
+    "asnSequenceNumber": "001",
+    "cjsCode": "OF61131",
+    "reason": "131",
+    "description": "Wounding/inflicting grievous bodily harm.",
+    "wording": "on 01/08/2009 at  the County public house, unlawfully and maliciously wounded, John Smith",
+    "category": "Either Way",
+    "arrestDate": "2010-08-01",
+    "startDate": "2010-08-01",
+    "chargeDate": "2010-08-01"
+  }],
+  "nextHearing": {
+    "courtID": "B45GC00",
+    "courtRoom": "1",
+    "typeOfCourt": "Magistrates Court",
+    "dateAndTime": "2010-08-02T09:30:00"
+  }
+}</code></pre></div><div class="tab-pane" id="cases__caseId__defendant_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__defendants__defendantId_" class="panel-title">/cases/{caseId}/defendants/{defendantId}</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__defendants__defendantId_"><span class="parent"></span>/cases/{caseId}/defendants/{defendantId}</a> <span class="methods"><a href="#cases__caseId__defendants__defendantId__post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases__caseId__defendants__defendantId_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__defendants__defendantId__post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>update a defendant. ... (mapping): requestType: application/vnd.structure.command.update-bail-status-for-defendant+json name: structure.command.update-bail-status-for-defendant (mapping): requestType: application/vnd.structure.command.update-defence-solicitor-firm-for-defendant+json name: structure.command.update-defence-solicitor-firm-for-defendant (mapping): requestType: application/vnd.structure.command.update-interpreter-for-defendant+json name: structure.command.update-interpreter-for-defendant ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__defendants__defendantId__post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases/{caseId}/defendants/{defendantId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>update a defendant. ... (mapping): requestType: application/vnd.structure.command.update-bail-status-for-defendant+json name: structure.command.update-bail-status-for-defendant (mapping): requestType: application/vnd.structure.command.update-defence-solicitor-firm-for-defendant+json name: structure.command.update-defence-solicitor-firm-for-defendant (mapping): requestType: application/vnd.structure.command.update-interpreter-for-defendant+json name: structure.command.update-interpreter-for-defendant ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__defendants__defendantId__post_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__defendants__defendantId__post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__defendants__defendantId__post_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>The ID of the case to modify</p></li><li><strong>defendantId</strong>: <em>required (string)</em><p>The ID of the defendant to modify</p></li></ul><h3>Body</h3><p><strong>Type: application/vnd.structure.command.update-bail-status-for-defendant+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "bailStatus": {
+      "enum": ["conditional","unconditional","inCustody"]
+    },
+    "documentId": {
+      "type": ["string"]
+    } ,
+    "custodyTimeLimitDate": {
+      "type": ["string"]
+    }
+  },
+  "required": [
+    "bailStatus"
+  ]
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "bailStatus": "conditional",
+    "documentId": "documentMaterialId",
+    "custodyTimeLimitDate": "2016-11-11"
+} </code></pre><p><strong>Type: application/vnd.structure.command.update-defence-solicitor-firm-for-defendant+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "defenceSolicitorFirm": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "defenceSolicitorFirm"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "defenceSolicitorFirm": "xyz solicitor"
+}</code></pre><p><strong>Type: application/vnd.structure.command.update-interpreter-for-defendant+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "interpreter": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "interpreter"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "interpreter": "french"
+}</code></pre></div><div class="tab-pane" id="cases__caseId__defendants__defendantId__post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__defendant__defendantId__make_plea" class="panel-title">/cases/{caseId}/defendant/{defendantId}/make-plea</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__defendant__defendantId__make_plea"><span class="parent"></span>/cases/{caseId}/defendant/{defendantId}/make-plea</a> <span class="methods"><a href="#cases__caseId__defendant__defendantId__make_plea_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases__caseId__defendant__defendantId__make_plea" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__defendant__defendantId__make_plea_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Make a plea ... (mapping): requestType: application/vnd.structure.command.make-plea+json name: structure.command.make-plea ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__defendant__defendantId__make_plea_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases/{caseId}/defendant/{defendantId}/make-plea</h4></div><div class="modal-body"><div class="alert alert-info"><p>Make a plea ... (mapping): requestType: application/vnd.structure.command.make-plea+json name: structure.command.make-plea ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__defendant__defendantId__make_plea_post_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__defendant__defendantId__make_plea_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__defendant__defendantId__make_plea_post_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>The ID of the case to modify</p></li><li><strong>defendantId</strong>: <em>required (string)</em><p>The ID of the pleading defendant</p></li></ul><h3>Body</h3><p><strong>Type: application/vnd.structure.command.make-plea+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+
+  "definitions": {
+    "personalDetails": {
+      "type": "object",
+      "properties": {
+        "detailsCorrected": {
+          "type": "object",
+          "oneOf": [
+            {
+              "properties": {
+                "yes": {
+                  "enum": [false]
+                },
+                "correctDetails": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "yes",
+                "correctDetails"
+              ]
+            },
+            {
+              "properties": {
+                "yes": {
+                  "enum": [true]
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "yes"
+              ]
+            }
+          ]
+        },
+        "contactNumber": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "dateOfBirth": {
+          "type": "string"
+        },
+        "nationalInsuranceNumber": {
+          "type": "object",
+          "oneOf": [
+            {
+              "properties": {
+                "yes": {
+                  "enum": [true]
+                },
+                "NI": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "yes",
+                "NI"
+              ]
+            },
+            {
+              "properties": {
+                "yes": {
+                  "enum": [false]
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "yes"
+              ]
+            }
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "detailsCorrected",
+        "contactNumber",
+        "dateOfBirth",
+        "nationalInsuranceNumber"
+      ]
+    },
+    "regularPayment": {
+      "type": "object",
+      "properties": {
+        "frequency": {
+          "enum": [
+            "Weekly",
+            "Monthly",
+            "Fortnightly"
+          ]
+        },
+        "amount": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "frequency",
+        "amount"
+      ]
+    },
+    "payment": {
+      "type": "object",
+      "properties": {
+        "frequency": {
+          "enum": ["Weekly", "Monthly", "Fortnightly", "Other"]
+        },
+        "amount": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "frequency",
+        "amount"
+      ]
+    },
+    "financialProblems": {
+      "type": "object",
+      "oneOf": [
+        {
+          "properties": {
+            "yes": {
+              "enum": [true]
+            },
+            "justification": {
+              "type": "string"
+            },
+            "expenses": {
+              "$ref": "#/definitions/expenses"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "yes",
+            "justification",
+            "expenses"
+          ]
+        },
+        {
+          "properties": {
+            "yes": {
+              "enum": [false]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "yes"
+          ]
+        }
+      ]
+    },
+    "interpreter": {
+      "type": "object",
+      "oneOf": [
+        {
+          "properties": {
+            "yes": {
+              "enum": [true]
+            },
+            "language": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "yes",
+            "language"
+          ]
+        },
+        {
+          "properties": {
+            "yes": {
+              "enum": [false]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "yes"
+          ]
+        }
+      ]
+    },
+    "plea": {
+      "type": "object",
+      "oneOf": [
+        {
+          "properties": {
+            "plea": {
+              "enum": ["GUILTY"]
+            },
+            "offenceId": {
+              "type": "string"
+            },
+            "court": {
+              "type": "boolean"
+            },
+            "mitigation": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "plea",
+            "offenceId",
+            "court"
+          ]
+        },
+        {
+          "properties": {
+            "plea": {
+              "enum": ["NOT_GUILTY"]
+            },
+            "offenceId": {
+              "type": "string"
+            },
+            "notGuiltyBecause": {
+              "type": "string"
+            },
+            "interpreter": {
+              "$ref": "#/definitions/interpreter"
+            },
+            "prosecutorWitness": {
+              "type": "object",
+              "oneOf": [
+                {
+                  "properties": {
+                    "disagree": {
+                      "enum": [true]
+                    },
+                    "details": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "disagree",
+                    "details"
+                  ]
+                },
+                {
+                  "properties": {
+                    "disagree": {
+                      "enum": [false]
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "disagree"
+                  ]
+                }
+              ]
+            },
+            "defenceWitness": {
+              "type": "object",
+              "oneOf": [
+                {
+                  "properties": {
+                    "call": {
+                      "enum": [true]
+                    },
+                    "contactDetails": {
+                      "type": "string"
+                    },
+                    "interpreter": {
+                      "$ref": "#/definitions/interpreter"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "call",
+                    "contactDetails",
+                    "interpreter"
+                  ]
+                },
+                {
+                  "properties": {
+                    "call": {
+                      "enum": [false]
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "call"
+                  ]
+                }
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "plea",
+            "offenceId",
+            "notGuiltyBecause",
+            "interpreter",
+            "prosecutorWitness",
+            "defenceWitness"
+          ]
+        }
+      ]
+    },
+    "benefits": {
+      "type": "object",
+      "properties": {
+        "benefit": {
+          "enum": [
+            "Contributory Employment and Support Allowance",
+            "Income-related Employment and Support Allowance",
+            "Income Support",
+            "Universal Credit",
+            "Other"
+          ]
+        },
+        "payment": {
+          "$ref": "#/definitions/regularPayment"
+        },
+        "financialProblems": {
+          "$ref": "#/definitions/financialProblems"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "benefit",
+        "payment",
+        "financialProblems"
+      ]
+    },
+    "expenses": {
+      "type": "object",
+      "properties": {
+        "household": {
+          "type": "object",
+          "properties": {
+            "accommodation": {
+              "type": "string"
+            },
+            "utilityBills": {
+              "type": "string"
+            },
+            "insurance": {
+              "type": "string"
+            },
+            "councilTax": {
+              "type": "string"
+            },
+            "otherContributors": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "accommodation",
+            "utilityBills",
+            "insurance",
+            "councilTax",
+            "otherContributors"
+          ]
+        },
+        "other": {
+          "type": "object",
+          "properties": {
+            "televisionSubscriptions": {
+              "type": "string"
+            },
+            "travelExpenses": {
+              "type": "string"
+            },
+            "telephone": {
+              "type": "string"
+            },
+            "loanRepayments": {
+              "type": "string"
+            },
+            "countyCourtOrders": {
+              "type": "string"
+            },
+            "fines": {
+              "type": "string"
+            },
+            "childMaintenance": {
+              "type": "string"
+            },
+            "otherSignificantExpenses": {
+              "type": "object",
+              "oneOf": [
+                {
+                  "properties": {
+                    "yes": {
+                      "enum": [true]
+                    },
+                    "details": {
+                      "type": "string"
+                    },
+                    "amount": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "yes",
+                    "details",
+                    "amount"
+                  ]
+                },
+                {
+                  "properties": {
+                    "yes": {
+                      "enum": [false]
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "yes"
+                  ]
+                }
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "televisionSubscriptions",
+            "travelExpenses",
+            "telephone",
+            "loanRepayments",
+            "countyCourtOrders",
+            "fines",
+            "childMaintenance",
+            "otherSignificantExpenses"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "household",
+        "other"
+      ]
+    },
+    "pension-credit": {
+      "type": "object",
+      "oneOf": [
+        {
+          "properties": {
+            "yes": {
+              "enum": [true]
+            },
+            "payment": {
+              "$ref": "#/definitions/regularPayment"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "yes",
+            "payment"
+          ]
+        },
+        {
+          "properties": {
+            "yes": {
+              "enum": [false]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "yes"
+          ]
+        }
+      ]
+    },
+    "financialMeans": {
+      "type": "object",
+      "oneOf": [
+        {
+          "properties": {
+            "status": {
+              "enum": ["Employed"]
+            },
+            "payment": {
+              "$ref": "#/definitions/regularPayment"
+            },
+            "financialProblems": {
+              "$ref": "#/definitions/financialProblems"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "payment",
+            "financialProblems"
+          ]
+        },
+        {
+          "properties": {
+            "status": {
+              "enum": ["Employed and also receiving benefits"]
+            },
+            "payment": {
+              "$ref": "#/definitions/regularPayment"
+            },
+            "benefits": {
+              "$ref": "#/definitions/benefits"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "payment",
+            "benefits"
+          ]
+        },
+        {
+          "properties": {
+            "status": {
+              "enum": ["Self employed"]
+            },
+            "payment": {
+              "$ref": "#/definitions/payment"
+            },
+            "financialProblems": {
+              "$ref": "#/definitions/financialProblems"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "payment",
+            "financialProblems"
+          ]
+        },
+        {
+          "properties": {
+            "status": {
+              "enum": ["Self employed and also receiving benefit"]
+            },
+            "payment": {
+              "$ref": "#/definitions/payment"
+            },
+            "benefits": {
+              "$ref": "#/definitions/benefits"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "payment",
+            "benefits"
+          ]
+        },
+        {
+          "properties": {
+            "status": {
+              "enum": ["Receiving out of work benefits"]
+            },
+            "benefits": {
+              "$ref": "#/definitions/benefits"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "benefits"
+          ]
+        },
+        {
+          "properties": {
+            "status": {
+              "enum": ["Other"]
+            },
+            "provideDetails": {
+              "type": "string"
+            },
+            "sourceIncome": {
+              "type": "string"
+            },
+            "payment": {
+              "$ref": "#/definitions/payment"
+            },
+            "pensionCredit": {
+              "$ref": "#/definitions/pension-credit"
+            },
+            "financialProblems": {
+              "$ref": "#/definitions/financialProblems"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "provideDetails",
+            "sourceIncome",
+            "payment",
+            "pensionCredit",
+            "financialProblems"
+          ]
+        }
+      ]
+    }
+  },
+
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "type": "string"
+    },
+    "defendantId": {
+      "type": "string"
+    },
+    "personalDetails":{
+      "$ref": "#/definitions/personalDetails"
+    },
+    "pleas": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/plea"
+      },
+      "minItems": 1
+    },
+    "financialMeans": {
+      "$ref": "#/definitions/financialMeans"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "personalDetails",
+    "pleas"
+  ]
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "pleas": [
+    {
+      "plea": "Guilty",
+      "court": true,
+      "mitigation": "I can&#39;t think of any"
+    }
+  ],
+  "employment": {
+    "status": "Receiving out of work benefits",
+    "benefits": {
+      "benefit": "Income Support",
+      "payment": {
+        "amount": "500",
+        "frequency": "Monthly"
+      },
+      "financialProblems": {
+        "yes": false
+      }
+    }
+  }
+}</code></pre></div><div class="tab-pane" id="cases__caseId__defendant__defendantId__make_plea_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__offences_withdrawal_request" class="panel-title">/cases/{caseId}/offences-withdrawal-request</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__offences_withdrawal_request"><span class="parent"></span>/cases/{caseId}/offences-withdrawal-request</a> <span class="methods"><a href="#cases__caseId__offences_withdrawal_request_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases__caseId__offences_withdrawal_request" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__offences_withdrawal_request_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Request all offences for a case to be withdrawn ... (mapping): requestType: application/vnd.structure.command.request-withdrawal-all-offences+json name: structure.command.request-withdrawal-all-offences ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__offences_withdrawal_request_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases/{caseId}/offences-withdrawal-request</h4></div><div class="modal-body"><div class="alert alert-info"><p>Request all offences for a case to be withdrawn ... (mapping): requestType: application/vnd.structure.command.request-withdrawal-all-offences+json name: structure.command.request-withdrawal-all-offences ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__offences_withdrawal_request_post_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__offences_withdrawal_request_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__offences_withdrawal_request_post_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>The ID of the case update</p></li></ul><h3>Body</h3><p><strong>Type: application/vnd.structure.command.request-withdrawal-all-offences+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {},
+  "additionalProperties": false
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{}</code></pre></div><div class="tab-pane" id="cases__caseId__offences_withdrawal_request_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Bad request</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__offences__offenceId__pleas" class="panel-title">/cases/{caseId}/offences/{offenceId}/pleas</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__offences__offenceId__pleas"><span class="parent"></span>/cases/{caseId}/offences/{offenceId}/pleas</a> <span class="methods"><a href="#cases__caseId__offences__offenceId__pleas_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases__caseId__offences__offenceId__pleas" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__offences__offenceId__pleas_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Update a case&#39;s plea ... (mapping): requestType: application/vnd.structure.command.update-plea+json name: structure.command.update-plea ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__offences__offenceId__pleas_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases/{caseId}/offences/{offenceId}/pleas</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update a case&#39;s plea ... (mapping): requestType: application/vnd.structure.command.update-plea+json name: structure.command.update-plea ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__offences__offenceId__pleas_post_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__offences__offenceId__pleas_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__offences__offenceId__pleas_post_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>The ID of the offence update</p></li><li><strong>offenceId</strong>: <em>required (string)</em><p>The ID of the offence update</p></li></ul><h3>Body</h3><p><strong>Type: application/vnd.structure.command.update-plea+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "plea": {
+      "id": "/plea",
+      "type": "string",
+      "enum": ["NOT_GUILTY", "GUILTY", "GUILTY_REQUEST_HEARING"]
+    }
+  },
+  "required": [
+    "plea"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "plea": "GUILTY"
+}</code></pre></div><div class="tab-pane" id="cases__caseId__offences__offenceId__pleas_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__exhibits" class="panel-title">/cases/{caseId}/exhibits</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__exhibits"><span class="parent"></span>/cases/{caseId}/exhibits</a> <span class="methods"><a href="#cases__caseId__exhibits_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases__caseId__exhibits" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__exhibits_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Add an exhibit to a case ... (mapping): requestType: application/vnd.structure.command.add-exhibit+json name: structure.command.add-exhibit ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__exhibits_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases/{caseId}/exhibits</h4></div><div class="modal-body"><div class="alert alert-info"><p>Add an exhibit to a case ... (mapping): requestType: application/vnd.structure.command.add-exhibit+json name: structure.command.add-exhibit ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__exhibits_post_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__exhibits_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__exhibits_post_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>The ID of the case to modify</p></li></ul><h3>Body</h3><p><strong>Type: application/vnd.structure.command.add-exhibit+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "personId": {
+      "id": "/personId",
+      "type": "string"
+    },
+    "version": {
+      "id": "/version",
+      "type": "integer"
+    },
+    "exhibit": {
+      "id": "/exhibit",
+      "type": "object",
+      "properties": {
+        "policeName": {
+          "id": "/exhibit/policeName",
+          "type": "string"
+        },
+        "policeExhibitId": {
+          "id": "/exhibit/policeExhibitId",
+          "type": "string"
+        },
+        "policePersonId": {
+          "id": "/exhibit/policePersonId",
+          "type": "string"
+        },
+        "exhibitName": {
+          "id": "/exhibit/exhibitName",
+          "type": "string"
+        },
+        "exhibitTakenDate": {
+          "id": "/exhibit/exhibitTakenDate",
+          "type": "string"
+        },
+        "policeReference": {
+          "id": "/exhibit/policeReference",
+          "type": "string"
+        },
+        "exhibitMaterialId": {
+          "id": "/exhibit/exhibitMaterialId",
+          "type": "string"
+        },
+        "exhibitClassifications": {
+          "id": "/exhibit/exhibitClassifications",
+          "type": "array",
+          "items": [
+            {
+              "id": "/exhibit/exhibitClassifications/0",
+              "type": "object",
+              "properties": {
+                "classification": {
+                  "id": "/exhibit/exhibitClassifications/0/classification",
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "id": "/exhibit/exhibitClassifications/1",
+              "type": "object",
+              "properties": {
+                "classification": {
+                  "id": "/exhibit/exhibitClassifications/1/classification",
+                  "type": "string"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "personId",
+    "exhibit"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "personId": "ba9a2765-e630-4d9a-923c-6b9fd29dbfc4",
+  "version": 2,
+  "exhibit": {
+    "policeName": "exhibit name given by police",
+    "policePersonId":"ba9a2765-e630-4d9a-923c-6b9fd29dbfc4",
+    "policeExhibitId": "exhibitId",
+    "exhibitName": "exhibitname",
+    "exhibitTakenDate": "2004-10-05",
+    "policeReference": "XXXNNN",
+    "exhibitMaterialId": "id of exhibit in material",
+    "exhibitClassifications": [
+      {
+        "classification": "e.g. audio tape"
+      },
+      {
+        "classification": "e.g. sensitive video"
+      }
+    ]
+  }
+}
+</code></pre></div><div class="tab-pane" id="cases__caseId__exhibits_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__witnesses" class="panel-title">/cases/{caseId}/witnesses</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__witnesses"><span class="parent"></span>/cases/{caseId}/witnesses</a> <span class="methods"><a href="#cases__caseId__witnesses_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases__caseId__witnesses" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__witnesses_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Add a witness to a case ... (mapping): requestType: application/vnd.structure.command.add-witness+json name: structure.command.add-witness ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__witnesses_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases/{caseId}/witnesses</h4></div><div class="modal-body"><div class="alert alert-info"><p>Add a witness to a case ... (mapping): requestType: application/vnd.structure.command.add-witness+json name: structure.command.add-witness ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__witnesses_post_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__witnesses_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__witnesses_post_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>The ID of the case to modify</p></li></ul><h3>Body</h3><p><strong>Type: application/vnd.structure.command.add-witness+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "integer"
+    },
+    "personId": {
+      "type": "string"
+    },
+    "policePersonId": {
+      "type": "string"
+    },
+    "witnessClassifications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "classificationCode": {
+            "type": "string"
+          },
+          "classificationValue": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "classificationCode",
+          "classificationValue"
+        ]
+      }
+    }
+  },
+  "required": [
+    "id",
+    "personId",
+    "policePersonId"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "version": 1,
+  "personId": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "policePersonId": "7e2f843e-d639-40b3-8611-8015f3a18999",
+  "witnessClassifications": [
+    {
+        "classificationCode": "SelfDefinedGender",
+        "classificationValue": "Male"
+    },
+    {
+        "classificationCode": "SelfDefinedDisability",
+        "classificationValue": "None"
+    },
+    {
+        "classificationCode": "SelfDefinedEthnicity",
+        "classificationValue": "White - British"
+    },
+    {
+        "classificationCode": "KeyWitness",
+        "classificationValue": "No"
+    },
+    {
+        "classificationCode": "Police",
+        "classificationValue": "No"
+    },
+    {
+        "classificationCode": "Professional",
+        "classificationValue": "Yes"
+    },
+    {
+        "classificationCode": "Expert",
+        "classificationValue": "No"
+    },
+    {
+        "classificationCode": "Vulnerable",
+        "classificationValue": "No"
+    },
+    {
+        "classificationCode": "Intimidated",
+        "classificationValue": "Yes"
+    },
+    {
+        "classificationCode": "Child",
+        "classificationValue": "No"
+    },
+    {
+        "classificationCode": "Special",
+        "classificationValue": "Yes"
+    },
+    {
+        "classificationCode": "Prisoner",
+        "classificationValue": "No"
+    },
+    {
+        "classificationCode": "Interpreter",
+        "classificationValue": "Yes"
+    }
+  ]
+}</code></pre></div><div class="tab-pane" id="cases__caseId__witnesses_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__witnesses__witnessId_" class="panel-title">/cases/{caseId}/witnesses/{witnessId}</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__witnesses__witnessId_"><span class="parent"></span>/cases/{caseId}/witnesses/{witnessId}</a> <span class="methods"><a href="#cases__caseId__witnesses__witnessId__post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases__caseId__witnesses__witnessId_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__witnesses__witnessId__post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Update a witness ... (mapping): requestType: application/vnd.structure.command.add-witness-classification+json name: structure.command.add-witness-classification (mapping): requestType: application/vnd.structure.command.add-witness-statement+json name: structure.command.add-witness-statement (mapping): requestType: application/vnd.structure.command.update-witness-classifications+json name: structure.command.update-witness-classifications ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__witnesses__witnessId__post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases/{caseId}/witnesses/{witnessId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update a witness ... (mapping): requestType: application/vnd.structure.command.add-witness-classification+json name: structure.command.add-witness-classification (mapping): requestType: application/vnd.structure.command.add-witness-statement+json name: structure.command.add-witness-statement (mapping): requestType: application/vnd.structure.command.update-witness-classifications+json name: structure.command.update-witness-classifications ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__witnesses__witnessId__post_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__witnesses__witnessId__post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__witnesses__witnessId__post_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>The ID of the case to modify</p></li><li><strong>witnessId</strong>: <em>required (string)</em><p>The ID of the witness to modify</p></li></ul><h3>Body</h3><p><strong>Type: application/vnd.structure.command.add-witness-classification+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "integer"
+    },
+    "classification": {
+      "type": "object",
+      "properties": {
+        "classificationCode": {
+          "type": "string"
+        },
+        "classificationValue": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "classificationCode",
+        "classificationValue"
+      ]
+    }
+  },
+  "required": [
+    "classification"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "version": 1,
+  "classification": {
+      "classificationCode": "Special",
+      "classificationValue": "Yes"
+    }
+}
+</code></pre><p><strong>Type: application/vnd.structure.command.add-witness-statement+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "id": "/id",
+      "type": "string"
+    },
+    "version": {
+      "id": "/version",
+      "type": "integer"
+    },
+    "statementNumber": {
+      "statementNumber": "/statementNumber",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "99c98e9c-66b2-4363-8a78-641dbec8bb22",
+  "statementNumber": "statementNumber",
+  "version": 2
+}</code></pre><p><strong>Type: application/vnd.structure.command.update-witness-classifications+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "classifications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "classificationCode": {
+            "type": "string"
+          },
+          "classificationValue": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "classificationCode",
+          "classificationValue"
+        ]
+      }
+    }
+  }
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "classifications": [
+        {
+            "classificationCode": "SelfDefinedGender",
+            "classificationValue": "Male"
+        },
+        {
+            "classificationCode": "SelfDefinedDisability",
+            "classificationValue": "None"
+        },
+        {
+            "classificationCode": "SelfDefinedEthnicity",
+            "classificationValue": "White - British"
+        },
+        {
+            "classificationCode": "KeyWitness",
+            "classificationValue": "No"
+        },
+        {
+            "classificationCode": "Police",
+            "classificationValue": "No"
+        },
+        {
+            "classificationCode": "Professional",
+            "classificationValue": "Yes"
+        },
+        {
+            "classificationCode": "Expert",
+            "classificationValue": "No"
+        },
+        {
+            "classificationCode": "Vulnerable",
+            "classificationValue": "No"
+        },
+        {
+            "classificationCode": "Intimidated",
+            "classificationValue": "Yes"
+        },
+        {
+            "classificationCode": "Child",
+            "classificationValue": "No"
+        },
+        {
+            "classificationCode": "Special",
+            "classificationValue": "Yes"
+        },
+        {
+            "classificationCode": "Prisoner",
+            "classificationValue": "No"
+        },
+        {
+            "classificationCode": "Interpreter",
+            "classificationValue": "Yes"
+        }
+    ]
+}</code></pre></div><div class="tab-pane" id="cases__caseId__witnesses__witnessId__post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__witnesses__witnessId__delete" class="panel-title">/cases/{caseId}/witnesses/{witnessId}/delete</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__witnesses__witnessId__delete"><span class="parent"></span>/cases/{caseId}/witnesses/{witnessId}/delete</a> <span class="methods"><a href="#cases__caseId__witnesses__witnessId__delete_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases__caseId__witnesses__witnessId__delete" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__witnesses__witnessId__delete_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Delete a witness from a case ... (mapping): requestType: application/vnd.structure.command.delete-witness+json name: structure.command.delete-witness ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__witnesses__witnessId__delete_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases/{caseId}/witnesses/{witnessId}/delete</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete a witness from a case ... (mapping): requestType: application/vnd.structure.command.delete-witness+json name: structure.command.delete-witness ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__witnesses__witnessId__delete_post_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__witnesses__witnessId__delete_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__witnesses__witnessId__delete_post_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>The ID of the case to modify</p></li><li><strong>witnessId</strong>: <em>required (string)</em><p>The ID of the witness to delete</p></li></ul><h3>Body</h3><p><strong>Type: application/vnd.structure.command.delete-witness+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {},
+  "additionalProperties": false
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{}</code></pre></div><div class="tab-pane" id="cases__caseId__witnesses__witnessId__delete_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__victims" class="panel-title">/cases/{caseId}/victims</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__victims"><span class="parent"></span>/cases/{caseId}/victims</a> <span class="methods"><a href="#cases__caseId__victims_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases__caseId__victims" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__victims_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Add a victim to a case ... (mapping): requestType: application/vnd.structure.command.add-victim+json name: structure.command.add-victim ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__victims_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases/{caseId}/victims</h4></div><div class="modal-body"><div class="alert alert-info"><p>Add a victim to a case ... (mapping): requestType: application/vnd.structure.command.add-victim+json name: structure.command.add-victim ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__victims_post_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__victims_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__victims_post_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>The ID of the case to modify</p></li></ul><h3>Body</h3><p><strong>Type: application/vnd.structure.command.add-victim+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "personId": {
+      "type": "string"
+    },
+    "policePersonId": {
+      "type": "string"
+    },
+    "victimClassifications": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "object",
+        "properties": {
+          "classificationType": {
+            "type": "string"
+          },
+          "classificationCode": {
+            "type": "string"
+          },
+          "classificationValue": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "personId": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "policePersonId": "policePersonId",
+  "victimClassifications" : [{
+                    "classificationType": "personType",
+                    "classificationCode": "witness",
+                    "classificationValue": "Other"
+                }]
+}
+</code></pre></div><div class="tab-pane" id="cases__caseId__victims_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__victims__victimId_" class="panel-title">/cases/{caseId}/victims/{victimId}</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__victims__victimId_"><span class="parent"></span>/cases/{caseId}/victims/{victimId}</a> <span class="methods"><a href="#cases__caseId__victims__victimId__post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases__caseId__victims__victimId_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__victims__victimId__post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Update a victim ... (mapping): requestType: application/vnd.structure.command.update-victim-classifications+json name: structure.command.update-victim-classifications ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__victims__victimId__post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases/{caseId}/victims/{victimId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update a victim ... (mapping): requestType: application/vnd.structure.command.update-victim-classifications+json name: structure.command.update-victim-classifications ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__victims__victimId__post_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__victims__victimId__post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__victims__victimId__post_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>The ID of the case to modify</p></li><li><strong>victimId</strong>: <em>required (string)</em><p>The ID of the victim to modify</p></li></ul><h3>Body</h3><p><strong>Type: application/vnd.structure.command.update-victim-classifications+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "victimClassifications": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "object",
+        "properties": {
+          "classificationType": {
+            "type": "string"
+          },
+          "classificationCode": {
+            "type": "string"
+          },
+          "classificationValue": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "victimClassifications": [
+        {
+            "classificationType": "personType",
+            "classificationCode": "victim",
+            "classificationValue": "Other"
+        }
+    ]
+}</code></pre></div><div class="tab-pane" id="cases__caseId__victims__victimId__post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__victims__victimId__delete" class="panel-title">/cases/{caseId}/victims/{victimId}/delete</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__victims__victimId__delete"><span class="parent"></span>/cases/{caseId}/victims/{victimId}/delete</a> <span class="methods"><a href="#cases__caseId__victims__victimId__delete_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases__caseId__victims__victimId__delete" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__victims__victimId__delete_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Delete a victim from a case ... (mapping): requestType: application/vnd.structure.command.delete-victim+json name: structure.command.delete-victim ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__victims__victimId__delete_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases/{caseId}/victims/{victimId}/delete</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete a victim from a case ... (mapping): requestType: application/vnd.structure.command.delete-victim+json name: structure.command.delete-victim ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__victims__victimId__delete_post_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__victims__victimId__delete_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__victims__victimId__delete_post_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>The ID of the case to modify</p></li><li><strong>victimId</strong>: <em>required (string)</em><p>The ID of the victim to delete</p></li></ul><h3>Body</h3><p><strong>Type: application/vnd.structure.command.delete-victim+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {},
+  "additionalProperties": false
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{}</code></pre></div><div class="tab-pane" id="cases__caseId__victims__victimId__delete_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__police_summaries" class="panel-title">/cases/{caseId}/police-summaries</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__police_summaries"><span class="parent"></span>/cases/{caseId}/police-summaries</a> <span class="methods"><a href="#cases__caseId__police_summaries_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases__caseId__police_summaries" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__police_summaries_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Add a police summary to a case ... (mapping): requestType: application/vnd.structure.command.add-police-summary+json name: structure.command.add-police-summary ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__police_summaries_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases/{caseId}/police-summaries</h4></div><div class="modal-body"><div class="alert alert-info"><p>Add a police summary to a case ... (mapping): requestType: application/vnd.structure.command.add-police-summary+json name: structure.command.add-police-summary ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__police_summaries_post_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__police_summaries_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__police_summaries_post_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>The ID of the case to modify</p></li></ul><h3>Body</h3><p><strong>Type: application/vnd.structure.command.add-police-summary+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "version": {
+      "id": "/version",
+      "type": "integer"
+    },
+    "id": {
+      "id": "/id",
+      "type": "string"
+    },
+    "outlineHeading": {
+      "id": "/outlineHeading",
+      "type": "string"
+    },
+    "outlineText": {
+      "id": "/outlineText",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "outlineHeading",
+    "outlineText"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "version": 2,
+  "id": "ba9a2765-e630-4d9a-923c-6b9fd29dbfc4",
+  "outlineHeading": "KEVD",
+  "outlineText": "this evidence is key"
+}</code></pre></div><div class="tab-pane" id="cases__caseId__police_summaries_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__case_documents" class="panel-title">/cases/{caseId}/case-documents</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__case_documents"><span class="parent"></span>/cases/{caseId}/case-documents</a> <span class="methods"><a href="#cases__caseId__case_documents_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases__caseId__case_documents" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__case_documents_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Add a case document to a case ... (mapping): requestType: application/vnd.structure.command.add-case-document+json name: structure.command.add-case-document ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__case_documents_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases/{caseId}/case-documents</h4></div><div class="modal-body"><div class="alert alert-info"><p>Add a case document to a case ... (mapping): requestType: application/vnd.structure.command.add-case-document+json name: structure.command.add-case-document ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__case_documents_post_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__case_documents_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__case_documents_post_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>The ID of the case to modify</p></li></ul><h3>Body</h3><p><strong>Type: application/vnd.structure.command.add-case-document+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "materialId": {
+      "type": "string"
+    },
+    "policeName": {
+      "type": "string"
+    },
+    "policeMaterialId": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "documentType": {
+      "enum": ["SJPN", "CITN", "PLEA", "FINANCIAL_MEANS", "WS"]
+    }
+  },
+  "required": [
+    "id",
+    "materialId",
+    "policeName",
+    "policeMaterialId",
+    "description"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "id": "fc3f8d82-d200-4cab-a492-2796e6fdf42c",
+    "materialId": "87a321ef-ea34-47d7-865d-7f430b4775be",
+    "policeName": "Richard Prett file",
+    "policeMaterialId": "x1234",
+    "description": "xyz",
+    "documentType": "SJPN"
+}
+</code></pre></div><div class="tab-pane" id="cases__caseId__case_documents_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__suspects" class="panel-title">/cases/{caseId}/suspects</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__suspects"><span class="parent"></span>/cases/{caseId}/suspects</a> <span class="methods"><a href="#cases__caseId__suspects_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases__caseId__suspects" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__suspects_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Add a suspect to a case ... (mapping): requestType: application/vnd.structure.command.add-suspect+json name: structure.command.add-suspect ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__suspects_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases/{caseId}/suspects</h4></div><div class="modal-body"><div class="alert alert-info"><p>Add a suspect to a case ... (mapping): requestType: application/vnd.structure.command.add-suspect+json name: structure.command.add-suspect ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__suspects_post_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__suspects_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__suspects_post_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>The ID of the case to modify</p></li></ul><h3>Body</h3><p><strong>Type: application/vnd.structure.command.add-suspect+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "id": "/id",
+      "type": "string"
+    },
+    "personId": {
+      "id": "/personId",
+      "type": "string"
+    },
+    "asn": {
+      "id": "/asn",
+      "type": "string"
+    },
+    "bailConditions": {
+      "id": "/bailConditions",
+      "type": "string"
+    },
+    "bailDate": {
+      "id": "/bailDate",
+      "type": "string"
+    },
+    "policeRemandStatus": {
+      "id": "/policeRemandStatus",
+      "type": "string"
+    },
+    "policePersonId": {
+                "id": "policePersonId",
+                "type": "string"
+     },
+    "charges": {
+      "id": "/charges",
+      "type": "array",
+      "items": {
+        "id": "/charges/0",
+        "type": "object",
+        "properties": {
+         "id": {
+            "id": "/charges/0/id",
+            "type": "string"
+          },        
+          "uniqueId": {
+            "id": "/charges/0/uniqueId",
+            "type": "string"
+          },
+          "code": {
+            "id": "/charges/0/code",
+            "type": "string"
+          },
+          "description": {
+            "id": "/charges/0/description",
+            "type": "string"
+          },
+          "status": {
+            "id": "/charges/0/status",
+            "type": "string"
+          },
+          "categoryType": {
+            "id": "/charges/0/categoryType",
+            "type": "string"
+          },
+          "fromDate": {
+            "id": "/charges/0/fromDate",
+            "type": "string"
+          },
+          "toDate": {
+            "id": "/charges/0/toDate",
+            "type": "string"
+          },
+          "particularClassification": {
+            "id": "/charges/0/particularClassification",
+            "type": "string"
+          },
+          "particularLocation": {
+            "id": "/charges/0/particularLocation",
+            "type": "object",
+            "properties": {
+              "address1": {
+                "id": "/charges/0/particularLocation/address1",
+                "type": "string"
+              },
+              "address2": {
+                "id": "/charges/0/particularLocation/address2",
+                "type": "string"
+              },
+              "address3": {
+                "id": "/charges/0/particularLocation/address3",
+                "type": "string"
+              },
+              "address4": {
+                "id": "/charges/0/particularLocation/address4",
+                "type": "string"
+              },
+              "postCode": {
+                "id": "/charges/0/particularLocation/postCode",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "personId",
+    "policePersonId",
+    "charges"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "personId": "ba9a2765-e630-4d9a-923c-6b9fd29dbfc4",
+  "asn": "asn",
+  "bailConditions": "Lorem ipsum dolor sit amet",
+  "bailDate": "2015-02-12",
+  "policeRemandStatus": "Remanded on conditional bail",
+  "policePersonId": "policePersonId",
+  "charges": [
+    {
+      "id": "7e2f843e-d639-40b3-8611-8015f3a18959",
+      "uniqueId": "Unique Id from TWIFT system",
+      "code": "CJ12345",
+      "description": "Possession or acquisition of certain prohibited weapons etc",
+      "status": "Authorised",
+      "categoryType": "either way",
+      "fromDate": "2015-02-12",
+      "toDate": "2015-02-15",
+      "particularClassification": "Duis aute irure dolor in reprehenderit in voluptate ",
+      "particularLocation": {
+        "address1": "14 Tottenham Court Road",
+        "address2": "London",
+        "address3": "England",
+        "address4": "UK",
+        "postCode": "W1T 1JY"
+      }
+    }
+  ]
+}
+</code></pre></div><div class="tab-pane" id="cases__caseId__suspects_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__suspects__suspectId_" class="panel-title">/cases/{caseId}/suspects/{suspectId}</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__suspects__suspectId_"><span class="parent"></span>/cases/{caseId}/suspects/{suspectId}</a> <span class="methods"><a href="#cases__caseId__suspects__suspectId__post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases__caseId__suspects__suspectId_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__suspects__suspectId__post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Modify a suspect ... (mapping): requestType: application/vnd.structure.command.approve-idpc-for-suspect+json name: structure.command.approve-idpc-for-suspect (mapping): requestType: application/vnd.structure.command.update-bail-status-for-suspect+json name: structure.command.update-bail-status-for-suspect (mapping): requestType: application/vnd.structure.command.set-idpc-permissions-for-suspect+json name: structure.command.set-idpc-permissions-for-suspect (mapping): requestType: application/vnd.structure.command.update-suspect+json name: structure.command.update-suspect ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__suspects__suspectId__post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases/{caseId}/suspects/{suspectId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Modify a suspect ... (mapping): requestType: application/vnd.structure.command.approve-idpc-for-suspect+json name: structure.command.approve-idpc-for-suspect (mapping): requestType: application/vnd.structure.command.update-bail-status-for-suspect+json name: structure.command.update-bail-status-for-suspect (mapping): requestType: application/vnd.structure.command.set-idpc-permissions-for-suspect+json name: structure.command.set-idpc-permissions-for-suspect (mapping): requestType: application/vnd.structure.command.update-suspect+json name: structure.command.update-suspect ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__suspects__suspectId__post_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__suspects__suspectId__post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__suspects__suspectId__post_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>The ID of the case to modify</p></li><li><strong>suspectId</strong>: <em>required (string)</em><p>The ID of the suspect to modify</p></li></ul><h3>Body</h3><p><strong>Type: application/vnd.structure.command.approve-idpc-for-suspect+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "idpcApproved": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "idpcApproved"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "idpcApproved": true
+}</code></pre><p><strong>Type: application/vnd.structure.command.update-bail-status-for-suspect+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "bailStatus": {
+      "id": "/bailStatus",
+      "type": "string"
+    }
+  },
+  "required": [
+    "bailStatus"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "bailStatus": "in custody"
+}</code></pre><p><strong>Type: application/vnd.structure.command.set-idpc-permissions-for-suspect+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "analysisOutcome": {
+      "id": "/analysisOutcome",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "analysisOutcome"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "analysisOutcome":"FULL_CODE_TEST_MET"
+}</code></pre><p><strong>Type: application/vnd.structure.command.update-suspect+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "personId": {
+      "id": "/personId",
+      "type": "string"
+    },
+    "asn": {
+      "id": "/asn",
+      "type": "string"
+    },
+    "bailConditions": {
+      "id": "/bailConditions",
+      "type": "string"
+    },
+    "bailDate": {
+      "id": "/bailDate",
+      "type": "string"
+    },
+    "policeRemandStatus": {
+      "id": "/policeRemandStatus",
+      "type": "string"
+    },
+    "policePersonId": {
+      "id": "policePersonId",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "personId",
+    "policePersonId"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "personId": "ba9a2765-e630-4d9a-923c-6b9fd29dbfc4",
+  "asn": "asn",
+  "bailConditions": "Lorem ipsum dolor sit amet",
+  "bailDate": "2015-02-12",
+  "policeRemandStatus": "Remanded on conditional bail",
+  "policePersonId": "policePersonId"
+}
+</code></pre></div><div class="tab-pane" id="cases__caseId__suspects__suspectId__post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__suspects__suspectId__proposed_charge__proposedChargeId_" class="panel-title">/cases/{caseId}/suspects/{suspectId}/proposed-charge/{proposedChargeId}</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__suspects__suspectId__proposed_charge__proposedChargeId_"><span class="parent"></span>/cases/{caseId}/suspects/{suspectId}/proposed-charge/{proposedChargeId}</a> <span class="methods"><a href="#cases__caseId__suspects__suspectId__proposed_charge__proposedChargeId__post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases__caseId__suspects__suspectId__proposed_charge__proposedChargeId_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__suspects__suspectId__proposed_charge__proposedChargeId__post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Modify proposed charges ... (mapping): requestType: application/vnd.structure.command.authorise-proposed-charge+json name: structure.command.authorise-proposed-charge ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__suspects__suspectId__proposed_charge__proposedChargeId__post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases/{caseId}/suspects/{suspectId}/proposed-charge/{proposedChargeId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Modify proposed charges ... (mapping): requestType: application/vnd.structure.command.authorise-proposed-charge+json name: structure.command.authorise-proposed-charge ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__suspects__suspectId__proposed_charge__proposedChargeId__post_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__suspects__suspectId__proposed_charge__proposedChargeId__post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__suspects__suspectId__proposed_charge__proposedChargeId__post_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>The ID of the case to modify</p></li><li><strong>suspectId</strong>: <em>required (string)</em><p>The ID of the suspect to modify</p></li><li><strong>proposedChargeId</strong>: <em>required (string)</em><p>The ID of the proposed charge to modify</p></li></ul><h3>Body</h3><p><strong>Type: application/vnd.structure.command.authorise-proposed-charge+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {}
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{}
+</code></pre></div><div class="tab-pane" id="cases__caseId__suspects__suspectId__proposed_charge__proposedChargeId__post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__offences__offenceId__indicated_pleas" class="panel-title">/cases/{caseId}/offences/{offenceId}/indicated-pleas</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__offences__offenceId__indicated_pleas"><span class="parent"></span>/cases/{caseId}/offences/{offenceId}/indicated-pleas</a> <span class="methods"><a href="#cases__caseId__offences__offenceId__indicated_pleas_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases__caseId__offences__offenceId__indicated_pleas" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__offences__offenceId__indicated_pleas_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Update the indicated plea for a defendant ... (mapping): requestType: application/vnd.structure.command.update-indicated-plea+json name: structure.command.update-indicated-plea ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__offences__offenceId__indicated_pleas_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases/{caseId}/offences/{offenceId}/indicated-pleas</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update the indicated plea for a defendant ... (mapping): requestType: application/vnd.structure.command.update-indicated-plea+json name: structure.command.update-indicated-plea ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__offences__offenceId__indicated_pleas_post_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__offences__offenceId__indicated_pleas_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__offences__offenceId__indicated_pleas_post_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>The ID of the case to modify</p></li><li><strong>offenceId</strong>: <em>required (string)</em><p>The ID of the case to modify</p></li></ul><h3>Body</h3><p><strong>Type: application/vnd.structure.command.update-indicated-plea+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "indicatedPlea": {
+      "id": "/indicatedPlea",
+      "type": "string",
+      "enum": ["NOT_GUILTY", "GUILTY", "NO_PLEA"]
+    }
+  },
+  "required": [
+    "indicatedPlea"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "indicatedPlea": "GUILTY"
+}</code></pre></div><div class="tab-pane" id="cases__caseId__offences__offenceId__indicated_pleas_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__mark_sensitive" class="panel-title">/cases/{caseId}/mark-sensitive</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__mark_sensitive"><span class="parent"></span>/cases/{caseId}/mark-sensitive</a> <span class="methods"><a href="#cases__caseId__mark_sensitive_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases__caseId__mark_sensitive" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__mark_sensitive_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Mark case as sensitive. ... (mapping): requestType: application/vnd.structure.command.mark-sensitive+json name: structure.command.mark-sensitive ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__mark_sensitive_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases/{caseId}/mark-sensitive</h4></div><div class="modal-body"><div class="alert alert-info"><p>Mark case as sensitive. ... (mapping): requestType: application/vnd.structure.command.mark-sensitive+json name: structure.command.mark-sensitive ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__mark_sensitive_post_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__mark_sensitive_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__mark_sensitive_post_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Type: application/vnd.structure.command.mark-sensitive+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {}
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+
+}</code></pre></div><div class="tab-pane" id="cases__caseId__mark_sensitive_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__transfer_ownership" class="panel-title">/cases/{caseId}/transfer-ownership</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__transfer_ownership"><span class="parent"></span>/cases/{caseId}/transfer-ownership</a> <span class="methods"><a href="#cases__caseId__transfer_ownership_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases__caseId__transfer_ownership" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__transfer_ownership_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Mark case ownership transferred to CMS. ... (mapping): requestType: application/vnd.structure.command.transfer-ownership+json name: structure.command.transfer-ownership ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__transfer_ownership_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases/{caseId}/transfer-ownership</h4></div><div class="modal-body"><div class="alert alert-info"><p>Mark case ownership transferred to CMS. ... (mapping): requestType: application/vnd.structure.command.transfer-ownership+json name: structure.command.transfer-ownership ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__transfer_ownership_post_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__transfer_ownership_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__transfer_ownership_post_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Type: application/vnd.structure.command.transfer-ownership+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {}
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+
+}</code></pre></div><div class="tab-pane" id="cases__caseId__transfer_ownership_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__action_items" class="panel-title">/cases/{caseId}/action-items</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__action_items"><span class="parent"></span>/cases/{caseId}/action-items</a> <span class="methods"><a href="#cases__caseId__action_items_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases__caseId__action_items" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__action_items_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Add action item to a case. ... (mapping): requestType: application/vnd.structure.command.add-action-item+json name: structure.command.add-action-item ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__action_items_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases/{caseId}/action-items</h4></div><div class="modal-body"><div class="alert alert-info"><p>Add action item to a case. ... (mapping): requestType: application/vnd.structure.command.add-action-item+json name: structure.command.add-action-item ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__action_items_post_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__action_items_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__action_items_post_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Type: application/vnd.structure.command.add-action-item+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "deadlineDate": {
+      "type": "string"
+    },
+    "suspects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      }
+    }
+  },
+  "required": [
+    "id",
+    "category",
+    "description",
+    "deadlineDate"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "category": "categoryCode",
+  "description": "description",
+  "deadlineDate": "2015-02-15",
+  "suspects": [
+    {
+      "id": "7e2f843e-d639-40b3-8611-8015f3a18959"
+    }
+  ]
+}
+</code></pre></div><div class="tab-pane" id="cases__caseId__action_items_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__action_items__actionItemId_" class="panel-title">/cases/{caseId}/action-items/{actionItemId}</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__action_items__actionItemId_"><span class="parent"></span>/cases/{caseId}/action-items/{actionItemId}</a> <span class="methods"><a href="#cases__caseId__action_items__actionItemId__post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases__caseId__action_items__actionItemId_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__action_items__actionItemId__post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Update action item associated with a case. ... (mapping): requestType: application/vnd.structure.command.update-action-item+json name: structure.command.update-action-item ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__action_items__actionItemId__post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases/{caseId}/action-items/{actionItemId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update action item associated with a case. ... (mapping): requestType: application/vnd.structure.command.update-action-item+json name: structure.command.update-action-item ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__action_items__actionItemId__post_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__action_items__actionItemId__post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__action_items__actionItemId__post_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em></li><li><strong>actionItemId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Type: application/vnd.structure.command.update-action-item+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "category": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "deadlineDate": {
+      "type": "string"
+    },
+    "suspects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      }
+    }
+  },
+  "required": [
+    "category",
+    "description",
+    "deadlineDate"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "category": "categoryCode",
+  "description": "description",
+  "deadlineDate": "2015-02-15",
+  "suspects": [
+    {
+      "id": "7e2f843e-d639-40b3-8611-8015f3a18959"
+    }
+  ]
+}</code></pre></div><div class="tab-pane" id="cases__caseId__action_items__actionItemId__post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__action_items__actionItemId__delete" class="panel-title">/cases/{caseId}/action-items/{actionItemId}/delete</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__action_items__actionItemId__delete"><span class="parent"></span>/cases/{caseId}/action-items/{actionItemId}/delete</a> <span class="methods"><a href="#cases__caseId__action_items__actionItemId__delete_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases__caseId__action_items__actionItemId__delete" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__action_items__actionItemId__delete_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Delete action item associated with a case. ... (mapping): requestType: application/vnd.structure.command.delete-action-item+json name: structure.command.delete-action-item ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__action_items__actionItemId__delete_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases/{caseId}/action-items/{actionItemId}/delete</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete action item associated with a case. ... (mapping): requestType: application/vnd.structure.command.delete-action-item+json name: structure.command.delete-action-item ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__action_items__actionItemId__delete_post_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__action_items__actionItemId__delete_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__action_items__actionItemId__delete_post_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em></li><li><strong>actionItemId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Type: application/vnd.structure.command.delete-action-item+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {},
+  "additionalProperties": false
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{}</code></pre></div><div class="tab-pane" id="cases__caseId__action_items__actionItemId__delete_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#cases">/cases</a></li><li><a href="#cases__caseId_">/cases/{caseId}</a></li><li><a href="#cases__caseId__defendant">/cases/{caseId}/defendant</a></li><li><a href="#cases__caseId__defendants__defendantId_">/cases/{caseId}/defendants/{defendantId}</a></li><li><a href="#cases__caseId__defendant__defendantId__make_plea">/cases/{caseId}/defendant/{defendantId}/make-plea</a></li><li><a href="#cases__caseId__offences_withdrawal_request">/cases/{caseId}/offences-withdrawal-request</a></li><li><a href="#cases__caseId__offences__offenceId__pleas">/cases/{caseId}/offences/{offenceId}/pleas</a></li><li><a href="#cases__caseId__exhibits">/cases/{caseId}/exhibits</a></li><li><a href="#cases__caseId__witnesses">/cases/{caseId}/witnesses</a></li><li><a href="#cases__caseId__witnesses__witnessId_">/cases/{caseId}/witnesses/{witnessId}</a></li><li><a href="#cases__caseId__witnesses__witnessId__delete">/cases/{caseId}/witnesses/{witnessId}/delete</a></li><li><a href="#cases__caseId__victims">/cases/{caseId}/victims</a></li><li><a href="#cases__caseId__victims__victimId_">/cases/{caseId}/victims/{victimId}</a></li><li><a href="#cases__caseId__victims__victimId__delete">/cases/{caseId}/victims/{victimId}/delete</a></li><li><a href="#cases__caseId__police_summaries">/cases/{caseId}/police-summaries</a></li><li><a href="#cases__caseId__case_documents">/cases/{caseId}/case-documents</a></li><li><a href="#cases__caseId__suspects">/cases/{caseId}/suspects</a></li><li><a href="#cases__caseId__suspects__suspectId_">/cases/{caseId}/suspects/{suspectId}</a></li><li><a href="#cases__caseId__suspects__suspectId__proposed_charge__proposedChargeId_">/cases/{caseId}/suspects/{suspectId}/proposed-charge/{proposedChargeId}</a></li><li><a href="#cases__caseId__offences__offenceId__indicated_pleas">/cases/{caseId}/offences/{offenceId}/indicated-pleas</a></li><li><a href="#cases__caseId__mark_sensitive">/cases/{caseId}/mark-sensitive</a></li><li><a href="#cases__caseId__transfer_ownership">/cases/{caseId}/transfer-ownership</a></li><li><a href="#cases__caseId__action_items">/cases/{caseId}/action-items</a></li><li><a href="#cases__caseId__action_items__actionItemId_">/cases/{caseId}/action-items/{actionItemId}</a></li><li><a href="#cases__caseId__action_items__actionItemId__delete">/cases/{caseId}/action-items/{actionItemId}/delete</a></li></ul></div></div></div></div></body></html>

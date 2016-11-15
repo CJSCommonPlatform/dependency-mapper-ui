@@ -1,0 +1,2256 @@
+<!DOCTYPE HTML><html><head><title>API Using media type in the URL API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/raml2html/raml2html 3.0.1"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script><script type="text/javascript">
+      $(document).ready(function() {
+        $('.page-header pre code, .top-resource-description pre code, .modal-body pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+
+        $('[data-toggle]').click(function() {
+          var selector = $(this).data('target') + ' pre code';
+          $(selector).each(function(i, block) {
+            hljs.highlightBlock(block);
+          });
+        });
+
+        // open modal on hashes like #_action_get
+        $(window).bind('hashchange', function(e) {
+          var anchor_id = document.location.hash.substr(1); //strip #
+          var element = $('#' + anchor_id);
+
+          // do we have such element + is it a modal?  --> show it
+          if (element.length && element.hasClass('modal')) {
+            element.modal('show');
+          }
+        });
+
+        // execute hashchange on first page load
+        $(window).trigger('hashchange');
+
+        // remove url fragment on modal hide
+        $('.modal').on('hidden.bs.modal', function() {
+          try {
+            if (history && history.replaceState) {
+                history.replaceState({}, '', '#');
+            }
+          } catch(e) {}
+        });
+      });
+    </script><style>
+      .hljs {
+        background: transparent;
+      }
+      .parent {
+        color: #999;
+      }
+      .list-group-item > .badge {
+        float: none;
+        margin-right: 6px;
+      }
+      .panel-title > .methods {
+        float: right;
+      }
+      .badge {
+        border-radius: 0;
+        text-transform: uppercase;
+        width: 70px;
+        font-weight: normal;
+        color: #f3f3f6;
+        line-height: normal;
+      }
+      .badge_get {
+        background-color: #63a8e2;
+      }
+      .badge_post {
+        background-color: #6cbd7d;
+      }
+      .badge_put {
+        background-color: #22bac4;
+      }
+      .badge_delete {
+        background-color: #d26460;
+      }
+      .badge_patch {
+        background-color: #ccc444;
+      }
+      .list-group, .panel-group {
+        margin-bottom: 0;
+      }
+      .panel-group .panel+.panel-white {
+        margin-top: 0;
+      }
+      .panel-group .panel-white {
+        border-bottom: 1px solid #F5F5F5;
+        border-radius: 0;
+      }
+      .panel-white:last-child {
+        border-bottom-color: white;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      .panel-white .panel-heading {
+        background: white;
+      }
+      .tab-pane ul {
+        padding-left: 2em;
+      }
+      .tab-pane h1 {
+        font-size: 1.3em;
+      }
+      .tab-pane h2 {
+        font-size: 1.2em;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #ddd;
+      }
+      .tab-pane h3 {
+        font-size: 1.1em;
+      }
+      .tab-content {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+      }
+      #sidebar {
+        margin-top: 30px;
+        padding-right: 5px;
+        overflow: auto;
+        height: 90%;
+      }
+      .top-resource-description {
+        border-bottom: 1px solid #ddd;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description {
+        border-bottom: 1px solid #fcfcfc;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description p:last-child {
+        margin: 0;
+      }
+      .list-group .badge {
+        float: left;
+      }
+      .method_description {
+        margin-left: 85px;
+      }
+      .method_description p:last-child {
+        margin: 0;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+      .list-group-item:hover {
+        background-color: #f5f5f5;
+      }
+
+      pre code {
+        overflow: auto;
+        word-wrap: normal;
+        white-space: pre;
+      }
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>API Using media type in the URL API documentation <small>version v1</small></h1><div class="alert alert-warning">Due to technical limitations, this is listed as a HTTP endpoint. Please note that this is as an asynchronous endpoint that uses the 'message://' protocol.</div><p>http://event/listener/message/structure</p></div><div class="panel panel-default"><div class="panel-heading"><h3 id="structure_event" class="panel-title">/structure.event</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_structure_event"><span class="parent"></span>/structure.event</a> <span class="methods"><a href="#structure_event_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_structure_event" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#structure_event_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="structure_event_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/structure.event</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#structure_event_post_request" data-toggle="tab">Request</a></li></ul><div class="tab-content"><div class="tab-pane active" id="structure_event_post_request"><h3>Body</h3><p><strong>Type: application/vnd.structure.events.defendant-added+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "type": "string"
+    },
+    "defendantId": {
+      "type": "string"
+    },
+    "version": {
+      "type": "integer"
+    },
+    "personId": {
+      "type": "string"
+    },
+    "policeDefendantId": {
+      "type": "string"
+    },
+    "offences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "policeOffenceId": {
+            "type": "string"
+          },
+          "cpr": {
+            "type": "object",
+            "properties": {
+              "defendantOffender": {
+                "type": "object",
+                "properties": {
+                  "year": {
+                    "type": "string"
+                  },
+                  "organisationUnit": {
+                    "type": "string"
+                  },
+                  "number": {
+                    "type": "string"
+                  },
+                  "checkDigit": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "year",
+                  "organisationUnit",
+                  "number",
+                  "checkDigit"
+                ]
+              },
+              "cjsCode": {
+                "type": "string"
+              },
+              "offenceSequence": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "defendantOffender",
+              "cjsCode",
+              "offenceSequence"
+            ]
+          },
+          "asnSequenceNumber": {
+            "type": "string"
+          },
+          "cjsCode": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "wording": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "arrestDate": {
+            "type": "string"
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "chargeDate": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "policeOffenceId",
+          "cpr",
+          "asnSequenceNumber",
+          "cjsCode",
+          "reason",
+          "description",
+          "wording",
+          "category",
+          "arrestDate",
+          "startDate",
+          "chargeDate"
+        ]
+      }
+    },
+    "nextHearing": {
+      "type": "object",
+      "properties": {
+        "courtID": {
+          "type": "string"
+        },
+        "courtRoom": {
+          "type": "string"
+        },
+        "typeOfCourt": {
+          "type": "string"
+        },
+        "dateAndTime": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "courtID",
+        "courtRoom",
+        "typeOfCourt",
+        "dateAndTime"
+      ]
+    }
+  },
+  "required": [
+    "caseId",
+    "defendantId",
+    "version",
+    "personId",
+    "policeDefendantId",
+    "offences",
+    "nextHearing"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "defendantId": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "version": 1,
+  "personId": "ba9a2765-e630-4d9a-923c-6b9fd29dbfc4",
+  "policeDefendantId": "BS2CM01ADEF1",
+  "offences": [{
+    "id": "7e2f843e-d639-40b3-8611-8015f3a18959",
+    "policeOffenceId": "A00PCD7073",
+    "cpr": {
+      "defendantOffender": {
+        "year": "09",
+        "organisationUnit": "XX45GD00",
+        "number": "10000000001",
+        "checkDigit": "A"
+      },
+      "cjsCode": "OF61131",
+      "offenceSequence": "001"
+    },
+    "asnSequenceNumber": "001",
+    "cjsCode": "OF61131",
+    "reason": "131",
+    "description": "Wounding/inflicting grievous bodily harm.",
+    "wording": "on 01/08/2009 at  the County public house, unlawfully and maliciously wounded, John Smith",
+    "category": "Either Way",
+    "arrestDate": "2010-08-01",
+    "startDate": "2010-08-01",
+    "chargeDate": "2010-08-01"
+  }],
+  "nextHearing": {
+    "courtID": "B45GC00",
+    "courtRoom": "1",
+    "typeOfCourt": "Magistrates Court",
+    "dateAndTime": "2010-08-02T09:30:00"
+  }
+}</code></pre><p><strong>Type: application/vnd.structure.events.exhibit-added+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "id": "/caseId",
+      "type": "string"
+    },
+    "personId": {
+      "id": "/personId",
+      "type": "string"
+    },
+    "exhibit": {
+      "id": "/exhibit",
+      "type": "object",
+      "properties": {
+        "policeName": {
+          "id": "/exhibit/policeName",
+          "type": "string"
+        },
+        "policeExhibitId": {
+          "id": "/exhibit/policeExhibitId",
+          "type": "string"
+        },
+        "policePersonId": {
+          "id": "/exhibit/policePersonId",
+          "type": "string"
+        },
+        "exhibitName": {
+          "id": "/exhibit/exhibitName",
+          "type": "string"
+        },
+        "exhibitTakenDate": {
+          "id": "/exhibit/exhibitTakenDate",
+          "type": "string"
+        },
+        "policeReference": {
+          "id": "/exhibit/policeReference",
+          "type": "string"
+        },
+        "exhibitMaterialId": {
+          "id": "/exhibit/exhibitMaterialId",
+          "type": "string"
+        },
+        "exhibitClassifications": {
+          "id": "/exhibit/exhibitClassifications",
+          "type": "array",
+          "items": [
+            {
+              "id": "/exhibit/exhibitClassifications/0",
+              "type": "object",
+              "properties": {
+                "classification": {
+                  "id": "/exhibit/exhibitClassifications/0/classification",
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "id": "/exhibit/exhibitClassifications/1",
+              "type": "object",
+              "properties": {
+                "classification": {
+                  "id": "/exhibit/exhibitClassifications/1/classification",
+                  "type": "string"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "caseId",
+    "personId",
+    "exhibit"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId": "cc4a2765-e630-4d9a-923c-6b9fd29dbaa1",
+  "personId": "ba9a2765-e630-4d9a-923c-6b9fd29dbfc4",
+  "exhibit": {
+    "policeName": "exhibit name given by police",
+    "policePersonId":"sq2a2765-e630-4d9a-923c-6b9fd29dbff2",
+    "policeExhibitId": "exhibitId",
+    "exhibitName": "exhibitname",
+    "exhibitTakenDate": "2004-10-05",
+    "policeReference": "XXXNNN",
+    "exhibitMaterialId": "id of exhibit in material",
+    "exhibitClassifications": [{
+        "classification": "e.g. audio tape"
+      }, {
+        "classification": "e.g. sensitive video"
+      }
+    ]
+  }
+}
+</code></pre><p><strong>Type: application/vnd.structure.events.police-summary-added+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "caseId": {
+      "type": "string"
+    },
+    "outlineHeading": {
+      "type": "string"
+    },
+    "outlineText": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "caseId",
+    "outlineHeading",
+    "outlineText"
+  ]
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "ba9a2765-e630-4d9a-923c-6b9fd29dbfc4",
+  "caseId": "6ac98e9c-66b2-4363-8a78-641dbec8bbd2",
+  "outlineHeading": "KEVD",
+  "outlineText": "this evidence is key"
+}
+</code></pre><p><strong>Type: application/vnd.structure.events.victim-added+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": "id"
+    },
+    "personId": {
+      "type": "string",
+      "id": "personId"
+    },
+    "policePersonId": {
+      "type": "string",
+      "id": "policePersonId"
+    },
+    "victimClassifications": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "object",
+        "properties": {
+          "classificationType": {
+            "type": "string",
+            "id": "classificationType"
+          },
+          "classificationCode": {
+            "type": "string",
+            "id": "classificationCode"
+          },
+          "classificationValue": {
+            "type": "string",
+            "id": "classificationValue"
+          }
+        },
+        "id": "0"
+      },
+      "id": "victimClassifications"
+    }
+  },
+  "id": "/",
+  "required": [
+    "id",
+    "personId",
+    "policePersonId"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "personId": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "policePersonId": "policePersonId",
+  "victimClassifications" : [{
+                    "classificationType": "personType",
+                    "classificationCode": "witness",
+                    "classificationValue": "Other"
+                }]
+}
+</code></pre><p><strong>Type: application/vnd.structure.events.case-document-added+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "id": "/caseId",
+      "type": "string"
+    },
+    "caseDocument": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "materialId": {
+          "type": "string"
+        },
+        "policeName": {
+          "type": "string"
+        },
+        "policeMaterialId": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "documentType": {
+          "enum": ["SJPN", "CITN", "PLEA", "FINANCIAL_MEANS", "WS"]
+        }
+      },
+      "required": [
+        "id",
+        "materialId",
+        "policeName",
+        "policeMaterialId",
+        "description"
+      ]
+    }
+  },
+  "required": [
+    "caseId",
+    "caseDocument"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId": "6ac98e9c-66b2-4363-8a78-641dbec8bbd2",
+  "caseDocument": {
+    "id": "fc3f8d82-d200-4cab-a492-2796e6fdf42c",
+    "materialId": "87a321ef-ea34-47d7-865d-7f430b4775be",
+    "policeName": "Richard Prett file",
+    "policeMaterialId": "x1234",
+    "description": "xyz"
+  }
+}
+</code></pre><p><strong>Type: application/vnd.structure.events.suspect-added+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "id": "/caseId",
+      "type": "string"
+    },
+    "id": {
+      "id": "/id",
+      "type": "string"
+    },
+    "personId": {
+      "id": "/personId",
+      "type": "string"
+    },
+    "asn": {
+      "id": "/asn",
+      "type": "string"
+    },
+    "bailConditions": {
+      "id": "/bailConditions",
+      "type": "string"
+    },
+    "bailDate": {
+      "id": "/bailDate",
+      "type": "string"
+    },
+    "policeRemandStatus": {
+      "id": "/policeRemandStatus",
+      "type": "string"
+    },
+    "policePersonId": {
+                "id": "policePersonId",
+                "type": "string"
+     },
+    "charges": {
+      "id": "/charges",
+      "type": "array",
+      "items": {
+        "id": "/charges/0",
+        "type": "object",
+        "properties": {
+         "id": {
+            "id": "/charges/0/id",
+            "type": "string"
+          },
+          "uniqueId": {
+            "id": "/charges/0/uniqueId",
+            "type": ["string", "null"]
+          },
+          "code": {
+            "id": "/charges/0/code",
+            "type": "string"
+          },
+          "description": {
+            "id": "/charges/0/description",
+            "type": "string"
+          },
+          "status": {
+            "id": "/charges/0/status",
+            "type": ["string", "null"]
+          },
+          "categoryType": {
+            "id": "/charges/0/categoryType",
+            "type": "string"
+          },
+          "fromDate": {
+            "id": "/charges/0/fromDate",
+            "type": "string"
+          },
+          "toDate": {
+            "id": "/charges/0/toDate",
+            "type": "string"
+          },
+          "particularClassification": {
+            "id": "/charges/0/particularClassification",
+            "type": "string"
+          },
+          "particularLocation": {
+            "id": "/charges/0/particularLocation",
+            "type": "object",
+            "properties": {
+              "address1": {
+                "id": "/charges/0/particularLocation/address1",
+                "type": "string"
+              },
+              "address2": {
+                "id": "/charges/0/particularLocation/address2",
+                "type": ["string", "null"]
+              },
+              "address3": {
+                "id": "/charges/0/particularLocation/address3",
+                "type": ["string", "null"]
+              },
+              "address4": {
+                "id": "/charges/0/particularLocation/address4",
+                "type": ["string", "null"]
+              },
+              "postCode": {
+                "id": "/charges/0/particularLocation/postCode",
+                "type": ["string", "null"]
+              }
+            },
+            "additionalProperties": false
+          },
+          "authorisedCharge": {
+            "id": "/charges/0/authorisedCharge",
+            "type": ["object","null"],
+            "properties": {
+              "code": {
+                "id": "/charges/0/authorisedCharge/code",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "caseId",
+    "id",
+    "personId",
+    "asn",
+    "bailConditions",
+    "bailDate",
+    "policeRemandStatus",
+    "policePersonId",
+    "charges"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId": "6ac98e9c-66b2-4363-8a78-641dbec8bbd2",
+  "id": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "personId": "ba9a2765-e630-4d9a-923c-6b9fd29dbfc4",
+  "asn": "asn",
+  "bailConditions": "Lorem ipsum dolor sit amet",
+  "bailDate": "2015-02-15",
+  "policeRemandStatus": "Remanded on conditional bail",
+  "policePersonId": "policePersonId",
+  "charges": [
+    {
+      "id": "7e2f843e-d639-40b3-8611-8015f3a18959",
+      "uniqueId": "Unique Id from TWIFT system",
+      "code": "CJ12345",
+      "description": "Possession or acquisition of certain prohibited weapons etc",
+      "status": "Authorised",
+      "categoryType": "either way",
+      "fromDate": "2015-02-15",
+      "toDate": "2015-02-15",
+      "particularClassification": "Duis aute irure dolor in reprehenderit in voluptate ",
+      "particularLocation": {
+        "address1": "14 Tottenham Court Road",
+        "address2": "London",
+        "address3": "England",
+        "address4": "UK",
+        "postCode": "W1T 1JY"
+      }
+    }
+  ]
+}</code></pre><p><strong>Type: application/vnd.structure.events.witness-added+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "type": "object",
+  "properties": {
+    "witnessId": {
+      "type": "string",
+      "required": true
+    },
+    "caseId": {
+      "type": "string",
+      "required": true
+    },
+    "personId": {
+      "type": "string",
+      "required": true
+    },
+    "policePersonId": {
+      "type": "string",
+      "required": true
+    },
+    "classifications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "classificationCode": {
+            "type": "string",
+            "required": true
+          },
+          "classificationValue": {
+            "type": "string",
+            "required": true
+          }
+        }
+      }
+    },
+    "statements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "caseId": {
+            "type": "string",
+            "required": true
+          },
+          "witnessId": {
+            "type": "string",
+            "required": true
+          },
+          "id": {
+            "type": "string",
+            "required": true
+          },
+          "statementNumber": {
+            "type": "string",
+            "required": true
+          },
+          "version": {
+            "type": "integer",
+            "required": true
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "witnessId": "6ac98e9c-66b2-4363-8a78-641dbec8bbd2",
+  "caseId": "6232cac5-2aad-45b2-a818-3f5d3a3d515a",
+  "personId": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "policePersonId": "policePersonId",
+  "classifications": [
+    {
+      "classificationCode": "SelfDefinedGender",
+      "classificationValue": "Male"
+    }
+  ],
+  "statements": [
+    {
+      "caseId": "6232cac5-2aad-45b2-a818-3f5d3a3d515a",
+      "personId": "7e2f843e-d639-40b3-8611-8015f3a18958",
+      "id": "f93bff00-e9d4-4000-91c7-1891feb60fef",
+      "statementNumber": "ABC123",
+      "version": 1
+    }
+  ]
+}
+</code></pre><p><strong>Type: application/vnd.structure.events.idpc-approved-for-suspect+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "type": "string"
+    },
+    "suspectId": {
+      "type": "string"
+    },
+    "idpcApproved": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "caseId",
+    "suspectId",
+    "idpcApproved"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId": "6ac98e9c-66b2-4363-8a78-641dbec8bbd2",
+  "suspectId": "7ac98e9c-66b2-4363-8a78-641dbec8bb33",
+  "idpcApproved": true
+}</code></pre><p><strong>Type: application/vnd.structure.events.authorised-charge+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "type": "string"
+    },
+    "suspectId": {
+      "type": "string"
+    },
+    "proposedChargeId": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "caseId",
+    "suspectId",
+    "proposedChargeId"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId": "f06f6539-2a7c-4bc8-bca3-f1b17ebcfa47",
+  "suspectId": "d06f6539-2a7c-4bc8-bca3-f1b17ebcfa40",
+  "proposedChargeId": "a06f6539-2a7c-4bc8-bca3-f1b17ebcfa4a"
+}</code></pre><p><strong>Type: application/vnd.structure.events.suspect-updated+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "id": "/caseId",
+      "type": "string"
+    },
+    "id": {
+      "id": "/id",
+      "type": "string"
+    },
+    "personId": {
+      "id": "/personId",
+      "type": "string"
+    },
+    "asn": {
+      "id": "/asn",
+      "type": "string"
+    },
+    "bailConditions": {
+      "id": "/bailConditions",
+      "type": "string"
+    },
+    "bailDate": {
+      "id": "/bailDate",
+      "type": "string"
+    },
+    "policeRemandStatus": {
+      "id": "/policeRemandStatus",
+      "type": "string"
+    },
+    "policePersonId": {
+      "id": "policePersonId",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "caseId",
+    "id",
+    "personId"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId": "6ac98e9c-66b2-4363-8a78-641dbec8bbd2",
+  "id": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "personId": "ba9a2765-e630-4d9a-923c-6b9fd29dbfc4",
+  "asn": "asn",
+  "bailConditions": "Lorem ipsum dolor sit amet",
+  "bailDate": "2015-02-15",
+  "policeRemandStatus": "Remanded on conditional bail",
+  "policePersonId": "policePersonId"
+}</code></pre><p><strong>Type: application/vnd.structure.events.update-bail-status-for-suspect+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "id": "/caseId",
+      "type": "string"
+    },
+    "suspectId": {
+      "id": "/suspectId",
+      "type": "string"
+    },
+    "bailStatus": {
+      "id": "/bailStatus",
+      "type": "string"
+    }
+  },
+  "required": [
+    "caseId",
+    "suspectId",
+    "bailStatus"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId": "6ac98e9c-66b2-4363-8a78-641dbec8bbd2",
+  "suspectId": "7ac98e9c-66b2-4363-8a78-641dbec8bb33",
+  "bailStatus": "in custody"
+}</code></pre><p><strong>Type: application/vnd.structure.events.bail-status-updated-for-defendant+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "type": "string"
+    },
+    "defendantId": {
+      "type": "string"
+    },
+    "bailStatus": {
+      "enum": ["conditional","unconditional","inCustody"]
+    },
+    "documentId": {
+      "type": "string"
+    },
+    "custodyTimeLimitDate": {
+      "type": ["string"]
+    }
+  },
+  "required": [
+    "caseId",
+    "defendantId",
+    "bailStatus"
+  ]
+}
+
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "caseId": "6ac98e9c-66b2-4363-8a78-641dbec8bbd2",
+    "defendantId": "7ac98e9c-66b2-4363-8a78-641dbec8bb33",
+    "bailStatus": "conditional",
+    "documentId": "uploaded-document-uuid",
+    "custodyTimeLimitDate": "2016-11-11"
+}</code></pre><p><strong>Type: application/vnd.structure.events.case-created+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "urn": {
+      "id": "/urn",
+      "type": "string"
+    },
+    "id": {
+      "id": "/id",
+      "type": "string"
+    },
+    "policeOfficerInCase": {
+      "id": "/policeOfficerInCase",
+      "type": "object",
+      "properties": {
+        "personId": {
+          "id": "/policeOfficerInCase/personId",
+          "type": "string"
+        },
+        "rank": {
+          "id": "/policeOfficerInCase/rank",
+          "type": "string"
+        },
+        "narrative": {
+          "id": "/policeOfficerInCase/narrative",
+          "type": ["string", "null"]
+        },
+        "badgeNumber": {
+          "id": "/policeOfficerInCase/badgeNumber",
+          "type": "integer"
+        }
+      }
+    },
+    "policeSupervisor": {
+      "id": "/policeSupervisor",
+      "type": "object",
+      "properties": {
+        "personId": {
+          "id": "/policeSupervisor/personId",
+          "type": "string"
+        },
+        "rank": {
+          "id": "/policeSupervisor/rank",
+          "type": "string"
+        },
+        "narrative": {
+          "id": "/policeSupervisor/narrative",
+          "type": ["string", "null"]
+        },
+        "badgeNumber": {
+          "id": "/policeSupervisor/badgeNumber",
+          "type": "integer"
+        }
+      }
+    }
+  },
+    "caseMarkers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "caseMarker": {
+            "type": "string",
+            "id": "http://jsonschema.net/caseMarkers/3/caseMarker"
+          }
+        },
+        "id": "http://jsonschema.net/caseMarkers/3",
+        "required": [
+          "caseMarker"
+        ]
+      },
+      "id": "http://jsonschema.net/caseMarkers"
+    },
+  "required": [
+    "urn",
+    "id",
+    "policeOfficerInCase",
+    "policeSupervisor",
+    "caseMarkers"
+  ]
+}
+
+
+
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "urn": "22C22222222",
+  "aggregateId": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "policeOfficerInCase": {
+            "personId": "aa746921-d839-4867-bcf9-b41db8ebc852",
+            "rank": "constable",
+            "narrative":"",
+            "badgeNumber": 223
+  },
+  "policeSupervisor": {
+            "personId": "ab746921-d839-4867-bcf9-b41db8ebc852",
+            "rank": "sergeant",
+            "narrative":"",
+            "badgeNumber": 223
+  },
+  "caseMarkers" : [
+    {
+      "caseMarker" : "ASBOAppliedFor"
+    },
+    {
+      "caseMarker" : "ASBOGranted"
+    },
+    {
+      "caseMarker" : "AnimalRightsExtremism"
+    },
+    {
+      "caseMarker" : "AssetRecovery"
+    }
+  ]
+}
+</code></pre><p><strong>Type: application/vnd.structure.events.sjp-case-created+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "urn": {
+      "id": "/urn",
+      "type": "string"
+    },
+    "id": {
+      "id": "/id",
+      "type": "string"
+    },
+    "ptiUrn": {
+      "id": "/ptiUrn",
+      "type": "string"
+    },
+    "initiationCode": {
+      "id": "/initiationCode",
+      "type": "string"
+    },
+    "summonsCode": {
+      "id": "/summonsCode",
+      "type": "string"
+    },
+    "prosecutor": {
+      "id": "/prosecutor",
+      "type": "string"
+    },
+    "libraOriginatingOrg": {
+      "id": "/libraOriginatingOrg",
+      "type": "string"
+    },
+    "libraHearingLocation": {
+      "id": "/libraHearingLocation",
+      "type": "string"
+    },
+    "dateOfHearing": {
+      "id": "/dateOfHearing",
+      "type": "string"
+    },
+    "timeOfHearing": {
+      "id": "/timeOfHearing",
+      "type": "string"
+    },
+    "personId": {
+      "id": "/personId",
+      "type": "string"
+    },
+    "offences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "prosecutorCaseId": {
+            "type": "string"
+          },
+          "offenceSequenceNo": {
+            "type": "integer"
+          },
+          "libraOffenceCode": {
+            "type": "string"
+          },
+          "chargeDate": {
+            "type": "string"
+          },
+          "libraOffenceDateCode": {
+            "type": "integer"
+          },
+          "offenceDate": {
+            "type": "string"
+          },
+          "offenceWording": {
+            "type": "string"
+          }
+        },
+        "required" : [
+          "prosecutorCaseId",
+          "offenceSequenceNo",
+          "libraOffenceCode",
+          "chargeDate",
+          "libraOffenceDateCode",
+          "offenceDate",
+          "offenceWording"
+        ]
+      }
+    }
+  },
+  "required": [
+    "urn",
+    "id",
+    "ptiUrn",
+    "initiationCode",
+    "summonsCode",
+    "prosecutor",
+    "libraOriginatingOrg",
+    "dateOfHearing",
+    "timeOfHearing",
+    "personId"
+  ]
+}
+
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "urn": "22C22222222",
+  "ptiUrn" : "22C22222222",
+  "initiationCode" : "J",
+  "summonsCode" : "M",
+  "prosecutor" : "Transport for London",
+  "libraOriginatingOrg" : "GAFTL00",
+  "libraHearingLocation" : "B01CE03",
+  "dateOfHearing" : "2016-01-01",
+  "timeOfHearing" : "11:00",
+  "personId" : "7e2f843e-d639-40b3-8611-8015f3a18999",
+  "offences" : [{
+    "prosecutorCaseId" : "TFL21345",
+    "offenceSequenceNo" : 1,
+    "libraOffenceCode" : "PS00001",
+    "chargeDate" : "2016-01-01",
+    "libraOffenceDateCode" : 1,
+    "offenceDate" : "2016-01-01",
+    "offenceWording" : "Committed some offence"
+  }]
+}
+</code></pre><p><strong>Type: application/vnd.structure.events.idpc-permissions-set-for-suspect+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "id": "/caseId",
+      "type": "string"
+    },
+    "suspectId": {
+      "id": "/suspectId",
+      "type": "string"
+    },
+    "analysisOutcome": {
+      "id": "/analysisOutcome",
+      "type": "string"
+    },
+    "idpcPermissions": {
+      "id": "/idpcPermissions",
+      "type": "array",
+      "items": {
+        "id":"/idpcPermissions/0",
+        "type":"string"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "caseId",
+    "suspectId",
+    "analysisOutcome",
+    "idpcPermissions"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId": "6ac98e9c-66b2-4363-8a78-641dbec8bbd2",
+  "suspectId": "7ac98e9c-66b2-4363-8a78-641dbec8bb33",
+  "analysisOutcome":"FULL_CODE_TEST_MET",
+  "idpcPermissions": [
+    "urn",
+    "defendant_name",
+    "defendant_date_of_birth",
+    "defendant_address",
+    "defendant_phone",
+    "defendant_email",
+    "defendant_bail_status",
+    "defendant_bail_conditions",
+    "police_case_summary_KEVD",
+    "police_case_summary_DINT",
+    "police_case_summary_NEVD",
+    "police_case_summary_VEVD",
+    "police_case_summary_INJS",
+    "police_case_summary_FFDE",
+    "police_case_summary_ACOC",
+    "police_case_summary_AREC",
+    "police_case_summary_interview_summary",
+    "officer_in_case_name",
+    "officer_in_case_rank",
+    "officer_in_case_badge_number",
+    "victim_name",
+    "victim_age",
+    "victim_statement",
+    "witness_name",
+    "witness_age",
+    "witness_statement",
+    "exhibit_classification",
+    "exhibit_name",
+    "exhibit_reference_code",
+    "hearing_date_and_time",
+    "put_charge_offence_code",
+    "put_charge_offence_wording",
+    "put_charge_offence_date_of_charge",
+    "put_charge_offence_defendant_response"
+  ]
+}</code></pre><p><strong>Type: application/vnd.structure.events.indicated-plea-updated+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "caseid": {
+      "id": "/caseId",
+      "type": "string"
+    },
+    "indicatedPlea": {
+      "id": "/indicatedPlea",
+      "type": "string"
+    }
+  },
+  "required": [
+    "caseId",
+    "indicatedPlea"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId": "6ac98e9c-66b2-4363-8a78-641dbec8bbd2",
+  "offenceId": "6ac98e9c-66b2-4363-8a78-641dbec8bbd2",
+  "indicatedPlea": "No indication"
+}</code></pre><p><strong>Type: application/vnd.structure.events.plea-updated+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "id": "/caseId",
+      "type": "string"
+    },
+    "plea": {
+      "id": "/plea",
+      "type": "string",
+      "enum": ["NOT_GUILTY", "GUILTY", "GUILTY_REQUEST_HEARING"]
+    },
+    "offenceId": {
+      "id": "/offenceId",
+      "type": "string"
+    }
+  },
+  "required": [
+    "caseId",
+    "plea",
+    "offenceId"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId" : "6ac98e9c-66b2-4363-8a78-641dbec8bbc3",
+  "offenceId": "6ac98e9c-66b2-4363-8a78-641dbec8bbd2",
+  "plea": "GUILTY"
+}</code></pre><p><strong>Type: application/vnd.structure.events.case-completed+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId": "bbfbb752-9dae-48e4-a69d-f132998f737d"
+}
+</code></pre><p><strong>Type: application/vnd.structure.events.bail-status-updated-for-suspect+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "id": "/caseId",
+      "type": "string"
+    },
+    "suspectId": {
+      "id": "/suspectId",
+      "type": "string"
+    },
+    "bailStatus": {
+      "id": "/bailStatus",
+      "type": "string"
+    }
+  },
+  "required": [
+    "caseId",
+    "suspectId",
+    "bailStatus"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId": "6ac98e9c-66b2-4363-8a78-641dbec8bbd2",
+  "suspectId": "7ac98e9c-66b2-4363-8a78-641dbec8bb33",
+  "bailStatus": "in custody"
+}</code></pre><p><strong>Type: application/vnd.structure.events.witness-classification-added+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "type": "string"
+    },
+    "witnessId": {
+      "type": "string"
+    },
+    "classification": {
+      "type": "object",
+      "properties": {
+        "classificationCode": {
+          "type": "string"
+        },
+        "classificationValue": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId": "6ac98e9c-66b2-4363-8a78-641dbec8bbd2",
+  "witnessId": "7ac98e9c-66b2-4363-8a78-641dbec8bb33",
+  "classification": {
+    "classificationCode": "Special",
+    "classificationValue": "Yes"
+  }
+}
+</code></pre><p><strong>Type: application/vnd.structure.events.witness-statement-added+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "caseId": {
+      "type": "string"
+    },
+    "witnessId": {
+      "type": "string"
+    },
+    "statementNumber": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "caseId",
+    "witnessId",
+    "statementNumber"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "99c98e9c-66b2-4363-8a78-641dbec8bb22",
+  "caseId": "6ac98e9c-66b2-4363-8a78-641dbec8bbd2",
+  "witnessId": "7ac98e9c-66b2-4363-8a78-641dbec8bb31",
+  "statementNumber": "statementNumber"
+}
+</code></pre><p><strong>Type: application/vnd.structure.events.sensitive-marked+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "caseId"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId": "6bc6dbdc-7b8b-4d98-b3c4-5d21467e7c50"
+}</code></pre><p><strong>Type: application/vnd.structure.events.ownership-transferred+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "caseId"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId": "6bc6dbdc-7b8b-4d98-b3c4-5d21467e7c50"
+}</code></pre><p><strong>Type: application/vnd.structure.events.defence-solicitor-firm-for-defendant-updated+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "defenceSolicitorFirm": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "defenceSolicitorFirm"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "defenceSolicitorFirm": "xyz solicitor"
+}</code></pre><p><strong>Type: application/vnd.structure.events.financial-means-added+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "regularPayment": {
+      "type": "object",
+      "properties": {
+        "frequency": {
+          "enum": [
+            "Weekly",
+            "Monthly",
+            "Fortnightly"
+          ]
+        },
+        "amount": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "frequency",
+        "amount"
+      ]
+    },
+    "payment": {
+      "type": "object",
+      "properties": {
+        "sourceOfIncome": {
+          "type": "string"
+        },
+        "frequency": {
+          "enum": [
+            "Weekly",
+            "Monthly",
+            "Fortnightly",
+            "Other"
+          ]
+        },
+        "amount": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "frequency",
+        "amount"
+      ]
+    },
+    "financialProblems": {
+      "type": "object",
+      "oneOf": [
+        {
+          "properties": {
+            "yes": {
+              "enum": [
+                true
+              ]
+            },
+            "justification": {
+              "type": "string"
+            },
+            "expenses": {
+              "$ref": "#/definitions/expenses"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "yes",
+            "justification",
+            "expenses"
+          ]
+        },
+        {
+          "properties": {
+            "yes": {
+              "enum": [
+                false
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "yes"
+          ]
+        }
+      ]
+    },
+    "interpreter": {
+      "type": "object",
+      "oneOf": [
+        {
+          "properties": {
+            "yes": {
+              "enum": [
+                true
+              ]
+            },
+            "language": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "yes",
+            "language"
+          ]
+        },
+        {
+          "properties": {
+            "yes": {
+              "enum": [
+                false
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "yes"
+          ]
+        }
+      ]
+    },
+    "benefit": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "Contributory Employment and Support Allowance",
+            "Income-related Employment and Support Allowance",
+            "Income Support",
+            "Universal Credit",
+            "Other"
+          ]
+        },
+        "payment": {
+          "$ref": "#/definitions/regularPayment"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "payment"
+      ]
+    },
+    "expenses": {
+      "type": "object",
+      "properties": {
+        "household": {
+          "type": "object",
+          "properties": {
+            "accommodation": {
+              "type": "string"
+            },
+            "utilityBills": {
+              "type": "string"
+            },
+            "insurance": {
+              "type": "string"
+            },
+            "councilTax": {
+              "type": "string"
+            },
+            "otherContributors": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "accommodation",
+            "utilityBills",
+            "insurance",
+            "councilTax",
+            "otherContributors"
+          ]
+        },
+        "other": {
+          "type": "object",
+          "properties": {
+            "televisionSubscriptions": {
+              "type": "string"
+            },
+            "travelExpenses": {
+              "type": "string"
+            },
+            "telephone": {
+              "type": "string"
+            },
+            "loanRepayments": {
+              "type": "string"
+            },
+            "countyCourtOrders": {
+              "type": "string"
+            },
+            "fines": {
+              "type": "string"
+            },
+            "childMaintenance": {
+              "type": "string"
+            },
+            "otherSignificantExpenses": {
+              "type": "object",
+              "properties": {
+                "details": {
+                  "type": "string"
+                },
+                "amount": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "details",
+                "amount"
+              ]
+            },
+            "additionalProperties": false,
+            "required": [
+              "televisionSubscriptions",
+              "travelExpenses",
+              "telephone",
+              "loanRepayments",
+              "countyCourtOrders",
+              "fines",
+              "childMaintenance"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "household",
+          "other"
+        ]
+      },
+      "pension-credit": {
+        "type": "object",
+        "properties": {
+          "payment": {
+            "$ref": "#/definitions/regularPayment"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "payment"
+        ]
+      },
+      "financialMeans": {
+        "type": "object",
+        "oneOf": [
+          {
+            "properties": {
+              "status": {
+                "enum": [
+                  "Employed"
+                ]
+              },
+              "payment": {
+                "$ref": "#/definitions/regularPayment"
+              },
+              "financialProblems": {
+                "$ref": "#/definitions/financialProblems"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "status",
+              "payment"
+            ]
+          },
+          {
+            "properties": {
+              "status": {
+                "enum": [
+                  "Employed and also receiving benefits"
+                ]
+              },
+              "payment": {
+                "$ref": "#/definitions/regularPayment"
+              },
+              "benefits": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/benefit"
+                },
+                "minItems": 1
+              },
+              "financialProblems": {
+                "$ref": "#/definitions/financialProblems"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "status",
+              "payment",
+              "benefits"
+            ]
+          },
+          {
+            "properties": {
+              "status": {
+                "enum": [
+                  "Self employed"
+                ]
+              },
+              "payment": {
+                "$ref": "#/definitions/payment"
+              },
+              "financialProblems": {
+                "$ref": "#/definitions/financialProblems"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "status",
+              "payment"
+            ]
+          },
+          {
+            "properties": {
+              "status": {
+                "enum": [
+                  "Self employed and also receiving benefit"
+                ]
+              },
+              "payment": {
+                "$ref": "#/definitions/payment"
+              },
+              "benefits": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/benefit"
+                },
+                "minItems": 1
+              },
+              "financialProblems": {
+                "$ref": "#/definitions/financialProblems"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "status",
+              "payment",
+              "benefits"
+            ]
+          },
+          {
+            "properties": {
+              "status": {
+                "enum": [
+                  "Receiving out of work benefits"
+                ]
+              },
+              "benefits": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/benefit"
+                },
+                "minItems": 1
+              },
+              "financialProblems": {
+                "$ref": "#/definitions/financialProblems"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "status",
+              "benefits"
+            ]
+          },
+          {
+            "properties": {
+              "status": {
+                "enum": [
+                  "Other"
+                ]
+              },
+              "provideDetails": {
+                "type": "string"
+              },
+              "payment": {
+                "$ref": "#/definitions/payment"
+              },
+              "pensionCredit": {
+                "$ref": "#/definitions/pension-credit"
+              },
+              "financialProblems": {
+                "$ref": "#/definitions/financialProblems"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "status",
+              "provideDetails",
+              "payment",
+              "pensionCredit"
+            ]
+          }
+        ]
+      }
+    },
+    "type": "object",
+    "properties": {
+      "caseId": {
+        "type": "string"
+      },
+      "defendantId": {
+        "type": "string"
+      },
+      "financialMeans": {
+        "$ref": "#/definitions/financialMeans"
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "caseId",
+      "defendantId",
+      "financialMeans"
+    ]
+  }
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId": "4e32b0d9-e976-4212-ba55-7806523790d9",
+  "defendantId": "cf1486a3-ec8b-4ab5-b0a1-cc24dc78364b",
+  "financialMeans": {
+    "payment": {
+      "frequency": "Weekly",
+      "amount": "12"
+    },
+    "financialProblems": {
+      "yes": true,
+      "justification": "Gambling",
+      "expenses": {
+        "household": {
+          "accommodation": "12",
+          "utilityBills": "12",
+          "insurance": "12",
+          "councilTax": "12",
+          "otherContributors": true
+        },
+        "other": {
+          "televisionSubscriptions": "23",
+          "travelExpenses": "23",
+          "telephone": "2.2",
+          "loanRepayments": "232.2",
+          "countyCourtOrders": "23",
+          "fines": "23",
+          "childMaintenance": "23",
+          "otherSignificantExpenses": {
+            "yes": true,
+            "details": "Cleaning Garage",
+            "amount": "12"
+          }
+        }
+      }
+    },
+    "status": "Employed"
+  }
+}</code></pre><p><strong>Type: application/vnd.structure.events.personal-details-added+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "personalDetails": {
+      "type": "object",
+      "properties": {
+        "detailsCorrected": {
+          "type": "boolean"
+        },
+        "correctDetails": {
+          "type": "string"
+        },
+        "contactNumber": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "dateOfBirth": {
+          "type": "string"
+        },
+        "nationalInsuranceNumber": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "contactNumber",
+        "dateOfBirth"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "type": "string"
+    },
+    "defendantId": {
+      "type": "string"
+    },
+    "personalDetails": {
+      "$ref": "#/definitions/personalDetails"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "caseId",
+    "defendantId",
+    "personalDetails"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "defendantId": "f06f6539-2a7c-4bc8-bca3-f1b17ebcfa47",
+  "personalDetails": {
+    "contactNumber": "07919823515",
+    "dateOfBirth": "1987-03-14",
+    "nationalInsuranceNumber": "AS123456D",
+    "email": "test@ok.com",
+    "correctDetails": "asdasdf"
+  }
+}</code></pre><p><strong>Type: application/vnd.structure.events.interpreter-for-defendant-updated+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "interpreter": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "interpreter"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "interpreter": "french"
+}</code></pre><p><strong>Type: application/vnd.structure.events.victim-deleted+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "id": "/id",
+      "type": "string"
+    },
+    "caseId": {
+      "id": "/caseId",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "caseId"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "a6d65ff6-8637-4c25-99f7-d20211c986fb",
+  "caseId": "6bc6dbdc-7b8b-4d98-b3c4-5d21467e7c50"
+}</code></pre><p><strong>Type: application/vnd.structure.events.witness-deleted+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "id": "/id",
+      "type": "string"
+    },
+    "caseId": {
+      "id": "/caseId",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "caseId"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "a6d65ff6-8637-4c25-99f7-d20211c986fb",
+  "caseId": "6bc6dbdc-7b8b-4d98-b3c4-5d21467e7c50"
+}</code></pre><p><strong>Type: application/vnd.structure.events.action-item-updated+json</strong></p><p><strong>Schema</strong>:</p><pre><code>
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "deadlineDate": {
+      "type": "string"
+    },
+    "suspects": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "caseId",
+    "id",
+    "category",
+    "description",
+    "deadlineDate"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId" : "2cda77cb-40a3-44b6-afb0-31672856dd32",
+  "id" : "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "category" : "categoryCode",
+  "description" : "description",
+  "deadlineDate" : "2015-02-15",
+  "suspects" : [
+    "7e2f843e-d639-40b3-8611-8015f3a18959"
+  ]
+}</code></pre><p><strong>Type: application/vnd.structure.events.action-item-added+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "deadlineDate": {
+      "type": "string"
+    },
+    "suspects": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "caseId",
+    "id",
+    "category",
+    "description",
+    "deadlineDate"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId" : "2cda77cb-40a3-44b6-afb0-31672856dd32",
+  "id" : "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "category" : "categoryCode",
+  "description" : "description",
+  "deadlineDate" : "2015-02-15",
+  "suspects" : [
+    "7e2f843e-d639-40b3-8611-8015f3a18959"
+  ]
+
+}</code></pre><p><strong>Type: application/vnd.structure.events.action-item-deleted+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "type": "string"
+    },
+    "actionItemId": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "caseId",
+    "actionItemId"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId" : "2cda77cb-40a3-44b6-afb0-31672856dd32",
+  "actionItemId" : "7e2f843e-d639-40b3-8611-8015f3a18958"
+}</code></pre><p><strong>Type: application/vnd.structure.events.victim-classifications-updated+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": "id"
+    },
+    "caseId": {
+      "type": "string",
+      "id": "caseId"
+    },
+    "victimClassifications": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "object",
+        "properties": {
+          "classificationType": {
+            "type": "string",
+            "id": "classificationType"
+          },
+          "classificationCode": {
+            "type": "string",
+            "id": "classificationCode"
+          },
+          "classificationValue": {
+            "type": "string",
+            "id": "classificationValue"
+          }
+        },
+        "id": "0"
+      },
+      "id": "victimClassifications"
+    }
+  },
+  "id": "/",
+  "required": [
+    "id",
+    "caseId"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "caseId": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "victimClassifications" : [{
+        "classificationType": "personType",
+        "classificationCode": "witness",
+        "classificationValue": "Other"
+  }]
+}</code></pre><p><strong>Type: application/vnd.structure.events.witness-classifications-updated+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "type": "object",
+  "properties": {
+    "witnessId": {
+      "type": "string",
+      "required": true
+    },
+    "caseId": {
+      "type": "string",
+      "required": true
+    },
+    "classifications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "classificationCode": {
+            "type": "string",
+            "required": true
+          },
+          "classificationValue": {
+            "type": "string",
+            "required": true
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "witnessId": "6ac98e9c-66b2-4363-8a78-641dbec8bbd2",
+  "caseId": "6232cac5-2aad-45b2-a818-3f5d3a3d515a",
+  "classifications": [
+    {
+      "classificationCode": "SelfDefinedGender",
+      "classificationValue": "Male"
+    }
+  ]
+}
+</code></pre><p><strong>Type: application/vnd.structure.events.all-offences-withdrawal-requested+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "additionalProperties": false
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId": "bbfbb752-9dae-48e4-a69d-f132998f737d"
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#structure_event">/structure.event</a></li></ul></div></div></div></div></body></html>

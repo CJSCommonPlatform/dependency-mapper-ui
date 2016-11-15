@@ -1,0 +1,3187 @@
+<!DOCTYPE HTML><html><head><title>Staging - Command API API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/raml2html/raml2html 3.0.1"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script><script type="text/javascript">
+      $(document).ready(function() {
+        $('.page-header pre code, .top-resource-description pre code, .modal-body pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+
+        $('[data-toggle]').click(function() {
+          var selector = $(this).data('target') + ' pre code';
+          $(selector).each(function(i, block) {
+            hljs.highlightBlock(block);
+          });
+        });
+
+        // open modal on hashes like #_action_get
+        $(window).bind('hashchange', function(e) {
+          var anchor_id = document.location.hash.substr(1); //strip #
+          var element = $('#' + anchor_id);
+
+          // do we have such element + is it a modal?  --> show it
+          if (element.length && element.hasClass('modal')) {
+            element.modal('show');
+          }
+        });
+
+        // execute hashchange on first page load
+        $(window).trigger('hashchange');
+
+        // remove url fragment on modal hide
+        $('.modal').on('hidden.bs.modal', function() {
+          try {
+            if (history && history.replaceState) {
+                history.replaceState({}, '', '#');
+            }
+          } catch(e) {}
+        });
+      });
+    </script><style>
+      .hljs {
+        background: transparent;
+      }
+      .parent {
+        color: #999;
+      }
+      .list-group-item > .badge {
+        float: none;
+        margin-right: 6px;
+      }
+      .panel-title > .methods {
+        float: right;
+      }
+      .badge {
+        border-radius: 0;
+        text-transform: uppercase;
+        width: 70px;
+        font-weight: normal;
+        color: #f3f3f6;
+        line-height: normal;
+      }
+      .badge_get {
+        background-color: #63a8e2;
+      }
+      .badge_post {
+        background-color: #6cbd7d;
+      }
+      .badge_put {
+        background-color: #22bac4;
+      }
+      .badge_delete {
+        background-color: #d26460;
+      }
+      .badge_patch {
+        background-color: #ccc444;
+      }
+      .list-group, .panel-group {
+        margin-bottom: 0;
+      }
+      .panel-group .panel+.panel-white {
+        margin-top: 0;
+      }
+      .panel-group .panel-white {
+        border-bottom: 1px solid #F5F5F5;
+        border-radius: 0;
+      }
+      .panel-white:last-child {
+        border-bottom-color: white;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      .panel-white .panel-heading {
+        background: white;
+      }
+      .tab-pane ul {
+        padding-left: 2em;
+      }
+      .tab-pane h1 {
+        font-size: 1.3em;
+      }
+      .tab-pane h2 {
+        font-size: 1.2em;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #ddd;
+      }
+      .tab-pane h3 {
+        font-size: 1.1em;
+      }
+      .tab-content {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+      }
+      #sidebar {
+        margin-top: 30px;
+        padding-right: 5px;
+        overflow: auto;
+        height: 90%;
+      }
+      .top-resource-description {
+        border-bottom: 1px solid #ddd;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description {
+        border-bottom: 1px solid #fcfcfc;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description p:last-child {
+        margin: 0;
+      }
+      .list-group .badge {
+        float: left;
+      }
+      .method_description {
+        margin-left: 85px;
+      }
+      .method_description p:last-child {
+        margin: 0;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+      .list-group-item:hover {
+        background-color: #f5f5f5;
+      }
+
+      pre code {
+        overflow: auto;
+        word-wrap: normal;
+        white-space: pre;
+      }
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>Staging - Command API API documentation <small>version v0.1</small></h1><p>http://localhost:8080/staging-command-api/command/api/rest/staging</p><h3 id="Overview-of-write---update-services-within-Staging-Command-API-Tier"><a href="#Overview-of-write---update-services-within-Staging-Command-API-Tier">Overview of write / update services within Staging Command API Tier</a></h3><p>List of all write / update services</p></div><div class="panel panel-default"><div class="panel-heading"><h3 id="precharge_decision_requests" class="panel-title">/precharge-decision-requests</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_precharge_decision_requests"><span class="parent"></span>/precharge-decision-requests</a> <span class="methods"><a href="#precharge_decision_requests_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_precharge_decision_requests" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#precharge_decision_requests_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Receives a PCDR into the CPP staging context ... (mapping): requestType: application/vnd.staging.command.precharge-decision-request-received+json name: staging.command.precharge-decision-request-received ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="precharge_decision_requests_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/precharge-decision-requests</h4></div><div class="modal-body"><div class="alert alert-info"><p>Receives a PCDR into the CPP staging context ... (mapping): requestType: application/vnd.staging.command.precharge-decision-request-received+json name: staging.command.precharge-decision-request-received ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#precharge_decision_requests_post_request" data-toggle="tab">Request</a></li><li><a href="#precharge_decision_requests_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="precharge_decision_requests_post_request"><h3>Body</h3><p><strong>Type: application/vnd.staging.command.precharge-decision-request-received+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "urn": {
+      "id": "urn",
+      "type": "string"
+    },
+    "cpsUnit": {
+      "id": "cpsUnit",
+      "type": "string"
+    },
+    "caseType": {
+      "id": "caseType",
+      "type": "string"
+    },
+    "operationName": {
+      "id": "operationName",
+      "type": "string"
+    },
+    "policeSummaryItems": {
+      "id": "policeSummaryItems",
+      "type": "array",
+      "items": {
+        "id": "10",
+        "type": "object",
+        "properties": {
+          "outlineHeading": {
+            "id": "outlineHeading",
+            "type": "string"
+          },
+          "outlineText": {
+            "id": "outlineText",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "suspects": {
+      "id": "suspects",
+      "type": "array",
+      "items": {
+        "id": "1",
+        "type": "object",
+        "properties": {
+          "person": {
+            "id": "person",
+            "type": "object",
+            "properties": {
+              "name": {
+                "id": "name",
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "id": "title",
+                    "type": ["string", "null"]
+                  },
+                  "foreNames": {
+                    "id": "foreNames",
+                    "type": "string"
+                  },
+                  "surname": {
+                    "id": "surname",
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "policePersonId": {
+                "id": "policePersonId",
+                "type": "string"
+              },
+              "dateOfBirth": {
+                "id": "dateOfBirth",
+                "type": ["string", "null"]
+              },
+              "nationality": {
+                "id": "nationality",
+                "type": ["string", "null"]
+              },
+              "occupation": {
+                "id": "occupation",
+                "type": ["string", "null"]
+              },
+              "contactDetails": {
+                "id": "contactDetails",
+                "type": ["object", "null"],
+                "properties": {
+                  "homeTelephone": {
+                    "id": "homeTelephone",
+                    "type": "string"
+                  },
+                  "mobile": {
+                    "id": "mobile",
+                    "type": "string"
+                  },
+                  "fax": {
+                    "id": "fax",
+                    "type": "string"
+                  },
+                  "email": {
+                    "id": "email",
+                    "type": "string"
+                  },
+                  "address": {
+                    "id": "address",
+                    "type": "object",
+                    "properties": {
+                      "address": {
+                        "id": "address",
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          },
+          "organisationId": {
+            "id": "organisationId",
+            "type": "string"
+          },
+          "asn": {
+            "id": "asn",
+            "type": "string"
+          },
+          "bailConditions": {
+            "id": "bailConditions",
+            "type": ["string", "null"]
+          },
+          "policeRemandStatus": {
+            "id": "policeRemandStatus",
+            "type": ["string", "null"]
+          },
+          "bailDate": {
+            "id": "bailDate",
+            "type": ["string", "null"]
+          },
+          "charges": {
+            "id": "charges",
+            "type": "array",
+            "items": {
+              "id": "1",
+              "type": "object",
+              "properties": {
+                "cjsCode": {
+                  "id": "cjsCode",
+                  "type": "string"
+                },
+                "description": {
+                  "id": "description",
+                  "type": "string"
+                },
+                "uniqueId": {
+                  "id": "uniqueId",
+                  "type": "string"
+                },
+                "category": {
+                  "id": "category",
+                  "type": "string"
+                },
+                "fromDate": {
+                  "id": "fromDate",
+                  "type": "string"
+                },
+                "toDate": {
+                  "id": "toDate",
+                  "type": ["string", "null"]
+                },
+                "particulars": {
+                  "type": "object",
+                  "properties": {
+                    "address": {
+                      "type": "string"
+                    },
+                    "postCode": {
+                      "type": "string"
+                    },
+                    "country": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "completingOfficer": {
+      "id": "completingOfficer",
+      "type": "object",
+      "properties": {
+        "name": {
+          "id": "name",
+          "type": "object",
+          "properties": {
+            "title": {
+              "id": "title",
+              "type": "string"
+            },
+            "foreNames": {
+              "id": "foreNames",
+              "type": "string"
+            },
+            "surname": {
+              "id": "surname",
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "rank": {
+          "id": "rank",
+          "type": "string"
+        },
+        "station": {
+          "id": "station",
+          "type": "string"
+        },
+        "shoulderNumber": {
+          "id": "shoulderNumber",
+          "type": "string"
+        },
+        "contactDetails": {
+          "id": "contactDetails",
+          "type": "object",
+          "properties": {
+            "homeTelephone": {
+              "id": "homeTelephone",
+              "type": "string"
+            },
+            "workTelephone": {
+              "id": "workTelephone",
+              "type": "string"
+            },
+            "mobile": {
+              "id": "mobile",
+              "type": "string"
+            },
+            "fax": {
+              "id": "fax",
+              "type": "string"
+            },
+            "email": {
+              "id": "email",
+              "type": "string"
+            },
+            "address": {
+              "id": "address",
+              "type": "object",
+              "properties": {
+                "address": {
+                  "id": "address",
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "supervisingOfficer": {
+      "id": "supervisingOfficer",
+      "type": "object",
+      "properties": {
+        "name": {
+          "id": "name",
+          "type": "object",
+          "properties": {
+            "title": {
+              "id": "title",
+              "type": ["string", "null"]
+            },
+            "foreNames": {
+              "id": "foreNames",
+              "type": "string"
+            },
+            "surname": {
+              "id": "surname",
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "rank": {
+          "id": "rank",
+          "type": "string"
+        },
+        "station": {
+          "id": "station",
+          "type": "string"
+        },
+        "shoulderNumber": {
+          "id": "shoulderNumber",
+          "type": "string"
+        },
+        "comments": {
+          "id": "comments",
+          "type": "string"
+        },
+        "contactDetails": {
+          "id": "contactDetails",
+          "type": ["object", "null"],
+          "properties": {
+            "homeTelephone": {
+              "id": "homeTelephone",
+              "type": "string"
+            },
+            "workTelephone": {
+              "id": "workTelephone",
+              "type": "string"
+            },
+            "mobile": {
+              "id": "mobile",
+              "type": "string"
+            },
+            "fax": {
+              "id": "fax",
+              "type": "string"
+            },
+            "email": {
+              "id": "email",
+              "type": "string"
+            },
+            "address": {
+              "id": "address",
+              "type": "object",
+              "properties": {
+                "address": {
+                  "id": "address",
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "commandSource": {
+      "id": "/commandSource",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "id": "/commandSource/source",
+          "type": "string",
+          "enum": [
+            "CMS"
+          ]
+        },
+        "transactionId": {
+          "id": "/commandSource/transactionId",
+          "type": "string"
+        },
+        "transactionTimestamp": {
+          "id": "/commandSource/transactionTimestamp",
+          "type": "string"
+        },
+        "requestId": {
+          "id": "/commandSource/requestId",
+          "type": "string"
+        },
+        "messageType": {
+          "id": "/commandSource/messageType",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "transactionId",
+        "transactionTimestamp",
+        "requestId"
+      ]
+    },
+    "caseMarkers": {
+      "id": "caseMarkers",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "caseMarker": {
+            "type": "string",
+            "id": "/caseMarkers/caseMarker"
+          }
+        },
+        "required": [
+          "caseMarker"
+        ]
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "urn",
+    "cpsUnit",
+    "caseType",
+    "policeSummaryItems",
+    "suspects",
+    "completingOfficer",
+    "supervisingOfficer"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "urn": "1234Urn",
+  "cpsUnit": "cpsUnit",
+  "caseType": "murder",
+  "operationName": "murdertree",
+  "policeSummaryItems": [
+    {
+      "outlineHeading": "KEVD",
+      "outlineText": "KEVD text"
+    },
+    {
+      "outlineHeading": "DINT",
+      "outlineText": "DINT text"
+    },
+    {
+      "outlineHeading": "NEVD",
+      "outlineText": "NEVD text"
+    },
+    {
+      "outlineHeading": "INJS",
+      "outlineText": "INJS text"
+    },
+    {
+      "outlineHeading": "FFDE",
+      "outlineText": "FFDE text"
+    },
+    {
+      "outlineHeading": "ISS",
+      "outlineText": "ISS text"
+    },
+    {
+      "outlineHeading": "OUTW",
+      "outlineText": "OUTW text"
+    },
+    {
+      "outlineHeading": "SIAV",
+      "outlineText": "SIAV text"
+    },
+    {
+      "outlineHeading": "DIP",
+      "outlineText": "DIP text"
+    },
+    {
+      "outlineHeading": "ACOC",
+      "outlineText": "ACOC text"
+    },
+    {
+      "outlineHeading": "AREC",
+      "outlineText": "AREC text"
+    }
+  ],
+  "suspects": [
+    {
+      "person": {
+        "name": {
+          "title": "Mr",
+          "foreNames": "Bob",
+          "surname": "DoubleDina"
+        },
+        "policePersonId": "f1dd72d0-cb30-11e5-9956-625662870761",
+        "dateOfBirth": "2015-10-10",
+        "nationality": "British",
+        "occupation": "systems analyst",
+        "contactDetails": {
+          "homeTelephone": "home",
+          "mobile": "mobile",
+          "fax": "fax",
+          "email": "email",
+          "address": {
+            "address": "11 Montague street"
+          }
+        }
+      },
+      "organisationId": "organisationId",
+      "asn": "asn",
+      "bailConditions": "bailConditions",
+      "policeRemandStatus": "policeRemandStatus",
+      "bailDate": "2015-10-10",
+      "charges": [
+        {
+          "cjsCode": "cjsCode",
+          "description": "description",
+          "category": "category",
+          "fromDate": "2015-10-10",
+          "toDate": "2015-10-10",
+          "particulars": {
+            "address": "11 Montague street"
+          },
+          "uniqueId": "123456789123456791"
+        },
+        {
+          "cjsCode": "cjsCode",
+          "description": "description",
+          "category": "category",
+          "fromDate": "2015-10-10",
+          "toDate": "2015-10-10",
+          "particulars": {
+            "address": "11 Montague street"
+          },
+          "uniqueId": "12345678912345679145"
+        }
+      ]
+    },
+    {
+      "person": {
+        "name": {
+          "title": "Mr",
+          "foreNames": "Bob",
+          "surname": "DoubleDina"
+        },
+        "policePersonId": "ff511430-cb30-11e5-9956-625662870761",
+        "dateOfBirth": "2015-10-10",
+        "nationality": "British",
+        "occupation": "systems analyst",
+        "contactDetails": {
+          "homeTelephone": "home",
+          "mobile": "mobile",
+          "fax": "fax",
+          "email": "email",
+          "address": {
+            "address": "11 Montague street"
+          }
+        }
+      },
+      "organisationId": "organisationId",
+      "asn": "asn",
+      "bailConditions": "bailConditions",
+      "policeRemandStatus": "policeRemandStatus",
+      "bailDate": "2015-10-10",
+      "charges": [
+        {
+          "cjsCode": "cjsCode",
+          "description": "description",
+          "category": "category",
+          "fromDate": "2015-10-10",
+          "toDate": "2015-10-10",
+          "particulars": {
+            "address": "11 Montague street"
+          },
+          "uniqueId": "123456789123456791"
+        },
+        {
+          "cjsCode": "cjsCode",
+          "description": "description",
+          "category": "category",
+          "fromDate": "2015-10-10",
+          "toDate": "2015-10-10",
+          "particulars": {
+            "address": "11 Montague street"
+          },
+          "uniqueId": "1234567891234567912"
+        }
+      ]
+    }
+  ],
+  "completingOfficer": {
+    "name": {
+      "title": "Mr",
+      "foreNames": "Bob",
+      "surname": "Dobalina"
+    },
+    "rank": "rank",
+    "station": "station",
+    "shoulderNumber": "1798",
+    "contactDetails": {
+      "homeTelephone": "home",
+      "workTelephone": "work",
+      "mobile": "mobile",
+      "fax": "fax",
+      "email": "email",
+      "address": {
+        "address": "11 Montague street"
+      }
+    }
+  },
+  "supervisingOfficer": {
+    "name": {
+      "title": "Mr",
+      "foreNames": "Bob",
+      "surname": "Dobalina"
+    },
+    "rank": "rank",
+    "station": "station",
+    "shoulderNumber": "1654",
+    "comments": "narrative",
+    "contactDetails": {
+      "homeTelephone": "home",
+      "workTelephone": "work",
+      "mobile": "mobile",
+      "fax": "fax",
+      "email": "email",
+      "address": {
+        "address": "11 Montague street"
+      }
+    }
+  },
+  "commandSource": {
+    "source": "CMS",
+    "transactionId": "randomTransactionId",
+    "transactionTimestamp": "2016-07-11T12:55:28.018",
+    "requestId": "CM01"
+  },
+  "caseMarkers" : [
+    {
+      "caseMarker" : "ASBOAppliedFor"
+    },
+    {
+      "caseMarker" : "ASBOGranted"
+    },
+    {
+      "caseMarker" : "AnimalRightsExtremism"
+    },
+    {
+      "caseMarker" : "AssetRecovery"
+    }
+  ]
+}
+</code></pre></div><div class="tab-pane" id="precharge_decision_requests_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>OK</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="witnesses" class="panel-title">/witnesses</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_witnesses"><span class="parent"></span>/witnesses</a> <span class="methods"><a href="#witnesses_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_witnesses" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#witnesses_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Receives a Witness into the CPP staging context ... (mapping): requestType: application/vnd.staging.command.new-witness-request-received+json name: staging.command.new-witness-request-received ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="witnesses_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/witnesses</h4></div><div class="modal-body"><div class="alert alert-info"><p>Receives a Witness into the CPP staging context ... (mapping): requestType: application/vnd.staging.command.new-witness-request-received+json name: staging.command.new-witness-request-received ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#witnesses_post_request" data-toggle="tab">Request</a></li><li><a href="#witnesses_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="witnesses_post_request"><h3>Body</h3><p><strong>Type: application/vnd.staging.command.new-witness-request-received+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "urn": {
+      "id": "/urn",
+      "type": "string"
+    },
+    "person": {
+      "id": "/person",
+      "type": "object",
+      "properties": {
+        "policePersonId": {
+          "id": "/person/policePersonId",
+          "type": "string"
+        },
+        "name": {
+          "id": "/person/name",
+          "type": "object",
+          "properties": {
+            "title": {
+              "id": "/person/name/title",
+              "type": ["string", "null"]
+            },
+            "givenName": {
+              "id": "/person/name/givenName",
+              "type": "string"
+            },
+            "requestedName": {
+              "id": "/person/name/requestedName",
+              "type": ["string", "null"]
+            },
+            "familyName": {
+              "id": "/person/name/familyName",
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "contactDetails": {
+          "id": "/person/contactDetails",
+          "type": "object",
+          "properties": {
+            "address": {
+              "id": "/person/contactDetails/address",
+              "type": "object",
+              "properties": {
+                "addressLine1": {
+                  "id": "/person/contactDetails/address/addressLine1",
+                  "type": "string"
+                },
+                "addressLine2": {
+                  "id": "/person/contactDetails/address/addressLine2",
+                  "type": "string"
+                },
+                "postcode": {
+                  "id": "/person/contactDetails/address/postcode",
+                  "type": "string"
+                },
+                "country": {
+                  "id": "/person/contactDetails/address/country",
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            },
+            "contactNumber": {
+              "id": "/person/contactDetails/contactNumber",
+              "type": "object",
+              "properties": {
+                "telNationalNumber": {
+                  "id": "/person/contactDetails/contactNumber/telNationalNumber",
+                  "type": "string"
+                },
+                "telCountryCode": {
+                  "id": "/person/contactDetails/contactNumber/telCountryCode",
+                  "type": "string"
+                },
+                "telExtensionNumber": {
+                  "id": "/person/contactDetails/contactNumber/telExtensionNumber",
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            },
+            "email": {
+              "id": "/person/contactDetails/email",
+              "type": "string"
+            },
+            "dxAddress": {
+              "id": "/person/contactDetails/dxAddress",
+              "type": "object",
+              "properties": {
+                "dxNumber": {
+                  "id": "/person/contactDetails/dxAddress/dxNumber",
+                  "type": "string"
+                },
+                "exchange": {
+                  "id": "/person/contactDetails/dxAddress/exchange",
+                  "type": "string"
+                },
+                "memberName": {
+                  "id": "/person/contactDetails/dxAddress/memberName",
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "dateOfBirth": {
+          "id": "/person/dateOfBirth",
+          "type": "string"
+        },
+        "occupation": {
+          "id": "/person/occupation",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "witnessClassifications": {
+      "id": "/witnessClassifications",
+      "type": "array",
+      "items": {
+        "id": "/witnessClassifications",
+        "type": "object",
+        "properties": {
+          "classificationType": {
+            "id": "/witnessClassifications/classificationType",
+            "type": "string"
+          },
+          "classificationCode": {
+            "id": "/witnessClassifications/classificationCode",
+            "type": "string"
+          },
+          "classificationValue": {
+            "id": "/witnessClassifications/classificationValue",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "commandSource": {
+      "id": "/commandSource",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "id": "/commandSource/source",
+          "type": "string",
+          "enum": [
+            "CMS"
+          ]
+        },
+        "transactionId": {
+          "id": "/commandSource/transactionId",
+          "type": "string"
+        },
+        "transactionTimestamp": {
+          "id": "/commandSource/transactionTimestamp",
+          "type": "string"
+        },
+        "requestId": {
+          "id": "/commandSource/requestId",
+          "type": "string"
+        },
+        "messageType": {
+          "id": "/commandSource/messageType",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "transactionId",
+        "transactionTimestamp",
+        "requestId"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "urn",
+    "person",
+    "witnessClassifications"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "urn": "urnNameFromPolice",
+  "person": {
+    "policePersonId": "policePersonId",
+    "name": {
+      "title": "Dr",
+      "givenName": "Fraser",
+      "requestedName": "Scooby",
+      "familyName": "Scobie"
+    },
+    "contactDetails": {
+      "address": {
+        "addressLine1": "line1",
+        "addressLine2": "line2",
+        "postcode": "postcode",
+        "country": "UK"
+      },
+      "contactNumber": {
+        "telNationalNumber": "",
+        "telCountryCode": "",
+        "telExtensionNumber": ""
+      },
+      "email": "scobie@xfiles.com",
+      "dxAddress": {
+        "dxNumber": "dxNumber",
+        "exchange": "exchange",
+        "memberName": "memberName"
+      }
+    },
+    "dateOfBirth": "2015-10-10",
+    "occupation": "dr of physics"
+  },
+  "witnessClassifications": [
+    {
+      "classificationType": "EqualityDiversity",
+      "classificationCode": "SelfDefinedGender",
+      "classificationValue": "Indeterminate"
+    },
+    {
+      "classificationType": "EqualityDiversity",
+      "classificationCode": "SelfDefinedDisability",
+      "classificationValue": "No"
+    },
+    {
+      "classificationType": "EqualityDiversity",
+      "classificationCode": "SelfDefinedEthnicity",
+      "classificationValue": "White - British"
+    },
+    {
+      "classificationType": "StatusInformation",
+      "classificationCode": "KeyWitness",
+      "classificationValue": "No"
+    }
+  ],
+  "commandSource": {
+    "source": "CMS",
+    "transactionId": "randomTransactionId",
+    "transactionTimestamp": "2016-07-11T12:55:28.018",
+    "requestId": "CM01"
+  }
+}
+</code></pre></div><div class="tab-pane" id="witnesses_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>OK</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="delete_witness" class="panel-title">/delete-witness</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_delete_witness"><span class="parent"></span>/delete-witness</a> <span class="methods"><a href="#delete_witness_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_delete_witness" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#delete_witness_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Deletes a Witness from a CPP case ... (mapping): requestType: application/vnd.staging.command.delete-witness+json name: staging.command.delete-witness ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="delete_witness_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/delete-witness</h4></div><div class="modal-body"><div class="alert alert-info"><p>Deletes a Witness from a CPP case ... (mapping): requestType: application/vnd.staging.command.delete-witness+json name: staging.command.delete-witness ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#delete_witness_post_request" data-toggle="tab">Request</a></li><li><a href="#delete_witness_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="delete_witness_post_request"><h3>Body</h3><p><strong>Type: application/vnd.staging.command.delete-witness+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "urn": {
+      "id": "/urn",
+      "type": "string"
+    },
+    "policePersonId": {
+      "id": "/policePersonId",
+      "type": "string"
+    },
+    "commandSource": {
+      "id": "/commandSource",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "id": "/commandSource/source",
+          "type": "string",
+          "enum": [
+            "CMS"
+          ]
+        },
+        "transactionId": {
+          "id": "/commandSource/transactionId",
+          "type": "string"
+        },
+        "transactionTimestamp": {
+          "id": "/commandSource/transactionTimestamp",
+          "type": "string"
+        },
+        "requestId": {
+          "id": "/commandSource/requestId",
+          "type": "string"
+        },
+        "messageType": {
+          "id": "/commandSource/messageType",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "transactionId",
+        "transactionTimestamp",
+        "requestId"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "urn",
+    "policePersonId"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "urn": "urnNameFromPolice",
+  "policePersonId": "policePersonId",
+  "commandSource": {
+    "source": "CMS",
+    "transactionId": "randomTransactionId",
+    "transactionTimestamp": "2016-07-11T12:55:28.018",
+    "requestId": "LM04u"
+  }
+}
+</code></pre></div><div class="tab-pane" id="delete_witness_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>OK</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="update_witness_details" class="panel-title">/update-witness-details</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_update_witness_details"><span class="parent"></span>/update-witness-details</a> <span class="methods"><a href="#update_witness_details_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_update_witness_details" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#update_witness_details_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Updates the witness details in a CPP case ... (mapping): requestType: application/vnd.staging.command.update-witness-details+json name: staging.command.update-witness-details ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="update_witness_details_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/update-witness-details</h4></div><div class="modal-body"><div class="alert alert-info"><p>Updates the witness details in a CPP case ... (mapping): requestType: application/vnd.staging.command.update-witness-details+json name: staging.command.update-witness-details ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#update_witness_details_post_request" data-toggle="tab">Request</a></li><li><a href="#update_witness_details_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="update_witness_details_post_request"><h3>Body</h3><p><strong>Type: application/vnd.staging.command.update-witness-details+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "urn": {
+            "type": "string"
+        },
+        "person": {
+            "type": "object",
+            "properties": {
+                "policePersonId": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "object",
+                    "properties": {
+                        "title": {
+                            "description": "The person title",
+                            "type": "string"
+                        },
+                        "foreNames": {
+                            "description": "The person fore names",
+                            "type": "string"
+                        },
+                        "surname": {
+                            "description": "The person surname",
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "dateOfBirth": {
+                    "description": "The person date of birth",
+                    "type": "string"
+                },
+                "occupation": {
+                    "description": "The person occupation",
+                    "type": "string"
+                },
+                "disability": {
+                    "description": "The person disability status",
+                    "type": "string"
+                },
+                "ethnicity": {
+                    "description": "The person ethnicity",
+                    "type": "string"
+                },
+                "gender": {
+                    "description": "The person gender",
+                    "type": "string"
+                },
+                "contactDetails": {
+                    "type": "object",
+                    "properties": {
+                        "address": {
+                            "type": "object",
+                            "properties": {
+                                "address": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "homeTelephone": {
+                            "description": "The person home telephone number",
+                            "type": "string"
+                        },
+                        "mobile": {
+                            "description": "The person mobile number",
+                            "type": "string"
+                        },
+                        "workTelephone": {
+                            "description": "The person work telephone number",
+                            "type": "string"
+                        },
+                        "fax": {
+                            "description": "The person fax number",
+                            "type": "string"
+                        },
+                        "email": {
+                            "description": "The person e-mail address",
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "rank": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "policePersonId",
+                "name"
+            ]
+        },
+        "shoulderNumber": {
+            "type": "string"
+        },
+        "warrantCardID": {
+            "type": "string"
+        },
+        "witnessClassifications": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "classificationType": {
+                        "type": "string"
+                    },
+                    "classificationCode": {
+                        "type": "string"
+                    },
+                    "classificationValue": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "commandSource": {
+          "id": "/commandSource",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "source": {
+              "id": "/commandSource/source",
+              "type": "string",
+              "enum": [
+                "CMS"
+              ]
+            },
+            "transactionId": {
+              "id": "/commandSource/transactionId",
+              "type": "string"
+            },
+            "transactionTimestamp": {
+              "id": "/commandSource/transactionTimestamp",
+              "type": "string"
+            },
+            "requestId": {
+              "id": "/commandSource/requestId",
+              "type": "string"
+            },
+            "messageType": {
+              "id": "/commandSource/messageType",
+              "type": "string"
+            }
+          },
+          "required": [
+            "source",
+            "transactionId",
+            "transactionTimestamp",
+            "requestId"
+          ]
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "urn",
+        "person"
+    ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "urn": "45GD6214614",
+    "person": {
+        "policePersonId": "f1dd72d0-cb30-11e5-9956-625662870761",
+        "name": {
+            "title": "Mrs",
+            "foreNames": "Shirley",
+            "surname": "DoubleDina"
+        },
+        "dateOfBirth": "1990-10-10",
+        "occupation": "occupation",
+        "disability": "Yes",
+        "ethnicity": "Green - British",
+        "gender": "Female",
+        "contactDetails": {
+            "address": {
+              "address": "11 Montague street"
+            },
+            "homeTelephone": "home",
+            "mobile": "mobile",
+            "workTelephone": "work",
+            "fax": "fax",
+            "email": "email@com"
+        },
+        "rank": "rank"
+    },
+    "shoulderNumber": "shoulderNumber",
+    "warrantCardID": "warrantCardID",
+    "witnessClassifications": [
+        {
+            "classificationType": "EqualityDiversity",
+            "classificationCode": "SelfDefinedGender",
+            "classificationValue": "Male"
+        },
+        {
+            "classificationType": "EqualityDiversity",
+            "classificationCode": "SelfDefinedDisability",
+            "classificationValue": "None"
+        },
+        {
+            "classificationType": "EqualityDiversity",
+            "classificationCode": "SelfDefinedEthnicity",
+            "classificationValue": "White - British"
+        },
+        {
+            "classificationType": "TypeOfWitness",
+            "classificationCode": "KeyWitness",
+            "classificationValue": "No"
+        },
+        {
+            "classificationType": "TypeOfWitness",
+            "classificationCode": "Police",
+            "classificationValue": "No"
+        },
+        {
+            "classificationType": "TypeOfWitness",
+            "classificationCode": "Professional",
+            "classificationValue": "Yes"
+        },
+        {
+            "classificationType": "TypeOfWitness",
+            "classificationCode": "Expert",
+            "classificationValue": "No"
+        },
+        {
+            "classificationType": "TypeOfWitness",
+            "classificationCode": "Vulnerable",
+            "classificationValue": "No"
+        },
+        {
+            "classificationType": "TypeOfWitness",
+            "classificationCode": "Intimidated",
+            "classificationValue": "Yes"
+        },
+        {
+            "classificationType": "TypeOfWitness",
+            "classificationCode": "Child",
+            "classificationValue": "No"
+        },
+        {
+            "classificationType": "TypeOfWitness",
+            "classificationCode": "Special",
+            "classificationValue": "Yes"
+        },
+        {
+            "classificationType": "TypeOfWitness",
+            "classificationCode": "Prisoner",
+            "classificationValue": "No"
+        },
+        {
+            "classificationType": "TypeOfWitness",
+            "classificationCode": "Interpreter",
+            "classificationValue": "Yes"
+        }
+    ],
+    "commandSource": {
+        "source": "CMS",
+        "transactionId": "someTransactionId",
+        "transactionTimestamp": "2016-07-11T12:55:28.018",
+        "requestId": "LM04u"
+    }
+}</code></pre></div><div class="tab-pane" id="update_witness_details_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>OK</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="victims" class="panel-title">/victims</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_victims"><span class="parent"></span>/victims</a> <span class="methods"><a href="#victims_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_victims" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#victims_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Receives a victim into the CPP staging context ... (mapping): requestType: application/vnd.staging.command.new-victim-request-received+json name: staging.command.new-victim-request-received ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="victims_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/victims</h4></div><div class="modal-body"><div class="alert alert-info"><p>Receives a victim into the CPP staging context ... (mapping): requestType: application/vnd.staging.command.new-victim-request-received+json name: staging.command.new-victim-request-received ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#victims_post_request" data-toggle="tab">Request</a></li><li><a href="#victims_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="victims_post_request"><h3>Body</h3><p><strong>Type: application/vnd.staging.command.new-victim-request-received+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "urn": {
+      "id": "urn",
+      "type": "string"
+    },
+    "person": {
+      "id": "person",
+      "type": "object",
+      "properties": {
+        "policePersonId": {
+          "id": "policePersonId",
+          "type": "string"
+        },
+        "name": {
+          "id": "name",
+          "type": "object",
+          "properties": {
+            "title": {
+              "id": "title",
+              "type": ["string", "null"]
+            },
+            "givenName": {
+              "id": "givenName",
+              "type": "string"
+            },
+            "requestedName": {
+              "id": "requestedName",
+              "type": ["string", "null"]
+            },
+            "familyName": {
+              "id": "familyName",
+              "type": "string"
+            }
+          }
+        },
+        "contactDetails": {
+          "id": "contactDetails",
+          "type": "object",
+          "properties": {
+            "address": {
+              "id": "address",
+              "type": "object",
+              "properties": {
+                "addressLines": {
+                  "id": "addressLines",
+                  "type": "array",
+                  "items": [
+                    {
+                      "id": "0",
+                      "type": "string"
+                    },
+                    {
+                      "id": "1",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "postcode": {
+                  "id": "postcode",
+                  "type": "string"
+                },
+                "country": {
+                  "id": "country",
+                  "type": "string"
+                }
+              }
+            },
+            "contactNumber": {
+              "id": "contactNumber",
+              "type": "object",
+              "properties": {
+                "telNationalNumber": {
+                  "id": "telNationalNumber",
+                  "type": "string"
+                },
+                "telCountryCode": {
+                  "id": "telCountryCode",
+                  "type": "string"
+                },
+                "telExtensionNumber": {
+                  "id": "telExtensionNumber",
+                  "type": "string"
+                }
+              }
+            },
+            "email": {
+              "id": "email",
+              "type": "string"
+            },
+            "dxAddress": {
+              "id": "dxAddress",
+              "type": "object",
+              "properties": {
+                "dxNumber": {
+                  "id": "dxNumber",
+                  "type": "string"
+                },
+                "exchange": {
+                  "id": "exchange",
+                  "type": "string"
+                },
+                "memberName": {
+                  "id": "memberName",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "personClassification": {
+          "id": "personClassification",
+          "type": "array",
+          "items": {
+            "id": "0",
+            "type": "object",
+            "properties": {
+              "classificationType": {
+                "id": "classificationType",
+                "type": "string"
+              },
+              "classificationCode": {
+                "id": "classificationCode",
+                "type": "string"
+              },
+              "classificationValue": {
+                "id": "classificationValue",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "dateOfBirth": {
+          "id": "dateOfBirth",
+          "type": "string"
+        },
+        "occupation": {
+          "id": "occupation",
+          "type": "string"
+        }
+      }
+    },
+    "commandSource": {
+      "id": "/commandSource",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "id": "/commandSource/source",
+          "type": "string",
+          "enum": [
+            "CMS"
+          ]
+        },
+        "transactionId": {
+          "id": "/commandSource/transactionId",
+          "type": "string"
+        },
+        "transactionTimestamp": {
+          "id": "/commandSource/transactionTimestamp",
+          "type": "string"
+        },
+        "requestId": {
+          "id": "/commandSource/requestId",
+          "type": "string"
+        },
+        "messageType": {
+          "id": "/commandSource/messageType",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "transactionId",
+        "transactionTimestamp",
+        "requestId"
+      ]
+    }
+  },
+  "required": [
+    "urn",
+    "person"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "urn": "urnNameFromPolice",
+  "person": {
+    "policePersonId": "policePersonId",
+    "name": {
+      "title": "Dr",
+      "givenName": "Fraser",
+      "requestedName": "Scooby",
+      "familyName": "Scobie"
+    },
+    "contactDetails": {
+      "address": {
+        "addressLines": [
+          "line1",
+          "line2"
+        ],
+        "postcode": "postcode",
+        "country": "UK"
+      },
+      "contactNumber": {
+        "telNationalNumber": "",
+        "telCountryCode": "",
+        "telExtensionNumber": ""
+      },
+      "email": "scobie@xfiles.com",
+      "dxAddress": {
+        "dxNumber": "dxNumber",
+        "exchange": "exchange",
+        "memberName": "memberName"
+      }
+    },
+    "personClassification": [
+      {
+        "classificationType": "personType",
+        "classificationCode": "witness",
+        "classificationValue": "Other"
+      }
+    ],
+    "dateOfBirth": "2015-10-10",
+    "occupation": "dr of physics"
+  },
+  "commandSource": {
+    "source": "CMS",
+    "transactionId": "randomTransactionId",
+    "transactionTimestamp": "2016-07-11T12:55:28.018",
+    "requestId": "CM01"
+  }
+}
+
+</code></pre></div><div class="tab-pane" id="victims_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>OK</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="delete_victim" class="panel-title">/delete-victim</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_delete_victim"><span class="parent"></span>/delete-victim</a> <span class="methods"><a href="#delete_victim_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_delete_victim" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#delete_victim_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Deletes a victim from a CPP case ... (mapping): requestType: application/vnd.staging.command.delete-victim+json name: staging.command.delete-victim ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="delete_victim_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/delete-victim</h4></div><div class="modal-body"><div class="alert alert-info"><p>Deletes a victim from a CPP case ... (mapping): requestType: application/vnd.staging.command.delete-victim+json name: staging.command.delete-victim ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#delete_victim_post_request" data-toggle="tab">Request</a></li><li><a href="#delete_victim_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="delete_victim_post_request"><h3>Body</h3><p><strong>Type: application/vnd.staging.command.delete-victim+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "urn": {
+      "id": "/urn",
+      "type": "string"
+    },
+    "policePersonId": {
+      "id": "/policePersonId",
+      "type": "string"
+    },
+    "commandSource": {
+      "id": "/commandSource",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "id": "/commandSource/source",
+          "type": "string",
+          "enum": [
+            "CMS"
+          ]
+        },
+        "transactionId": {
+          "id": "/commandSource/transactionId",
+          "type": "string"
+        },
+        "transactionTimestamp": {
+          "id": "/commandSource/transactionTimestamp",
+          "type": "string"
+        },
+        "requestId": {
+          "id": "/commandSource/requestId",
+          "type": "string"
+        },
+        "messageType": {
+          "id": "/commandSource/messageType",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "transactionId",
+        "transactionTimestamp",
+        "requestId"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "urn",
+    "policePersonId"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "urn": "urnNameFromPolice",
+  "policePersonId": "policePersonId",
+  "commandSource": {
+    "source": "CMS",
+    "transactionId": "randomTransactionId",
+    "transactionTimestamp": "2016-07-11T12:55:28.018",
+    "requestId": "LM04u"
+  }
+}
+</code></pre></div><div class="tab-pane" id="delete_victim_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>No Content</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="update_victim_details" class="panel-title">/update-victim-details</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_update_victim_details"><span class="parent"></span>/update-victim-details</a> <span class="methods"><a href="#update_victim_details_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_update_victim_details" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#update_victim_details_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Updates the victim details in a CPP case ... (mapping): requestType: application/vnd.staging.command.update-victim-details+json name: staging.command.update-victim-details ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="update_victim_details_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/update-victim-details</h4></div><div class="modal-body"><div class="alert alert-info"><p>Updates the victim details in a CPP case ... (mapping): requestType: application/vnd.staging.command.update-victim-details+json name: staging.command.update-victim-details ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#update_victim_details_post_request" data-toggle="tab">Request</a></li><li><a href="#update_victim_details_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="update_victim_details_post_request"><h3>Body</h3><p><strong>Type: application/vnd.staging.command.update-victim-details+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "urn": {
+            "type": "string"
+        },
+        "person": {
+            "type": "object",
+            "properties": {
+                "policePersonId": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "object",
+                    "properties": {
+                        "title": {
+                            "description": "The person title",
+                            "type": "string"
+                        },
+                        "foreNames": {
+                            "description": "The person fore names",
+                            "type": "string"
+                        },
+                        "surname": {
+                            "description": "The person surname",
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "dateOfBirth": {
+                    "description": "The person date of birth",
+                    "type": "string"
+                },
+                "occupation": {
+                    "description": "The person occupation",
+                    "type": "string"
+                },
+                "disability": {
+                    "description": "The person disability status",
+                    "type": "string"
+                },
+                "ethnicity": {
+                    "description": "The person ethnicity",
+                    "type": "string"
+                },
+                "gender": {
+                    "description": "The person gender",
+                    "type": "string"
+                },
+                "contactDetails": {
+                    "type": "object",
+                    "properties": {
+                        "address": {
+                            "type": "object",
+                            "properties": {
+                                "address": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "homeTelephone": {
+                            "description": "The person home telephone number",
+                            "type": "string"
+                        },
+                        "mobile": {
+                            "description": "The person mobile number",
+                            "type": "string"
+                        },
+                        "workTelephone": {
+                            "description": "The person work telephone number",
+                            "type": "string"
+                        },
+                        "fax": {
+                            "description": "The person fax number",
+                            "type": "string"
+                        },
+                        "email": {
+                            "description": "The person e-mail address",
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "policePersonId",
+                "name"
+            ]
+        },
+        "offenceIds": {
+            "type": "array"
+        },
+        "victimClassifications": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "classificationType": {
+                        "type": "string"
+                    },
+                    "classificationCode": {
+                        "type": "string"
+                    },
+                    "classificationValue": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "commandSource": {
+          "id": "/commandSource",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "source": {
+              "id": "/commandSource/source",
+              "type": "string",
+              "enum": [
+                "CMS"
+              ]
+            },
+            "transactionId": {
+              "id": "/commandSource/transactionId",
+              "type": "string"
+            },
+            "transactionTimestamp": {
+              "id": "/commandSource/transactionTimestamp",
+              "type": "string"
+            },
+            "requestId": {
+              "id": "/commandSource/requestId",
+              "type": "string"
+            },
+            "messageType": {
+              "id": "/commandSource/messageType",
+              "type": "string"
+            }
+          },
+          "required": [
+            "source",
+            "transactionId",
+            "transactionTimestamp",
+            "requestId"
+          ]
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "urn",
+        "person"
+    ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "urn": "45GD6214614",
+    "person": {
+        "policePersonId": "f1dd72d0-cb30-11e5-9956-625662870761",
+        "name": {
+            "title": "Mrs",
+            "foreNames": "Shirley",
+            "surname": "DoubleDina"
+        },
+        "dateOfBirth": "1990-10-10",
+        "occupation": "occupation",
+        "disability": "Yes",
+        "ethnicity": "Green - British",
+        "gender": "Female",
+        "contactDetails": {
+            "address": {
+              "address": "11 Montague street"
+            },
+            "homeTelephone": "home",
+            "mobile": "mobile",
+            "workTelephone": "work",
+            "fax": "fax",
+            "email": "email@com"
+        }
+    },
+    "offenceIds": [
+        "bb3fe7d9-021e-42fb-bc19-e04ed76b1ab2",
+        "41d2b8fb-0a8a-4e2e-8e05-14ba18c70783"
+    ],
+    "victimClassifications": [
+        {
+            "classificationType": "EqualityDiversity",
+            "classificationCode": "SelfDefinedGender",
+            "classificationValue": "Male"
+        },
+        {
+            "classificationType": "EqualityDiversity",
+            "classificationCode": "SelfDefinedDisability",
+            "classificationValue": "None"
+        },
+        {
+            "classificationType": "EqualityDiversity",
+            "classificationCode": "SelfDefinedEthnicity",
+            "classificationValue": "White - British"
+        },
+        {
+            "classificationType": "EqualityDiversity",
+            "classificationCode": "KeyWitness",
+            "classificationValue": "No"
+        },
+        {
+            "classificationType": "EqualityDiversity",
+            "classificationCode": "Police",
+            "classificationValue": "No"
+        },
+        {
+            "classificationType": "EqualityDiversity",
+            "classificationCode": "Professional",
+            "classificationValue": "Yes"
+        },
+        {
+            "classificationType": "EqualityDiversity",
+            "classificationCode": "Expert",
+            "classificationValue": "No"
+        },
+        {
+            "classificationType": "EqualityDiversity",
+            "classificationCode": "Vulnerable",
+            "classificationValue": "No"
+        },
+        {
+            "classificationType": "EqualityDiversity",
+            "classificationCode": "Intimidated",
+            "classificationValue": "Yes"
+        },
+        {
+            "classificationType": "EqualityDiversity",
+            "classificationCode": "Child",
+            "classificationValue": "No"
+        },
+        {
+            "classificationType": "EqualityDiversity",
+            "classificationCode": "Special",
+            "classificationValue": "Yes"
+        },
+        {
+            "classificationType": "EqualityDiversity",
+            "classificationCode": "Prisoner",
+            "classificationValue": "No"
+        },
+        {
+            "classificationType": "EqualityDiversity",
+            "classificationCode": "Interpreter",
+            "classificationValue": "Yes"
+        }
+    ],
+    "commandSource": {
+        "source": "CMS",
+        "transactionId": "someTransactionId",
+        "transactionTimestamp": "2016-07-11T12:55:28.018",
+        "requestId": "LM04u"
+    }
+}</code></pre></div><div class="tab-pane" id="update_victim_details_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>OK</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="statements" class="panel-title">/statements</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_statements"><span class="parent"></span>/statements</a> <span class="methods"><a href="#statements_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_statements" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#statements_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Receives a Statement into the CPP staging context ... (mapping): requestType: application/vnd.staging.command.new-statement-request-received+json name: staging.command.new-statement-request-received ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="statements_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/statements</h4></div><div class="modal-body"><div class="alert alert-info"><p>Receives a Statement into the CPP staging context ... (mapping): requestType: application/vnd.staging.command.new-statement-request-received+json name: staging.command.new-statement-request-received ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#statements_post_request" data-toggle="tab">Request</a></li><li><a href="#statements_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="statements_post_request"><h3>Body</h3><p><strong>Type: application/vnd.staging.command.new-statement-request-received+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "urn": {
+      "id": "urn",
+      "type": "string"
+    },
+    "policePersonId": {
+      "id": "policePersonId",
+      "type": "string"
+    },
+    "statement": {
+      "id": "statement",
+      "type": "object",
+      "properties": {
+        "id": {
+          "id": "id",
+          "type": "string"
+        },
+        "number": {
+          "id": "number",
+          "type": "string"
+        },
+        "date": {
+          "id": "date",
+          "type": ["string", "null"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "document": {
+      "id": "document",
+      "type": "object",
+      "properties": {
+        "id": {
+          "id": "id",
+          "type": "string"
+        },
+        "policeFileName": {
+          "id": "policeFileName",
+          "type": ["string", "null"]
+        },
+        "originalFileName": {
+          "id": "originalFileName",
+          "type": "string"
+        },
+        "file": {
+          "id": "file",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "statementType": {
+      "id": "statementType",
+      "type": "string"
+    },
+    "commandSource": {
+      "id": "/commandSource",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "id": "/commandSource/source",
+          "type": "string",
+          "enum": [
+            "CMS"
+          ]
+        },
+        "transactionId": {
+          "id": "/commandSource/transactionId",
+          "type": "string"
+        },
+        "transactionTimestamp": {
+          "id": "/commandSource/transactionTimestamp",
+          "type": "string"
+        },
+        "requestId": {
+          "id": "/commandSource/requestId",
+          "type": "string"
+        },
+        "messageType": {
+          "id": "/commandSource/messageType",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "transactionId",
+        "transactionTimestamp",
+        "requestId"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["urn", "policePersonId", "statement", "document"]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "urn": "policeUrn",
+  "policePersonId": "policePersonId",
+  "statement": {
+    "id": "statementId",
+    "number": "statementNumber",
+    "date": "2015-10-10"
+  },
+  "document": {
+    "id": "docId",
+    "policeFileName": "fileName given by police",
+    "originalFileName": "original file name",
+    "file": "base64BinaryEncodedStringRepresentingADocument"
+  },
+  "statementType": "Witness Statement",
+  "commandSource": {
+    "source": "CMS",
+    "transactionId": "randomTransactionId",
+    "transactionTimestamp": "2016-07-11T12:55:28.018",
+    "requestId": "CM01"
+  }
+}</code></pre></div><div class="tab-pane" id="statements_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>OK</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="documents" class="panel-title">/documents</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_documents"><span class="parent"></span>/documents</a> <span class="methods"><a href="#documents_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_documents" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#documents_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Receives a new Case Document into the CPP staging context ... (mapping): requestType: application/vnd.staging.command.new-case-document-request-received+json name: staging.command.new-case-document-request-received ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="documents_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/documents</h4></div><div class="modal-body"><div class="alert alert-info"><p>Receives a new Case Document into the CPP staging context ... (mapping): requestType: application/vnd.staging.command.new-case-document-request-received+json name: staging.command.new-case-document-request-received ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#documents_post_request" data-toggle="tab">Request</a></li><li><a href="#documents_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="documents_post_request"><h3>Body</h3><p><strong>Type: application/vnd.staging.command.new-case-document-request-received+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "urn": {
+      "id": "urn",
+      "type": "string"
+    },
+    "material": {
+      "id": "material",
+      "type": "object",
+      "properties": {
+        "id": {
+          "id": "id",
+          "type": "string"
+        },
+        "policeName": {
+          "id": "policeName",
+          "type": "string"
+        },
+        "originalFileName": {
+          "id": "originalFileName",
+          "type": "string"
+        },
+        "file": {
+          "id": "file",
+          "type": "string"
+        },
+        "documentClassifications": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "classificationType": {
+                "type": "string"
+              },
+              "classificationCode": {
+                "type": "string"
+              },
+              "classificationValue": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "classificationType",
+              "classificationCode",
+              "classificationValue"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "commandSource": {
+      "id": "/commandSource",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "id": "/commandSource/source",
+          "type": "string",
+          "enum": [
+            "CMS"
+          ]
+        },
+        "transactionId": {
+          "id": "/commandSource/transactionId",
+          "type": "string"
+        },
+        "transactionTimestamp": {
+          "id": "/commandSource/transactionTimestamp",
+          "type": "string"
+        },
+        "requestId": {
+          "id": "/commandSource/requestId",
+          "type": "string"
+        },
+        "messageType": {
+          "id": "/commandSource/messageType",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "transactionId",
+        "transactionTimestamp",
+        "requestId"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["urn", "material"]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "urn": "urnNameFromPolice",
+  "material": {
+    "id": "materialId",
+    "policeName": "material name given by police",
+    "originalFileName": "original file name",
+    "file": "base64BinaryEncodedStringRepresentingADocument",
+    "documentClassifications": [
+      {
+        "classificationType": "classificationTypeExample",
+        "classificationCode": "classificationCodeExample",
+        "classificationValue": "classificationValueExample"
+      }
+    ]
+  },
+  "commandSource": {
+    "source": "CMS",
+    "transactionId": "randomTransactionId",
+    "transactionTimestamp": "2016-07-11T12:55:28.018",
+    "requestId": "CM01"
+  }
+}</code></pre></div><div class="tab-pane" id="documents_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>OK</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="update_suspect" class="panel-title">/update-suspect</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_update_suspect"><span class="parent"></span>/update-suspect</a> <span class="methods"><a href="#update_suspect_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_update_suspect" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#update_suspect_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Receives an update for an existing suspect into the CPP staging context ... (mapping): requestType: application/vnd.staging.command.update-suspect+json name: staging.command.update-suspect ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="update_suspect_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/update-suspect</h4></div><div class="modal-body"><div class="alert alert-info"><p>Receives an update for an existing suspect into the CPP staging context ... (mapping): requestType: application/vnd.staging.command.update-suspect+json name: staging.command.update-suspect ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#update_suspect_post_request" data-toggle="tab">Request</a></li><li><a href="#update_suspect_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="update_suspect_post_request"><h3>Body</h3><p><strong>Type: application/vnd.staging.command.update-suspect+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "urn": {
+      "id": "urn",
+      "type": "string"
+    },
+    "suspect": {
+      "id": "suspect",
+      "type": "object",
+      "properties": {
+        "person": {
+          "id": "person",
+          "type": "object",
+          "properties": {
+            "name": {
+              "id": "name",
+              "type": "object",
+              "properties": {
+                "title": {
+                  "id": "title",
+                  "type": "string"
+                },
+                "foreNames": {
+                  "id": "foreNames",
+                  "type": "string"
+                },
+                "surname": {
+                  "id": "surname",
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            },
+            "policePersonId": {
+              "id": "policePersonId",
+              "type": "string"
+            },
+            "dateOfBirth": {
+              "id": "dateOfBirth",
+              "type": "string"
+            },
+            "nationality": {
+              "id": "nationality",
+              "type": "string"
+            },
+            "occupation": {
+              "id": "occupation",
+              "type": "string"
+            },
+            "disability": {
+              "id": "disability",
+              "type": "string"
+            },
+            "ethnicity": {
+              "id": "ethnicity",
+              "type": "string"
+            },
+            "gender": {
+              "id": "gender",
+              "type": "string"
+            },
+            "contactDetails": {
+              "id": "contactDetails",
+              "type": "object",
+              "properties": {
+                "homeTelephone": {
+                  "id": "homeTelephone",
+                  "type": "string"
+                },
+                "mobile": {
+                  "id": "mobile",
+                  "type": "string"
+                },
+                "fax": {
+                  "id": "fax",
+                  "type": "string"
+                },
+                "email": {
+                  "id": "email",
+                  "type": "string"
+                },
+                "address": {
+                  "id": "address",
+                  "type": "object",
+                  "properties": {
+                    "address": {
+                      "id": "address",
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "asn": {
+          "id": "asn",
+          "type": "string"
+        },
+        "bailConditions": {
+          "id": "bailConditions",
+          "type": "string"
+        },
+        "policeRemandStatus": {
+          "id": "policeRemandStatus",
+          "type": "string"
+        },
+        "bailDate": {
+          "id": "bailDate",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "commandSource": {
+      "id": "/commandSource",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "id": "/commandSource/source",
+          "type": "string",
+          "enum": [
+            "CMS"
+          ]
+        },
+        "transactionId": {
+          "id": "/commandSource/transactionId",
+          "type": "string"
+        },
+        "transactionTimestamp": {
+          "id": "/commandSource/transactionTimestamp",
+          "type": "string"
+        },
+        "requestId": {
+          "id": "/commandSource/requestId",
+          "type": "string"
+        },
+        "messageType": {
+          "id": "/commandSource/messageType",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "transactionId",
+        "transactionTimestamp",
+        "requestId"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "urn",
+    "suspect"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "urn": "urnNameFromPolice",
+  "suspect": {
+    "person": {
+      "name": {
+        "title": "Mrs",
+        "foreNames": "Shirley",
+        "surname": "DoubleDina"
+      },
+      "policePersonId": "f1dd72d0-cb30-11e5-9956-625662870761",
+      "dateOfBirth": "1990-10-10",
+      "nationality": "British",
+      "occupation": "systems analyst",
+      "ethnicity": "Green - British",
+      "disability": "Yes",
+      "gender": "Female",
+      "contactDetails": {
+        "homeTelephone": "home",
+        "mobile": "mobile",
+        "fax": "fax",
+        "email": "email@com",
+        "address": {
+          "address": "11 Montague street"
+        }
+      }
+    },
+    "asn": "asn",
+    "bailConditions": "bailConditions",
+    "policeRemandStatus": "policeRemandStatus",
+    "bailDate": "2015-10-10"
+  },
+  "commandSource": {
+    "source": "CMS",
+    "transactionId": "someTransactionId",
+    "transactionTimestamp": "2016-07-11T12:55:28.018",
+    "requestId": "LM03"
+  }
+}
+</code></pre></div><div class="tab-pane" id="update_suspect_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>OK</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="exhibits" class="panel-title">/exhibits</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_exhibits"><span class="parent"></span>/exhibits</a> <span class="methods"><a href="#exhibits_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_exhibits" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#exhibits_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Receives a new Exhibit into the CPP staging context ... (mapping): requestType: application/vnd.staging.command.new-exhibit-received+json name: staging.command.new-exhibit-received ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="exhibits_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/exhibits</h4></div><div class="modal-body"><div class="alert alert-info"><p>Receives a new Exhibit into the CPP staging context ... (mapping): requestType: application/vnd.staging.command.new-exhibit-received+json name: staging.command.new-exhibit-received ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#exhibits_post_request" data-toggle="tab">Request</a></li><li><a href="#exhibits_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="exhibits_post_request"><h3>Body</h3><p><strong>Type: application/vnd.staging.command.new-exhibit-received+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "urn": {
+      "id": "urn",
+      "type": "string"
+    },
+    "policePersonId": {
+      "id": "policePersonId",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "exhibitDetails": {
+      "id": "exhibitDetails",
+      "type": "object",
+      "properties": {
+        "policeExhibitId": {
+          "id": "policeExhibitId",
+          "type": "string"
+        },
+        "exhibitName": {
+          "id": "exhibitName",
+          "type": "string"
+        },
+        "policeReference": {
+          "id": "policeReference",
+          "type": "string"
+        },
+        "exhibitTakenDate": {
+          "id": "policeReference",
+          "type": "string"
+        },
+        "personProducing": {
+          "id": "personProducing",
+          "type": "object",
+          "properties": {
+            "title": {
+              "id": "title",
+              "type": "string"
+            },
+            "givenName": {
+              "id": "givenName",
+              "type": "string"
+            },
+            "requestedName": {
+              "id": "requestedName",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "familyName": {
+              "id": "familyName",
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "exhibitClassifications": {
+          "id": "exhibitClassifications",
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "classification": {
+                  "id": "classification",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "exhibit": {
+      "id": "exhibit",
+      "type": "object",
+      "properties": {
+        "originalFileName": {
+          "id": "exhibit/originalFileName",
+          "type": "string"
+        },
+        "policeName": {
+          "id": "exhibit/policeName",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "originalFileName"
+      ],
+      "oneOf": [
+        {
+          "properties": {
+            "file": {
+              "id": "exhibit/file",
+              "type": "string"
+            }
+          },
+          "required": [
+            "file"
+          ]
+        },
+        {
+          "properties": {
+            "externalLink": {
+              "id": "exhibit/externalLink",
+              "type": "string"
+            }
+          },
+          "required": [
+            "externalLink"
+          ]
+        }
+      ]
+    },
+    "commandSource": {
+      "id": "/commandSource",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "id": "/commandSource/source",
+          "type": "string",
+          "enum": [
+            "CMS"
+          ]
+        },
+        "transactionId": {
+          "id": "/commandSource/transactionId",
+          "type": "string"
+        },
+        "transactionTimestamp": {
+          "id": "/commandSource/transactionTimestamp",
+          "type": "string"
+        },
+        "requestId": {
+          "id": "/commandSource/requestId",
+          "type": "string"
+        },
+        "messageType": {
+          "id": "/commandSource/messageType",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "transactionId",
+        "transactionTimestamp",
+        "requestId"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "urn",
+    "policePersonId",
+    "exhibitDetails"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "urn": "urnNameFromPolice",
+  "policePersonId": "policePersonId",
+  "exhibitDetails": {
+    "policeExhibitId": "exhibitId",
+    "exhibitName": "exhibitname",
+    "policeReference": "XXXNNN",
+    "exhibitTakenDate": "2010-10-10",
+    "personProducing": {
+      "title": "Dr",
+      "givenName": "Fraser",
+      "requestedName": "Scooby",
+      "familyName": "Scobie"
+    },
+    "exhibitClassifications": [
+      {
+        "classification": "e.g. audio tape"
+      },
+      {
+        "classification": "e.g. sensitive video"
+      }
+    ]
+  },
+  "exhibit": {
+    "policeName": "exhibit name given by police",
+    "originalFileName": "original file name",
+    "file": "base64BinaryEncodedStringRepresentingADocument"
+  },
+  "commandSource": {
+    "source": "CMS",
+    "transactionId": "randomTransactionId",
+    "transactionTimestamp": "2016-07-11T12:55:28.018",
+    "requestId": "CM01"
+  }
+}
+</code></pre></div><div class="tab-pane" id="exhibits_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>OK</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="chargeinformation" class="panel-title">/chargeinformation</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_chargeinformation"><span class="parent"></span>/chargeinformation</a> <span class="methods"><a href="#chargeinformation_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_chargeinformation" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#chargeinformation_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Update a case&#39;s charge information ... (mapping): requestType: application/vnd.staging.command.charge-information-received+json name: staging.command.charge-information-received ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="chargeinformation_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/chargeinformation</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update a case&#39;s charge information ... (mapping): requestType: application/vnd.staging.command.charge-information-received+json name: staging.command.charge-information-received ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#chargeinformation_post_request" data-toggle="tab">Request</a></li><li><a href="#chargeinformation_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="chargeinformation_post_request"><h3>Body</h3><p><strong>Type: application/vnd.staging.command.charge-information-received+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "itemId": {
+      "id": "/itemId",
+      "type": "string"
+    },
+    "urn": {
+      "id": "/urn",
+      "type": "string"
+    },
+    "defendantList": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "defendantId": {
+            "type": "string"
+          },
+          "offencelist": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "uniqueId": {
+                  "type": "string"
+                },
+                "cpr": {
+                  "type": "object",
+                  "properties": {
+                    "defendantOffender": {
+                      "type": "object",
+                      "properties": {
+                        "year": {
+                          "type": "string"
+                        },
+                        "organisationUnit": {
+                          "type": "string"
+                        },
+                        "number": {
+                          "type": "string"
+                        },
+                        "checkDigit": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "year",
+                        "organisationUnit",
+                        "number",
+                        "checkDigit"
+                      ]
+                    },
+                    "offenceSequence": {
+                      "type": "string"
+                    },
+                    "cjsCode": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "defendantOffender",
+                    "offenceSequence",
+                    "cjsCode"
+                  ]
+                },
+                "description": {
+                  "type": "string"
+                },
+                "offenceWording": {
+                  "type": "string"
+                },
+                "category": {
+                  "type": "string"
+                },
+                "arrestDate": {
+                  "type": "string"
+                },
+                "startDate": {
+                  "type": "string"
+                },
+                "chargeDate": {
+                  "type": "string"
+                },
+                "cjsCode": {
+                  "type": "string"
+                },
+                "asnSequenceNumber": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "uniqueId",
+                "cpr",
+                "description",
+                "offenceWording",
+                "category",
+                "arrestDate",
+                "startDate",
+                "chargeDate",
+                "cjsCode",
+                "asnSequenceNumber"
+              ]
+            }
+          },
+          "nextHearing": {
+            "type": "object",
+            "properties": {
+              "courtID": {
+                "type": "string"
+              },
+              "courtRoom": {
+                "type": "string"
+              },
+              "typeOfCourt": {
+                "type": "string"
+              },
+              "dateAndTime": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "courtID",
+              "courtRoom",
+              "typeOfCourt",
+              "dateAndTime"
+            ]
+          }
+        },
+        "required": [
+          "defendantId",
+          "offencelist",
+          "nextHearing"
+        ]
+      }
+    },
+    "commandSource": {
+      "id": "/commandSource",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "id": "/commandSource/source",
+          "type": "string",
+          "enum": [
+            "CMS"
+          ]
+        },
+        "transactionId": {
+          "id": "/commandSource/transactionId",
+          "type": "string"
+        },
+        "transactionTimestamp": {
+          "id": "/commandSource/transactionTimestamp",
+          "type": "string"
+        },
+        "requestId": {
+          "id": "/commandSource/requestId",
+          "type": "string"
+        },
+        "messageType": {
+          "id": "/commandSource/messageType",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "transactionId",
+        "transactionTimestamp",
+        "requestId"
+      ]
+    }
+  },
+  "required": [
+    "itemId",
+    "urn",
+    "defendantList"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "itemId": "BS2CM03A11",
+  "urn": "22C22222222",
+  "defendantList": [
+    {
+      "defendantId": "policePersonId",
+      "offencelist": [
+        {
+          "uniqueId": "A00PCD7073",
+          "cpr": {
+            "defendantOffender": {
+              "year": "09",
+              "organisationUnit": "null45GD00",
+              "number": "10000000001",
+              "checkDigit": "A"
+            },
+            "offenceSequence": "1",
+            "cjsCode": "1234"
+          },
+          "description": "Wounding/inflicting grievous bodily harm.",
+          "offenceWording": "on 01/08/2009 at  the County public house, unlawfully and maliciously wounded, John Smith",
+          "category": "EITHER_WAY",
+          "arrestDate": "2010-08-01",
+          "startDate": "2010-08-01",
+          "chargeDate": "2010-08-01",
+          "cjsCode": "1234",
+          "asnSequenceNumber": "1"
+        }
+      ],
+      "nextHearing": {
+        "courtID": "B45GC00",
+        "courtRoom": "1",
+        "typeOfCourt": "MAGISTRATES_COURT",
+        "dateAndTime": "2010-08-02"
+      }
+    }
+  ],
+  "commandSource": {
+    "source": "CMS",
+    "transactionId": "randomTransactionId",
+    "transactionTimestamp": "2016-07-11T12:55:28.018",
+    "requestId": "CM01"
+  }
+}</code></pre></div><div class="tab-pane" id="chargeinformation_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Bad Request</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="case_control" class="panel-title">/case-control</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_case_control"><span class="parent"></span>/case-control</a> <span class="methods"><a href="#case_control_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_case_control" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#case_control_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Receive a case control request from CMS to hand back the case to them. ... (mapping): requestType: application/vnd.staging.command.take-control-of-case+json name: staging.command.take-control-of-case ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="case_control_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/case-control</h4></div><div class="modal-body"><div class="alert alert-info"><p>Receive a case control request from CMS to hand back the case to them. ... (mapping): requestType: application/vnd.staging.command.take-control-of-case+json name: staging.command.take-control-of-case ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#case_control_post_request" data-toggle="tab">Request</a></li><li><a href="#case_control_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="case_control_post_request"><h3>Body</h3><p><strong>Type: application/vnd.staging.command.take-control-of-case+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "itemId": {
+      "id": "/itemId",
+      "type": "string"
+    },
+    "urn": {
+      "id": "urn",
+      "type": "string"
+    },
+    "commandSource": {
+      "id": "/commandSource",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "id": "/commandSource/source",
+          "type": "string",
+          "enum": [
+            "CMS"
+          ]
+        },
+        "transactionId": {
+          "id": "/commandSource/transactionId",
+          "type": "string"
+        },
+        "transactionTimestamp": {
+          "id": "/commandSource/transactionTimestamp",
+          "type": "string"
+        },
+        "requestId": {
+          "id": "/commandSource/requestId",
+          "type": "string"
+        },
+        "messageType": {
+          "id": "/commandSource/messageType",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "transactionId",
+        "transactionTimestamp",
+        "requestId"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["urn"]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "itemId": "1",
+  "urn": "urnNameFromPolice",
+  "commandSource": {
+    "source": "CMS",
+    "transactionId": "randomTransactionId",
+    "transactionTimestamp": "2016-07-22T12:55:28.018",
+    "requestId": "C2I01"
+  }
+}</code></pre></div><div class="tab-pane" id="case_control_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Bad Request</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseid__casedocuments" class="panel-title">/cases/{caseid}/casedocuments</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseid__casedocuments"><span class="parent"></span>/cases/{caseid}/casedocuments</a> <span class="methods"><a href="#cases__caseid__casedocuments_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases__caseid__casedocuments" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseid__casedocuments_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Upload Case Documents ... (mapping): requestType: application/vnd.staging.command.upload-case-documents+json name: staging.command.upload-case-documents ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseid__casedocuments_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases/{caseid}/casedocuments</h4></div><div class="modal-body"><div class="alert alert-info"><p>Upload Case Documents ... (mapping): requestType: application/vnd.staging.command.upload-case-documents+json name: staging.command.upload-case-documents ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseid__casedocuments_post_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseid__casedocuments_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseid__casedocuments_post_request"><h3>URI Parameters</h3><ul><li><strong>caseid</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Type: application/vnd.staging.command.upload-case-documents+json</strong></p></div><div class="tab-pane" id="cases__caseid__casedocuments_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Request accepted</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="tfl_cases" class="panel-title">/tfl-cases</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_tfl_cases"><span class="parent"></span>/tfl-cases</a> <span class="methods"><a href="#tfl_cases_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_tfl_cases" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#tfl_cases_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Update a case&#39;s charge information ... (mapping): requestType: application/vnd.staging.command.tfl-cases+json name: staging.command.tfl-cases ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="tfl_cases_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/tfl-cases</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update a case&#39;s charge information ... (mapping): requestType: application/vnd.staging.command.tfl-cases+json name: staging.command.tfl-cases ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#tfl_cases_post_request" data-toggle="tab">Request</a></li><li><a href="#tfl_cases_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="tfl_cases_post_request"><h3>Body</h3><p><strong>Type: application/vnd.staging.command.tfl-cases+json</strong></p></div><div class="tab-pane" id="tfl_cases_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Bad Request</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases_supporting_documents" class="panel-title">/cases-supporting-documents</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases_supporting_documents"><span class="parent"></span>/cases-supporting-documents</a> <span class="methods"><a href="#cases_supporting_documents_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_cases_supporting_documents" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases_supporting_documents_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Uploading list of supporting documents in an archive format (zip) ... (mapping): requestType: application/vnd.staging.command.cases-supporting-documents+json name: staging.command.cases-supporting-documents ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases_supporting_documents_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/cases-supporting-documents</h4></div><div class="modal-body"><div class="alert alert-info"><p>Uploading list of supporting documents in an archive format (zip) ... (mapping): requestType: application/vnd.staging.command.cases-supporting-documents+json name: staging.command.cases-supporting-documents ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases_supporting_documents_post_request" data-toggle="tab">Request</a></li><li><a href="#cases_supporting_documents_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases_supporting_documents_post_request"><h3>Body</h3><p><strong>Type: application/vnd.staging.command.cases-supporting-documents+json</strong></p></div><div class="tab-pane" id="cases_supporting_documents_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Bad Request</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="c2iresponse" class="panel-title">/c2iresponse</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_c2iresponse"><span class="parent"></span>/c2iresponse</a> <span class="methods"><a href="#c2iresponse_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_c2iresponse" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#c2iresponse_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>C2I response for a previous request ... (mapping): requestType: application/vnd.staging.command.receive-c2iresponse+json name: staging.command.receive-c2iresponse ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="c2iresponse_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/c2iresponse</h4></div><div class="modal-body"><div class="alert alert-info"><p>C2I response for a previous request ... (mapping): requestType: application/vnd.staging.command.receive-c2iresponse+json name: staging.command.receive-c2iresponse ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#c2iresponse_post_request" data-toggle="tab">Request</a></li><li><a href="#c2iresponse_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="c2iresponse_post_request"><h3>Body</h3><p><strong>Type: application/vnd.staging.command.receive-c2iresponse+json</strong></p></div><div class="tab-pane" id="c2iresponse_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Bad Request</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="record_c2irequest_sent" class="panel-title">/record-c2irequest-sent</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_record_c2irequest_sent"><span class="parent"></span>/record-c2irequest-sent</a> <span class="methods"><a href="#record_c2irequest_sent_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_record_c2irequest_sent" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#record_c2irequest_sent_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Indicates CP has sent a C2i message to CMS ... (mapping): requestType: application/vnd.staging.command.record-c2irequest-sent+json name: staging.command.record-c2irequest-sent ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="record_c2irequest_sent_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/record-c2irequest-sent</h4></div><div class="modal-body"><div class="alert alert-info"><p>Indicates CP has sent a C2i message to CMS ... (mapping): requestType: application/vnd.staging.command.record-c2irequest-sent+json name: staging.command.record-c2irequest-sent ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#record_c2irequest_sent_post_request" data-toggle="tab">Request</a></li><li><a href="#record_c2irequest_sent_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="record_c2irequest_sent_post_request"><h3>Body</h3><p><strong>Type: application/vnd.staging.command.record-c2irequest-sent+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "transactionId": {
+      "id": "transactionId",
+      "type": "string"
+    },
+    "transactionTimestamp": {
+      "id": "transactionTimestamp",
+      "type": "string"
+    },
+    "requestId": {
+      "id": "requestId",
+      "type": "string"
+    },
+    "source": {
+      "id": "source",
+      "type": "string",
+      "enum": [
+        "CPP"
+      ]
+    },
+    "messageType": {
+      "id": "messageType",
+      "type": "string"
+    },
+    "urn": {
+      "id": "urn",
+      "type": "string"
+    },
+    "cppCaseId": {
+      "id": "cppCaseId",
+      "type": "string"
+    },
+    "request": {
+      "id": "request",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "transactionId",
+    "transactionTimestamp",
+    "requestId",
+    "source",
+    "messageType",
+    "urn",
+    "cppCaseId",
+    "request"
+  ]
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "transactionId": "randomTransactionId",
+  "transactionTimestamp": "2016-07-11T12:55:28.018",
+  "requestId": "C2I01",
+  "source": "CPP",
+  "messageType": "C2I01",
+  "urn": "83IN98796543",
+  "cppCaseId": "a-a-a-a-a",
+  "request": "{request}"
+}</code></pre></div><div class="tab-pane" id="record_c2irequest_sent_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Bad Request</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="record_c2iresponse_sent" class="panel-title">/record-c2iresponse-sent</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_record_c2iresponse_sent"><span class="parent"></span>/record-c2iresponse-sent</a> <span class="methods"><a href="#record_c2iresponse_sent_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_record_c2iresponse_sent" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#record_c2iresponse_sent_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Indicates CP has sent a C2i response to CMS ... (mapping): requestType: application/vnd.staging.command.record-c2iresponse-sent+json name: staging.command.record-c2iresponse-sent ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="record_c2iresponse_sent_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/record-c2iresponse-sent</h4></div><div class="modal-body"><div class="alert alert-info"><p>Indicates CP has sent a C2i response to CMS ... (mapping): requestType: application/vnd.staging.command.record-c2iresponse-sent+json name: staging.command.record-c2iresponse-sent ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#record_c2iresponse_sent_post_request" data-toggle="tab">Request</a></li></ul><div class="tab-content"><div class="tab-pane active" id="record_c2iresponse_sent_post_request"><h3>Body</h3><p><strong>Type: application/vnd.staging.command.record-c2iresponse-sent+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "transactionId": {
+      "id": "transactionId",
+      "type": "string"
+    },
+    "transactionTimestamp": {
+      "id": "transactionTimestamp",
+      "type": "string"
+    },
+    "requestId": {
+      "id": "requestId",
+      "type": "string"
+    },
+    "cppCaseId": {
+      "id": "cppCaseId",
+      "type": "string"
+    },
+    "urn": {
+      "id": "urn",
+      "type": "string"
+    },
+    "responseCode": {
+      "id": "responseCode",
+      "type": "number"
+    },
+    "responseText": {
+      "id": "responseText",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "transactionId",
+    "transactionTimestamp",
+    "requestId",
+    "urn",
+    "responseCode",
+    "responseText"
+  ]
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "transactionId": "randomTransactionId",
+  "transactionTimestamp": "2016-07-11T12:55:28.018",
+  "requestId": "C2I01",
+  "cppCaseId": "a-a-a-a-a",
+  "urn": "83IN98796543",
+  "responseCode": 1,
+  "responseText": "text response"
+}</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="identity_event" class="panel-title">/identity.event</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_identity_event"><span class="parent"></span>/identity.event</a> <span class="methods"><a href="#identity_event_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_identity_event" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#identity_event_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Indicates an IDAM event has occurred ... (mapping): requestType: application/vnd.staging.record-idam-command+json name: staging.record-idam-command ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="identity_event_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/identity.event</h4></div><div class="modal-body"><div class="alert alert-info"><p>Indicates an IDAM event has occurred ... (mapping): requestType: application/vnd.staging.record-idam-command+json name: staging.record-idam-command ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#identity_event_post_request" data-toggle="tab">Request</a></li><li><a href="#identity_event_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="identity_event_post_request"><h3>Body</h3><p><strong>Type: application/vnd.staging.record-idam-command+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "idamEvent": {
+      "type": "object",
+      "properties": {
+        "_metadata": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "id"
+          ]
+        }
+      },
+      "required": [
+        "_metadata"
+      ]
+    }
+  },
+  "required": [
+    "idamEvent"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "idamEvent" : {
+    "_metadata": {
+      "name": "test",
+      "id": "3abb0c29-de0c-4b92-918f-1b87d05453bb"
+    },
+    "timeTriggered": "2011-12-03T10:15:30+01:00",
+    "idamId": "3abb0c29-de0c-4b92-918f-1b87d05453bb",
+    "idamOrgId": "1fc69990-bf59-4c4a-9489-d766b9abde9a",
+    "idamAccountType": "User",
+    "title": "Miss",
+    "firstName": "Josephine",
+    "middleName": "Janice",
+    "lastName": "Bloggs",
+    "email": "j.bloggs@example.com"
+  }
+}</code></pre></div><div class="tab-pane" id="identity_event_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Bad Request</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="structure_event" class="panel-title">/structure.event</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_structure_event"><span class="parent"></span>/structure.event</a> <span class="methods"><a href="#structure_event_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_structure_event" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#structure_event_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Indicates case created event has occurred. ... (mapping): requestType: application/vnd.staging.record-sjp-case-creation+json name: staging.record-sjp-case-creation ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="structure_event_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/structure.event</h4></div><div class="modal-body"><div class="alert alert-info"><p>Indicates case created event has occurred. ... (mapping): requestType: application/vnd.staging.record-sjp-case-creation+json name: staging.record-sjp-case-creation ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#structure_event_post_request" data-toggle="tab">Request</a></li><li><a href="#structure_event_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="structure_event_post_request"><h3>Body</h3><p><strong>Type: application/vnd.staging.record-sjp-case-creation+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "urn": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "urn"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "urn": "TFL2041318"
+}</code></pre></div><div class="tab-pane" id="structure_event_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Bad Request</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="batch_processing_status" class="panel-title">/batch-processing-status</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_batch_processing_status"><span class="parent"></span>/batch-processing-status</a> <span class="methods"><a href="#batch_processing_status_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_batch_processing_status" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#batch_processing_status_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Records all valid and invalid file processing status during upload process ... (mapping): requestType: application/vnd.staging.command.batch-processing-status+json name: staging.command.batch-processing-status ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="batch_processing_status_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/batch-processing-status</h4></div><div class="modal-body"><div class="alert alert-info"><p>Records all valid and invalid file processing status during upload process ... (mapping): requestType: application/vnd.staging.command.batch-processing-status+json name: staging.command.batch-processing-status ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#batch_processing_status_post_request" data-toggle="tab">Request</a></li><li><a href="#batch_processing_status_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="batch_processing_status_post_request"><h3>Body</h3><p><strong>Type: application/vnd.staging.command.batch-processing-status+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "filesProcessingStatus": {
+      "type": "object",
+      "properties": {
+        "filename": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "documentType": {
+          "type": "string"
+        },
+        "messages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/message"
+          },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "filename",
+        "status",
+        "documentType",
+        "messages"
+      ]
+    },
+    "message": {
+      "type": "object",
+      "properties": {
+        "messageKey": {
+          "type": "string"
+        },
+        "params": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "messageKey",
+        "params"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "filename": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "fileCount": {
+      "type": "integer"
+    },
+    "errorCount": {
+      "type": "integer"
+    },
+    "filesProcessingStatus": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/filesProcessingStatus"
+      },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "filename",
+    "status",
+    "fileCount",
+    "errorCount",
+    "filesProcessingStatus"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "filename": "foo.zip",
+  "status": "ERROR",
+  "file_count": 2,
+  "error_count": 2,
+  "filesProcessingStatus": [
+    {
+      "filename": "bar.pdf",
+      "documentType": "WS",
+      "status": "ERROR",
+      "messages": [
+        {
+          "messageKey": "error.parse.line",
+          "params": {"lineNumber": "32"}
+        }
+      ]
+    },
+    {
+      "filename": "baz.docx",
+      "documentType": "WS",
+      "status": "ERROR",
+      "messages": [
+        {
+          "messageKey": "error.parse.line",
+          "params": {"lineNumber": "54"}
+        }
+      ]
+    }
+  ]
+}</code></pre></div><div class="tab-pane" id="batch_processing_status_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Bad Request</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="unsupported_message" class="panel-title">/unsupported-message</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_unsupported_message"><span class="parent"></span>/unsupported-message</a> <span class="methods"><a href="#unsupported_message_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_unsupported_message" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#unsupported_message_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Receive a request from CMS for message type that is currently unsupported. ... (mapping): requestType: application/vnd.staging.command.handle-unsupported-message+json name: staging.command.handle-unsupported-message ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="unsupported_message_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/unsupported-message</h4></div><div class="modal-body"><div class="alert alert-info"><p>Receive a request from CMS for message type that is currently unsupported. ... (mapping): requestType: application/vnd.staging.command.handle-unsupported-message+json name: staging.command.handle-unsupported-message ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#unsupported_message_post_request" data-toggle="tab">Request</a></li><li><a href="#unsupported_message_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="unsupported_message_post_request"><h3>Body</h3><p><strong>Type: application/vnd.staging.command.handle-unsupported-message+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "urn": {
+      "id": "urn",
+      "type": "string"
+    },
+    "isCaseTakenBack": {
+      "id": "isCaseTakenBack",
+      "type": "boolean"
+    },
+    "commandSource": {
+      "id": "/commandSource",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "id": "/commandSource/source",
+          "type": "string",
+          "enum": [
+            "CMS"
+          ]
+        },
+        "transactionId": {
+          "id": "/commandSource/transactionId",
+          "type": "string"
+        },
+        "transactionTimestamp": {
+          "id": "/commandSource/transactionTimestamp",
+          "type": "string"
+        },
+        "requestId": {
+          "id": "/commandSource/requestId",
+          "type": "string"
+        },
+        "messageType": {
+          "id": "/commandSource/messageType",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "transactionId",
+        "transactionTimestamp",
+        "requestId",
+        "messageType"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["urn", "isCaseTakenBack", "commandSource"]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "urn": "urnNameFromPolice",
+  "isCaseTakenBack": true,
+  "commandSource": {
+    "source": "CMS",
+    "transactionId": "randomTransactionId",
+    "transactionTimestamp": "2016-07-11T12:55:28.018",
+    "requestId": "LM01",
+    "messageType": "LM01"
+  }
+}</code></pre></div><div class="tab-pane" id="unsupported_message_post_response"><h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2><p>Accepted</p><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Bad Request</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><p>Internal Server Error</p></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#precharge_decision_requests">/precharge-decision-requests</a></li><li><a href="#witnesses">/witnesses</a></li><li><a href="#delete_witness">/delete-witness</a></li><li><a href="#update_witness_details">/update-witness-details</a></li><li><a href="#victims">/victims</a></li><li><a href="#delete_victim">/delete-victim</a></li><li><a href="#update_victim_details">/update-victim-details</a></li><li><a href="#statements">/statements</a></li><li><a href="#documents">/documents</a></li><li><a href="#update_suspect">/update-suspect</a></li><li><a href="#exhibits">/exhibits</a></li><li><a href="#chargeinformation">/chargeinformation</a></li><li><a href="#case_control">/case-control</a></li><li><a href="#cases__caseid__casedocuments">/cases/{caseid}/casedocuments</a></li><li><a href="#tfl_cases">/tfl-cases</a></li><li><a href="#cases_supporting_documents">/cases-supporting-documents</a></li><li><a href="#c2iresponse">/c2iresponse</a></li><li><a href="#record_c2irequest_sent">/record-c2irequest-sent</a></li><li><a href="#record_c2iresponse_sent">/record-c2iresponse-sent</a></li><li><a href="#identity_event">/identity.event</a></li><li><a href="#structure_event">/structure.event</a></li><li><a href="#batch_processing_status">/batch-processing-status</a></li><li><a href="#unsupported_message">/unsupported-message</a></li></ul></div></div></div></div></body></html>

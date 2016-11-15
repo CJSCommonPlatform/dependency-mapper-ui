@@ -1,0 +1,14 @@
+Error: while validating body
+schema is not valid JSON error: 'SyntaxError: Unexpected token } in JSON at position 1099'
+  in "./cpp.context.staging/staging-command/staging-command-controller/src/raml/staging-command-controller.messaging.raml", line 70, column 11:
+              !include json/schema/staging.comm ...
+              ^
+    at raml2html.render.then.catch (/usr/local/lib/node_modules/raml2html/bin/raml2html:41:17)
+    at _rejected (/usr/local/lib/node_modules/raml2html/node_modules/q/q.js:808:24)
+    at /usr/local/lib/node_modules/raml2html/node_modules/q/q.js:834:30
+    at Promise.when (/usr/local/lib/node_modules/raml2html/node_modules/q/q.js:1079:31)
+    at Promise.promise.promiseDispatch (/usr/local/lib/node_modules/raml2html/node_modules/q/q.js:752:41)
+    at /usr/local/lib/node_modules/raml2html/node_modules/q/q.js:574:44
+    at flush (/usr/local/lib/node_modules/raml2html/node_modules/q/q.js:108:17)
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)

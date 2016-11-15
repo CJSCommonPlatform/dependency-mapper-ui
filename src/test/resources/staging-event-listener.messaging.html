@@ -1,0 +1,986 @@
+<!DOCTYPE HTML><html><head><title>API Using media type in the URL API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/raml2html/raml2html 3.0.1"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script><script type="text/javascript">
+      $(document).ready(function() {
+        $('.page-header pre code, .top-resource-description pre code, .modal-body pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+
+        $('[data-toggle]').click(function() {
+          var selector = $(this).data('target') + ' pre code';
+          $(selector).each(function(i, block) {
+            hljs.highlightBlock(block);
+          });
+        });
+
+        // open modal on hashes like #_action_get
+        $(window).bind('hashchange', function(e) {
+          var anchor_id = document.location.hash.substr(1); //strip #
+          var element = $('#' + anchor_id);
+
+          // do we have such element + is it a modal?  --> show it
+          if (element.length && element.hasClass('modal')) {
+            element.modal('show');
+          }
+        });
+
+        // execute hashchange on first page load
+        $(window).trigger('hashchange');
+
+        // remove url fragment on modal hide
+        $('.modal').on('hidden.bs.modal', function() {
+          try {
+            if (history && history.replaceState) {
+                history.replaceState({}, '', '#');
+            }
+          } catch(e) {}
+        });
+      });
+    </script><style>
+      .hljs {
+        background: transparent;
+      }
+      .parent {
+        color: #999;
+      }
+      .list-group-item > .badge {
+        float: none;
+        margin-right: 6px;
+      }
+      .panel-title > .methods {
+        float: right;
+      }
+      .badge {
+        border-radius: 0;
+        text-transform: uppercase;
+        width: 70px;
+        font-weight: normal;
+        color: #f3f3f6;
+        line-height: normal;
+      }
+      .badge_get {
+        background-color: #63a8e2;
+      }
+      .badge_post {
+        background-color: #6cbd7d;
+      }
+      .badge_put {
+        background-color: #22bac4;
+      }
+      .badge_delete {
+        background-color: #d26460;
+      }
+      .badge_patch {
+        background-color: #ccc444;
+      }
+      .list-group, .panel-group {
+        margin-bottom: 0;
+      }
+      .panel-group .panel+.panel-white {
+        margin-top: 0;
+      }
+      .panel-group .panel-white {
+        border-bottom: 1px solid #F5F5F5;
+        border-radius: 0;
+      }
+      .panel-white:last-child {
+        border-bottom-color: white;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      .panel-white .panel-heading {
+        background: white;
+      }
+      .tab-pane ul {
+        padding-left: 2em;
+      }
+      .tab-pane h1 {
+        font-size: 1.3em;
+      }
+      .tab-pane h2 {
+        font-size: 1.2em;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #ddd;
+      }
+      .tab-pane h3 {
+        font-size: 1.1em;
+      }
+      .tab-content {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+      }
+      #sidebar {
+        margin-top: 30px;
+        padding-right: 5px;
+        overflow: auto;
+        height: 90%;
+      }
+      .top-resource-description {
+        border-bottom: 1px solid #ddd;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description {
+        border-bottom: 1px solid #fcfcfc;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description p:last-child {
+        margin: 0;
+      }
+      .list-group .badge {
+        float: left;
+      }
+      .method_description {
+        margin-left: 85px;
+      }
+      .method_description p:last-child {
+        margin: 0;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+      .list-group-item:hover {
+        background-color: #f5f5f5;
+      }
+
+      pre code {
+        overflow: auto;
+        word-wrap: normal;
+        white-space: pre;
+      }
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>API Using media type in the URL API documentation <small>version v1</small></h1><div class="alert alert-warning">Due to technical limitations, this is listed as a HTTP endpoint. Please note that this is as an asynchronous endpoint that uses the 'message://' protocol.</div><p>http://event/listener/message/staging</p></div><div class="panel panel-default"><div class="panel-heading"><h3 id="staging_event" class="panel-title">/staging.event</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_staging_event"><span class="parent"></span>/staging.event</a> <span class="methods"><a href="#staging_event_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_staging_event" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#staging_event_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="staging_event_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/staging.event</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#staging_event_post_request" data-toggle="tab">Request</a></li></ul><div class="tab-content"><div class="tab-pane active" id="staging_event_post_request"><h3>Body</h3><p><strong>Type: application/vnd.staging.events.c2iresponse-received+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "/",
+    "type": "object",
+    "properties": {
+        "id": {
+            "id": "id",
+            "type": "string"
+        },
+        "source": {
+            "id": "/source",
+            "type": "string",
+            "enum": [
+                "CMS"
+            ]
+        },
+        "transactionId": {
+            "id": "transactionId",
+            "type": "string"
+        },
+        "transactionTimestamp": {
+            "id": "transactionTimestamp",
+            "type": "string"
+        },
+        "requestId": {
+            "id": "requestId",
+            "type": "string"
+        },
+        "responseCode": {
+            "id": "responseCode",
+            "type": "number"
+        },
+        "responseText": {
+            "id": "responseText",
+            "type": "string"
+        },
+        "cppCaseId": {
+            "id": "cppCaseId",
+            "type": "string"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "source",
+        "requestId",
+        "transactionId",
+        "transactionTimestamp",
+        "responseCode",
+        "responseText"
+    ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "2f186141-8d2a-41e0-b54c-f15b9fd1fe0f",
+  "transactionId": "randomTransactionId",
+  "transactionTimestamp": "10-10-2016",
+  "requestId": "CM01",
+  "source": "CMS",
+  "responseCode": 1,
+  "responseText": "Test response",
+  "cppCaseId": "bd6ae52f-2ecf-4fea-9cdf-8cf3fc0584cb"
+}</code></pre><p><strong>Type: application/vnd.staging.events.c2irequest-sent-recorded+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "/",
+    "type": "object",
+    "properties": {
+        "id": {
+            "id": "id",
+            "type": "string"
+        },
+        "source": {
+            "id": "source",
+            "type": "string"
+        },
+        "transactionId": {
+            "id": "transactionId",
+            "type": "string"
+        },
+        "transactionTimestamp": {
+            "id": "transactionTimestamp",
+            "type": "string"
+        },
+        "requestId": {
+            "id": "requestId",
+            "type": "string"
+        },
+        "messageType": {
+            "id": "messageType",
+            "type": "string"
+        },
+        "cppCaseId": {
+            "id": "cppCaseId",
+            "type": "string"
+        },
+        "urn": {
+            "id": "urn",
+            "type": "string"
+        },
+        "request": {
+            "id": "request",
+            "type": "string"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "transactionId",
+        "transactionTimestamp",
+        "requestId",
+        "messageType",
+        "cppCaseId",
+        "urn",
+        "request"
+    ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "1267ec83-d457-4838-b42c-a2836148b94d",
+  "source": "CPP",
+  "transactionId": "randomTransactionId",
+  "transactionTimestamp": "09-10-2016",
+  "requestId": "C2I01",
+  "messageType": "C2I01",
+  "cppCaseId": "df6ffde9-0c9f-40e0-9ddf-96ac501ff962",
+  "urn": "321",
+  "request": "{}"
+}</code></pre><p><strong>Type: application/vnd.staging.events.c2irequest-succeeded+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "id": {
+      "id": "id",
+      "type": "string"
+    },
+    "source": {
+      "id": "source",
+      "type": "string",
+      "enum": [
+        "CMS"
+      ]
+    },
+    "transactionId": {
+      "id": "transactionId",
+      "type": "string"
+    },
+    "transactionTimestamp": {
+      "id": "transactionTimestamp",
+      "type": "string"
+    },
+    "requestId": {
+      "id": "requestId",
+      "type": "string"
+    },
+    "messageType": {
+      "id": "messageType",
+      "type": "string"
+    },
+    "cppCaseId": {
+      "id": "cppCaseId",
+      "type": "string"
+    },
+    "urn": {
+      "id": "urn",
+      "type": "string"
+    },
+    "request": {
+      "id": "request",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "source",
+    "transactionId",
+    "transactionTimestamp",
+    "requestId",
+    "messageType",
+    "cppCaseId",
+    "urn",
+    "request"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "b368a5ac-8a8e-4739-9b39-2131fa0f263c",
+  "source": "CMS",
+  "transactionId": "randomTransactionId",
+  "transactionTimestamp": "2016-05-19T12:59:36.438",
+  "requestId": "LM07",
+  "messageType": "LM07",
+  "cppCaseId": "5b562e66-2339-41b0-920a-5fcc71b83162",
+  "urn": "45GD5000010",
+  "request": "{}"
+}</code></pre><p><strong>Type: application/vnd.staging.events.batch-processed-status+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "filesProcessingStatus": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "filename": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "documentType": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        },
+        "messages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/message"
+          },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "filename",
+        "status",
+        "documentType",
+        "timestamp",
+        "messages"
+      ]
+    },
+    "message": {
+      "type": "object",
+      "properties": {
+        "messageKey": {
+          "type": "string"
+        },
+        "params": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "messageKey",
+        "params"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "filename": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "fileCount": {
+      "type": "integer"
+    },
+    "errorCount": {
+      "type": "integer"
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "filesProcessingStatus": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/filesProcessingStatus"
+      },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "filename",
+    "status",
+    "fileCount",
+    "errorCount",
+    "timestamp",
+    "filesProcessingStatus"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "batchProcessingStatus": {
+    "id": "765dd6e4-a75b-4849-8cdb-86060a8d691a",
+    "filename": "foo.zip",
+    "status": "ERROR",
+    "fileCount": 2,
+    "errorCount": 2,
+    "timestamp": "2016-09-08T16:11:24.436Z",
+    "filesProcessingStatus": [
+      {
+        "id": "9ae9d26f-d02d-466d-b280-fdb142c0e0fc",
+        "filename": "bar.pdf",
+        "status": "ERROR",
+        "documentType": "SJNP",
+        "timestamp": "2016-09-08T16:11:24.436Z",
+        "messages": [
+          {
+            "messageKey": "error.parse.line",
+            "params": {"lineNumber": "32"}
+          }
+        ]
+      },
+      {
+        "id": "fbc6cc56-3602-45f2-9776-d58778d8bb1a",
+        "filename": "baz.docx",
+        "status": "ERROR",
+        "documentType": "SJNP",
+        "timestamp": "2016-09-08T16:11:24.436Z",
+        "messages": [
+          {
+            "messageKey": "error.parse.line",
+            "params": {"lineNumber": "54"}
+          }
+        ]
+      }
+    ]
+  }
+}</code></pre><p><strong>Type: application/vnd.staging.events.documents-upload-processing-started+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "numberOfFiles": {
+      "type": "integer"
+    },
+    "filename": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "numberOfFiles",
+    "filename"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "5d493e20-a0bc-4b2e-a97b-f1295f379f67",
+  "numberOfFiles": 2,
+  "timestamp": "2016-09-12T17:22:00.123+01:00[Europe/London]",
+  "filename": "foo.zip"
+}</code></pre><p><strong>Type: application/vnd.staging.events.new-case-document-received+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "cppCaseId": {
+      "type": "string"
+    },
+    "uploadID": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "material": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "documentType": {
+          "enum": ["SJPN", "CITN", "FINANCIAL_MEANS", "PLEA", "WS"]
+        },
+        "policeName": {
+          "type": "string"
+        },
+        "originalFileName": {
+          "type": "string"
+        },
+        "file": {
+          "type": "string"
+        },
+        "documentClassifications": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "classificationType": {
+                "type": "string"
+              },
+              "classificationCode": {
+                "type": "string"
+              },
+              "classificationValue": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "classificationType",
+              "classificationCode",
+              "classificationValue"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "cppCaseId",
+    "material"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "68bc20f2-119b-45f9-9da8-ca28ed5aec61",
+  "cppCaseId": "a5d09f80-78f4-11e6-8b77-86f30ca893d3",
+  "uploadID": "",
+  "status": "DONE",
+  "timestamp": "2016-09-12T16:27:21.711Z",
+  "material": {
+    "id": "68bc20f2-119b-45f9-9da8-ca28ed5aec61",
+    "originalFileName": "foo.pdf",
+    "file": "",
+    "documentType": "SJPN",
+    "documentClassifications": [
+      {
+        "classificationType": "classificationTypeExample",
+        "classificationCode": "classificationCodeExample",
+        "classificationValue": "classificationValueExample"
+      }
+    ]
+  }
+}</code></pre><p><strong>Type: application/vnd.staging.events.invalid-case-document-received+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+
+  "type": "object",
+
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "uploadID": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "documentType": {
+      "type": "string"
+    },
+    "filename": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string"
+    }
+  },
+
+  "required": [
+    "id",
+    "uploadID",
+    "status",
+    "filename"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "d183706a-8779-473a-9914-5c6c277744ac",
+  "status": "NO_CASE_FOUND",
+  "uploadID": "093adb02-6d02-4aef-be3d-bd1215b7513d",
+  "documentType": "SJPN",
+  "filename": "SMITH_Fred_TFL2041315_SJPN.pdf",
+  "timestamp": "2016-09-26T09:14:08.546Z"
+}</code></pre><p><strong>Type: application/vnd.staging.events.cases-import+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "cases": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "prosecutorCaseId": {
+                "type": "string"
+              },
+              "ptiUrn": {
+                "type": "string"
+              },
+              "initiationCode": {
+                "type": "string"
+              },
+              "libraOriginatingOrg": {
+                "type": "string"
+              },
+              "summonsCode": {
+                "type": "string"
+              },
+              "prosecutor": {
+                "type": "string"
+              },
+              "libraHearingLocation": {
+                "type": "string"
+              },
+              "dateOfHearing": {
+                "type": "string"
+              },
+              "timeOfHearing": {
+                "type": "string"
+              },
+              "defendant": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "forename": {
+                    "type": "string"
+                  },
+                  "familyName": {
+                    "type": "string"
+                  },
+                  "address1": {
+                    "type": "string"
+                  },
+                  "address2": {
+                    "type": "string"
+                  },
+                  "town": {
+                    "type": "string"
+                  },
+                  "county": {
+                    "type": "string"
+                  },
+                  "postcode": {
+                    "type": "string"
+                  },
+                  "dob": {
+                    "type": "string"
+                  },
+                  "gender": {
+                    "type": "string"
+                  }
+                }
+              },
+              "offences": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "prosecutorCaseId": {
+                      "type": "string"
+                    },
+                    "offenceSequenceNo": {
+                      "type": "integer"
+                    },
+                    "libraOffenceCode": {
+                      "type": "string"
+                    },
+                    "chargeDate": {
+                      "type": "string"
+                    },
+                    "libraOffenceDateCode": {
+                      "type": "integer"
+                    },
+                    "offenceDate": {
+                      "type": "string"
+                    },
+                    "offenceWording": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "sjpCaseList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "prosecutorCaseId": {
+                "type": "string"
+              },
+              "ptiUrn": {
+                "type": "string"
+              },
+              "initiationCode": {
+                "type": "string"
+              },
+              "libraOriginatingOrg": {
+                "type": "string"
+              },
+              "summonsCode": {
+                "type": "string"
+              },
+              "prosecutor": {
+                "type": "string"
+              },
+              "libraHearingLocation": {
+                "type": "string"
+              },
+              "dateOfHearing": {
+                "type": "string"
+              },
+              "timeOfHearing": {
+                "type": "string"
+              },
+              "defendant": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "forename": {
+                    "type": "string"
+                  },
+                  "familyName": {
+                    "type": "string"
+                  },
+                  "address1": {
+                    "type": "string"
+                  },
+                  "address2": {
+                    "type": "string"
+                  },
+                  "town": {
+                    "type": "string"
+                  },
+                  "county": {
+                    "type": "string"
+                  },
+                  "postcode": {
+                    "type": "string"
+                  },
+                  "dob": {
+                    "type": "string"
+                  },
+                  "gender": {
+                    "type": "string"
+                  }
+                }
+              },
+              "offences": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "prosecutorCaseId": {
+                      "type": "string"
+                    },
+                    "offenceSequenceNo": {
+                      "type": "integer"
+                    },
+                    "libraOffenceCode": {
+                      "type": "string"
+                    },
+                    "chargeDate": {
+                      "type": "string"
+                    },
+                    "libraOffenceDateCode": {
+                      "type": "integer"
+                    },
+                    "offenceDate": {
+                      "type": "string"
+                    },
+                    "offenceWording": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "464e4d57-0241-400f-a5e2-6c3240d27e9d",
+  "payload": {
+    "cases": [
+      {
+        "prosecutorCaseId": "TFL2041315",
+        "ptiUrn": "2041315",
+        "initiationCode": "J",
+        "libraOriginatingOrg": "GAFTL00",
+        "summonsCode": "M",
+        "prosecutor": "TRANSPORT FOR LONDON",
+        "libraHearingLocation": "B01LY75",
+        "dateOfHearing": "25/02/2016",
+        "timeOfHearing": "11:00:00",
+        "defendant": {
+          "title": "Mr",
+          "forename": "Fred",
+          "familyName": "Smith",
+          "address1": "Flat 1",
+          "address2": "1 Old Road",
+          "town": "London",
+          "county": "Merton",
+          "postcode": "SW99 1AA",
+          "dob": "27/12/1965",
+          "gender": "M"
+        },
+        "offences": [
+          {
+            "prosecutorCaseId": "TFL2041315",
+            "offenceSequenceNo": 1,
+            "libraOffenceCode": "PS90010",
+            "chargeDate": "2016-01-22",
+            "libraOffenceDateCode": 1,
+            "offenceDate": "2015-07-02",
+            "offenceWording": "On 02/07/2015 At threadneedle street EC2 Being a passenger on a Public service Vehicle operated on behalf of London Bus Services Limited being used for the carriage of passengers at separate fares where the vehicle was being operated by a Driver without a Conductor did not as directed by the Driver an Inspector or a Notice displayed on the vehicle pay the fare for the journey in accordance with the direction  "
+          }
+        ]
+      }
+    ],
+    "sjpCaseList": [
+      {
+        "prosecutorCaseId": "TFL2041315",
+        "ptiUrn": "2041315",
+        "initiationCode": "J",
+        "libraOriginatingOrg": "GAFTL00",
+        "summonsCode": "M",
+        "prosecutor": "TRANSPORT FOR LONDON",
+        "libraHearingLocation": "B01LY75",
+        "dateOfHearing": "25/02/2016",
+        "timeOfHearing": "11:00:00",
+        "defendant": {
+          "title": "Mr",
+          "forename": "Fred",
+          "familyName": "Smith",
+          "address1": "Flat 1",
+          "address2": "1 Old Road",
+          "town": "London",
+          "county": "Merton",
+          "postcode": "SW99 1AA",
+          "dob": "27/12/1965",
+          "gender": "M"
+        },
+        "offences": [
+          {
+            "prosecutorCaseId": "TFL2041315",
+            "offenceSequenceNo": 1,
+            "libraOffenceCode": "PS90010",
+            "chargeDate": "2016-01-22",
+            "libraOffenceDateCode": 1,
+            "offenceDate": "2015-07-02",
+            "offenceWording": "On 02/07/2015 At threadneedle street EC2 Being a passenger on a Public service Vehicle operated on behalf of London Bus Services Limited being used for the carriage of passengers at separate fares where the vehicle was being operated by a Driver without a Conductor did not as directed by the Driver an Inspector or a Notice displayed on the vehicle pay the fare for the journey in accordance with the direction  "
+          }
+        ]
+      }
+    ]
+  }
+}</code></pre><p><strong>Type: application/vnd.staging.events.sjp-case-creation-recorded+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "urn": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "urn"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{"urn":"TFL2041316"}</code></pre><p><strong>Type: application/vnd.staging.events.cases-import-failed+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "definitions": {
+    "message": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string"
+        },
+        "row": {
+          "type": "number"
+        },
+        "error": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "messages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/message"
+          },
+          "minItems": 0
+        },
+        "headerFilename": {
+          "type": "string"
+        },
+        "offenceFilename": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "c4c4442f-559c-45dd-a453-cf3bf6e2f7f0",
+  "payload": {
+    "messages": [
+      {
+        "source": "CASES",
+        "row": 2,
+        "error": "DUPLICATE_PROSECUTOR_ID"
+      },
+      {
+        "source": "OFFENCES",
+        "row": 2,
+        "error": "ORPHAN_OFFENCE"
+      }
+    ],
+    "headerFilename": "header.csv",
+    "offenceFilename": "offence.csv"
+  }
+}</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#staging_event">/staging.event</a></li></ul></div></div></div></div></body></html>

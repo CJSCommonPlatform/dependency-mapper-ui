@@ -1,0 +1,3898 @@
+<!DOCTYPE HTML><html><head><title>API Using media type in the URL API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/raml2html/raml2html 3.0.1"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script><script type="text/javascript">
+      $(document).ready(function() {
+        $('.page-header pre code, .top-resource-description pre code, .modal-body pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+
+        $('[data-toggle]').click(function() {
+          var selector = $(this).data('target') + ' pre code';
+          $(selector).each(function(i, block) {
+            hljs.highlightBlock(block);
+          });
+        });
+
+        // open modal on hashes like #_action_get
+        $(window).bind('hashchange', function(e) {
+          var anchor_id = document.location.hash.substr(1); //strip #
+          var element = $('#' + anchor_id);
+
+          // do we have such element + is it a modal?  --> show it
+          if (element.length && element.hasClass('modal')) {
+            element.modal('show');
+          }
+        });
+
+        // execute hashchange on first page load
+        $(window).trigger('hashchange');
+
+        // remove url fragment on modal hide
+        $('.modal').on('hidden.bs.modal', function() {
+          try {
+            if (history && history.replaceState) {
+                history.replaceState({}, '', '#');
+            }
+          } catch(e) {}
+        });
+      });
+    </script><style>
+      .hljs {
+        background: transparent;
+      }
+      .parent {
+        color: #999;
+      }
+      .list-group-item > .badge {
+        float: none;
+        margin-right: 6px;
+      }
+      .panel-title > .methods {
+        float: right;
+      }
+      .badge {
+        border-radius: 0;
+        text-transform: uppercase;
+        width: 70px;
+        font-weight: normal;
+        color: #f3f3f6;
+        line-height: normal;
+      }
+      .badge_get {
+        background-color: #63a8e2;
+      }
+      .badge_post {
+        background-color: #6cbd7d;
+      }
+      .badge_put {
+        background-color: #22bac4;
+      }
+      .badge_delete {
+        background-color: #d26460;
+      }
+      .badge_patch {
+        background-color: #ccc444;
+      }
+      .list-group, .panel-group {
+        margin-bottom: 0;
+      }
+      .panel-group .panel+.panel-white {
+        margin-top: 0;
+      }
+      .panel-group .panel-white {
+        border-bottom: 1px solid #F5F5F5;
+        border-radius: 0;
+      }
+      .panel-white:last-child {
+        border-bottom-color: white;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      .panel-white .panel-heading {
+        background: white;
+      }
+      .tab-pane ul {
+        padding-left: 2em;
+      }
+      .tab-pane h1 {
+        font-size: 1.3em;
+      }
+      .tab-pane h2 {
+        font-size: 1.2em;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #ddd;
+      }
+      .tab-pane h3 {
+        font-size: 1.1em;
+      }
+      .tab-content {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+      }
+      #sidebar {
+        margin-top: 30px;
+        padding-right: 5px;
+        overflow: auto;
+        height: 90%;
+      }
+      .top-resource-description {
+        border-bottom: 1px solid #ddd;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description {
+        border-bottom: 1px solid #fcfcfc;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description p:last-child {
+        margin: 0;
+      }
+      .list-group .badge {
+        float: left;
+      }
+      .method_description {
+        margin-left: 85px;
+      }
+      .method_description p:last-child {
+        margin: 0;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+      .list-group-item:hover {
+        background-color: #f5f5f5;
+      }
+
+      pre code {
+        overflow: auto;
+        word-wrap: normal;
+        white-space: pre;
+      }
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>API Using media type in the URL API documentation</h1><p>http://event/processor/message/staging</p></div><div class="panel panel-default"><div class="panel-heading"><h3 id="staging_processor_event" class="panel-title">/staging.processor.event</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_staging_processor_event"><span class="parent"></span>/staging.processor.event</a> <span class="methods"><a href="#staging_processor_event_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_staging_processor_event" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#staging_processor_event_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="staging_processor_event_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/staging.processor.event</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#staging_processor_event_post_request" data-toggle="tab">Request</a></li></ul><div class="tab-content"><div class="tab-pane active" id="staging_processor_event_post_request"><h3>Body</h3><p><strong>Type: application/vnd.identity.events.account-created+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "timeTriggered": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "idamId": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    },
+    "idamOrgId": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    },
+    "idamAccountType": {
+      "enum": [
+        "User",
+        "CPP-Support-Admin",
+        "Organisation-Admin"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "middleName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    }
+  },
+  "required": [
+    "timeTriggered",
+    "idamId",
+    "idamOrgId",
+    "idamAccountType",
+    "firstName",
+    "lastName",
+    "email"
+  ],
+  "additionalProperties": true
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "_metadata": {
+    "name": "identity.events.account-created",
+    "id": "1ae69330-ba19-4c4a-9489-d766b9cddee1"
+  },
+  "timeTriggered": "2011-12-03T10:15:30+01:00",
+  "idamId": "3abb0c29-de0c-4b92-918f-1b87d05453bb",
+  "idamOrgId": "1fc69990-bf59-4c4a-9489-d766b9abde9a",
+  "idamAccountType": "User",
+  "title": "Miss",
+  "firstName": "Josephine",
+  "middleName": "Janice",
+  "lastName": "Bloggs",
+  "email": "j.bloggs@example.com"
+}</code></pre><p><strong>Type: application/vnd.identity.events.account-updated+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "timeTriggered": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "idamId": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    },
+    "idamOrgId": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    },
+    "idamAccountType": {
+      "enum": [
+        "User",
+        "CPP-Support-Admin",
+        "Organisation-Admin"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "middleName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    }
+  },
+  "required": [
+    "timeTriggered",
+    "idamId",
+    "idamOrgId",
+    "idamAccountType",
+    "title",
+    "firstName",
+    "middleName",
+    "lastName",
+    "email"
+  ],
+  "additionalProperties": true
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "_metadata": {
+    "name": "identity.events.account-updated",
+    "id": "1ae69330-ba19-4c4a-9489-d766b9cddee1"
+  },
+  "timeTriggered": "2011-12-03T10:15:30+01:00",
+  "idamId": "3abb0c29-de0c-4b92-918f-1b87d05453bb",
+  "idamOrgId": "1fc69990-bf59-4c4a-9489-d766b9abde9a",
+  "idamAccountType": "User",
+  "title": "Miss",
+  "firstName": "Josephine",
+  "middleName": "Janice",
+  "lastName": "Bloggs",
+  "email": "j.bloggs@example.com"
+}</code></pre><p><strong>Type: application/vnd.identity.events.account-deregistered+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "timeTriggered": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "idamId": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    },
+    "idamOrgId": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    },
+    "idamAccountType": {
+      "enum": [
+        "User",
+        "CPP-Support-Admin",
+        "Organisation-Admin"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "middleName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    }
+  },
+  "required": [
+    "timeTriggered",
+    "idamId",
+    "idamOrgId",
+    "idamAccountType",
+    "title",
+    "firstName",
+    "middleName",
+    "lastName",
+    "email"
+  ],
+  "additionalProperties": true
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "_metadata": {
+    "name": "identity.events.account-deregistered",
+    "id": "1ae69330-ba19-4c4a-9489-d766b9cddee1"
+  },
+  "timeTriggered": "2011-12-03T10:15:30+01:00",
+  "idamId": "3abb0c29-de0c-4b92-918f-1b87d05453bb",
+  "idamOrgId": "1fc69990-bf59-4c4a-9489-d766b9abde9a",
+  "idamAccountType": "User",
+  "title": "Miss",
+  "firstName": "Josephine",
+  "middleName": "Janice",
+  "lastName": "Bloggs",
+  "email": "j.bloggs@example.com"
+}</code></pre><p><strong>Type: application/vnd.identity.events.account-reregistered+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "timeTriggered": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "idamId": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    },
+    "idamOrgId": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    },
+    "idamAccountType": {
+      "enum": [
+        "User",
+        "CPP-Support-Admin",
+        "Organisation-Admin"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "middleName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    }
+  },
+  "required": [
+    "timeTriggered",
+    "idamId",
+    "idamOrgId",
+    "idamAccountType",
+    "title",
+    "firstName",
+    "middleName",
+    "lastName",
+    "email"
+  ],
+  "additionalProperties": true
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "_metadata": {
+    "name": "identity.events.account-reregistered",
+    "id": "1ae69330-ba19-4c4a-9489-d766b9cddee1"
+  },
+  "timeTriggered": "2011-12-03T10:15:30+01:00",
+  "idamId": "3abb0c29-de0c-4b92-918f-1b87d05453bb",
+  "idamOrgId": "1fc69990-bf59-4c4a-9489-d766b9abde9a",
+  "idamAccountType": "User",
+  "title": "Miss",
+  "firstName": "Josephine",
+  "middleName": "Janice",
+  "lastName": "Bloggs",
+  "email": "j.bloggs@example.com"
+}</code></pre><p><strong>Type: application/vnd.identity.events.organisation-created+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "timeTriggered": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "idamId": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    },
+    "idamOrgId": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    },
+    "idamAccountType": {
+      "enum": [
+        "User",
+        "CPP-Support-Admin",
+        "Organisation-Admin"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "middleName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    }
+  },
+  "required": [
+    "timeTriggered",
+    "idamId",
+    "idamOrgId",
+    "idamAccountType",
+    "firstName",
+    "lastName",
+    "email"
+  ],
+  "additionalProperties": true
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "_metadata": {
+    "name": "identity.events.account-created",
+    "id": "1ae69330-ba19-4c4a-9489-d766b9cddee1"
+  },
+  "timeTriggered": "2011-12-03T10:15:30+01:00",
+  "idamId": "3abb0c29-de0c-4b92-918f-1b87d05453bb",
+  "idamOrgId": "1fc69990-bf59-4c4a-9489-d766b9abde9a",
+  "idamAccountType": "User",
+  "title": "Miss",
+  "firstName": "Josephine",
+  "middleName": "Janice",
+  "lastName": "Bloggs",
+  "email": "j.bloggs@example.com"
+}</code></pre><p><strong>Type: application/vnd.identity.events.organisation-updated+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "timeTriggered": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "idamId": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    },
+    "idamOrgId": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    },
+    "idamAccountType": {
+      "enum": [
+        "User",
+        "CPP-Support-Admin",
+        "Organisation-Admin"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "middleName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    }
+  },
+  "required": [
+    "timeTriggered",
+    "idamId",
+    "idamOrgId",
+    "idamAccountType",
+    "title",
+    "firstName",
+    "middleName",
+    "lastName",
+    "email"
+  ],
+  "additionalProperties": true
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "_metadata": {
+    "name": "identity.events.account-updated",
+    "id": "1ae69330-ba19-4c4a-9489-d766b9cddee1"
+  },
+  "timeTriggered": "2011-12-03T10:15:30+01:00",
+  "idamId": "3abb0c29-de0c-4b92-918f-1b87d05453bb",
+  "idamOrgId": "1fc69990-bf59-4c4a-9489-d766b9abde9a",
+  "idamAccountType": "User",
+  "title": "Miss",
+  "firstName": "Josephine",
+  "middleName": "Janice",
+  "lastName": "Bloggs",
+  "email": "j.bloggs@example.com"
+}</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="staging_event" class="panel-title">/staging.event</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_staging_event"><span class="parent"></span>/staging.event</a> <span class="methods"><a href="#staging_event_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_staging_event" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#staging_event_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="staging_event_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/staging.event</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#staging_event_post_request" data-toggle="tab">Request</a></li></ul><div class="tab-content"><div class="tab-pane active" id="staging_event_post_request"><h3>Body</h3><p><strong>Type: application/vnd.staging.events.c2irequest-succeeded+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "id": {
+      "id": "id",
+      "type": "string"
+    },
+    "source": {
+      "id": "source",
+      "type": "string",
+      "enum": [
+        "CMS"
+      ]
+    },
+    "transactionId": {
+      "id": "transactionId",
+      "type": "string"
+    },
+    "transactionTimestamp": {
+      "id": "transactionTimestamp",
+      "type": "string"
+    },
+    "requestId": {
+      "id": "requestId",
+      "type": "string"
+    },
+    "messageType": {
+      "id": "/commandSource/messageType",
+      "type": "string"
+    },
+    "cppCaseId": {
+      "id": "cppCaseId",
+      "type": "string"
+    },
+    "urn": {
+      "id": "urn",
+      "type": "string"
+    },
+    "request": {
+      "id": "request",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "source",
+    "transactionId",
+    "transactionTimestamp",
+    "requestId",
+    "messageType",
+    "cppCaseId",
+    "urn",
+    "request"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "b368a5ac-8a8e-4739-9b39-2131fa0f263c",
+  "source": "CMS",
+  "transactionId": "randomTransactionId",
+  "transactionTimestamp": "2016-05-19T12:59:36.438",
+  "requestId": "LM07",
+  "messageType": "LM07",
+  "cppCaseId": "5b562e66-2339-41b0-920a-5fcc71b83162",
+  "urn": "45GD5000010",
+  "request": "{}"
+}</code></pre><p><strong>Type: application/vnd.staging.events.c2irequest-failure-recorded+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "id": {
+      "id": "id",
+      "type": "string"
+    },
+    "source": {
+      "id": "source",
+      "type": "string",
+      "enum": [
+        "CMS"
+      ]
+    },
+    "transactionId": {
+      "id": "/commandSource/transactionId",
+      "type": "string"
+    },
+    "transactionTimestamp": {
+      "id": "/commandSource/transactionTimestamp",
+      "type": "string"
+    },
+    "requestId": {
+      "id": "/commandSource/requestId",
+      "type": "string"
+    },
+    "messageType": {
+      "id": "/commandSource/messageType",
+      "type": "string"
+    },
+    "errorCode": {
+      "id": "errorCode",
+      "type": "string"
+    },
+    "errorMessage": {
+      "id": "errorMessage",
+      "type": "string"
+    },
+    "urn": {
+      "id": "urn",
+      "type": "string"
+    },
+    "cppCaseId": {
+      "id": "cppCaseId",
+      "type": ["string", "null"]
+    },
+    "request": {
+      "id": "request",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "source",
+    "transactionId",
+    "transactionTimestamp",
+    "requestId",
+    "messageType",
+    "errorCode",
+    "errorMessage",
+    "urn",
+    "request"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "b368a5ac-8a8e-4739-9b39-2131fa0f263c",
+  "source": "CMS",
+  "transactionId": "randomTransactionId",
+  "transactionTimestamp": "2016-07-11T12:55:28.018",
+  "requestId": "CM01",
+  "messageType": "CM01",
+  "errorCode": "ERR1",
+  "errorMessage": "CPP Case ID not found for the provided URN",
+  "urn": "policeUrn",
+  "request": "{}"
+}
+</code></pre><p><strong>Type: application/vnd.staging.events.c2iresponse-received+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "/",
+    "type": "object",
+    "properties": {
+        "id": {
+            "id": "id",
+            "type": "string"
+        },
+        "source": {
+            "id": "/source",
+            "type": "string",
+            "enum": [
+                "CMS"
+            ]
+        },
+        "transactionId": {
+            "id": "transactionId",
+            "type": "string"
+        },
+        "transactionTimestamp": {
+            "id": "transactionTimestamp",
+            "type": "string"
+        },
+        "requestId": {
+            "id": "requestId",
+            "type": "string"
+        },
+        "responseCode": {
+            "id": "responseCode",
+            "type": "number"
+        },
+        "responseText": {
+            "id": "responseText",
+            "type": "string"
+        },
+        "cppCaseId": {
+            "id": "cppCaseId",
+            "type": "string"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "source",
+        "requestId",
+        "transactionId",
+        "transactionTimestamp",
+        "responseCode",
+        "responseText"
+    ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "2f186141-8d2a-41e0-b54c-f15b9fd1fe0f",
+  "transactionId": "randomTransactionId",
+  "transactionTimestamp": "10-10-2016",
+  "requestId": "CM01",
+  "source": "CMS",
+  "responseCode": 1,
+  "responseText": "Test response",
+  "cppCaseId": "bd6ae52f-2ecf-4fea-9cdf-8cf3fc0584cb"
+}</code></pre><p><strong>Type: application/vnd.staging.events.unsupported-message-handled+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "id": "id",
+      "type": "string"
+    },
+    "ptiUrn": {
+      "id": "ptiUrn",
+      "type": "string"
+    },
+    "cppCaseId": {
+      "id": "cppCaseId",
+      "type": "string"
+    },
+    "isCaseTakenBack": {
+      "id": "isCaseTakenBack",
+      "type": "boolean"
+    },
+    "messageType": {
+      "id": "messageType",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["ptiUrn", "cppCaseId", "isCaseTakenBack", "messageType"]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "b368a5ac-8a8e-4739-9b39-2131fa0f263c",
+  "cppCaseId": "5d493e20-a0bc-4b2e-a97b-f1295f379f67",
+  "ptiUrn": "urnNameFromPolice",
+  "isCaseTakenBack": false,
+  "messageType": "LM08"
+}</code></pre><p><strong>Type: application/vnd.staging.record-idam-command+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "idamEvent": {
+      "type": "object",
+      "properties": {
+        "_metadata": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "id"
+          ],
+          "additionalProperties" : true
+        }
+      },
+      "required": [
+        "_metadata"
+      ],
+      "additionalProperties" : true
+    }
+  },
+  "required": [
+    "idamEvent"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "idamEvent": {
+    "_metadata": {
+      "name": "identity.events.account-created",
+      "id": "1ae69330-ba19-4c4a-9489-d766b9cddee1"
+    },
+    "timeTriggered": "2011-12-03T10:15:30+01:00",
+    "idamId": "3abb0c29-de0c-4b92-918f-1b87d05453bb",
+    "idamOrgId": "1fc69990-bf59-4c4a-9489-d766b9abde9a",
+    "idamAccountType": "User",
+    "title": "Miss",
+    "firstName": "Josephine",
+    "middleName": "Janice",
+    "lastName": "Bloggs",
+    "email": "j.bloggs@example.com"
+  }
+}</code></pre><p><strong>Type: application/vnd.staging.events.case-taken-back+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "id": {
+      "id": "id",
+      "type": "string"
+    },
+    "ptiUrn": {
+      "id": "ptiUrn",
+      "type": "string"
+    },
+    "cppCaseId": {
+      "id": "cppCaseId",
+      "type": "string"
+    }
+  },
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "ptiUrn",
+    "cppCaseId"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "b4710bdc-9578-48e1-9806-3e22494633ce",
+  "ptiUrn": "urnValue",
+  "cppCaseId": "fae81bbb-2492-4f3a-ac0e-773ac691e3ea"
+}</code></pre><p><strong>Type: application/vnd.staging.events.pre-charge-decision-requested+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": "id"
+    },
+    "newCase": {
+      "type": "object",
+      "properties": {
+        "ptiUrn": {
+          "type": "string",
+          "id": "ptiUrn"
+        },
+        "cpsUnit": {
+          "type": "string",
+          "id": "cpsUnit"
+        },
+        "cppCaseId": {
+          "type": "string",
+          "id": "cppCaseId"
+        },
+        "caseType": {
+          "type": "string",
+          "id": "caseType"
+        },
+        "operationName": {
+          "type": "string",
+          "id": "operationName"
+        },
+        "policeSummaryItems": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "outlineHeading": {
+                "type": "string",
+                "id": "outlineHeading"
+              },
+              "outlineText": {
+                "type": "string",
+                "id": "outlineText"
+              }
+            },
+            "id": "1"
+          },
+          "id": "policeSummaryItems"
+        },
+        "suspects": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "person": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "object",
+                    "properties": {
+                      "title": {
+                        "type": "string",
+                        "id": "title"
+                      },
+                      "foreNames": {
+                        "type": "string",
+                        "id": "foreNames"
+                      },
+                      "surname": {
+                        "type": "string",
+                        "id": "surname"
+                      }
+                    },
+                    "id": "name"
+                  },
+                  "dateOfBirth": {
+                    "type": "string",
+                    "id": "dateOfBirth"
+                  },
+                  "nationality": {
+                    "type": "string",
+                    "id": "nationality"
+                  },
+                  "occupation": {
+                    "type": "string",
+                    "id": "occupation"
+                  },
+                  "contactDetails": {
+                    "type": "object",
+                    "properties": {
+                      "homeTelephone": {
+                        "type": "string",
+                        "id": "homeTelephone"
+                      },
+                      "mobile": {
+                        "type": "string",
+                        "id": "mobile"
+                      },
+                      "fax": {
+                        "type": "string",
+                        "id": "fax"
+                      },
+                      "email": {
+                        "type": "string",
+                        "id": "email"
+                      },
+                      "address": {
+                        "type": "object",
+                        "properties": {
+                          "address": {
+                            "type": "string",
+                            "id": "address"
+                          }
+                        },
+                        "id": "address"
+                      }
+                    },
+                    "id": "contactDetails"
+                  }
+                },
+                "id": "person"
+              },
+              "organisationId": {
+                "type": "string",
+                "id": "organisationId"
+              },
+              "asn": {
+                "type": "string",
+                "id": "asn"
+              },
+              "charges": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "cjsCode": {
+                      "type": "string",
+                      "id": "cjsCode"
+                    },
+                    "description": {
+                      "type": "string",
+                      "id": "description"
+                    },
+                    "category": {
+                      "type": "string",
+                      "id": "category"
+                    },
+                    "fromDate": {
+                      "type": "string",
+                      "id": "fromDate"
+                    },
+                    "toDate": {
+                      "type": "string",
+                      "id": "toDate"
+                    },
+                    "particulars": {
+                      "type": "object",
+                      "id": "particulars",
+                      "properties": {
+                        "address": {
+                          "type": "string"
+                        },
+                        "postCode": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "uniqueId": {
+                      "type": "string",
+                      "id": "uniqueId"
+                    }
+                  },
+                  "id": "1"
+                },
+                "id": "charges"
+              }
+            },
+            "id": "1"
+          },
+          "id": "suspects"
+        },
+        "completingOfficer": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "id": "title"
+                },
+                "foreNames": {
+                  "type": "string",
+                  "id": "foreNames"
+                },
+                "surname": {
+                  "type": "string",
+                  "id": "surname"
+                }
+              },
+              "id": "name"
+            },
+            "rank": {
+              "type": "string",
+              "id": "rank"
+            },
+            "station": {
+              "type": "string",
+              "id": "station"
+            },
+            "shoulderNumber": {
+              "type": "string",
+              "id": "shoulderNumber"
+            },
+            "contactDetails": {
+              "type": "object",
+              "properties": {
+                "homeTelephone": {
+                  "type": "string",
+                  "id": "homeTelephone"
+                },
+                "workTelephone": {
+                  "type": "string",
+                  "id": "workTelephone"
+                },
+                "mobile": {
+                  "type": "string",
+                  "id": "mobile"
+                },
+                "fax": {
+                  "type": "string",
+                  "id": "fax"
+                },
+                "email": {
+                  "type": "string",
+                  "id": "email"
+                },
+                "address": {
+                  "type": "object",
+                  "properties": {
+                    "address": {
+                      "type": "string",
+                      "id": "address"
+                    }
+                  },
+                  "id": "address"
+                }
+              },
+              "id": "contactDetails"
+            }
+          },
+          "id": "completingOfficer"
+        },
+        "supervisingOfficer": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "id": "title"
+                },
+                "foreNames": {
+                  "type": "string",
+                  "id": "foreNames"
+                },
+                "surname": {
+                  "type": "string",
+                  "id": "surname"
+                }
+              },
+              "id": "name"
+            },
+            "rank": {
+              "type": "string",
+              "id": "rank"
+            },
+            "station": {
+              "type": "string",
+              "id": "station"
+            },
+            "shoulderNumber": {
+              "type": "string",
+              "id": "shoulderNumber"
+            },
+            "comments": {
+              "type": "string",
+              "id": "comments"
+            },
+            "contactDetails": {
+              "type": "object",
+              "properties": {
+                "homeTelephone": {
+                  "type": "string",
+                  "id": "homeTelephone"
+                },
+                "workTelephone": {
+                  "type": "string",
+                  "id": "workTelephone"
+                },
+                "mobile": {
+                  "type": "string",
+                  "id": "mobile"
+                },
+                "fax": {
+                  "type": "string",
+                  "id": "fax"
+                },
+                "email": {
+                  "type": "string",
+                  "id": "email"
+                },
+                "address": {
+                  "type": "object",
+                  "properties": {
+                    "address": {
+                      "type": "string",
+                      "id": "address"
+                    }
+                  },
+                  "id": "address"
+                }
+              },
+              "id": "contactDetails"
+            }
+          },
+          "id": "supervisingOfficer"
+        }
+      },
+      "id": "newCase",
+      "required": [
+        "cppCaseId"
+      ]
+    }
+  },
+  "id": "/",
+  "required": [
+    "id",
+    "newCase"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "id": "c866cdba-2a63-11e6-b67b-9e71128cae77",
+    "newCase": {
+        "ptiUrn": "1234Urn",
+        "cpsUnit": "cpsUnit",
+        "cppCaseId": "cppCaseId123",
+        "caseType": "murder",
+        "operationName": "murdertree",
+        "policeSummaryItems": [{
+            "outlineHeading": "keyEvidence",
+            "outlineText": "this evidence is key"
+        }, {
+            "outlineHeading": "witnesses",
+            "outlineText": "dont trust him/her"
+        }],
+        "suspects": [{
+            "person": {
+                "name": {
+                    "title": "Mr",
+                    "foreNames": "Bob",
+                    "surname": "DoubleDina"
+                },
+                "dateOfBirth": "2015-10-10",
+                "nationality": "British",
+                "occupation": "unemployed crim",
+                "contactDetails": {
+                    "homeTelephone": "home",
+                    "mobile": "mobile",
+                    "fax": "fax",
+                    "email": "email",
+                    "address": {
+                        "address": "10 downing street"
+                    }
+                }
+            },
+            "organisationId": "organisationId",
+            "asn": "asn",
+            "charges": [{
+                "cjsCode": "cjsCode",
+                "description": "description",
+                "category": "category",
+                "fromDate": "2015-10-10",
+                "toDate": "2015-10-10",
+                "particulars": {
+                    "address": "10 downing street"
+                },
+                "uniqueId": "uniqueId"
+            }, {
+                "cjsCode": "cjsCode",
+                "description": "description",
+                "category": "category",
+                "fromDate": "2015-10-10",
+                "toDate": "2015-10-10",
+                "particulars": {
+                    "address": "10 downing street"
+                },
+                "uniqueId": "uniqueId"
+            }]
+        }, {
+            "person": {
+                "name": {
+                    "title": "Mr",
+                    "foreNames": "Bob",
+                    "surname": "DoubleDina"
+                },
+                "dateOfBirth": "2015-10-10",
+                "nationality": "British",
+                "occupation": "unemployed crim",
+                "contactDetails": {
+                    "homeTelephone": "home",
+                    "mobile": "mobile",
+                    "fax": "fax",
+                    "email": "email",
+                    "address": {
+                        "address": "10 downing street"
+                    }
+                }
+            },
+            "organisationId": "organisationId",
+            "asn": "asn",
+            "charges": [{
+                "cjsCode": "cjsCode",
+                "description": "description",
+                "category": "category",
+                "fromDate": "2015-10-15",
+                "toDate": "2015-10-14",
+                "particulars": {
+                    "address": "10 downing street"
+                },
+                "uniqueId": "uniqueId"
+            }, {
+                "cjsCode": "cjsCode",
+                "description": "description",
+                "category": "category",
+                "fromDate": "2015-10-11",
+                "toDate": "2015-10-12",
+                "particulars": {
+                    "address": "10 downing street"
+                },
+                "uniqueId": "uniqueId"
+            }]
+        }],
+        "completingOfficer": {
+            "name": {
+                "title": "Mr",
+                "foreNames": "Bob",
+                "surname": "Dobalina"
+            },
+            "rank": "rank",
+            "station": "station",
+            "shoulderNumber": "1234",
+            "contactDetails": {
+                "homeTelephone": "home",
+                "workTelephone": "work",
+                "mobile": "mobile",
+                "fax": "fax",
+                "email": "email",
+                "address": {
+                    "address": "10 downing street"
+                }
+            }
+        },
+        "supervisingOfficer": {
+            "name": {
+                "title": "Mr",
+                "foreNames": "Bob",
+                "surname": "Dobalina"
+            },
+            "rank": "rank",
+            "station": "station",
+            "shoulderNumber": "1235",
+            "comments": "narrative",
+            "contactDetails": {
+                "homeTelephone": "home",
+                "workTelephone": "work",
+                "mobile": "mobile",
+                "fax": "fax",
+                "email": "email",
+                "address": {
+                    "address": "10 downing street"
+                }
+            }
+        }
+    }
+}</code></pre><p><strong>Type: application/vnd.staging.events.new-case-document-received+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "cppCaseId": {
+      "type": "string"
+    },
+    "uploadID": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "material": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "documentType": {
+          "enum": ["SJPN", "CITN", "FINANCIAL_MEANS", "PLEA", "WS"]
+        },
+        "policeName": {
+          "type": "string"
+        },
+        "originalFileName": {
+          "type": "string"
+        },
+        "file": {
+          "type": "string"
+        },
+        "documentClassifications": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "classificationType": {
+                "type": "string"
+              },
+              "classificationCode": {
+                "type": "string"
+              },
+              "classificationValue": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "classificationType",
+              "classificationCode",
+              "classificationValue"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "cppCaseId",
+    "material"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "68bc20f2-119b-45f9-9da8-ca28ed5aec61",
+  "cppCaseId": "a5d09f80-78f4-11e6-8b77-86f30ca893d3",
+  "uploadID": "",
+  "status": "DONE",
+  "timestamp": "2016-09-12T16:27:21.711Z",
+  "material": {
+    "id": "68bc20f2-119b-45f9-9da8-ca28ed5aec61",
+    "originalFileName": "foo.pdf",
+    "file": "",
+    "documentType": "SJPN",
+    "documentClassifications": [
+      {
+        "classificationType": "classificationTypeExample",
+        "classificationCode": "classificationCodeExample",
+        "classificationValue": "classificationValueExample"
+      }
+    ]
+  }
+}</code></pre><p><strong>Type: application/vnd.staging.events.exhibit-received+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": "id"
+    },
+    "cppCaseId": {
+      "type": "string",
+      "id": "cppCaseId"
+    },
+    "policePersonId": {
+      "type": "string",
+      "id": "policePersonId"
+    },
+    "exhibitDetails": {
+      "type": "object",
+      "properties": {
+        "policeExhibitId": {
+          "type": "string",
+          "id": "policeExhibitId"
+        },
+        "exhibitName": {
+          "type": "string",
+          "id": "exhibitName"
+        },
+        "policeReference": {
+          "type": "string",
+          "id": "policeReference"
+        },
+        "exhibitTakenDate": {
+          "type": "string",
+          "id": "exhibitTakenDate"
+        },
+        "personProducing": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "id": "title"
+            },
+            "givenName": {
+              "type": "string",
+              "id": "givenName"
+            },
+            "requestedName": {
+              "type": "string",
+              "id": "requestedName"
+            },
+            "familyName": {
+              "type": "string",
+              "id": "familyName"
+            }
+          },
+          "id": "personProducing"
+        },
+        "exhibitClassifications": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "classification": {
+                "type": "string",
+                "id": "classification"
+              }
+            },
+            "id": "1"
+          },
+          "id": "exhibitClassifications"
+        }
+      },
+      "id": "exhibitDetails"
+    },
+    "exhibit": {
+      "id": "exhibit",
+      "type": "object",
+      "properties": {
+        "originalFileName": {
+          "id": "exhibit/originalFileName",
+          "type": "string"
+        },
+        "policeName": {
+          "id": "exhibit/policeName",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "originalFileName"
+      ],
+      "oneOf": [
+        {
+          "properties": {
+            "file": {
+              "id": "exhibit/file",
+              "type": "string"
+            }
+          },
+          "required": [
+            "file"
+          ]
+        },
+        {
+          "properties": {
+            "externalLink": {
+              "id": "exhibit/externalLink",
+              "type": "string"
+            }
+          },
+          "required": [
+            "externalLink"
+          ]
+        }
+      ]
+    }
+  },
+  "id": "/"
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id":"c866cdba-2a63-11e6-b67b-9e71128cae79",
+  "cppCaseId": "cppCaseId",
+  "policePersonId": "policePersonId",
+  "exhibitDetails": {
+    "policeExhibitId": "exhibitId",
+    "exhibitName": "exhibitname",
+    "policeReference": "XXXNNN",
+    "exhibitTakenDate": "2010-10-10",
+    "personProducing": {
+      "title": "Dr",
+      "givenName": "Fraser",
+      "requestedName": "Scooby",
+      "familyName": "Scobie"
+    },
+    "exhibitClassifications": [
+      {
+        "classification": "e.g. audio tape"
+      },
+      {
+        "classification": "e.g. sensitive video"
+      }
+    ]
+  },
+  "exhibit": {
+    "policeName": "exhibit name given by police",
+    "originalFileName": "original file name",
+    "file": "base64BinaryEncodedStringRepresentingADocument"
+  }
+}
+</code></pre><p><strong>Type: application/vnd.staging.events.charge-information-received+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "itemId": {
+      "type": "string"
+    },
+    "ptiUrn": {
+      "type": "string"
+    },
+    "cppCaseId": {
+      "type": "string"
+    },
+    "defendantList": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "defendantId": {
+            "type": "string"
+          },
+          "offencelist": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "uniqueId": {
+                  "type": "string"
+                },
+                "cpr": {
+                  "type": "object",
+                  "properties": {
+                    "defendantOffender": {
+                      "type": "object",
+                      "properties": {
+                        "year": {
+                          "type": "string"
+                        },
+                        "organisationUnit": {
+                          "type": "string"
+                        },
+                        "number": {
+                          "type": "string"
+                        },
+                        "checkDigit": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "year",
+                        "organisationUnit",
+                        "number",
+                        "checkDigit"
+                      ]
+                    },
+                    "offenceSequence": {
+                      "type": "string"
+                    },
+                    "cjsCode": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "defendantOffender",
+                    "offenceSequence",
+                    "cjsCode"
+                  ]
+                },
+                "description": {
+                  "type": "string"
+                },
+                "offenceWording": {
+                  "type": "string"
+                },
+                "category": {
+                  "type": "string"
+                },
+                "arrestDate": {
+                  "type": "string"
+                },
+                "startDate": {
+                  "type": "string"
+                },
+                "chargeDate": {
+                  "type": "string"
+                },
+                "cjsCode": {
+                  "type": "string"
+                },
+                "asnSequenceNumber": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "uniqueId",
+                "cpr",
+                "description",
+                "offenceWording",
+                "category",
+                "arrestDate",
+                "startDate",
+                "chargeDate",
+                "cjsCode",
+                "asnSequenceNumber"
+              ]
+            }
+          },
+          "nextHearing": {
+            "type": "object",
+            "properties": {
+              "courtID": {
+                "type": "string"
+              },
+              "courtRoom": {
+                "type": "string"
+              },
+              "typeOfCourt": {
+                "type": "string"
+              },
+              "dateAndTime": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "courtID",
+              "courtRoom",
+              "typeOfCourt",
+              "dateAndTime"
+            ]
+          }
+        },
+        "required": [
+          "defendantId",
+          "offencelist",
+          "nextHearing"
+        ]
+      }
+    },
+    "eventId": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "itemId",
+    "ptiUrn",
+    "cppCaseId",
+    "defendantList",
+    "eventId"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "id": "cc1aba7a-44d4-4dad-84a6-452f4c7ce250",
+    "itemId": "BS2CM03A",
+    "ptiUrn": "33IN2239047",
+    "cppCaseId": "c22186ce-25d6-410a-9375-2bc3e5e5ea86",
+    "defendantList": [{
+        "defendantId": "policePersonId",
+        "offencelist": [{
+            "uniqueId": "A00PCD7073",
+            "cpr": {
+                "defendantOffender": {
+                    "year": "09",
+                    "organisationUnit": "null45GD00",
+                    "number": "10000000001",
+                    "checkDigit": "A"
+                },
+                "offenceSequence": "1",
+                "cjsCode": "1234"
+            },
+            "description": "Wounding/inflicting grievous bodily harm.",
+            "offenceWording": "on 01/08/2009 at  the County public house, unlawfully and maliciously wounded, John Smith",
+            "category": "EITHER_WAY",
+            "arrestDate": "2010-08-01",
+            "startDate": "2010-08-01",
+            "chargeDate": "2010-08-01",
+            "cjsCode": "1234",
+            "asnSequenceNumber": "1"
+        }],
+        "nextHearing": {
+            "courtID": "B45GC00",
+            "courtRoom": "1",
+            "typeOfCourt": "MAGISTRATES_COURT",
+            "dateAndTime": "2010-08-02"
+        }
+    }],
+    "eventId": "f1898553-7eb1-4d65-a036-15140821e302"
+}</code></pre><p><strong>Type: application/vnd.staging.events.new-witness-received+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": "id"
+    },
+    "cppCaseId": {
+      "type": "string",
+      "id": "cppCaseId"
+    },
+    "person": {
+      "type": "object",
+      "properties": {
+        "policePersonId": {
+          "type": "string",
+          "id": "policePersonId"
+        },
+        "name": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "id": "title"
+            },
+            "givenName": {
+              "type": "string",
+              "id": "givenName"
+            },
+            "requestedName": {
+              "type": "string",
+              "id": "requestedName"
+            },
+            "familyName": {
+              "type": "string",
+              "id": "familyName"
+            }
+          },
+          "id": "name"
+        },
+        "contactDetails": {
+          "type": "object",
+          "properties": {
+            "address": {
+              "type": "object",
+              "properties": {
+                "addressLine1": {
+                  "type": "string",
+                  "id": "addressLine1"
+                },
+                "addressLine2": {
+                  "type": "string",
+                  "id": "addressLine2"
+                },
+                "postcode": {
+                  "type": "string",
+                  "id": "postcode"
+                },
+                "country": {
+                  "type": "string",
+                  "id": "country"
+                }
+              },
+              "id": "address"
+            },
+            "contactNumber": {
+              "type": "object",
+              "properties": {
+                "telNationalNumber": {
+                  "type": "string",
+                  "id": "telNationalNumber"
+                },
+                "telCountryCode": {
+                  "type": "string",
+                  "id": "telCountryCode"
+                },
+                "telExtensionNumber": {
+                  "type": "string",
+                  "id": "telExtensionNumber"
+                }
+              },
+              "id": "contactNumber"
+            },
+            "email": {
+              "type": "string",
+              "id": "email"
+            },
+            "dxAddress": {
+              "type": "object",
+              "properties": {
+                "dxNumber": {
+                  "type": "string",
+                  "id": "dxNumber"
+                },
+                "exchange": {
+                  "type": "string",
+                  "id": "exchange"
+                },
+                "memberName": {
+                  "type": "string",
+                  "id": "memberName"
+                }
+              },
+              "id": "dxAddress"
+            }
+          },
+          "id": "contactDetails"
+        },
+        "dateOfBirth": {
+          "type": "string",
+          "id": "dateOfBirth"
+        },
+        "occupation": {
+          "type": "string",
+          "id": "occupation"
+        }
+      },
+      "id": "person"
+    },
+    "witnessClassifications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "classificationType": {
+            "type": "string",
+            "id": "classificationType"
+          },
+          "classificationCode": {
+            "type": "string",
+            "id": "classificationCode"
+          },
+          "classificationValue": {
+            "type": "string",
+            "id": "classificationValue"
+          }
+        },
+        "id": "3"
+      },
+      "id": "witnessClassifications"
+    }
+  },
+  "id": "/"
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "c866cdba-2a63-11e6-b67b-9e71128cae77",
+  "cppCaseId": "cppCaseId",
+  "person": {
+    "policePersonId": "policePersonId",
+    "name": {
+      "title": "Dr",
+      "givenName": "Fraser",
+      "requestedName": "Scooby",
+      "familyName": "Scobie"
+    },
+    "contactDetails": {
+      "address": {
+        "addressLine1": "line1",
+        "addressLine2": "line2",
+        "postcode": "postcode",
+        "country": "UK"
+      },
+      "contactNumber": {
+        "telNationalNumber": "",
+        "telCountryCode": "",
+        "telExtensionNumber": ""
+      },
+      "email": "scobie@xfiles.com",
+      "dxAddress": {
+        "dxNumber": "dxNumber",
+        "exchange": "exchange",
+        "memberName": "memberName"
+      }
+    },
+    "dateOfBirth": "2015-10-10",
+    "occupation" : "dr of physics"
+  },
+  "witnessClassifications": [
+    {
+      "classificationType": "EqualityDiversity",
+      "classificationCode": "SelfDefinedGender",
+      "classificationValue": "Indeterminate"
+    },
+    {
+      "classificationType": "EqualityDiversity",
+      "classificationCode": "SelfDefinedDisability",
+      "classificationValue": "No"
+    },
+    {
+      "classificationType": "EqualityDiversity",
+      "classificationCode": "SelfDefinedEthnicity",
+      "classificationValue": "White - British"
+    },
+    {
+      "classificationType": "EqualityDiversity",
+      "classificationCode": "KeyWitness",
+      "classificationValue": "No"
+    }
+  ]
+}
+</code></pre><p><strong>Type: application/vnd.staging.events.statement-received+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": "id"
+    },
+    "cppCaseId": {
+      "type": "string",
+      "id": "cppCaseId"
+    },
+    "urn": {
+      "type": "string",
+      "id": "urn"
+    },
+    "policePersonId": {
+      "type": "string",
+      "id": "policePersonId"
+    },
+    "statement": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "id": "id"
+        },
+        "number": {
+          "type": "string",
+          "id": "number"
+        },
+        "date": {
+          "type": "string",
+          "id": "date"
+        }
+      },
+      "id": "statement"
+    },
+    "document": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "id": "id"
+        },
+        "policeFileName": {
+          "type": "string",
+          "id": "policeFileName"
+        },
+        "originalFileName": {
+          "type": "string",
+          "id": "originalFileName"
+        },
+        "file": {
+          "type": "string",
+          "id": "file"
+        }
+      },
+      "id": "document"
+    },
+    "statementType": {
+      "id": "statementType",
+      "type": "string"
+    }
+  },
+  "id": "/"
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id":"c866cdba-2a63-11e6-b67b-9e71128cae79",
+  "cppCaseId": "a-a-a-a-a",
+  "urn": "policeUrn",
+  "policePersonId": "policePersonId",
+  "statement": {
+    "id": "statementId",
+    "number": "statementNumber",
+    "date": "2015-10-10"
+  },
+  "statementType": "Witness Statement",
+  "document": {
+    "id": "docId",
+    "policeFileName": "fileName given by police",
+    "originalFileName": "original file name",
+
+    "file": "base64BinaryEncodedStringRepresentingADocument"
+  }
+}</code></pre><p><strong>Type: application/vnd.staging.events.new-victim-received+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": "id"
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "urn": {
+          "type": "string",
+          "id": "urn"
+        },
+        "cppCaseId": {
+          "type": "string",
+          "id": "cppCaseId"
+        },
+        "person": {
+          "type": "object",
+          "properties": {
+            "policePersonId": {
+              "type": "string",
+              "id": "policePersonId"
+            },
+            "name": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "id": "title"
+                },
+                "givenName": {
+                  "type": "string",
+                  "id": "givenName"
+                },
+                "requestedName": {
+                  "type": "string",
+                  "id": "requestedName"
+                },
+                "familyName": {
+                  "type": "string",
+                  "id": "familyName"
+                }
+              },
+              "id": "name"
+            },
+            "contactDetails": {
+              "type": "object",
+              "properties": {
+                "address": {
+                  "type": "object",
+                  "properties": {
+                    "addressLines": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "id": "addressLines"
+                    },
+                    "postcode": {
+                      "type": "string",
+                      "id": "postcode"
+                    },
+                    "country": {
+                      "type": "string",
+                      "id": "country"
+                    }
+                  },
+                  "id": "address"
+                },
+                "contactNumber": {
+                  "type": "object",
+                  "properties": {
+                    "telNationalNumber": {
+                      "type": "string",
+                      "id": "telNationalNumber"
+                    },
+                    "telCountryCode": {
+                      "type": "string",
+                      "id": "telCountryCode"
+                    },
+                    "telExtensionNumber": {
+                      "type": "string",
+                      "id": "telExtensionNumber"
+                    }
+                  },
+                  "id": "contactNumber"
+                },
+                "email": {
+                  "type": "string",
+                  "id": "email"
+                },
+                "dxAddress": {
+                  "type": "object",
+                  "properties": {
+                    "dxNumber": {
+                      "type": "string",
+                      "id": "dxNumber"
+                    },
+                    "exchange": {
+                      "type": "string",
+                      "id": "exchange"
+                    },
+                    "memberName": {
+                      "type": "string",
+                      "id": "memberName"
+                    }
+                  },
+                  "id": "dxAddress"
+                }
+              },
+              "id": "contactDetails"
+            },
+            "personClassification": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "classificationType": {
+                    "type": "string",
+                    "id": "classificationType"
+                  },
+                  "classificationCode": {
+                    "type": "string",
+                    "id": "classificationCode"
+                  },
+                  "classificationValue": {
+                    "type": "string",
+                    "id": "classificationValue"
+                  }
+                },
+                "id": "0"
+              },
+              "id": "personClassification"
+            },
+            "dateOfBirth": {
+              "type": "string",
+              "id": "dateOfBirth"
+            },
+            "occupation": {
+              "type": "string",
+              "id": "occupation"
+            },
+            "alternateContact": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "policePersonId": {
+                    "type": "string",
+                    "id": "policePersonId"
+                  },
+                  "name": {
+                    "type": "object",
+                    "properties": {
+                      "title": {
+                        "type": "string",
+                        "id": "title"
+                      },
+                      "givenName": {
+                        "type": "string",
+                        "id": "givenName"
+                      },
+                      "requestedName": {
+                        "type": "string",
+                        "id": "requestedName"
+                      },
+                      "familyName": {
+                        "type": "string",
+                        "id": "familyName"
+                      }
+                    },
+                    "id": "name"
+                  },
+                  "contactDetails": {
+                    "type": "object",
+                    "properties": {
+                      "address": {
+                        "type": "object",
+                        "properties": {
+                          "addressLines": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "id": "addressLines"
+                          },
+                          "postcode": {
+                            "type": "string",
+                            "id": "postcode"
+                          },
+                          "country": {
+                            "type": "string",
+                            "id": "country"
+                          }
+                        },
+                        "id": "address"
+                      },
+                      "contactNumber": {
+                        "type": "object",
+                        "properties": {
+                          "telNationalNumber": {
+                            "type": "string",
+                            "id": "telNationalNumber"
+                          },
+                          "telCountryCode": {
+                            "type": "string",
+                            "id": "telCountryCode"
+                          },
+                          "telExtensionNumber": {
+                            "type": "string",
+                            "id": "telExtensionNumber"
+                          }
+                        },
+                        "id": "contactNumber"
+                      },
+                      "email": {
+                        "type": "string",
+                        "id": "email"
+                      },
+                      "dxAddress": {
+                        "type": "object",
+                        "properties": {
+                          "dxNumber": {
+                            "type": "string",
+                            "id": "dxNumber"
+                          },
+                          "exchange": {
+                            "type": "string",
+                            "id": "exchange"
+                          },
+                          "memberName": {
+                            "type": "string",
+                            "id": "memberName"
+                          }
+                        },
+                        "id": "dxAddress"
+                      }
+                    },
+                    "id": "contactDetails"
+                  },
+                  "personClassification": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "classificationType": {
+                          "type": "string",
+                          "id": "classificationType"
+                        },
+                        "classificationCode": {
+                          "type": "string",
+                          "id": "classificationCode"
+                        },
+                        "classificationValue": {
+                          "type": "string",
+                          "id": "classificationValue"
+                        }
+                      },
+                      "id": "0"
+                    },
+                    "id": "personClassification"
+                  },
+                  "appropriateContact": {
+                    "type": "boolean",
+                    "id": "appropriateContact"
+                  },
+                  "relationshipTo": {
+                    "type": "string",
+                    "id": "relationshipTo"
+                  }
+                },
+                "id": "0"
+              },
+              "id": "alternateContact"
+            }
+          },
+          "id": "person"
+        }
+      },
+      "id": "payload"
+    }
+  },
+  "id": "/"
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "id": "c866cdba-2a63-11e6-b67b-9e71128cae99",
+    "payload": {
+        "urn": "urnabcde",
+        "cppCaseId": "cppCaseId",
+        "person": {
+            "policePersonId": "policePersonId",
+            "name": {
+                "title": "Dr",
+                "givenName": "Fraser",
+                "requestedName": "Scooby",
+                "familyName": "Scobie"
+            },
+            "contactDetails": {
+                "address": {
+                    "addressLines": [
+                        "line1",
+                        "line2"
+                    ],
+                    "postcode": "postcode",
+                    "country": "UK"
+                },
+                "contactNumber": {
+                    "telNationalNumber": "",
+                    "telCountryCode": "",
+                    "telExtensionNumber": ""
+                },
+                "email": "scobie@xfiles.com",
+                "dxAddress": {
+                    "dxNumber": "dxNumber",
+                    "exchange": "exchange",
+                    "memberName": "memberName"
+                }
+            },
+            "personClassification": [{
+                "classificationType": "personType",
+                "classificationCode": "witness",
+                "classificationValue": "Other"
+            }],
+            "dateOfBirth": "2015-10-10",
+            "occupation": "dr of physics",
+            "alternateContact": [{
+                "policePersonId": "alternatecontactId",
+                "name": {
+                    "title": "Dr",
+                    "givenName": "Fraser",
+                    "requestedName": "Scooby",
+                    "familyName": "Scobie"
+                },
+                "contactDetails": {
+                    "address": {
+                        "addressLines": [
+                            "line1",
+                            "line2"
+                        ],
+                        "postcode": "postcode",
+                        "country": "UK"
+                    },
+                    "contactNumber": {
+                        "telNationalNumber": "",
+                        "telCountryCode": "",
+                        "telExtensionNumber": ""
+                    },
+                    "email": "scobie@xfiles.com",
+                    "dxAddress": {
+                        "dxNumber": "dxNumber",
+                        "exchange": "exchange",
+                        "memberName": "memberName"
+                    }
+                },
+                "personClassification": [{
+                    "classificationType": "personType",
+                    "classificationCode": "witness",
+                    "classificationValue": "Other"
+                }],
+                "appropriateContact": true,
+                "relationshipTo": "spouse"
+            }]
+        }
+    }
+
+}</code></pre><p><strong>Type: application/vnd.staging.events.cases-import+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "cases": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "prosecutorCaseId": {
+                "type": "string"
+              },
+              "ptiUrn": {
+                "type": "string"
+              },
+              "initiationCode": {
+                "type": "string"
+              },
+              "libraOriginatingOrg": {
+                "type": "string"
+              },
+              "summonsCode": {
+                "type": "string"
+              },
+              "prosecutor": {
+                "type": "string"
+              },
+              "libraHearingLocation": {
+                "type": "string"
+              },
+              "dateOfHearing": {
+                "type": "string"
+              },
+              "timeOfHearing": {
+                "type": "string"
+              },
+              "defendant": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "forename": {
+                    "type": "string"
+                  },
+                  "familyName": {
+                    "type": "string"
+                  },
+                  "address1": {
+                    "type": "string"
+                  },
+                  "address2": {
+                    "type": "string"
+                  },
+                  "town": {
+                    "type": "string"
+                  },
+                  "county": {
+                    "type": "string"
+                  },
+                  "postcode": {
+                    "type": "string"
+                  },
+                  "dob": {
+                    "type": "string"
+                  },
+                  "gender": {
+                    "type": "string"
+                  }
+                }
+              },
+              "offences": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "prosecutorCaseId": {
+                      "type": "string"
+                    },
+                    "offenceSequenceNo": {
+                      "type": "integer"
+                    },
+                    "libraOffenceCode": {
+                      "type": "string"
+                    },
+                    "chargeDate": {
+                      "type": "string"
+                    },
+                    "libraOffenceDateCode": {
+                      "type": "integer"
+                    },
+                    "offenceDate": {
+                      "type": "string"
+                    },
+                    "offenceWording": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "sjpCaseList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "prosecutorCaseId": {
+                "type": "string"
+              },
+              "ptiUrn": {
+                "type": "string"
+              },
+              "initiationCode": {
+                "type": "string"
+              },
+              "libraOriginatingOrg": {
+                "type": "string"
+              },
+              "summonsCode": {
+                "type": "string"
+              },
+              "prosecutor": {
+                "type": "string"
+              },
+              "libraHearingLocation": {
+                "type": "string"
+              },
+              "dateOfHearing": {
+                "type": "string"
+              },
+              "timeOfHearing": {
+                "type": "string"
+              },
+              "defendant": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "forename": {
+                    "type": "string"
+                  },
+                  "familyName": {
+                    "type": "string"
+                  },
+                  "address1": {
+                    "type": "string"
+                  },
+                  "address2": {
+                    "type": "string"
+                  },
+                  "town": {
+                    "type": "string"
+                  },
+                  "county": {
+                    "type": "string"
+                  },
+                  "postcode": {
+                    "type": "string"
+                  },
+                  "dob": {
+                    "type": "string"
+                  },
+                  "gender": {
+                    "type": "string"
+                  }
+                }
+              },
+              "offences": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "prosecutorCaseId": {
+                      "type": "string"
+                    },
+                    "offenceSequenceNo": {
+                      "type": "integer"
+                    },
+                    "libraOffenceCode": {
+                      "type": "string"
+                    },
+                    "chargeDate": {
+                      "type": "string"
+                    },
+                    "libraOffenceDateCode": {
+                      "type": "integer"
+                    },
+                    "offenceDate": {
+                      "type": "string"
+                    },
+                    "offenceWording": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "464e4d57-0241-400f-a5e2-6c3240d27e9d",
+  "payload": {
+    "cases": [
+      {
+        "prosecutorCaseId": "TFL2041315",
+        "ptiUrn": "2041315",
+        "initiationCode": "J",
+        "libraOriginatingOrg": "GAFTL00",
+        "summonsCode": "M",
+        "prosecutor": "TRANSPORT FOR LONDON",
+        "libraHearingLocation": "B01LY75",
+        "dateOfHearing": "25/02/2016",
+        "timeOfHearing": "11:00:00",
+        "defendant": {
+          "title": "Mr",
+          "forename": "Fred",
+          "familyName": "Smith",
+          "address1": "Flat 1",
+          "address2": "1 Old Road",
+          "town": "London",
+          "county": "Merton",
+          "postcode": "SW99 1AA",
+          "dob": "27/12/1965",
+          "gender": "M"
+        },
+        "offences": [
+          {
+            "prosecutorCaseId": "TFL2041315",
+            "offenceSequenceNo": 1,
+            "libraOffenceCode": "PS90010",
+            "chargeDate": "2016-01-22",
+            "libraOffenceDateCode": 1,
+            "offenceDate": "2015-07-02",
+            "offenceWording": "On 02/07/2015 At threadneedle street EC2 Being a passenger on a Public service Vehicle operated on behalf of London Bus Services Limited being used for the carriage of passengers at separate fares where the vehicle was being operated by a Driver without a Conductor did not as directed by the Driver an Inspector or a Notice displayed on the vehicle pay the fare for the journey in accordance with the direction  "
+          }
+        ]
+      }
+    ],
+    "sjpCaseList": [
+      {
+        "prosecutorCaseId": "TFL2041315",
+        "ptiUrn": "2041315",
+        "initiationCode": "J",
+        "libraOriginatingOrg": "GAFTL00",
+        "summonsCode": "M",
+        "prosecutor": "TRANSPORT FOR LONDON",
+        "libraHearingLocation": "B01LY75",
+        "dateOfHearing": "25/02/2016",
+        "timeOfHearing": "11:00:00",
+        "defendant": {
+          "title": "Mr",
+          "forename": "Fred",
+          "familyName": "Smith",
+          "address1": "Flat 1",
+          "address2": "1 Old Road",
+          "town": "London",
+          "county": "Merton",
+          "postcode": "SW99 1AA",
+          "dob": "27/12/1965",
+          "gender": "M"
+        },
+        "offences": [
+          {
+            "prosecutorCaseId": "TFL2041315",
+            "offenceSequenceNo": 1,
+            "libraOffenceCode": "PS90010",
+            "chargeDate": "2016-01-22",
+            "libraOffenceDateCode": 1,
+            "offenceDate": "2015-07-02",
+            "offenceWording": "On 02/07/2015 At threadneedle street EC2 Being a passenger on a Public service Vehicle operated on behalf of London Bus Services Limited being used for the carriage of passengers at separate fares where the vehicle was being operated by a Driver without a Conductor did not as directed by the Driver an Inspector or a Notice displayed on the vehicle pay the fare for the journey in accordance with the direction  "
+          }
+        ]
+      }
+    ]
+  }
+}</code></pre><p><strong>Type: application/vnd.staging.events.suspect-updated+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "id": "id",
+      "type": "string"
+    },
+    "suspect": {
+      "type": "object",
+      "properties": {
+        "bailConditions": {
+          "type": "string"
+        },
+        "person": {
+          "type": "object",
+          "properties": {
+            "occupation": {
+              "type": "string"
+            },
+            "nationality": {
+              "type": "string"
+            },
+            "name": {
+              "type": "object",
+              "properties": {
+                "foreNames": {
+                  "type": "string"
+                },
+                "surname": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "foreNames",
+                "surname",
+                "title"
+              ]
+            },
+            "dateOfBirth": {
+              "type": "string"
+            },
+            "policePersonId": {
+              "type": "string"
+            },
+            "contactDetails": {
+              "type": "object",
+              "properties": {
+                "address": {
+                  "type": "object",
+                  "properties": {
+                    "address": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "address"
+                  ]
+                },
+                "mobile": {
+                  "type": "string"
+                },
+                "fax": {
+                  "type": "string"
+                },
+                "homeTelephone": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "asn": {
+          "type": "string"
+        },
+        "policeRemandStatus": {
+          "type": "string"
+        },
+        "bailDate": {
+          "type": "string"
+        }
+      }
+    },
+    "cppCaseId": {
+      "type": "string",
+      "id": "cppCaseId"
+    },
+    "ptiUrn": {
+      "type": "string",
+      "id": "ptiUrn"
+    }
+  },
+  "required": [
+    "suspect",
+    "cppCaseId",
+    "ptiUrn"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "cb95c7dc-0347-4db0-9911-e18b81f40dbd",
+  "suspect": {
+    "bailConditions": "bailConditions",
+    "person": {
+      "occupation": "systems analyst",
+      "nationality": "British",
+      "disability": "Any thing",
+      "ethnicity": "white and Black Caribbean",
+      "gender": "Male",
+      "dateOfBirth": "1990-10-10",
+      "policePersonId": "f1dd72d0-cb30-11e5-9956-625662870761",
+      "name": {
+        "foreNames": "Shirley",
+        "surname": "DoubleDina",
+        "title": "Mrs"
+      },
+      "contactDetails": {
+        "address": {
+          "address": "11 Montague street"
+        },
+        "mobile": "mobile",
+        "fax": "fax",
+        "homeTelephone": "home",
+        "email": "email@com"
+      }
+    },
+    "asn": "asn",
+    "policeRemandStatus": "policeRemandStatus",
+    "bailDate": "2015-10-10"
+  },
+  "cppCaseId": "4326bf5b-fdf9-4c0b-baf8-6cca4416b24c",
+  "ptiUrn": "45GD0286711"
+}</code></pre><p><strong>Type: application/vnd.staging.events.victim-deleted+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "id": {
+      "id": "id",
+      "type": "string"
+    },
+    "ptiUrn": {
+      "id": "ptiUrn",
+      "type": "string"
+    },
+    "cppCaseId": {
+      "id": "cppCaseId",
+      "type": "string"
+    },
+    "policePersonId": {
+      "id": "policePersonId",
+      "type": "string"
+    }
+  },
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "ptiUrn",
+    "cppCaseId",
+    "policePersonId"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "c866cdba-2a63-11e6-b67b-9e71128cae99",
+  "ptiUrn": "urnabcde",
+  "cppCaseId": "cppCaseId",
+  "policePersonId": "policePersonId"
+}</code></pre><p><strong>Type: application/vnd.staging.events.witness-deleted+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "id": {
+      "id": "id",
+      "type": "string"
+    },
+    "ptiUrn": {
+      "id": "ptiUrn",
+      "type": "string"
+    },
+    "cppCaseId": {
+      "id": "cppCaseId",
+      "type": "string"
+    },
+    "policePersonId": {
+      "id": "policePersonId",
+      "type": "string"
+    }
+  },
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "ptiUrn",
+    "cppCaseId",
+    "policePersonId"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "c866cdba-2a63-11e6-b67b-9e71128cae99",
+  "ptiUrn": "urnabcde",
+  "cppCaseId": "cppCaseId",
+  "policePersonId": "policePersonId"
+}</code></pre><p><strong>Type: application/vnd.staging.events.victim-details-updated+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "caseId": {
+            "type": "string"
+        },
+        "person": {
+            "type": "object",
+            "properties": {
+                "policePersonId": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "object",
+                    "properties": {
+                        "title": {
+                            "description": "The person title",
+                            "type": "string"
+                        },
+                        "foreNames": {
+                            "description": "The person fore names",
+                            "type": "string"
+                        },
+                        "surname": {
+                            "description": "The person surname",
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "dateOfBirth": {
+                    "description": "The person date of birth",
+                    "type": "string"
+                },
+                "occupation": {
+                    "description": "The person occupation",
+                    "type": "string"
+                },
+                "disability": {
+                    "description": "The person disability status",
+                    "type": "string"
+                },
+                "ethnicity": {
+                    "description": "The person ethnicity",
+                    "type": "string"
+                },
+                "gender": {
+                    "description": "The person gender",
+                    "type": "string"
+                },
+                "contactDetails": {
+                    "type": "object",
+                    "properties": {
+                        "address": {
+                            "type": "object",
+                            "properties": {
+                                "address": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "homeTelephone": {
+                            "description": "The person home telephone number",
+                            "type": "string"
+                        },
+                        "mobile": {
+                            "description": "The person mobile number",
+                            "type": "string"
+                        },
+                        "workTelephone": {
+                            "description": "The person work telephone number",
+                            "type": "string"
+                        },
+                        "fax": {
+                            "description": "The person fax number",
+                            "type": "string"
+                        },
+                        "email": {
+                            "description": "The person e-mail address",
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "policePersonId",
+                "name"
+            ]
+        },
+        "offenceIds": {
+            "type": "array"
+        },
+        "victimClassifications": {
+            "type": ["array"],
+            "items": {
+                "type": "object",
+                "properties": {
+                    "classificationType": {
+                        "type": "string"
+                    },
+                    "classificationCode": {
+                        "type": "string"
+                    },
+                    "classificationValue": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            }
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "caseId",
+        "person"
+    ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "caseId": "245ea95c-163c-4223-afad-c77d551ace6d",
+    "person": {
+        "policePersonId": "700b2820-ed12-11e5-9ce9-5e5517507c66",
+        "name": {
+            "title": "Mrs",
+            "foreNames": "Shirley",
+            "surname": "DoubleDina"
+        },
+        "dateOfBirth": "1990-10-10",
+        "occupation": "occupation",
+        "disability": "Yes",
+        "ethnicity": "Green - British",
+        "gender": "Female",
+        "contactDetails": {
+            "address": {
+              "address": "11 Montague street"
+            },
+            "homeTelephone": "home",
+            "mobile": "mobile",
+            "workTelephone": "work",
+            "fax": "fax",
+            "email": "email@com"
+        }
+    },
+    "offenceIds": [
+        "bb3fe7d9-021e-42fb-bc19-e04ed76b1ab2",
+        "41d2b8fb-0a8a-4e2e-8e05-14ba18c70783"
+    ],
+    "victimClassifications": [
+        {
+            "classificationType": "personType",
+            "classificationCode": "victim",
+            "classificationValue": "Other"
+        }
+    ]
+}</code></pre><p><strong>Type: application/vnd.staging.events.witness-details-updated+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "caseId": {
+            "type": "string"
+        },
+        "person": {
+            "type": "object",
+            "properties": {
+                "policePersonId": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "object",
+                    "properties": {
+                        "title": {
+                            "description": "The person title",
+                            "type": "string"
+                        },
+                        "foreNames": {
+                            "description": "The person fore names",
+                            "type": "string"
+                        },
+                        "surname": {
+                            "description": "The person surname",
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "dateOfBirth": {
+                    "description": "The person date of birth",
+                    "type": "string"
+                },
+                "occupation": {
+                    "description": "The person occupation",
+                    "type": "string"
+                },
+                "disability": {
+                    "description": "The person disability status",
+                    "type": "string"
+                },
+                "ethnicity": {
+                    "description": "The person ethnicity",
+                    "type": "string"
+                },
+                "gender": {
+                    "description": "The person gender",
+                    "type": "string"
+                },
+                "contactDetails": {
+                    "type": "object",
+                    "properties": {
+                        "address": {
+                            "type": "object",
+                            "properties": {
+                                "address": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "homeTelephone": {
+                            "description": "The person home telephone number",
+                            "type": "string"
+                        },
+                        "mobile": {
+                            "description": "The person mobile number",
+                            "type": "string"
+                        },
+                        "workTelephone": {
+                            "description": "The person work telephone number",
+                            "type": "string"
+                        },
+                        "fax": {
+                            "description": "The person fax number",
+                            "type": "string"
+                        },
+                        "email": {
+                            "description": "The person e-mail address",
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "rank": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "policePersonId",
+                "name"
+            ]
+        },
+        "shoulderNumber": {
+            "type": "string"
+        },
+        "warrantCardID": {
+            "type": "string"
+        },
+        "witnessClassifications": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "classificationType": {
+                        "type": "string"
+                    },
+                    "classificationCode": {
+                        "type": "string"
+                    },
+                    "classificationValue": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            }
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "caseId",
+        "person"
+    ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "caseId": "a9c0bbfa-3013-4687-9071-bfea341222a6",
+    "person": {
+        "policePersonId": "f1dd72d0-cb30-11e5-9956-625662870761",
+        "name": {
+            "title": "Mrs",
+            "foreNames": "Shirley",
+            "surname": "DoubleDina"
+        },
+        "dateOfBirth": "1990-10-10",
+        "occupation": "occupation",
+        "disability": "Yes",
+        "ethnicity": "Green - British",
+        "gender": "Female",
+        "contactDetails": {
+            "address": {
+              "address": "11 Montague street"
+            },
+            "homeTelephone": "home",
+            "mobile": "mobile",
+            "workTelephone": "work",
+            "fax": "fax",
+            "email": "email@com"
+        },
+        "rank": "rank"
+    },
+    "shoulderNumber": "shoulderNumber",
+    "warrantCardID": "warrantCardID",
+    "witnessClassifications": [
+        {
+            "classificationType": "EqualityDiversity",
+            "classificationCode": "SelfDefinedGender",
+            "classificationValue": "Male"
+        },
+        {
+            "classificationType": "EqualityDiversity",
+            "classificationCode": "SelfDefinedDisability",
+            "classificationValue": "None"
+        },
+        {
+            "classificationType": "EqualityDiversity",
+            "classificationCode": "SelfDefinedEthnicity",
+            "classificationValue": "White - British"
+        },
+        {
+            "classificationType": "TypeOfWitness",
+            "classificationCode": "KeyWitness",
+            "classificationValue": "No"
+        },
+        {
+            "classificationType": "TypeOfWitness",
+            "classificationCode": "Police",
+            "classificationValue": "No"
+        },
+        {
+            "classificationType": "TypeOfWitness",
+            "classificationCode": "Professional",
+            "classificationValue": "Yes"
+        },
+        {
+            "classificationType": "TypeOfWitness",
+            "classificationCode": "Expert",
+            "classificationValue": "No"
+        },
+        {
+            "classificationType": "TypeOfWitness",
+            "classificationCode": "Vulnerable",
+            "classificationValue": "No"
+        },
+        {
+            "classificationType": "TypeOfWitness",
+            "classificationCode": "Intimidated",
+            "classificationValue": "Yes"
+        },
+        {
+            "classificationType": "TypeOfWitness",
+            "classificationCode": "Child",
+            "classificationValue": "No"
+        },
+        {
+            "classificationType": "TypeOfWitness",
+            "classificationCode": "Special",
+            "classificationValue": "Yes"
+        },
+        {
+            "classificationType": "TypeOfWitness",
+            "classificationCode": "Prisoner",
+            "classificationValue": "No"
+        },
+        {
+            "classificationType": "TypeOfWitness",
+            "classificationCode": "Interpreter",
+            "classificationValue": "Yes"
+        }
+    ]
+}</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="public_event" class="panel-title">/public.event</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_public_event"><span class="parent"></span>/public.event</a> <span class="methods"><a href="#public_event_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_public_event" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#public_event_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="public_event_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/public.event</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#public_event_post_request" data-toggle="tab">Request</a></li></ul><div class="tab-content"><div class="tab-pane active" id="public_event_post_request"><h3>Body</h3><p><strong>Type: application/vnd.public.structure.exhibit-added+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "id": "/caseId",
+      "type": "string"
+    },
+    "exhibitId": {
+      "id": "/exhibitId",
+      "type": "string"
+    },
+    "exhibitName": {
+      "id": "/exhibitName",
+      "type": "string"
+    },
+    "suspectId": {
+      "id": "/suspectId",
+      "type": ["string","null"]
+    },
+    "personProducingId": {
+      "id": "/personProducingId",
+      "type": ["string","null"]
+    },
+    "policeReference": {
+      "id": "/policeReference",
+      "type": "string"
+    },
+    "urn": {
+      "id": "/urn",
+      "type": "string"
+    }
+    
+  },
+  "required": [
+    "caseId",
+    "exhibitId",
+    "urn"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId": "cc4a2765-e630-4d9a-923c-6b9fd29dbaa1",
+  "exhibitId": "36d5ef5a-a3e1-41c1-b75a-ad1d6ecbf44e",
+  "exhibitName":"exhibitNameValue",
+  "suspectId":"023e0428-705b-4749-a549-e9a567554e12",
+  "personProducingId" : "023e0428-705b-4749-a549-e9a567554e12",
+  "policeReference":"policeReferenceValue",
+  "urn":"49TT858917"
+}</code></pre><p><strong>Type: application/vnd.public.structure.case-document-updated+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "materialId": {
+      "id": "/materialId",
+      "type": "string"
+    },
+    "originatingDocumentId": {
+      "id": "/originatingDocumentId",
+      "type": "string"
+    },
+    "updatedFileName": {
+      "id": "/updatedFileName",
+      "type": "string"
+    },
+    "casePtiUrn": {
+      "id": "/casePtiUrn",
+      "type": "string"
+    },
+    "updateType": {
+      "id": "/updateType",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "originatingDocumentId",
+    "updatedFileName",
+    "casePtiUrn",
+    "updateType"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "materialId": "012",
+  "originatingDocumentId": "123",
+  "updatedFileName": "test.docx",
+  "casePtiUrn": "321",
+  "updateType": "NAME_UPDATED_ONLY"
+}</code></pre><p><strong>Type: application/vnd.public.structure.sjp-case-created+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "uuid": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "urn": {
+      "id": "/urn",
+      "type": "string"
+    },
+    "id": {
+      "$ref": "#/definitions/uuid",
+      "type": "string"
+    },
+    "ptiUrn": {
+      "id": "/ptiUrn",
+      "type": "string"
+    },
+    "initiationCode": {
+      "id": "/initiationCode",
+      "type": "string"
+    },
+    "summonsCode": {
+      "id": "/summonsCode",
+      "type": "string"
+    },
+    "prosecutor": {
+      "id": "/prosecutor",
+      "type": "string"
+    },
+    "libraOriginatingOrg": {
+      "id": "/libraOriginatingOrg",
+      "type": "string"
+    },
+    "libraHearingLocation": {
+      "id": "/libraHearingLocation",
+      "type": "string"
+    },
+    "dateOfHearing": {
+      "id": "/dateOfHearing",
+      "type": "string"
+    },
+    "timeOfHearing": {
+      "id": "/timeOfHearing",
+      "type": "string"
+    },
+    "personId": {
+      "id": "/personId",
+      "type": "string"
+    },
+    "numPreviousConvictions": {
+      "id": "/numPreviousConvictions",
+      "type": "integer"
+    },
+    "costs": {
+      "id": "/costs",
+      "type": "number"
+    },
+    "compensation": {
+      "id": "/compensation",
+      "type": "number"
+    },
+    "postingDate": {
+      "id": "/postingDate",
+      "type": "string"
+    },
+    "offences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "prosecutorCaseId": {
+            "type": "string"
+          },
+          "offenceSequenceNo": {
+            "type": "integer"
+          },
+          "libraOffenceCode": {
+            "type": "string"
+          },
+          "chargeDate": {
+            "type": "string"
+          },
+          "libraOffenceDateCode": {
+            "type": "integer"
+          },
+          "offenceDate": {
+            "type": "string"
+          },
+          "offenceWording": {
+            "type": "string"
+          },
+          "prosecutionFacts": {
+            "type": "string"
+          },
+          "witnessStatement": {
+            "type": "string"
+          }
+        },
+        "required" : [
+          "prosecutorCaseId",
+          "offenceSequenceNo",
+          "libraOffenceCode",
+          "chargeDate",
+          "libraOffenceDateCode",
+          "offenceDate",
+          "offenceWording"
+        ]
+      }
+    }
+  },
+  "required": [
+    "urn",
+    "id",
+    "ptiUrn",
+    "initiationCode",
+    "summonsCode",
+    "prosecutor",
+    "libraOriginatingOrg",
+    "dateOfHearing",
+    "timeOfHearing",
+    "personId"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "urn": "22C22222222",
+  "ptiUrn": "22C22222222",
+  "initiationCode": "J",
+  "summonsCode": "M",
+  "prosecutor": "Transport for London",
+  "libraOriginatingOrg": "GAFTL00",
+  "libraHearingLocation": "B01CE03",
+  "dateOfHearing": "2016-01-01",
+  "timeOfHearing": "11:00",
+  "personId": "7e2f843e-d639-40b3-8611-8015f3a18999",
+  "numPreviousConvictions": 2,
+  "costs": 2.34,
+  "compensation": 3.44,
+  "postingDate": "2015-12-02",
+  "offences": [
+    {
+      "prosecutorCaseId": "TFL21345",
+      "offenceSequenceNo": 1,
+      "libraOffenceCode": "PS00001",
+      "chargeDate": "2016-01-01",
+      "libraOffenceDateCode": 1,
+      "offenceDate": "2016-01-01",
+      "offenceWording": "Committed some offence",
+      "prosecutionFacts": "No ticket at the gates, forgery",
+      "witnessStatement": "Jumped over the barriers"
+    }
+  ]
+}</code></pre><p><strong>Type: application/vnd.public.structure.storage-reference-updated+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "id": "/caseId",
+      "type": "string"
+    },
+    "exhibitId": {
+      "id": "/exhibitId",
+      "type": "string"
+    },
+    "storageReference": {
+      "id": "/storageReference",
+      "type": "string"
+    },
+    "exhibitName": {
+      "id": "/exhibitName",
+      "type": "string"
+    },
+    "urn": {
+      "id": "/urn",
+      "type": "string"
+    }
+  },
+  "required": [
+    "caseId",
+    "exhibitId",
+    "storageReference",
+    "urn",
+    "exhibitName"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId": "cc4a2765-e630-4d9a-923c-6b9fd29dbaa1",
+  "exhibitId": "36d5ef5a-a3e1-41c1-b75a-ad1d6ecbf44e",
+  "storageReference": "In the filing cabinet",
+  "exhibitName":"exhibitNameValue",
+  "urn":"49TT858917"
+}</code></pre><p><strong>Type: application/vnd.public.lifecycle.c2i-pre-charge-review-completed+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "reviewId": {
+      "type": "string"
+    },
+    "aggregateId": {
+      "type": "string"
+    },
+    "version": {
+      "type": "integer"
+    },
+    "chargingLawyerId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "caseId": {
+      "type": "string"
+    },
+    "suspects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "suspectId": {
+            "type": "string"
+          },
+          "analysis": {
+            "type": "object",
+            "properties": {
+              "reason": {
+                "type": "string"
+              },
+              "analysisPublicInterests": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "analysisType": {
+                "type": "string"
+              }
+            }
+          },
+          "authorisedCharges": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "proposedChargeId": {
+                  "type": "string"
+                },
+                "suspectId": {
+                  "type": "string"
+                },
+                "anticipatedPleaType": {
+                  "type": "string"
+                },
+                "cjsCode": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "category": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "fromDate": {
+                  "type": "string"
+                },
+                "toDate": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "particulars": {
+                  "type": "object",
+                  "properties": {
+                    "address": {
+                      "type": "string"
+                    },
+                    "postCode": {
+                      "type": "string"
+                    },
+                    "country": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "id",
+                "suspectId",
+                "anticipatedPleaType"
+              ]
+            }
+          },
+          "proposedCharges": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "uniqueId": {
+                  "type": "string"
+                },
+                "cjsCode": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "category": {
+                  "type": "string"
+                },
+                "fromDate": {
+                  "type": "string"
+                },
+                "toDate": {
+                  "type": "string"
+                },
+                "particulars": {
+                  "type": "object",
+                  "properties": {
+                    "address": {
+                      "type": "string"
+                    },
+                    "postCode": {
+                      "type": "string"
+                    },
+                    "country": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "chargeStatus": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "rejectionReason": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "Evidential",
+                    "Public Interest",
+                    "Covered by Other Charges"
+                  ]
+                }
+              },
+              "required": [
+                "id",
+                "uniqueId",
+                "cjsCode",
+                "particulars"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "caseStrategy": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sentencingVenueAllocated": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "allocationReason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "echrFlag": {
+      "type": "boolean"
+    },
+    "echrText": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "adviceMethod": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "reviewId",
+    "aggregateId",
+    "version",
+    "caseId",
+    "suspects"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "reviewId": "300a8bd7-1ae1-4234-bb1c-7a36beca0ea0",
+  "aggregateId": "300a8bd7-1ae1-4234-bb1c-7a36beca0ea0",
+  "version": 9,
+  "caseId": "c48ccfe5-c534-41bc-8317-754c34a75c5d",
+  "suspects": [
+    {
+      "suspectId": "a658baaf-4370-47b6-81bf-89a913628ef9",
+      "codeTestAnalysis": {
+        "codeTestLevel": "FULL_CODE_TEST",
+        "codeTestOutcome": "FULL_CODE_TEST_MET"
+      },
+      "authorisedCharges": [
+        {
+          "id": "747c131c-4668-4f79-b2a9-5d215e403cec",
+          "proposedChargeId": "6a7111b1-f75b-483d-9f13-e06b72d7284e",
+          "suspectId": "a658baaf-4370-47b6-81bf-89a913628ef9",
+          "anticipatedPleaType": "GUILTY"
+        },
+        {
+          "id": "34e77ccd-dd23-4d18-8f9e-50e88e6be6e0",
+          "proposedChargeId": "7a5ecdba-dd57-4f90-8b82-daaca318b33f",
+          "suspectId": "a658baaf-4370-47b6-81bf-89a913628ef9",
+          "anticipatedPleaType": "GUILTY"
+        }
+      ],
+      "proposedCharges": [
+        {
+          "id": "7a5ecdba-dd57-4f90-8b82-daaca318b33f",
+          "uniqueId": "uniqueId from TWIF system",
+          "cjsCode": "cjsCode1",
+          "description": "description",
+          "category": "category",
+          "fromDate": "2015-10-10",
+          "toDate": "2015-10-10",
+          "particulars": {
+            "address": "10 downing street\nLondon"
+          },
+          "chargeStatus": "ACCEPTED"
+        },
+        {
+          "id": "6a7111b1-f75b-483d-9f13-e06b72d7284e",
+          "uniqueId": "uniqueId from TWIF system",
+          "cjsCode": "cjsCode2",
+          "description": "description",
+          "category": "category",
+          "fromDate": "2015-10-10",
+          "toDate": "2015-10-10",
+          "particulars": {
+            "address": "10 downing street\nLondon"
+          },
+          "chargeStatus": "ACCEPTED"
+        }
+      ],
+      "sentencingStartingPoint": "charging suspect",
+      "aggravatingMitigating": "use of weapon",
+      "remandAdvice": {
+        "type": "REMAND_IN_CUSTODY",
+        "groundsOrConditions": "History of similar offences. Likely to commit similar offence again if bailed."
+      },
+      "identifiedPleaIssueStatus": "NO"
+    }
+  ],
+  "caseStrategy": "new case strategy",
+  "sentencingVenueAllocated": "CROWN_COURT",
+  "allocationReason": "good reason",
+  "chargingLawyerId": "No Charging Lawyer for this review",
+  "echrFlag": true,
+  "echrText": "echr ty text",
+  "adviceMethod": "Electronic"
+}</code></pre><p><strong>Type: application/vnd.public.lifecycle.c2i-ownership-transferred+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "ptiUrn": {
+      "id": "ptiUrn",
+      "type": "string"
+    },
+    "cppCaseId": {
+      "id": "cppCaseId",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["ptiUrn", "cppCaseId"]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "ptiUrn": "1234Urn",
+  "cppCaseId": "bd6ae52f-2ecf-4fea-9cdf-8cf3fc0584cb"
+}</code></pre><p><strong>Type: application/vnd.public.lifecycle.pre-charge-decision-request-processed+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "id": "/caseId",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "caseId"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId": "208e8868-18a9-456a-8d6e-ce667162c4f5"
+}</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#staging_processor_event">/staging.processor.event</a></li><li><a href="#staging_event">/staging.event</a></li><li><a href="#public_event">/public.event</a></li></ul></div></div></div></div></body></html>

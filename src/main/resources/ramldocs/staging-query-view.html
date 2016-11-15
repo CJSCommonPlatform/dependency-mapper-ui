@@ -1,0 +1,751 @@
+<!DOCTYPE HTML><html><head><title>Staging Query API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/raml2html/raml2html 3.0.1"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script><script type="text/javascript">
+      $(document).ready(function() {
+        $('.page-header pre code, .top-resource-description pre code, .modal-body pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+
+        $('[data-toggle]').click(function() {
+          var selector = $(this).data('target') + ' pre code';
+          $(selector).each(function(i, block) {
+            hljs.highlightBlock(block);
+          });
+        });
+
+        // open modal on hashes like #_action_get
+        $(window).bind('hashchange', function(e) {
+          var anchor_id = document.location.hash.substr(1); //strip #
+          var element = $('#' + anchor_id);
+
+          // do we have such element + is it a modal?  --> show it
+          if (element.length && element.hasClass('modal')) {
+            element.modal('show');
+          }
+        });
+
+        // execute hashchange on first page load
+        $(window).trigger('hashchange');
+
+        // remove url fragment on modal hide
+        $('.modal').on('hidden.bs.modal', function() {
+          try {
+            if (history && history.replaceState) {
+                history.replaceState({}, '', '#');
+            }
+          } catch(e) {}
+        });
+      });
+    </script><style>
+      .hljs {
+        background: transparent;
+      }
+      .parent {
+        color: #999;
+      }
+      .list-group-item > .badge {
+        float: none;
+        margin-right: 6px;
+      }
+      .panel-title > .methods {
+        float: right;
+      }
+      .badge {
+        border-radius: 0;
+        text-transform: uppercase;
+        width: 70px;
+        font-weight: normal;
+        color: #f3f3f6;
+        line-height: normal;
+      }
+      .badge_get {
+        background-color: #63a8e2;
+      }
+      .badge_post {
+        background-color: #6cbd7d;
+      }
+      .badge_put {
+        background-color: #22bac4;
+      }
+      .badge_delete {
+        background-color: #d26460;
+      }
+      .badge_patch {
+        background-color: #ccc444;
+      }
+      .list-group, .panel-group {
+        margin-bottom: 0;
+      }
+      .panel-group .panel+.panel-white {
+        margin-top: 0;
+      }
+      .panel-group .panel-white {
+        border-bottom: 1px solid #F5F5F5;
+        border-radius: 0;
+      }
+      .panel-white:last-child {
+        border-bottom-color: white;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      .panel-white .panel-heading {
+        background: white;
+      }
+      .tab-pane ul {
+        padding-left: 2em;
+      }
+      .tab-pane h1 {
+        font-size: 1.3em;
+      }
+      .tab-pane h2 {
+        font-size: 1.2em;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #ddd;
+      }
+      .tab-pane h3 {
+        font-size: 1.1em;
+      }
+      .tab-content {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+      }
+      #sidebar {
+        margin-top: 30px;
+        padding-right: 5px;
+        overflow: auto;
+        height: 90%;
+      }
+      .top-resource-description {
+        border-bottom: 1px solid #ddd;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description {
+        border-bottom: 1px solid #fcfcfc;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description p:last-child {
+        margin: 0;
+      }
+      .list-group .badge {
+        float: left;
+      }
+      .method_description {
+        margin-left: 85px;
+      }
+      .method_description p:last-child {
+        margin: 0;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+      .list-group-item:hover {
+        background-color: #f5f5f5;
+      }
+
+      pre code {
+        overflow: auto;
+        word-wrap: normal;
+        white-space: pre;
+      }
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>Staging Query API documentation <small>version v0.1</small></h1><p>http://localhost:8080/staging-query-view/query/view/rest/staging</p></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases_import" class="panel-title">/cases-import</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases_import"><span class="parent"></span>/cases-import</a> <span class="methods"><a href="#cases_import_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_cases_import" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases_import_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Returns the status of cases imports. ... (mapping): responseType: application/vnd.staging.query.cases-imports+json name: staging.query.cases-imports ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases_import_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/cases-import</h4></div><div class="modal-body"><div class="alert alert-info"><p>Returns the status of cases imports. ... (mapping): responseType: application/vnd.staging.query.cases-imports+json name: staging.query.cases-imports ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases_import_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases_import_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/vnd.staging.query.cases-imports+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+
+  "definitions": {
+    "casesImport": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        },
+        "casesCount": {
+          "type": "number"
+        },
+        "processedCount": {
+          "type": "number"
+        },
+        "errorCount": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "status",
+        "timestamp",
+        "casesCount",
+        "processedCount",
+        "errorCount"
+      ]
+    }
+  },
+
+  "properties": {
+    "casesImports": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/casesImport"
+      },
+      "minItems": 0
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "casesImports"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "casesImports": [
+    {
+      "id": "6cfe40cd-76c7-4fb1-80e5-a74d35a5237e",
+      "status": "ERROR",
+      "timestamp": "2016-09-09 08:31:40",
+      "casesCount": 5,
+      "processedCount": 5,
+      "errorCount": 1
+    },
+    {
+      "id": "6cfe40cd-76c7-4fb1-80e5-a74d35a5237e",
+      "status": "ERROR",
+      "timestamp": "2016-09-09 08:31:40",
+      "casesCount": 7,
+      "processedCount": 8,
+      "errorCount": 9
+    }
+  ]
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="last_cases_import_error_count" class="panel-title">/last-cases-import-error-count</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_last_cases_import_error_count"><span class="parent"></span>/last-cases-import-error-count</a> <span class="methods"><a href="#last_cases_import_error_count_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_last_cases_import_error_count" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#last_cases_import_error_count_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Returns count of cases errors in last import. ... (mapping): responseType: application/vnd.staging.query.last-cases-import-error-count+json name: staging.query.last-cases-import-error-count ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="last_cases_import_error_count_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/last-cases-import-error-count</h4></div><div class="modal-body"><div class="alert alert-info"><p>Returns count of cases errors in last import. ... (mapping): responseType: application/vnd.staging.query.last-cases-import-error-count+json name: staging.query.last-cases-import-error-count ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#last_cases_import_error_count_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="last_cases_import_error_count_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/vnd.staging.query.last-cases-import-error-count+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "errorCount": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "errorCount"
+  ]
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "abdd2d9f-5f55-428b-88b1-48a333bb5c01",
+  "errorCount": 3
+}</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases_import__casesImportId_" class="panel-title">/cases-import/{casesImportId}</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases_import__casesImportId_"><span class="parent"></span>/cases-import/{casesImportId}</a> <span class="methods"><a href="#cases_import__casesImportId__get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_cases_import__casesImportId_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases_import__casesImportId__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Returns the status of given cases import. ... (mapping): responseType: application/vnd.staging.query.cases-import-by-id+json name: staging.query.cases-import-by-id ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases_import__casesImportId__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/cases-import/{casesImportId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Returns the status of given cases import. ... (mapping): responseType: application/vnd.staging.query.cases-import-by-id+json name: staging.query.cases-import-by-id ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases_import__casesImportId__get_request" data-toggle="tab">Request</a></li><li><a href="#cases_import__casesImportId__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases_import__casesImportId__get_request"><h3>URI Parameters</h3><ul><li><strong>casesImportId</strong>: <em>required (string)</em><p>Cases import id.</p></li></ul></div><div class="tab-pane" id="cases_import__casesImportId__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/vnd.staging.query.cases-import-by-id+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+
+  "definitions": {
+    "message": {
+      "type": "object",
+      "properties": {
+        "messageKey": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "messageKey"
+      ]
+    },
+    "casesImportFile": {
+      "type": "object",
+      "properties": {
+        "filename": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        },
+        "errorCount": {
+          "type": "number"
+        },
+        "messages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/message"
+          },
+          "minItems": 0
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "filename",
+        "timestamp",
+        "errorCount",
+        "messages"
+      ]
+    }
+  },
+
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "casesCount": {
+      "type": "number"
+    },
+    "processedCount": {
+      "type": "number"
+    },
+    "errorCount": {
+      "type": "number"
+    },
+    "casesImportFiles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/casesImportFile"
+      },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "status",
+    "timestamp",
+    "casesCount",
+    "processedCount",
+    "errorCount",
+    "casesImportFiles"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "6cfe40cd-76c7-4fb1-80e5-a74d35a5237e",
+  "status": "ERROR",
+  "timestamp": "2016-09-09 08:31:40",
+  "casesCount": 5,
+  "processedCount": 5,
+  "errorCount": 1,
+  "casesImportFiles": [
+    {
+      "filename": "header.csv",
+      "timestamp": "2016-09-09 08:31:40",
+      "errorCount": 1,
+      "messages": [
+        {
+          "messageKey": "parse_error",
+          "params": {
+            "lineNumber": 33
+          }
+        }
+      ]
+    },
+    {
+      "filename": "offences.csv",
+      "timestamp": "2016-09-09 08:31:40",
+      "errorCount": 0,
+      "messages": [
+      ]
+    }
+  ]
+}</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="last_document_upload_error_count" class="panel-title">/last-document-upload-error-count</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_last_document_upload_error_count"><span class="parent"></span>/last-document-upload-error-count</a> <span class="methods"><a href="#last_document_upload_error_count_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_last_document_upload_error_count" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#last_document_upload_error_count_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Returns count of document errors in last upload. ... (mapping): responseType: application/vnd.staging.query.last-document-upload-error-count+json name: staging.query.last-document-upload-error-count ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="last_document_upload_error_count_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/last-document-upload-error-count</h4></div><div class="modal-body"><div class="alert alert-info"><p>Returns count of document errors in last upload. ... (mapping): responseType: application/vnd.staging.query.last-document-upload-error-count+json name: staging.query.last-document-upload-error-count ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#last_document_upload_error_count_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="last_document_upload_error_count_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/vnd.staging.query.last-document-upload-error-count+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "errorCount": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "errorCount"
+  ]
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "abdd2d9f-5f55-428b-88b1-48a333bb5c01",
+  "errorCount": 3
+}</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="document_batch_upload_status" class="panel-title">/document-batch-upload-status</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_document_batch_upload_status"><span class="parent"></span>/document-batch-upload-status</a> <span class="methods"><a href="#document_batch_upload_status_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_document_batch_upload_status" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#document_batch_upload_status_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Returns the status of document batch uploads. ... (mapping): responseType: application/vnd.staging.query.document-batch-upload-status+json name: staging.query.document--batch-upload-status ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="document_batch_upload_status_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/document-batch-upload-status</h4></div><div class="modal-body"><div class="alert alert-info"><p>Returns the status of document batch uploads. ... (mapping): responseType: application/vnd.staging.query.document-batch-upload-status+json name: staging.query.document--batch-upload-status ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#document_batch_upload_status_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="document_batch_upload_status_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/vnd.staging.query.document-batch-upload-status+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+
+  "definitions": {
+    "documentBatchUploadStatusElement": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "filename": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "filename",
+        "status",
+        "timestamp"
+      ]
+    }
+  },
+
+  "properties": {
+    "documentBatchUploadStatus": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/documentBatchUploadStatusElement"
+      },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "documentBatchUploadStatus"
+  ]
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "documentBatchUploadStatus": [
+    {
+      "id": "6cfe40cd-76c7-4fb1-80e5-a74d35a5237e",
+      "filename": "foo.zip",
+      "status": "ERROR",
+      "timestamp": "2016-09-09 08:31:40"
+    },
+    {
+      "id": "abdd2d9f-5f55-428b-88b1-48a333bb5c01",
+      "filename": "bar.zip",
+      "status": "SUCCESS",
+      "timestamp": "2016-09-09 12:42:52"
+    }
+  ]
+}</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="document_upload_status__documentUploadId_" class="panel-title">/document-upload-status/{documentUploadId}</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_document_upload_status__documentUploadId_"><span class="parent"></span>/document-upload-status/{documentUploadId}</a> <span class="methods"><a href="#document_upload_status__documentUploadId__get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_document_upload_status__documentUploadId_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#document_upload_status__documentUploadId__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Returns the status of given document upload. ... (mapping): responseType: application/vnd.staging.query.document-upload-status-by-id+json name: staging.query.document-upload-status-by-id ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="document_upload_status__documentUploadId__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/document-upload-status/{documentUploadId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Returns the status of given document upload. ... (mapping): responseType: application/vnd.staging.query.document-upload-status-by-id+json name: staging.query.document-upload-status-by-id ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#document_upload_status__documentUploadId__get_request" data-toggle="tab">Request</a></li><li><a href="#document_upload_status__documentUploadId__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="document_upload_status__documentUploadId__get_request"><h3>URI Parameters</h3><ul><li><strong>documentUploadId</strong>: <em>required (string)</em><p>Document upload id.</p></li></ul></div><div class="tab-pane" id="document_upload_status__documentUploadId__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/vnd.staging.query.document-upload-status-by-id+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+
+  "definitions": {
+    "message": {
+      "type": "object",
+      "properties": {
+        "messageKey": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "messageKey"
+      ]
+    },
+    "documentUploadStatusViews": {
+      "type": "object",
+      "properties": {
+        "filename": {
+          "type": "string"
+        },
+        "documentType": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        },
+        "messages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/message"
+          },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "filename",
+        "status",
+        "timestamp",
+        "messages"
+      ]
+    }
+  },
+
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "filename": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "documentUploadStatusViews": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/documentUploadStatusViews"
+      },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "filename",
+    "status",
+    "timestamp",
+    "documentUploadStatusViews"
+  ]
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "6cfe40cd-76c7-4fb1-80e5-a74d35a5237e",
+  "filename": "foo.zip",
+  "status": "ERROR",
+  "timestamp": "2016-09-09 08:31:40",
+  "documentUploadStatusViews": [
+    {
+      "filename": "bar.pdf",
+      "documentType": "SJPN",
+      "status": "ERROR",
+      "timestamp": "2016-09-09 08:31:40",
+      "messages": [
+        {
+          "messageKey": "document.case.missing"
+        }
+      ]
+    },
+    {
+      "filename": "baz.docx",
+      "status": "ERROR",
+      "documentType": "CITN",
+      "timestamp": "2016-09-09 08:31:40",
+      "messages": [
+        {
+          "messageKey": "document.duplicated"
+        }
+      ]
+    },
+    {
+      "filename": "qux.docx",
+      "status": "ERROR",
+      "documentType": "WS",
+      "timestamp": "2016-04-05 13:22:10",
+      "messages": [
+        {
+          "messageKey": "document.filename.invalid"
+        }
+      ]
+    },
+    {
+      "filename": "quux.docx",
+      "status": "SUCCESS",
+      "documentType": "SJPN",
+      "timestamp": "2016-04-05 13:22:10"
+    }
+  ]
+}</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="c2itransaction__transactionId_" class="panel-title">/c2itransaction/{transactionId}</h3></div><div class="panel-body"><div class="top-resource-description"><p>returns information regarding a c2i transaction. Meant to group C2IRequest with its C2IResponse.</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_c2itransaction__transactionId_"><span class="parent"></span>/c2itransaction/{transactionId}</a> <span class="methods"><a href="#c2itransaction__transactionId__get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_c2itransaction__transactionId_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#c2itransaction__transactionId__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>... (mapping): responseType: application/vnd.staging.query.c2itransaction+json name: staging.query.c2itransaction ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="c2itransaction__transactionId__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/c2itransaction/{transactionId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>... (mapping): responseType: application/vnd.staging.query.c2itransaction+json name: staging.query.c2itransaction ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#c2itransaction__transactionId__get_request" data-toggle="tab">Request</a></li><li><a href="#c2itransaction__transactionId__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="c2itransaction__transactionId__get_request"><h3>URI Parameters</h3><ul><li><strong>transactionId</strong>: <em>required (string)</em><p>C2I Transaction Id</p></li></ul></div><div class="tab-pane" id="c2itransaction__transactionId__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/vnd.staging.query.c2itransaction+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "transactionId": {
+      "id": "transactionId",
+      "type": "string"
+    },
+    "transactionTimestamp": {
+      "id": "transactionTimestamp",
+      "type": "string"
+    },
+    "requestId": {
+      "id": "requestId",
+      "type": "string"
+    },
+    "messageType": {
+      "id": "messageType",
+      "type": "string"
+    },
+    "requestSource": {
+      "id": "requestSource",
+      "type": "string"
+    },
+    "urn": {
+      "id": "urn",
+      "type": "string"
+    },
+    "cppCaseId": {
+      "id": "cppCaseId",
+      "type": "string"
+    },
+    "request": {
+      "id": "request",
+      "type": "string"
+    },
+    "response": {
+      "id": "response",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "transactionId",
+    "transactionTimestamp",
+    "requestId"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "transactionId": "randomTransactionId",
+  "transactionTimestamp": "",
+  "requestId": "randomRequestId",
+  "messageType": "CM01",
+  "requestSource": "CMS",
+  "urn": "policeUrn",
+  "cppCaseId": "6bebbfe3-3d24-4dd3-931f-13bcf43ba7bf",
+  "request": "{}",
+  "response": "{}"
+}</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="c2itransaction" class="panel-title">/c2itransaction</h3></div><div class="panel-body"><div class="top-resource-description"><p>returns C2ITransactions that match the CPP Case ID and message type provided.</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_c2itransaction"><span class="parent"></span>/c2itransaction</a> <span class="methods"><a href="#c2itransaction_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_c2itransaction" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#c2itransaction_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>... (mapping): responseType: application/vnd.staging.query.c2itransaction-by-cppcaseid-and-messagetype+json name: staging.query.c2itransaction-by-cppcaseid-and-messagetype ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="c2itransaction_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/c2itransaction</h4></div><div class="modal-body"><div class="alert alert-info"><p>... (mapping): responseType: application/vnd.staging.query.c2itransaction-by-cppcaseid-and-messagetype+json name: staging.query.c2itransaction-by-cppcaseid-and-messagetype ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#c2itransaction_get_request" data-toggle="tab">Request</a></li><li><a href="#c2itransaction_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="c2itransaction_get_request"><h3>Query Parameters</h3><ul><li><strong>cppCaseId</strong>: <em>required (string)</em><p>CPP Case ID</p></li><li><strong>messageType</strong>: <em>required (string)</em><p>Message Type</p></li></ul></div><div class="tab-pane" id="c2itransaction_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/vnd.staging.query.c2itransaction-by-cppcaseid-and-messagetype+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "c2ITransactions": {
+      "id": "/c2ITransactions",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "transactionId": {
+            "id": "transactionId",
+            "type": "string"
+          },
+          "transactionTimestamp": {
+            "id": "transactionTimestamp",
+            "type": "string"
+          },
+          "requestId": {
+            "id": "requestId",
+            "type": "string"
+          },
+          "messageType": {
+            "id": "messageType",
+            "type": "string"
+          },
+          "requestSource": {
+            "id": "requestSource",
+            "type": "string"
+          },
+          "urn": {
+            "id": "urn",
+            "type": "string"
+          },
+          "cppCaseId": {
+            "id": "cppCaseId",
+            "type": "string"
+          },
+          "request": {
+            "id": "request",
+            "type": "object"
+          },
+          "response": {
+            "id": "response",
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "transactionId",
+          "transactionTimestamp",
+          "requestId"
+        ]
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "c2ITransactions"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "c2ITransactions": [
+    {
+      "transactionId": "randomTransactionId",
+      "transactionTimestamp": "",
+      "requestId": "randomRequestId",
+      "messageType": "CM01",
+      "requestSource": "CMS",
+      "urn": "policeUrn",
+      "cppCaseId": "6bebbfe3-3d24-4dd3-931f-13bcf43ba7bf",
+      "request": {},
+      "response": {}
+    }
+  ]
+}</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__cppCaseId__c2iprocessingtime" class="panel-title">/cases/{cppCaseId}/c2iprocessingtime</h3></div><div class="panel-body"><div class="top-resource-description"><p>returns the elapsed time between the arrival of the case to CPP (CM01 message) and its return to CMS (C2I01 message)</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__cppCaseId__c2iprocessingtime"><span class="parent"></span>/cases/{cppCaseId}/c2iprocessingtime</a> <span class="methods"><a href="#cases__cppCaseId__c2iprocessingtime_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_cases__cppCaseId__c2iprocessingtime" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__cppCaseId__c2iprocessingtime_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>... (mapping): responseType: application/vnd.staging.query.c2i-processing-time+json name: staging.query.c2i-processing-time ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__cppCaseId__c2iprocessingtime_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/cases/{cppCaseId}/c2iprocessingtime</h4></div><div class="modal-body"><div class="alert alert-info"><p>... (mapping): responseType: application/vnd.staging.query.c2i-processing-time+json name: staging.query.c2i-processing-time ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__cppCaseId__c2iprocessingtime_get_request" data-toggle="tab">Request</a></li><li><a href="#cases__cppCaseId__c2iprocessingtime_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__cppCaseId__c2iprocessingtime_get_request"><h3>URI Parameters</h3><ul><li><strong>cppCaseId</strong>: <em>required (string)</em><p>CPP Case ID</p></li></ul></div><div class="tab-pane" id="cases__cppCaseId__c2iprocessingtime_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/vnd.staging.query.c2i-processing-time+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "cM01TransactionTimestamp": {
+      "id": "cM01TransactionTimestamp",
+      "type": "string"
+    },
+    "c2I01TransactionTimestamp": {
+      "id": "c2I01TransactionTimestamp",
+      "type": "string"
+    },
+    "elapsedTime": {
+      "id": "elapsedTime",
+      "type": "object",
+      "properties": {
+        "days": {
+          "id": "days",
+          "type": "number"
+        },
+        "hours": {
+          "id": "hours",
+          "type": "number"
+        },
+        "minutes": {
+          "id": "minutes",
+          "type": "number"
+        },
+        "seconds": {
+          "id": "seconds",
+          "type": "number"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "days",
+        "hours",
+        "minutes",
+        "seconds"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "cM01TransactionTimestamp"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "cM01TransactionTimestamp": "2016-08-13T09:43:28.114",
+  "c2I01TransactionTimestamp": "2016-08-15T13:06:40.114",
+  "elapsedTime": {
+    "days": 2,
+    "hours": 3,
+    "minutes": 23,
+    "seconds": 12
+  }
+}</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#cases_import">/cases-import</a></li><li><a href="#last_cases_import_error_count">/last-cases-import-error-count</a></li><li><a href="#cases_import__casesImportId_">/cases-import/{casesImportId}</a></li><li><a href="#last_document_upload_error_count">/last-document-upload-error-count</a></li><li><a href="#document_batch_upload_status">/document-batch-upload-status</a></li><li><a href="#document_upload_status__documentUploadId_">/document-upload-status/{documentUploadId}</a></li><li><a href="#c2itransaction__transactionId_">/c2itransaction/{transactionId}</a></li><li><a href="#c2itransaction">/c2itransaction</a></li><li><a href="#cases__cppCaseId__c2iprocessingtime">/cases/{cppCaseId}/c2iprocessingtime</a></li></ul></div></div></div></div></body></html>
