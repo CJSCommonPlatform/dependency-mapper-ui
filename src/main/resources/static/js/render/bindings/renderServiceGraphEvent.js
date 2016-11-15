@@ -5,8 +5,12 @@ define(["lodash",
     "render/graphBuilder",
     "data/predicates/isNeighbouringContextPredicate",
     "render/bindings/displayRamlEvent",
-    "data/preProcessors/stripSecondLevelNodes"],
-    function (_, gateway, transform, graphObjectMapper, graphBuilder, predicate, displayRamlEvent, stripSecondLevelNodes) {
+    "data/preProcessors/stripSecondLevelNodes",
+    "services/loadModelService"],
+    function (_, gateway, transform, graphObjectMapper, graphBuilder, predicate, displayRamlEvent,
+              stripSecondLevelNodes, loadModelService) {
+
+        var coreServices = loadModelService("coreService");
 
         var enrichGraphData = function (contextName) {
             return function (graph) {
@@ -17,62 +21,6 @@ define(["lodash",
                 };
 
                 var orphanCount = 0;
-
-                var coreServices = [{
-                    "name": "command-api",
-                    "location": {
-                        "y": -30,
-                        "x": 0
-                    }
-                }, {
-                    "name": "command-controller",
-                    "location": {
-                        "y": -15,
-                        "x": 0
-                    }
-                }, {
-                    "name": "command-handler",
-                    "location": {
-                        "y": 0,
-                        "x": 0
-                    }
-                }, {
-                    "name": "event-api",
-                    "location": {
-                        "y": -30,
-                        "x": 30
-                    }
-                }, {
-                    "name": "event-processor",
-                    "location": {
-                        "y": -15,
-                        "x": 30
-                    }
-                }, {
-                    "name": "event-listener",
-                    "location": {
-                        "y": 0,
-                        "x": 30
-                    }
-                }, {
-                    "name": "query-api",
-                    "location": {
-                        "y": -30,
-                        "x": 60
-                    }
-                }, {
-                    "name": "query-controller",
-                    "location": {
-                        "y": -15,
-                        "x": 60
-                    }
-                }, {
-                    "name": "query-view",
-                    "location": {
-                        "y": 0,
-                        "x": 60
-                    }
-                }];
 
                 var serviceType = function(microServiceName){
                     return microServiceName.split("-")[1] + "-" + microServiceName.split("-")[2];
