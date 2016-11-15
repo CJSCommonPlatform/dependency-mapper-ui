@@ -3,347 +3,353 @@
     {
       "microService": "outcomes-query-controller",
       "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "outcomes-query-api",
-          "usingVersion": "${project.version}"
+          "usingVersion": "1.0.0-SNAPSHOT"
         }
       ]
     },
     {
-      "microService": "notification-query",
-      "version": "1.0.12-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
       "microService": "material-integration-test",
-      "version": "2.0.41-SNAPSHOT",
+      "version": "2.0.31-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": []
     },
     {
       "microService": "assignment-performance-test",
-      "version": "2.0.45-SNAPSHOT",
+      "version": "2.0.32-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "scheduling-command",
-      "version": "2.0.48-SNAPSHOT",
+      "version": "2.0.39-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "progression-domain-event",
       "version": "2.0.60-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "mi-viewstore-liquibase",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "usersgroups-query-api",
       "version": "2.0.48-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "assignment-command-controller",
-          "usingVersion": "${usersgroups.version}"
+          "usingVersion": "2.0.26-SNAPSHOT"
         },
         {
           "microService": "access-control-common-providers",
-          "usingVersion": "${usersgroups.version}"
+          "usingVersion": "2.0.24"
         },
         {
           "microService": "staging-event-processor",
-          "usingVersion": "${usersgroups.version}"
-        },
-        {
-          "microService": "mi-event-processor",
-          "usingVersion": "2.0.46"
+          "usingVersion": "2.0.28"
         }
       ]
-    },
-    {
-      "microService": "mi-viewstore-liquibase",
-      "version": "1.0.20-SNAPSHOT",
-      "consumedBy": []
     },
     {
       "microService": "people-command-controller",
-      "version": "2.0.52-SNAPSHOT",
-      "consumedBy": [
-        {
-          "microService": "people-command-api",
-          "usingVersion": "${project.version}"
-        }
-      ]
+      "version": "2.0.40-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
     },
     {
       "microService": "mi-query",
-      "version": "1.0.20-SNAPSHOT",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "referencedata-resources",
-      "version": "2.0.77-SNAPSHOT",
+      "version": "2.0.58-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "lifecycle-command-controller",
+      "version": "2.0.155-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "usersgroups-performance-test",
       "version": "2.0.48-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "lifecycle-command-controller",
-      "version": "2.0.156-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "progression-domain",
       "version": "2.0.60-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "people-integration-test",
-      "version": "2.0.52-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "notification-test-utils",
-      "version": "1.0.12-SNAPSHOT",
+      "version": "2.0.40-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "material-event-processor",
       "version": "2.0.41-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "access-control-charging-providers",
-      "version": "2.0.23-SNAPSHOT",
+      "version": "2.0.11-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "mi-query-api",
-      "version": "1.0.20-SNAPSHOT",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "mi-event-processor",
-          "usingVersion": "${project.version}"
+          "usingVersion": "1.0.0-SNAPSHOT"
         }
       ]
     },
     {
       "microService": "outcomes-domain-command",
       "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "material-domain",
-      "version": "2.0.41-SNAPSHOT",
+      "version": "2.0.31-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": []
     },
     {
       "microService": "referencedata-domain",
-      "version": "2.0.77-SNAPSHOT",
+      "version": "2.0.58-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "outcomes-command-api",
       "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "scheduling-domain-event",
-      "version": "2.0.48-SNAPSHOT",
+      "version": "2.0.39-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "people-query-controller",
-      "version": "2.0.52-SNAPSHOT",
+      "version": "2.0.40-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "people-query-api",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.40-SNAPSHOT"
         }
       ]
     },
     {
       "microService": "referencedata-query-api",
-      "version": "2.0.77-SNAPSHOT",
+      "version": "2.0.58-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "resulting-command-controller",
-          "usingVersion": "${referencedata.version}"
+          "usingVersion": "2.0.42"
+        },
+        {
+          "microService": "charging-command-controller",
+          "usingVersion": "2.0.50"
         },
         {
           "microService": "structure-command-controller",
           "usingVersion": "2.0.42"
         },
         {
-          "microService": "charging-command-controller",
-          "usingVersion": "${refrencedata.version}"
-        },
-        {
           "microService": "resulting-query-controller",
-          "usingVersion": "${referencedata.version}"
-        },
-        {
-          "microService": "mi-event-processor",
-          "usingVersion": "2.0.64"
+          "usingVersion": "2.0.42"
         }
       ]
     },
     {
       "microService": "audit-command",
-      "version": "2.0.29-SNAPSHOT",
+      "version": "2.0.25-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "scheduling-command-handler",
-      "version": "2.0.48-SNAPSHOT",
+      "version": "2.0.39-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "notification-command-controller",
-      "version": "1.0.12-SNAPSHOT",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "notification-command-api",
-          "usingVersion": "${project.version}"
+          "usingVersion": "1.0.0-SNAPSHOT"
         }
       ]
-    },
-    {
-      "microService": "usersgroups-viewstore-liquibase",
-      "version": "2.0.48-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "resulting-viewstore-liquibase",
-      "version": "2.0.62-SNAPSHOT",
-      "consumedBy": []
     },
     {
       "microService": "resulting-command-api",
-      "version": "2.0.62-SNAPSHOT",
+      "version": "2.0.26-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": [
         {
           "microService": "resulting-event-processor",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.26-SNAPSHOT"
         }
       ]
     },
     {
+      "microService": "resulting-viewstore-liquibase",
+      "version": "2.0.26-SNAPSHOT",
+      "servicePomVersion": null,
+      "consumedBy": []
+    },
+    {
       "microService": "scheduling-integration-test",
-      "version": "2.0.48-SNAPSHOT",
+      "version": "2.0.39-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "usersgroups-viewstore-liquibase",
+      "version": "2.0.39-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": []
     },
     {
       "microService": "material-event-listener",
-      "version": "2.0.41-SNAPSHOT",
+      "version": "2.0.31-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": []
     },
     {
       "microService": "audit-integration-test",
-      "version": "2.0.29-SNAPSHOT",
+      "version": "2.0.25-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "lifecycle-event",
-      "version": "2.0.156-SNAPSHOT",
+      "version": "2.0.155-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "scheduling-query-api",
-      "version": "2.0.48-SNAPSHOT",
+      "version": "2.0.39-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "resulting-command-controller",
-          "usingVersion": "${scheduling.version}"
+          "usingVersion": "2.0.37"
         },
         {
           "microService": "lifecycle-event-processor",
           "usingVersion": "2.0.24"
-        },
-        {
-          "microService": "mi-event-processor",
-          "usingVersion": "2.0.47"
         }
       ]
     },
     {
-      "microService": "people-event-processor",
-      "version": "2.0.52-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
       "microService": "people-viewstore-persistence",
-      "version": "2.0.52-SNAPSHOT",
+      "version": "2.0.40-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "progression-parent",
       "version": "2.0.60-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "notification-event-listener",
-      "version": "1.0.12-SNAPSHOT",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "people-viewstore",
-      "version": "2.0.52-SNAPSHOT",
+      "version": "2.0.40-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "lifecycle-integration-test",
-      "version": "2.0.156-SNAPSHOT",
+      "version": "2.0.155-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "staging-domain-event",
-      "version": "2.0.194-SNAPSHOT",
+      "version": "2.0.189-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "material-parent",
-      "version": "2.0.41-SNAPSHOT",
+      "version": "2.0.31-SNAPSHOT",
+      "servicePomVersion": null,
+      "consumedBy": []
+    },
+    {
+      "microService": "material-domain-event",
+      "version": "2.0.31-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": []
     },
     {
       "microService": "outcomes-viewstore-persistence",
       "version": "1.0.0-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "material-domain-event",
-      "version": "2.0.41-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "referencedata-integration-test",
-      "version": "2.0.77-SNAPSHOT",
+      "version": "2.0.58-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "structure-query-api",
-      "version": "2.0.144-SNAPSHOT",
+      "version": "2.0.80-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "staging-command-controller",
-          "usingVersion": "${structure.version}"
-        },
-        {
-          "microService": "resulting-event-processor",
-          "usingVersion": "${structure.version}"
+          "usingVersion": "2.0.85"
         },
         {
           "microService": "access-control-structure-providers",
-          "usingVersion": "${structure.version}"
+          "usingVersion": "2.0.76"
         },
         {
           "microService": "staging-event-processor",
-          "usingVersion": "${structure.version}"
-        },
-        {
-          "microService": "progression-command-controller",
-          "usingVersion": "${structure.version}"
+          "usingVersion": "2.0.85"
         },
         {
           "microService": "lifecycle-event-processor",
@@ -351,77 +357,81 @@
         },
         {
           "microService": "mi-event-processor",
-          "usingVersion": "2.0.132"
+          "usingVersion": "2.0.60"
+        },
+        {
+          "microService": "progression-command-controller",
+          "usingVersion": "2.0.67"
         }
       ]
     },
     {
       "microService": "assignment-command-controller",
-      "version": "2.0.45-SNAPSHOT",
+      "version": "2.0.32-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "staging-query-api",
-      "version": "2.0.194-SNAPSHOT",
+      "version": "2.0.189-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "staging-command-controller",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.189-SNAPSHOT"
         },
         {
           "microService": "staging-event-processor",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.189-SNAPSHOT"
         }
       ]
     },
     {
       "microService": "material-query-controller",
-      "version": "2.0.41-SNAPSHOT",
+      "version": "2.0.31-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "material-query-api",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.41-SNAPSHOT"
         }
       ]
     },
     {
       "microService": "usersgroups-event-listener",
       "version": "2.0.48-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "access-control-parent",
-      "version": "2.0.23-SNAPSHOT",
+      "version": "2.0.11-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "notification-command-api",
-      "version": "1.0.12-SNAPSHOT",
-      "consumedBy": [
-        {
-          "microService": "notification-event-processor",
-          "usingVersion": "${project.version}"
-        }
-      ]
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
     },
     {
       "microService": "people-command-handler",
-      "version": "2.0.52-SNAPSHOT",
-      "consumedBy": [
-        {
-          "microService": "people-command-controller",
-          "usingVersion": "${project.version}"
-        }
-      ]
+      "version": "2.0.40-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "resulting-query",
+      "version": "2.0.26-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
     },
     {
       "microService": "structure-command-api",
-      "version": "2.0.144-SNAPSHOT",
+      "version": "2.0.80-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
-        {
-          "microService": "resulting-event-processor",
-          "usingVersion": "${structure.version}"
-        },
         {
           "microService": "lifecycle-event-processor",
           "usingVersion": "2.0.125"
@@ -429,78 +439,86 @@
       ]
     },
     {
-      "microService": "resulting-query",
-      "version": "2.0.62-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
       "microService": "staging-viewstore-liquibase",
-      "version": "2.0.194-SNAPSHOT",
+      "version": "2.0.189-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "people-query",
-      "version": "2.0.52-SNAPSHOT",
+      "version": "2.0.40-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "staging-viewstore-persistence",
-      "version": "2.0.194-SNAPSHOT",
+      "version": "2.0.189-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "charging-event-processor",
+      "version": "2.0.210-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "progression-domain-command",
       "version": "2.0.60-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "charging-event-processor",
-      "version": "2.0.211-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "material-command",
-      "version": "2.0.41-SNAPSHOT",
+      "version": "2.0.31-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": []
     },
     {
       "microService": "usersgroups-command-handler",
       "version": "2.0.48-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "structure-query",
-      "version": "2.0.144-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "material-event",
-      "version": "2.0.41-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "assignment-event-listener",
-      "version": "2.0.45-SNAPSHOT",
+      "version": "2.0.32-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "material-event",
+      "version": "2.0.31-SNAPSHOT",
+      "servicePomVersion": null,
+      "consumedBy": []
+    },
+    {
+      "microService": "structure-query",
+      "version": "2.0.80-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "mi-viewstore-persistence",
-      "version": "1.0.20-SNAPSHOT",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "referencedata-command-api",
-      "version": "2.0.77-SNAPSHOT",
+      "version": "2.0.58-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": [
         {
           "microService": "referencedata-event-processor",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.58-SNAPSHOT"
         }
       ]
     },
     {
       "microService": "progression-query-api",
       "version": "2.0.60-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "lifecycle-event-processor",
@@ -510,177 +528,201 @@
     },
     {
       "microService": "structure-domain-event",
-      "version": "2.0.144-SNAPSHOT",
+      "version": "2.0.80-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "usersgroups-event",
       "version": "2.0.48-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "referencedata-viewstore-liquibase",
-      "version": "2.0.77-SNAPSHOT",
+      "version": "2.0.55-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": []
     },
     {
       "microService": "assignment-viewstore",
-      "version": "2.0.45-SNAPSHOT",
+      "version": "2.0.32-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "resulting-command-handler",
-      "version": "2.0.62-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "systemscheduling-parent",
-      "version": "1.0.5-SNAPSHOT",
+      "version": "2.0.26-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "charging-domain-event",
-      "version": "2.0.211-SNAPSHOT",
+      "version": "2.0.210-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "material-command-handler",
-      "version": "2.0.41-SNAPSHOT",
+      "version": "2.0.31-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": []
     },
     {
       "microService": "scheduling-query-controller",
-      "version": "2.0.48-SNAPSHOT",
+      "version": "2.0.39-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "scheduling-query-api",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.39-SNAPSHOT"
         }
       ]
     },
     {
       "microService": "outcomes-domain",
       "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "charging-event-listener",
+      "version": "2.0.210-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "usersgroups-command-api",
       "version": "2.0.48-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "staging-event-processor",
-          "usingVersion": "${usersgroups.version}"
+          "usingVersion": "2.0.28"
         }
       ]
     },
     {
       "microService": "usersgroups-query",
       "version": "2.0.48-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "charging-event-listener",
-      "version": "2.0.211-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "access-control-test-utils",
-      "version": "2.0.23-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "usersgroups-viewstore-persistence",
-      "version": "2.0.48-SNAPSHOT",
+      "version": "2.0.11-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "referencedata-query-view",
-      "version": "2.0.77-SNAPSHOT",
+      "version": "2.0.58-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "referencedata-query-controller",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.58-SNAPSHOT"
         }
       ]
     },
     {
+      "microService": "usersgroups-viewstore-persistence",
+      "version": "2.0.48-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
       "microService": "access-control-structure-providers",
-      "version": "2.0.23-SNAPSHOT",
+      "version": "2.0.11-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "resulting-domain",
-      "version": "2.0.62-SNAPSHOT",
+      "version": "2.0.26-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "material-viewstore-liquibase",
-      "version": "2.0.41-SNAPSHOT",
+      "version": "2.0.31-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": []
     },
     {
       "microService": "structure-event",
-      "version": "2.0.144-SNAPSHOT",
+      "version": "2.0.80-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "structure-event-processor",
-      "version": "2.0.144-SNAPSHOT",
+      "version": "2.0.80-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "structure-domain-aggregate",
-      "version": "2.0.144-SNAPSHOT",
+      "version": "2.0.80-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "referencedata-event-processor",
-      "version": "2.0.77-SNAPSHOT",
+      "version": "2.0.58-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "material-query-service",
-      "version": "2.0.41-SNAPSHOT",
+      "version": "2.0.31-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": []
     },
     {
       "microService": "resulting-query-view",
-      "version": "2.0.62-SNAPSHOT",
+      "version": "2.0.26-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "resulting-query-controller",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.26-SNAPSHOT"
         }
       ]
     },
     {
-      "microService": "structure-parent",
-      "version": "2.0.144-SNAPSHOT",
+      "microService": "mi-domain-event",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "notification-viewstore-persistence",
-      "version": "1.0.12-SNAPSHOT",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
-      "microService": "mi-domain-event",
-      "version": "1.0.20-SNAPSHOT",
+      "microService": "structure-parent",
+      "version": "2.0.80-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "audit-command-api",
-      "version": "2.0.29-SNAPSHOT",
+      "version": "2.0.25-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": [
         {
           "microService": "audit-event-processor",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.25-SNAPSHOT"
         }
       ]
     },
     {
       "microService": "scheduling-command-api",
-      "version": "2.0.48-SNAPSHOT",
+      "version": "2.0.39-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "lifecycle-event-processor",
@@ -690,136 +732,154 @@
     },
     {
       "microService": "scheduling-performance-test",
-      "version": "2.0.48-SNAPSHOT",
+      "version": "2.0.39-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "people-parent",
-      "version": "2.0.52-SNAPSHOT",
+      "version": "2.0.40-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "referencedata-query",
-      "version": "2.0.77-SNAPSHOT",
+      "version": "2.0.58-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "resulting-event-listener",
-      "version": "2.0.62-SNAPSHOT",
+      "version": "2.0.26-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "notification-domain-common",
-      "version": "1.0.12-SNAPSHOT",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "people-domain-common",
-      "version": "2.0.52-SNAPSHOT",
+      "version": "2.0.40-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "audit-event-processor",
+      "version": "2.0.25-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "usersgroups-integration-test",
       "version": "2.0.48-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "audit-event-processor",
-      "version": "2.0.29-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "material-command-controller",
-      "version": "2.0.41-SNAPSHOT",
+      "version": "2.0.31-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": []
     },
     {
       "microService": "charging-domain",
-      "version": "2.0.211-SNAPSHOT",
+      "version": "2.0.210-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "referencedata-domain-common",
-      "version": "2.0.77-SNAPSHOT",
+      "version": "2.0.58-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "notification-event",
-      "version": "1.0.12-SNAPSHOT",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "resulting-performance-test",
-      "version": "2.0.62-SNAPSHOT",
+      "version": "2.0.26-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "scheduling-domain-aggregate",
-      "version": "2.0.48-SNAPSHOT",
+      "version": "2.0.39-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "outcomes-event",
       "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "mi-command-controller",
-      "version": "1.0.20-SNAPSHOT",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "outcomes-command",
       "version": "1.0.0-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "structure-viewstore-persistence",
-      "version": "2.0.144-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "staging-command-api",
-      "version": "2.0.194-SNAPSHOT",
+      "version": "2.0.189-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": [
         {
           "microService": "staging-event-processor",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.189-SNAPSHOT"
         }
       ]
     },
     {
+      "microService": "structure-viewstore-persistence",
+      "version": "2.0.80-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
       "microService": "staging-command-handler",
-      "version": "2.0.194-SNAPSHOT",
+      "version": "2.0.189-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "assignment-command-handler",
-      "version": "2.0.45-SNAPSHOT",
+      "version": "2.0.32-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "staging-query-view",
-      "version": "2.0.194-SNAPSHOT",
+      "version": "2.0.189-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "staging-query-controller",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.189-SNAPSHOT"
         }
       ]
     },
     {
-      "microService": "notification-event-processor",
-      "version": "1.0.12-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
       "microService": "assignment-command-api",
-      "version": "2.0.45-SNAPSHOT",
+      "version": "2.0.32-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": [
         {
           "microService": "resulting-event-processor",
-          "usingVersion": "${assignment.version}"
+          "usingVersion": "2.0.21"
         },
         {
           "microService": "lifecycle-event-processor",
@@ -829,52 +889,67 @@
     },
     {
       "microService": "access-control-providers",
-      "version": "2.0.23-SNAPSHOT",
+      "version": "2.0.11-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "audit-command-handler",
-      "version": "2.0.29-SNAPSHOT",
+      "version": "2.0.25-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "assignment-command",
-      "version": "2.0.45-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "structure-command-controller",
-      "version": "2.0.144-SNAPSHOT",
+      "version": "2.0.32-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "notification-command",
-      "version": "1.0.12-SNAPSHOT",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "structure-command-controller",
+      "version": "2.0.80-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "referencedata-parent",
-      "version": "2.0.77-SNAPSHOT",
+      "version": "2.0.58-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "apitest-parent",
+      "version": "1.0.243-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "resulting-query-controller",
-      "version": "2.0.62-SNAPSHOT",
+      "version": "2.0.26-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "resulting-query-api",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.26-SNAPSHOT"
         }
       ]
     },
     {
       "microService": "scheduling-event",
-      "version": "2.0.48-SNAPSHOT",
+      "version": "2.0.39-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "assignment-query-api",
-      "version": "2.0.45-SNAPSHOT",
+      "version": "2.0.32-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "access-control-assignment-providers",
@@ -882,124 +957,131 @@
         },
         {
           "microService": "assignment-command-controller",
-          "usingVersion": "${project.version}"
-        },
-        {
-          "microService": "resulting-command-controller",
-          "usingVersion": "${assignment.version}"
+          "usingVersion": "2.0.32-SNAPSHOT"
         },
         {
           "microService": "charging-command-controller",
-          "usingVersion": "${assignment.version}"
+          "usingVersion": "2.0.18"
         },
         {
           "microService": "structure-query-controller",
-          "usingVersion": "${assignment.version}"
+          "usingVersion": "2.0.11"
         }
       ]
     },
     {
       "microService": "staging-domain",
-      "version": "2.0.194-SNAPSHOT",
+      "version": "2.0.189-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "charging-event",
-      "version": "2.0.211-SNAPSHOT",
+      "version": "2.0.210-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "progression-viewstore",
       "version": "2.0.60-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "structure-event-listener",
-      "version": "2.0.144-SNAPSHOT",
+      "version": "2.0.80-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "staging-event-api",
-      "version": "2.0.194-SNAPSHOT",
+      "version": "2.0.189-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "material-viewstore",
+      "version": "2.0.31-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": []
     },
     {
       "microService": "progression-command",
       "version": "2.0.60-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "material-viewstore",
-      "version": "2.0.41-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "usersgroups-command",
-      "version": "2.0.48-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "access-control-common-providers",
-      "version": "2.0.23-SNAPSHOT",
+      "version": "2.0.11-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "staging-event-processor",
-      "version": "2.0.194-SNAPSHOT",
+      "version": "2.0.189-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "staging-event-api",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.189-SNAPSHOT"
         },
         {
           "microService": "staging-command-handler",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.189-SNAPSHOT"
+        }
+      ]
+    },
+    {
+      "microService": "usersgroups-command",
+      "version": "2.0.48-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "notification-command-handler",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": null,
+      "consumedBy": [
+        {
+          "microService": "notification-command-controller",
+          "usingVersion": "1.0.0-SNAPSHOT"
         }
       ]
     },
     {
       "microService": "outcomes-domain-common",
       "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
-      "microService": "notification-command-handler",
-      "version": "1.0.12-SNAPSHOT",
-      "consumedBy": [
-        {
-          "microService": "notification-command-controller",
-          "usingVersion": "${project.version}"
-        }
-      ]
-    },
-    {
       "microService": "assignment-event",
-      "version": "2.0.45-SNAPSHOT",
+      "version": "2.0.32-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "mi-event-processor",
-      "version": "1.0.20-SNAPSHOT",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "scheduling-query-view",
-      "version": "2.0.48-SNAPSHOT",
+      "version": "2.0.39-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "scheduling-query-controller",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.39-SNAPSHOT"
         }
       ]
     },
     {
-      "microService": "usersgroups-command-controller",
-      "version": "2.0.48-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
       "microService": "charging-query-api",
-      "version": "2.0.211-SNAPSHOT",
+      "version": "2.0.210-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "access-control-charging-providers",
@@ -1007,11 +1089,11 @@
         },
         {
           "microService": "staging-event-processor",
-          "usingVersion": "${charging.version}"
+          "usingVersion": "2.0.149"
         },
         {
           "microService": "structure-query-controller",
-          "usingVersion": "${charging.version}"
+          "usingVersion": "2.0.24"
         },
         {
           "microService": "lifecycle-event-processor",
@@ -1021,47 +1103,50 @@
     },
     {
       "microService": "referencedata-command",
-      "version": "2.0.77-SNAPSHOT",
+      "version": "2.0.58-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "usersgroups-command-controller",
+      "version": "2.0.48-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "charging-viewstore-persistence",
-      "version": "2.0.211-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "systemscheduling-integration-test",
-      "version": "1.0.5-SNAPSHOT",
+      "version": "2.0.210-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "charging-integration-test",
-      "version": "2.0.211-SNAPSHOT",
+      "version": "2.0.210-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "charging-domain-aggregate",
-      "version": "2.0.211-SNAPSHOT",
+      "version": "2.0.210-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "resulting-command",
-      "version": "2.0.62-SNAPSHOT",
+      "version": "2.0.26-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "staging-command",
-      "version": "2.0.194-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "structure-command-handler",
-      "version": "2.0.144-SNAPSHOT",
+      "version": "2.0.189-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "charging-command-api",
-      "version": "2.0.211-SNAPSHOT",
+      "version": "2.0.210-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": [
         {
           "microService": "lifecycle-event-processor",
@@ -1070,150 +1155,171 @@
       ]
     },
     {
-      "microService": "structure-domain",
-      "version": "2.0.144-SNAPSHOT",
+      "microService": "structure-command-handler",
+      "version": "2.0.80-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "audit-domain-event",
-      "version": "2.0.29-SNAPSHOT",
+      "version": "2.0.25-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "scheduling-command-controller",
-      "version": "2.0.48-SNAPSHOT",
+      "version": "2.0.39-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "structure-domain",
+      "version": "2.0.80-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "outcomes-command-controller",
       "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "structure-viewstore",
-      "version": "2.0.144-SNAPSHOT",
+      "version": "2.0.80-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "staging-viewstore",
-      "version": "2.0.194-SNAPSHOT",
+      "version": "2.0.189-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "people-domain",
-      "version": "2.0.52-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "notification-query-api",
-      "version": "1.0.12-SNAPSHOT",
+      "version": "2.0.40-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "mi-event",
-      "version": "1.0.20-SNAPSHOT",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "mi-command-handler",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "staging-query-controller",
-      "version": "2.0.194-SNAPSHOT",
+      "version": "2.0.189-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "staging-query-api",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.189-SNAPSHOT"
         }
       ]
     },
     {
-      "microService": "mi-command-handler",
-      "version": "1.0.20-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
       "microService": "usersgroups-domain-event",
       "version": "2.0.48-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "notification-parent",
-      "version": "1.0.12-SNAPSHOT",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "charging-command",
+      "version": "2.0.210-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "outcomes-query-api",
       "version": "1.0.0-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "charging-command",
-      "version": "2.0.211-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "resulting-event",
-      "version": "2.0.62-SNAPSHOT",
+      "version": "2.0.26-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "outcomes-query",
       "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "mi-query-controller",
-      "version": "1.0.20-SNAPSHOT",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "mi-query-api",
-          "usingVersion": "${project.version}"
+          "usingVersion": "1.0.0-SNAPSHOT"
         }
       ]
     },
     {
       "microService": "progression-event",
       "version": "2.0.60-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "notification-integration-test",
-      "version": "1.0.12-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "staging-command-controller",
-      "version": "2.0.194-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "progression-viewstore-liquibase",
-      "version": "2.0.60-SNAPSHOT",
+      "version": "2.0.189-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "outcomes-event-listener",
       "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "progression-viewstore-liquibase",
+      "version": "2.0.51-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": []
     },
     {
       "microService": "outcomes-viewstore-liquibase",
       "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "lifecycle-domain-event",
+      "version": "2.0.155-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "people-query-api",
-      "version": "2.0.52-SNAPSHOT",
+      "version": "2.0.40-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
-          "microService": "resulting-event-processor",
-          "usingVersion": "${people.version}"
-        },
-        {
           "microService": "staging-event-processor",
-          "usingVersion": "${people.version}"
+          "usingVersion": "2.0.38"
         },
         {
           "microService": "structure-query-controller",
-          "usingVersion": "${people.version}"
+          "usingVersion": "2.0.16"
         },
         {
           "microService": "lifecycle-event-processor",
@@ -1221,296 +1327,324 @@
         },
         {
           "microService": "mi-event-processor",
-          "usingVersion": "2.0.48"
+          "usingVersion": "2.0.16"
         }
       ]
     },
     {
-      "microService": "lifecycle-domain-event",
-      "version": "2.0.156-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
       "microService": "structure-query-controller",
-      "version": "2.0.144-SNAPSHOT",
+      "version": "2.0.80-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "structure-query-api",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.80-SNAPSHOT"
         }
       ]
     },
     {
       "microService": "referencedata-domain-event",
-      "version": "2.0.77-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "mi-parent",
-      "version": "1.0.20-SNAPSHOT",
+      "version": "2.0.58-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "mi-domain-common",
-      "version": "1.0.20-SNAPSHOT",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "mi-parent",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "api-integration-test",
+      "version": "1.0.243-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "usersgroups-domain-aggregate",
       "version": "2.0.48-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "people-event-listener",
-      "version": "2.0.52-SNAPSHOT",
+      "version": "2.0.40-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "assignment-viewstore-persistence",
-      "version": "2.0.45-SNAPSHOT",
+      "version": "2.0.32-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "progression-query-view",
       "version": "2.0.60-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "progression-query-controller",
-          "usingVersion": "${project.version}"
-        }
-      ]
-    },
-    {
-      "microService": "material-query-view",
-      "version": "2.0.41-SNAPSHOT",
-      "consumedBy": [
-        {
-          "microService": "material-query-controller",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.60-SNAPSHOT"
         }
       ]
     },
     {
       "microService": "charging-query-controller",
-      "version": "2.0.211-SNAPSHOT",
+      "version": "2.0.210-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "charging-query-api",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.210-SNAPSHOT"
+        }
+      ]
+    },
+    {
+      "microService": "material-query-view",
+      "version": "2.0.31-SNAPSHOT",
+      "servicePomVersion": null,
+      "consumedBy": [
+        {
+          "microService": "material-query-controller",
+          "usingVersion": "2.0.41-SNAPSHOT"
         }
       ]
     },
     {
       "microService": "resulting-command-controller",
-      "version": "2.0.62-SNAPSHOT",
+      "version": "2.0.26-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "structure-command",
-      "version": "2.0.144-SNAPSHOT",
+      "version": "2.0.80-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "mi-integration-test",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "usersgroups-viewstore-setup-liquibase",
       "version": "2.0.48-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "mi-integration-test",
-      "version": "1.0.20-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "people-command",
-      "version": "2.0.52-SNAPSHOT",
+      "version": "2.0.40-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "referencedata-domain-command",
-      "version": "2.0.77-SNAPSHOT",
+      "version": "2.0.58-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "resulting-integration-test",
-      "version": "2.0.62-SNAPSHOT",
+      "version": "2.0.26-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "progression-viewstore-persistence",
       "version": "2.0.60-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "audit-command-controller",
-      "version": "2.0.29-SNAPSHOT",
+      "version": "2.0.25-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "scheduling-domain-common",
-      "version": "2.0.48-SNAPSHOT",
+      "version": "2.0.39-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "charging-command-controller",
-      "version": "2.0.211-SNAPSHOT",
+      "version": "2.0.210-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "resulting-viewstore",
-      "version": "2.0.62-SNAPSHOT",
+      "version": "2.0.26-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "mi-viewstore",
-      "version": "1.0.20-SNAPSHOT",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "material-domain-aggregate",
-      "version": "2.0.41-SNAPSHOT",
+      "version": "2.0.31-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": []
     },
     {
       "microService": "charging-viewstore",
-      "version": "2.0.211-SNAPSHOT",
+      "version": "2.0.210-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "scheduling-parent",
-      "version": "2.0.48-SNAPSHOT",
+      "version": "2.0.39-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "structure-integration-test",
-      "version": "2.0.144-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "people-domain-event",
-      "version": "2.0.52-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "people-viewstore-liquibase",
-      "version": "2.0.52-SNAPSHOT",
+      "version": "2.0.80-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "assignment-domain-event",
-      "version": "2.0.45-SNAPSHOT",
+      "version": "2.0.32-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "people-domain-event",
+      "version": "2.0.40-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "people-viewstore-liquibase",
+      "version": "2.0.40-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "audit-event",
+      "version": "2.0.25-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "progression-event-listener",
       "version": "2.0.60-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "audit-event",
-      "version": "2.0.29-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "charging-parent",
-      "version": "2.0.211-SNAPSHOT",
+      "version": "2.0.210-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "usersgroups-query-view",
       "version": "2.0.48-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "usersgroups-query-controller",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.48-SNAPSHOT"
         }
       ]
     },
     {
       "microService": "outcomes-query-view",
       "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "outcomes-query-controller",
-          "usingVersion": "${project.version}"
+          "usingVersion": "1.0.0-SNAPSHOT"
         }
       ]
     },
     {
       "microService": "progression-integration-test",
       "version": "2.0.60-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "notification-domain",
-      "version": "1.0.12-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "assignment-domain",
-      "version": "2.0.45-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "assignment-domain-aggregate",
-      "version": "2.0.45-SNAPSHOT",
+      "version": "2.0.32-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "assignment-domain",
+      "version": "2.0.32-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "notification-domain",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "staging-query",
+      "version": "2.0.189-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "usersgroups-domain",
       "version": "2.0.48-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
-    },
-    {
-      "microService": "staging-query",
-      "version": "2.0.194-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "assignment-event-processor",
-      "version": "2.0.45-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "notification-query-controller",
-      "version": "1.0.12-SNAPSHOT",
-      "consumedBy": [
-        {
-          "microService": "notification-query-api",
-          "usingVersion": "${project.version}"
-        }
-      ]
     },
     {
       "microService": "scheduling-viewstore",
-      "version": "2.0.48-SNAPSHOT",
+      "version": "2.0.39-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "usersgroups-eventstore-setup-liquibase",
       "version": "2.0.48-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "lifecycle-domain",
-      "version": "2.0.156-SNAPSHOT",
+      "version": "2.0.155-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "notification-viewstore",
-      "version": "1.0.12-SNAPSHOT",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "material-command-api",
-      "version": "2.0.41-SNAPSHOT",
+      "version": "2.0.31-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
-          "microService": "resulting-event-processor",
-          "usingVersion": "${material.version}"
-        },
-        {
           "microService": "staging-event-processor",
-          "usingVersion": "${material.version}"
+          "usingVersion": "2.0.18"
         },
         {
           "microService": "lifecycle-event-processor",
@@ -1520,217 +1654,214 @@
     },
     {
       "microService": "structure-viewstore-liquibase",
-      "version": "2.0.144-SNAPSHOT",
+      "version": "2.0.80-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": []
     },
     {
       "microService": "charging-query-view",
-      "version": "2.0.211-SNAPSHOT",
+      "version": "2.0.210-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "charging-query-controller",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.210-SNAPSHOT"
         }
       ]
     },
     {
       "microService": "assignment-viewstore-liquibase",
-      "version": "2.0.45-SNAPSHOT",
+      "version": "2.0.32-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": []
     },
     {
       "microService": "mi-command",
-      "version": "1.0.20-SNAPSHOT",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "usersgroups-viewstore",
       "version": "2.0.48-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "material-query-api",
-      "version": "2.0.41-SNAPSHOT",
+      "version": "2.0.31-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": []
     },
     {
       "microService": "referencedata-command-handler",
-      "version": "2.0.77-SNAPSHOT",
+      "version": "2.0.58-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "staging-parent",
-      "version": "2.0.194-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "systemscheduling-viewstore-liquibase",
-      "version": "1.0.5-SNAPSHOT",
+      "version": "2.0.189-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "people-query-view",
-      "version": "2.0.52-SNAPSHOT",
+      "version": "2.0.40-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "people-query-controller",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.40-SNAPSHOT"
         }
       ]
     },
     {
-      "microService": "staging-event-listener",
-      "version": "2.0.194-SNAPSHOT",
+      "microService": "resulting-viewstore-persistence",
+      "version": "2.0.26-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
-      "microService": "resulting-viewstore-persistence",
-      "version": "2.0.62-SNAPSHOT",
+      "microService": "staging-event-listener",
+      "version": "2.0.189-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "access-control-drools",
+      "version": "2.0.11-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "structure-query-view",
-      "version": "2.0.144-SNAPSHOT",
+      "version": "2.0.80-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "structure-query-controller",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.80-SNAPSHOT"
         }
       ]
     },
     {
-      "microService": "access-control-drools",
-      "version": "2.0.23-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
       "microService": "charging-command-handler",
-      "version": "2.0.211-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "notification-viewstore-liquibase",
-      "version": "1.0.12-SNAPSHOT",
+      "version": "2.0.210-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "assignment-parent",
-      "version": "2.0.45-SNAPSHOT",
+      "version": "2.0.32-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "notification-viewstore-liquibase",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "usersgroups-parent",
       "version": "2.0.48-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "staging-event",
-      "version": "2.0.194-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "people-performance-test",
-      "version": "2.0.52-SNAPSHOT",
+      "version": "2.0.189-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "people-event",
-      "version": "2.0.52-SNAPSHOT",
+      "version": "2.0.40-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
-      "microService": "systemscheduling-command-handler",
-      "version": "1.0.5-SNAPSHOT",
+      "microService": "people-performance-test",
+      "version": "2.0.40-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "referencedata-viewstore",
-      "version": "2.0.77-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "systemscheduling-viewstore",
-      "version": "1.0.5-SNAPSHOT",
+      "version": "2.0.58-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "material-viewstore-persistence",
-      "version": "2.0.41-SNAPSHOT",
+      "version": "2.0.31-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": []
     },
     {
       "microService": "lifecycle-command",
-      "version": "2.0.156-SNAPSHOT",
+      "version": "2.0.155-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "charging-performance-test",
-      "version": "2.0.211-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "systemscheduling-domain-event",
-      "version": "1.0.5-SNAPSHOT",
+      "version": "2.0.210-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "resulting-event-processor",
-      "version": "2.0.62-SNAPSHOT",
+      "version": "2.0.26-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "assignment-integration-test",
-      "version": "2.0.45-SNAPSHOT",
+      "version": "2.0.32-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "mi-command-api",
-      "version": "1.0.20-SNAPSHOT",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": [
         {
           "microService": "mi-event-processor",
-          "usingVersion": "${project.version}"
+          "usingVersion": "1.0.0-SNAPSHOT"
         }
       ]
     },
     {
       "microService": "progression-command-handler",
       "version": "2.0.60-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "referencedata-query-controller",
-      "version": "2.0.77-SNAPSHOT",
+      "version": "2.0.58-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "referencedata-query-api",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.58-SNAPSHOT"
         }
       ]
-    },
-    {
-      "microService": "systemscheduling-command-controller",
-      "version": "1.0.5-SNAPSHOT",
-      "consumedBy": []
     },
     {
       "microService": "resulting-query-api",
-      "version": "2.0.62-SNAPSHOT",
-      "consumedBy": [
-        {
-          "microService": "mi-event-processor",
-          "usingVersion": "2.0.48"
-        }
-      ]
+      "version": "2.0.26-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
     },
     {
       "microService": "people-command-api",
-      "version": "2.0.52-SNAPSHOT",
+      "version": "2.0.40-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
-        {
-          "microService": "resulting-event-processor",
-          "usingVersion": "${people.version}"
-        },
         {
           "microService": "lifecycle-event-processor",
           "usingVersion": "2.0.42"
@@ -1738,118 +1869,128 @@
       ]
     },
     {
-      "microService": "progression-domain-common",
-      "version": "2.0.60-SNAPSHOT",
+      "microService": "access-control-bom",
+      "version": "2.0.11-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "charging-query",
+      "version": "2.0.210-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "outcomes-parent",
       "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
-      "microService": "notification-query-view",
-      "version": "1.0.12-SNAPSHOT",
-      "consumedBy": [
-        {
-          "microService": "notification-query-controller",
-          "usingVersion": "${project.version}"
-        }
-      ]
-    },
-    {
-      "microService": "charging-query",
-      "version": "2.0.211-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "access-control-bom",
-      "version": "2.0.23-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "outcomes-domain-event",
-      "version": "1.0.0-SNAPSHOT",
+      "microService": "progression-domain-common",
+      "version": "2.0.60-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "assignment-query-controller",
-      "version": "2.0.45-SNAPSHOT",
+      "version": "2.0.32-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "assignment-query-api",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.32-SNAPSHOT"
         }
       ]
     },
     {
+      "microService": "outcomes-domain-event",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
       "microService": "mi-event-listener",
-      "version": "1.0.20-SNAPSHOT",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "lifecycle-command-api",
+      "version": "2.0.155-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "mi-performance-test",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "outcomes-viewstore",
       "version": "1.0.0-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "lifecycle-command-api",
-      "version": "2.0.156-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "mi-performance-test",
-      "version": "1.0.20-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "staging-integration-test",
-      "version": "2.0.194-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "material-performance-test",
-      "version": "2.0.41-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "audit-domain",
-      "version": "2.0.29-SNAPSHOT",
+      "version": "2.0.189-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "assignment-query",
-      "version": "2.0.45-SNAPSHOT",
+      "version": "2.0.32-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "audit-domain",
+      "version": "2.0.25-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "material-performance-test",
+      "version": "2.0.31-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": []
     },
     {
       "microService": "resulting-parent",
-      "version": "2.0.62-SNAPSHOT",
+      "version": "2.0.26-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "staging-libra-simulator",
-      "version": "2.0.194-SNAPSHOT",
+      "version": "2.0.189-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "material-query",
-      "version": "2.0.41-SNAPSHOT",
+      "version": "2.0.31-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": []
     },
     {
       "microService": "structure-performance-test",
-      "version": "2.0.144-SNAPSHOT",
+      "version": "2.0.80-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "usersgroups-initialisation",
       "version": "2.0.48-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "progression-command-api",
       "version": "2.0.60-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "lifecycle-event-processor",
@@ -1859,209 +2000,222 @@
     },
     {
       "microService": "staging-cms-soap-api",
-      "version": "2.0.194-SNAPSHOT",
+      "version": "2.0.189-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "access-control-assignment-providers",
-      "version": "2.0.23-SNAPSHOT",
+      "version": "2.0.11-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "assignment-query-view",
-      "version": "2.0.45-SNAPSHOT",
+      "version": "2.0.32-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "assignment-query-controller",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.32-SNAPSHOT"
         }
       ]
     },
     {
       "microService": "resulting-domain-aggregate",
-      "version": "2.0.62-SNAPSHOT",
+      "version": "2.0.26-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "lifecycle-parent",
-      "version": "2.0.156-SNAPSHOT",
+      "version": "2.0.155-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "progression-performance-test",
       "version": "2.0.60-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "notification-domain-event",
-      "version": "1.0.12-SNAPSHOT",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "referencedata-event",
-      "version": "2.0.77-SNAPSHOT",
+      "version": "2.0.58-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "referencedata-viewstore-persistence",
-      "version": "2.0.77-SNAPSHOT",
+      "version": "2.0.58-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "lifecycle-event-processor",
+      "version": "2.0.155-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "progression-command-controller",
       "version": "2.0.60-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "lifecycle-event-processor",
-      "version": "2.0.156-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "systemscheduling-domain",
-      "version": "1.0.5-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "scheduling-viewstore-persistence",
-      "version": "2.0.48-SNAPSHOT",
+      "version": "2.0.39-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "audit-parent",
-      "version": "2.0.29-SNAPSHOT",
+      "version": "2.0.25-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "charging-viewstore-liquibase",
+      "version": "2.0.175-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": []
     },
     {
       "microService": "progression-query",
       "version": "2.0.60-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "charging-viewstore-liquibase",
-      "version": "2.0.211-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "referencedata-command-controller",
-      "version": "2.0.77-SNAPSHOT",
+      "version": "2.0.58-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "resulting-domain-common",
-      "version": "2.0.62-SNAPSHOT",
+      "version": "2.0.26-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "scheduling-event-listener",
-      "version": "2.0.48-SNAPSHOT",
+      "version": "2.0.39-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "scheduling-viewstore-liquibase",
-      "version": "2.0.48-SNAPSHOT",
+      "version": "2.0.39-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": []
     },
     {
       "microService": "scheduling-query",
-      "version": "2.0.48-SNAPSHOT",
+      "version": "2.0.39-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "scheduling-domain",
-      "version": "2.0.48-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "systemscheduling-command",
-      "version": "1.0.5-SNAPSHOT",
+      "version": "2.0.39-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "progression-query-controller",
       "version": "2.0.60-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "progression-query-api",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.60-SNAPSHOT"
         }
       ]
     },
     {
-      "microService": "systemscheduling-event-processor",
-      "version": "1.0.5-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
       "microService": "lifecycle-command-handler",
-      "version": "2.0.156-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "referencedata-event-listener",
-      "version": "2.0.77-SNAPSHOT",
+      "version": "2.0.155-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "mi-query-view",
-      "version": "1.0.20-SNAPSHOT",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "mi-query-controller",
-          "usingVersion": "${project.version}"
+          "usingVersion": "1.0.0-SNAPSHOT"
         }
       ]
     },
     {
+      "microService": "referencedata-event-listener",
+      "version": "2.0.58-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
       "microService": "resulting-domain-event",
-      "version": "2.0.62-SNAPSHOT",
+      "version": "2.0.26-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "outcomes-command-handler",
       "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "outcomes-integration-test",
       "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
+      "consumedBy": []
+    },
+    {
+      "microService": "staging-domain-common",
+      "version": "2.0.189-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "usersgroups-query-controller",
       "version": "2.0.48-SNAPSHOT",
+      "servicePomVersion": null,
       "consumedBy": [
         {
           "microService": "usersgroups-query-api",
-          "usingVersion": "${project.version}"
+          "usingVersion": "2.0.48-SNAPSHOT"
         }
       ]
     },
     {
-      "microService": "staging-domain-common",
-      "version": "2.0.194-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "systemscheduling-event",
-      "version": "1.0.5-SNAPSHOT",
+      "microService": "people-domain-command",
+      "version": "2.0.40-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "referencedata-performance-test",
-      "version": "2.0.77-SNAPSHOT",
+      "version": "2.0.58-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     },
     {
       "microService": "mi-domain",
-      "version": "1.0.20-SNAPSHOT",
-      "consumedBy": []
-    },
-    {
-      "microService": "systemscheduling-command-api",
-      "version": "1.0.5-SNAPSHOT",
+      "version": "1.0.0-SNAPSHOT",
+      "servicePomVersion": "1.0",
       "consumedBy": []
     }
   ],
-  "dateCreated": "2016-11-01T11:15:41.545"
+  "dateCreated": "2016-11-15T11:30:34.029"
 }

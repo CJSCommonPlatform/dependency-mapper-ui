@@ -4,7 +4,8 @@ define([], function() {
             id: context.microService.split("-")[0],
             label: context.microService.split("-")[0],
             version: context.version ? context.version : undefined,
-            customHover: context.microService.split("-")[0] + (context.version ? " (v" + context.version + ")" : "")
+            customHover: (context.microService.split("-")[0] + (context.version ? " (v" + context.version + ")" : "")) +
+                         ", Service Pom "  + (context.servicePomVersion ? "(v" + context.servicePomVersion + ")" : "unknown")
         }
     };
 
