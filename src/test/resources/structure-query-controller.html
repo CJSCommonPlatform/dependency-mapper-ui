@@ -1,0 +1,3355 @@
+<!DOCTYPE HTML><html><head><title>Structure Query API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/raml2html/raml2html 3.0.1"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script><script type="text/javascript">
+      $(document).ready(function() {
+        $('.page-header pre code, .top-resource-description pre code, .modal-body pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+
+        $('[data-toggle]').click(function() {
+          var selector = $(this).data('target') + ' pre code';
+          $(selector).each(function(i, block) {
+            hljs.highlightBlock(block);
+          });
+        });
+
+        // open modal on hashes like #_action_get
+        $(window).bind('hashchange', function(e) {
+          var anchor_id = document.location.hash.substr(1); //strip #
+          var element = $('#' + anchor_id);
+
+          // do we have such element + is it a modal?  --> show it
+          if (element.length && element.hasClass('modal')) {
+            element.modal('show');
+          }
+        });
+
+        // execute hashchange on first page load
+        $(window).trigger('hashchange');
+
+        // remove url fragment on modal hide
+        $('.modal').on('hidden.bs.modal', function() {
+          try {
+            if (history && history.replaceState) {
+                history.replaceState({}, '', '#');
+            }
+          } catch(e) {}
+        });
+      });
+    </script><style>
+      .hljs {
+        background: transparent;
+      }
+      .parent {
+        color: #999;
+      }
+      .list-group-item > .badge {
+        float: none;
+        margin-right: 6px;
+      }
+      .panel-title > .methods {
+        float: right;
+      }
+      .badge {
+        border-radius: 0;
+        text-transform: uppercase;
+        width: 70px;
+        font-weight: normal;
+        color: #f3f3f6;
+        line-height: normal;
+      }
+      .badge_get {
+        background-color: #63a8e2;
+      }
+      .badge_post {
+        background-color: #6cbd7d;
+      }
+      .badge_put {
+        background-color: #22bac4;
+      }
+      .badge_delete {
+        background-color: #d26460;
+      }
+      .badge_patch {
+        background-color: #ccc444;
+      }
+      .list-group, .panel-group {
+        margin-bottom: 0;
+      }
+      .panel-group .panel+.panel-white {
+        margin-top: 0;
+      }
+      .panel-group .panel-white {
+        border-bottom: 1px solid #F5F5F5;
+        border-radius: 0;
+      }
+      .panel-white:last-child {
+        border-bottom-color: white;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      .panel-white .panel-heading {
+        background: white;
+      }
+      .tab-pane ul {
+        padding-left: 2em;
+      }
+      .tab-pane h1 {
+        font-size: 1.3em;
+      }
+      .tab-pane h2 {
+        font-size: 1.2em;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #ddd;
+      }
+      .tab-pane h3 {
+        font-size: 1.1em;
+      }
+      .tab-content {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+      }
+      #sidebar {
+        margin-top: 30px;
+        padding-right: 5px;
+        overflow: auto;
+        height: 90%;
+      }
+      .top-resource-description {
+        border-bottom: 1px solid #ddd;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description {
+        border-bottom: 1px solid #fcfcfc;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description p:last-child {
+        margin: 0;
+      }
+      .list-group .badge {
+        float: left;
+      }
+      .method_description {
+        margin-left: 85px;
+      }
+      .method_description p:last-child {
+        margin: 0;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+      .list-group-item:hover {
+        background-color: #f5f5f5;
+      }
+
+      pre code {
+        overflow: auto;
+        word-wrap: normal;
+        white-space: pre;
+      }
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>Structure Query API documentation <small>version v0.1</small></h1><p>http://localhost:8080/structure-query-controller/query/controller/rest/structure</p></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId_" class="panel-title">/cases/{caseId}</h3></div><div class="panel-body"><div class="top-resource-description"><p>return a case</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId_"><span class="parent"></span>/cases/{caseId}</a> <span class="methods"><a href="#cases__caseId__get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_cases__caseId_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>... (mapping): responseType: application/vnd.structure.query.case+json name: structure.query.case ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/cases/{caseId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>... (mapping): responseType: application/vnd.structure.query.case+json name: structure.query.case ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__get_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__get_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>Case ID</p></li></ul></div><div class="tab-pane" id="cases__caseId__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/vnd.structure.query.case+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "id": "/id",
+      "type": "string"
+    },
+    "version": {
+      "id": "/version",
+      "type": "integer"
+    },
+    "urn": {
+      "id": "/urn",
+      "type": "string"
+    },
+    "completed": {
+      "id": "/completed",
+      "type": "boolean"
+    },
+    "sensitive": {
+      "id": "/sensitive",
+      "type": "boolean"
+    },
+    "ownershipTransferred": {
+      "id": "/ownershipTransferred",
+      "type": "boolean"
+    },
+    "review-status": {
+      "id": "/review-status",
+      "type": "string"
+    },
+    "policeOfficerInCase": {
+      "id": "/policeOfficerInCase",
+      "anyOf" : [{"type": "object"}, {"type": "null"}],
+      "properties": {
+        "personId": {
+          "id": "/policeOfficerInCase/personId",
+          "type": "string"
+        },
+        "rank": {
+          "id": "/policeOfficerInCase/rank",
+          "type": "string"
+        },
+        "narrative": {
+          "id": "/policeOfficerInCase/narrative",
+          "type": "string"
+        },
+        "badgeNumber": {
+          "id": "/policeOfficerInCase/badgeNumber",
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "policeSupervisor": {
+      "id": "/policeSupervisor",
+      "anyOf" : [{"type": "object"}, {"type": "null"}],
+      "properties": {
+        "personId": {
+          "id": "/policeSupervisor/personId",
+          "type": "string"
+        },
+        "rank": {
+          "id": "/policeSupervisor/rank",
+          "type": "string"
+        },
+        "narrative": {
+          "id": "/policeSupervisor/narrative",
+          "type": "string"
+        },
+        "badgeNumber": {
+          "id": "/policeSupervisor/badgeNumber",
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "witnesses": {
+      "id": "/witnesses",
+      "type": "array",
+      "items": {
+        "id": "/witnesses/0",
+        "type": "object",
+        "properties": {
+          "id": {
+            "id": "/witnesses/0/id",
+            "type": "string"
+          },
+          "personId": {
+            "id": "/witnesses/0/personId",
+            "type": "string"
+          },
+          "policePersonId": {
+            "id": "/witnesses/0/policePersonId",
+            "type": "string"
+          },
+          "statements": {
+            "id": "/witnesses/0/statements",
+            "type": "array",
+            "properties": {
+              "id" : {
+                "id": "/witnesses/0/statements/0/id",
+                "type": "string"
+              },
+              "statementNumber" : {
+                "id": "/witnesses/0/statements/0/statementNumber",
+                "type": "string"
+              }
+            }
+          },
+          "classification": {
+            "id": "/witnesses/0/classification",
+            "type": "array",
+            "properties": {
+              "classificationCode": {
+                "id": "/witnesses/0/classification/classificationCode",
+                "type": "string"
+              },
+              "classificationValue": {
+                "id": "/witnesses/0/classification/classificationValue",
+                "type": "string"
+              },
+              "isVictim": {
+                "id": "/witnesses/0/classification/isVictim",
+                "type": "boolean"
+              },
+              "isEntitlementRequired": {
+                "id": "/witnesses/0/classification/isEntitlementRequired",
+                "type": "boolean"
+              },
+              "witnessExpertise": {
+                "id": "/witnesses/0/classification/witnessExpertise",
+                "type": "string"
+              },
+              "witnessStatus": {
+                "id": "/witnesses/0/classification/witnessStatus",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "suspects": {
+      "id": "/suspects",
+      "type": "array",
+      "items": {
+        "id": "/suspects/0",
+        "type": "object",
+        "properties": {
+          "id": {
+            "id": "/suspects/0/id",
+            "type": "string"
+          },
+          "personId": {
+            "id": "/suspects/0/personId",
+            "type": "string"
+          },
+          "policePersonId": {
+            "id": "/suspects/0/policePersonId",
+            "type": "string"
+          },
+
+          "asn": {
+            "id": "/suspects/0/asn",
+            "type": "string"
+          },
+          "bailConditions": {
+            "id": "/suspects/0/bailConditions",
+            "type": "string"
+          },
+          "bailStatus": {
+            "id": "/suspects/0/bailStatus",
+            "type": ["string", "null"]
+          },
+          "bailDate": {
+            "id": "/suspects/0/bailDate",
+            "type": "string",
+            "properties": {
+              "year": {
+                "id": "/suspects/0/bailDate/year",
+                "type": "integer"
+              },
+              "month": {
+                "id": "/suspects/0/bailDate/month",
+                "type": "integer"
+              },
+              "day": {
+                "id": "/suspects/0/bailDate/day",
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false
+          },
+          "policeRemandStatus": {
+            "id": "/suspects/0/policeRemandStatus",
+            "type": "string"
+          },
+          "idpcApproved": {
+            "id": "/suspects/0/idpcApproved",
+            "type": "boolean"
+          },
+          "charges": {
+            "id": "/suspects/0/charges",
+            "type": "array",
+            "items": {
+              "id": "/suspects/0/charges/0",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "id": "/suspects/0/charges/0/id",
+                  "type": "string"
+                },
+                "twifId": {
+                  "id": "/suspects/0/charges/0/twifId",
+                  "type": "string"
+                },
+                "code": {
+                  "id": "/suspects/0/charges/0/code",
+                  "type": "string"
+                },
+                "description": {
+                  "id": "/suspects/0/charges/0/description",
+                  "type": "string"
+                },
+                "status": {
+                  "id": "/suspects/0/charges/0/status",
+                  "type": "string"
+                },
+                "categoryType": {
+                  "id": "/suspects/0/charges/0/categoryType",
+                  "type": "string"
+                },
+                "fromDate": {
+                  "id": "/suspects/0/charges/0/fromDate",
+                  "type": "string",
+                  "properties": {
+                    "year": {
+                      "id": "/suspects/0/charges/0/fromDate/year",
+                      "type": "integer"
+                    },
+                    "month": {
+                      "id": "/suspects/0/charges/0/fromDate/month",
+                      "type": "integer"
+                    },
+                    "day": {
+                      "id": "/suspects/0/charges/0/fromDate/day",
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "toDate": {
+                  "id": "/suspects/0/charges/0/toDate",
+                  "type": "string",
+                  "properties": {
+                    "year": {
+                      "id": "/suspects/0/charges/0/toDate/year",
+                      "type": "integer"
+                    },
+                    "month": {
+                      "id": "/suspects/0/charges/0/toDate/month",
+                      "type": "integer"
+                    },
+                    "day": {
+                      "id": "/suspects/0/charges/0/toDate/day",
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "particularClassification": {
+                  "id": "/suspects/0/charges/0/particularClassification",
+                  "type": "string"
+                },
+                "particularLocation": {
+                  "id": "/suspects/0/charges/0/particularLocation",
+                  "type": "object",
+                  "properties": {
+                    "address1": {
+                      "id": "/suspects/0/charges/0/particularLocation/address1",
+                      "type": "string"
+                    },
+                    "address2": {
+                      "id": "/suspects/0/charges/0/particularLocation/address2",
+                      "type": "string"
+                    },
+                    "address3": {
+                      "id": "/suspects/0/charges/0/particularLocation/address3",
+                      "type": "string"
+                    },
+                    "address4": {
+                      "id": "/suspects/0/charges/0/particularLocation/address4",
+                      "type": "string"
+                    },
+                    "postCode": {
+                      "id": "/suspects/0/charges/0/particularLocation/postCode",
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "authorisedCharge": {
+                  "id": "/suspects/0/charges/0/authorisedCharge",
+                  "type": ["object", "null"],
+                  "properties": {
+                    "id": {
+                      "id": "/suspects/0/charges/0/authorisedCharge/id",
+                      "type": "string"
+                    },
+                    "code": {
+                      "id": "/suspects/0/charges/0/authorisedCharge/code",
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "exhibits": {
+      "id": "/exhibits",
+      "type": "array",
+      "items": {
+        "id": "/exhibits/0",
+        "type": "object",
+        "properties": {
+          "id": {
+            "id": "/exhibits/0/id",
+            "type": "string"
+          },
+          "personId": {
+            "id": "/exhibits/0/personId",
+            "type": "string"
+          },
+          "exhibitMaterialId": {
+            "id": "/exhibits/0/exhibitMaterialId",
+            "type": "string"
+          },
+          "exhibitName": {
+            "id": "/exhibits/0/exhibitName",
+            "type": "string"
+          },
+          "policeName": {
+            "id": "/exhibits/0/policeName",
+            "type": "string"
+          },
+          "exhibitClassifications": {
+            "id": "/exhibits/0/exhibitClassifications",
+            "type": "array",
+            "items": {
+              "id": "/exhibits/0/exhibitClassifications/1",
+              "type": "object",
+              "properties": {
+                "classification": {
+                  "id": "/exhibits/0/exhibitClassifications/1/classification",
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "caseDocuments": {
+      "id": "/caseDocuments",
+      "type": "array",
+      "items": {
+        "id": "/caseDocuments/0",
+        "type": "object",
+        "properties": {
+          "policeMaterialId": {
+            "id": "/caseDocuments/0/policeMaterialId",
+            "type": "string"
+          },
+          "policeName": {
+            "id": "/caseDocuments/0/policeName",
+            "type": "string"
+          },
+          "description": {
+            "id": "/caseDocuments/0/description",
+            "type": "string"
+          },
+          "id": {
+            "id": "/caseDocuments/0/id",
+            "type": "string"
+          },
+          "materialId": {
+            "id": "/caseDocuments/0/materialId",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "policeSummaries": {
+      "id": "/policeSummaries",
+      "type": "array",
+      "items": {
+        "id": "/policeSummaries/0",
+        "type": "object",
+        "properties": {
+          "id": {
+            "id": "/policeSummaries/0/id",
+            "type": "string"
+          },
+          "outlineHeading": {
+            "id": "/policeSummaries/0/outlineHeading",
+            "type": "string"
+          },
+          "outlineText": {
+            "id": "/policeSummaries/0/outlineText",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "defendants": {
+      "type": "array",
+      "items": {
+        "personId": {
+          "type": "string"
+        },
+
+        "bailStatus": {
+          "type": ["string", "null"]
+        },
+        "defendantBailDocuments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "documentId": {
+                "type": "string"
+              },
+              "active": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "id",
+              "documentId",
+              "active"
+            ]
+          }
+        },
+        "custodyTimeLimitDate": {
+            "type": "string"
+          },
+        "defenceSolicitorFirm": {
+          "type": ["string", "null"]
+        },
+        "interpreter":{
+          "type": "string"
+        },
+        "offences": {
+          "type": "array",
+          "items": {
+            "offenceCode": {
+              "type": "string"
+            },
+            "plea": {
+              "type": "string"
+            },
+            "indicatedPlea": {
+              "type": "string",
+              "enum": ["NOT_GUILTY", "GUILTY", "NO_PLEA"]
+            },
+            "pleaMitigation": {
+              "type": "string"
+            },
+            "cjsCode": {
+              "type": ["string", "null"]
+            },
+            "pendingWithdrawal" : {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "noticeServedDate": {
+      "id": "/noticeServedDate",
+      "type": ["string", "null"]
+    },
+    "victims": {
+      "id": "/victims",
+      "type": "array",
+      "items": {
+        "id": "/victims/0",
+        "type": "object",
+        "properties": {
+          "id": {
+            "id": "/victims/0/id",
+            "type": "string"
+          },
+          "personId": {
+            "id": "/victims/0/personId",
+            "type": "string"
+          },
+          "policePersonId": {
+            "id": "/victims/0/policePersonId",
+            "type": "string"
+          },
+          "classifications": {
+            "id": "/victims/0/classifications",
+            "type": "array",
+            "items": {
+              "id": "/victims/0/classifications/0",
+              "type": "object",
+              "properties": {
+                "classificationType": {
+                  "id": "/victims/0/classifications/0/classificationType",
+                  "type": "string"
+                },
+                "classificationCode": {
+                  "id": "/victims/0/classifications/0/classificationCode",
+                  "type": "string"
+                },
+                "classificationValue": {
+                  "id": "/victims/0/classifications/0/classificationValue",
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "personId",
+          "policePersonId"
+        ],
+        "additionalProperties": false
+      },
+      "additionalProperties": false
+    },
+    "prosecutor": {
+      "id": "/prosecutor",
+      "type": ["string", "null"]
+    },
+    "caseMarkers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "caseMarker": {
+            "type": "string",
+            "id": "http://jsonschema.net/caseMarkers/3/caseMarker"
+          }
+        },
+        "id": "http://jsonschema.net/caseMarkers/3",
+        "required": [
+          "caseMarker"
+        ]
+      },
+      "id": "http://jsonschema.net/caseMarkers"
+    },
+    "actionPlan": {
+      "type": "object",
+      "properties": {
+        "actionItems": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "category": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "deadlineDate": {
+                "type": "string"
+              },
+              "createdDate": {
+                "type": "string"
+              },
+              "suspects": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                }
+              },
+              "status": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "category",
+              "description",
+              "deadlineDate",
+              "createdDate",
+              "status"
+            ]
+          }
+        }
+      },
+      "required": [
+        "actionItems"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "urn"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "version": 2,
+  "urn": "22C22222222",
+  "review-status": "Started",
+  "completed" : false,
+  "sensitive" : false,
+  "ownershipTransferred": false,
+  "policeOfficerInCase": {
+    "personId": "aa746921-d839-4867-bcf9-b41db8ebc852",
+    "rank": "constable",
+    "narrative": "",
+    "badgeNumber": 223
+  },
+  "policeSupervisor": {
+    "personId": "ab746921-d839-4867-bcf9-b41db8ebc852",
+    "rank": "sergeant",
+    "narrative": "",
+    "badgeNumber": 223
+  },
+  "witnesses": [
+    {
+      "id": "bbc-def-hjk-kdj",
+      "personId": "ab746921-d839-4867-bcf9-b41db8ebc852",
+      "policePersonId": "policePersonId",
+      "statements": [
+        "id5",
+        "id6"
+      ],
+      "classification": {
+        "isVictim": true,
+        "isEntitlementRequired": true,
+        "witnessExpertise": "EXPERT",
+        "witnessStatus": "INTIMIDATED"
+      }
+    }
+  ],
+  "suspects": [
+    {
+      "id": "ebabacce-1628-48b3-83b8-6f0d2412019f",
+      "personId": "ab746921-d839-4867-bcf9-b41db8ebc852",
+      "policePersonId": "policePersonId",
+      "asn": "ASN",
+      "bailConditions": "Test",
+      "bailStatus": "in custody",
+      "bailDate": {
+        "year": 2015,
+        "month": 10,
+        "day": 10
+      },
+      "policeRemandStatus": "Test",
+      "charges": [
+        {
+          "id": "39336236-3366-6161-2d64-3735352d3466",
+          "twifId": "CPP-AB746921-d839-4867-DDC9-B41BD8EBC852",
+          "code": "CJ123",
+          "description": "Assault",
+          "status": "Authorised",
+          "categoryType": "Either way",
+          "fromDate": {
+            "year": 2015,
+            "month": 10,
+            "day": 10
+          },
+          "toDate": {
+            "year": 2015,
+            "month": 10,
+            "day": 10
+          },
+          "particularClassification": "Classification",
+          "particularLocation": {
+            "address1": "14, Hampton Court",
+            "postCode": "HM1 1XH"
+          },
+          "authorisedCharge": {
+            "id": "7d635035-ef38-421f-9d88-74bacd30d318",
+            "code": "CJ12345"
+          },
+          "idpcApproved": true
+        }
+      ]
+    }
+  ],
+  "exhibits": [
+    {
+      "id": "exhibitId",
+      "personId": "cppContextPersonId",
+      "exhibitMaterialId": "materialId1",
+      "exhibitName": "descriptionOfExhibit",
+      "policeName": "policeName",
+      "exhibitClassifications": [
+        {
+          "classification": "e.g. audio tape"
+        },
+        {
+          "classification": "e.g. sensitive video"
+        }
+      ]
+    }
+  ],
+  "caseDocuments": [
+    {
+      "policeMaterialId": "policeMaterialId",
+      "policeName": "policeName",
+      "description": "description",
+      "id": "30b83084-d2fe-4a70-bbd1-fae1dfdb4b95",
+      "materialId": "670490ee-95be-4e3e-af8b-9bef865e26ba"
+    }
+  ],
+  "policeSummaries": [
+    {
+      "id": "ba9a2765-e630-4d9a-923c-6b9fd29dbfc4",
+      "outlineHeading": "KEVD",
+      "outlineText": "This evidence is key"
+    }
+  ],
+  "defendants": [
+    {
+      "personId": "ab746921-d839-4867-bcf9-b41db8ebc852",
+      "bailStatus": "conditional",
+       "defendantBailDocuments": [
+        {
+          "id": "e1a5765b-55c4-40a4-9bd9-240e67b53107",
+          "documentId": "documentMaterialId2",
+          "active": true
+        }
+      ],
+      "custodyTimeLimitDate": "2016-11-11",
+      "defenceSolicitorFirm": "xyz solicitor",
+      "interpreter": "french",
+      "offences": [
+        {
+          "id": "0baecac5-222b-402d-9047-84803679edad",
+          "offenceCode": "H8198",
+          "plea": "GUILTY",
+          "indicatedPlea": "GUILTY",
+          "offenceSequenceNumber": 1,
+          "pleaMitigation": "The dog ate my ticket",
+          "cjsCode": "OF61131",
+          "chargeDate":"2016-02-18",
+          "wording": "On 19/01/2016 At wandsworth bridge rd SW6 Being a passenger on a Public Service Vehicle operated on behalf of London Bus Services Limited being used for the carriage of passengers at separate fares did use in relation to the journey you were taking a ticket which had been issued for use by another person on terms that it is not transferable",
+          "pendingWithdrawal": false
+        }
+      ]
+    }
+  ],
+  
+  "caseMarkers" : [
+    {
+      "caseMarker" : "ASBOAppliedFor"
+    },
+    {
+      "caseMarker" : "ASBOGranted"
+    },
+    {
+      "caseMarker" : "AnimalRightsExtremism"
+    },
+    {
+      "caseMarker" : "AssetRecovery"
+    }
+  ],
+  "noticeServedDate": "2016-02-15",
+  "victims": [
+    {
+      "id": "9a475250-41e7-47f2-abc2-e4b45511a82a",
+      "personId": "ab746921-d839-4867-bcf9-b41db8ebc852",
+      "policePersonId": "policePersonId",
+      "classifications": [
+        {
+          "classificationType": "victimClassificationType",
+          "classificationCode": "victimClassificationCode",
+          "classificationValue": "victimClassificationValue"
+        }
+      ]
+    }
+  ],
+  "prosecutor": "TFL",
+  "actionPlan" : {
+    "actionItems" :[
+      {
+        "id": "7e2f843e-d639-40b3-8611-8015f3a18958",
+        "category": "categoryCode",
+        "description": "description",
+        "deadlineDate": "2015-02-15",
+        "createdDate": "2016-08-31",
+        "suspects": [
+          {
+            "id": "7e2f843e-d639-40b3-8611-8015f3a18959"
+          }
+        ],
+        "status" : "open"
+      }
+    ]
+  }
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases" class="panel-title">/cases</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases"><span class="parent"></span>/cases</a> <span class="methods"><a href="#cases_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_cases" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get case by URN ... (mapping): responseType: application/vnd.structure.query.case-by-urn+json name: structure.query.case-by-urn ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/cases</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get case by URN ... (mapping): responseType: application/vnd.structure.query.case-by-urn+json name: structure.query.case-by-urn ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases_get_request" data-toggle="tab">Request</a></li><li><a href="#cases_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases_get_request"><h3>Query Parameters</h3><ul><li><strong>urn</strong>: <em>(string)</em><p>URN</p></li></ul></div><div class="tab-pane" id="cases_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Type: application/vnd.structure.query.case-by-urn+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "id": "/id",
+      "type": "string"
+    },
+    "version": {
+      "id": "/version",
+      "type": "integer"
+    },
+    "urn": {
+      "id": "/urn",
+      "type": "string"
+    },
+    "completed": {
+      "id": "/completed",
+      "type": "boolean"
+    },
+    "sensitive": {
+      "id": "/sensitive",
+      "type": "boolean"
+    },
+    "ownershipTransferred": {
+      "id": "/ownershipTransferred",
+      "type": "boolean"
+    },
+    "review-status": {
+      "id": "/review-status",
+      "type": "string"
+    },
+    "policeOfficerInCase": {
+      "id": "/policeOfficerInCase",
+      "anyOf" : [{"type": "object"}, {"type": "null"}],
+      "properties": {
+        "personId": {
+          "id": "/policeOfficerInCase/personId",
+          "type": "string"
+        },
+        "rank": {
+          "id": "/policeOfficerInCase/rank",
+          "type": "string"
+        },
+        "narrative": {
+          "id": "/policeOfficerInCase/narrative",
+          "type": "string"
+        },
+        "badgeNumber": {
+          "id": "/policeOfficerInCase/badgeNumber",
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "policeSupervisor": {
+      "id": "/policeSupervisor",
+      "anyOf" : [{"type": "object"}, {"type": "null"}],
+      "properties": {
+        "personId": {
+          "id": "/policeSupervisor/personId",
+          "type": "string"
+        },
+        "rank": {
+          "id": "/policeSupervisor/rank",
+          "type": "string"
+        },
+        "narrative": {
+          "id": "/policeSupervisor/narrative",
+          "type": "string"
+        },
+        "badgeNumber": {
+          "id": "/policeSupervisor/badgeNumber",
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "witnesses": {
+      "id": "/witnesses",
+      "type": "array",
+      "items": {
+        "id": "/witnesses/0",
+        "type": "object",
+        "properties": {
+          "id": {
+            "id": "/witnesses/0/id",
+            "type": "string"
+          },
+          "personId": {
+            "id": "/witnesses/0/personId",
+            "type": "string"
+          },
+          "policePersonId": {
+            "id": "/witnesses/0/policePersonId",
+            "type": "string"
+          },
+          "statements": {
+            "id": "/witnesses/0/statements",
+            "type": "array",
+            "properties": {
+              "id" : {
+                "id": "/witnesses/0/statements/0/id",
+                "type": "string"
+              },
+              "statementNumber" : {
+                "id": "/witnesses/0/statements/0/statementNumber",
+                "type": "string"
+              }
+            }
+          },
+          "classification": {
+            "id": "/witnesses/0/classification",
+            "type": "array",
+            "properties": {
+              "classificationCode": {
+                "id": "/witnesses/0/classification/classificationCode",
+                "type": "string"
+              },
+              "classificationValue": {
+                "id": "/witnesses/0/classification/classificationValue",
+                "type": "string"
+              },
+              "isVictim": {
+                "id": "/witnesses/0/classification/isVictim",
+                "type": "boolean"
+              },
+              "isEntitlementRequired": {
+                "id": "/witnesses/0/classification/isEntitlementRequired",
+                "type": "boolean"
+              },
+              "witnessExpertise": {
+                "id": "/witnesses/0/classification/witnessExpertise",
+                "type": "string"
+              },
+              "witnessStatus": {
+                "id": "/witnesses/0/classification/witnessStatus",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "suspects": {
+      "id": "/suspects",
+      "type": "array",
+      "items": {
+        "id": "/suspects/0",
+        "type": "object",
+        "properties": {
+          "id": {
+            "id": "/suspects/0/id",
+            "type": "string"
+          },
+          "personId": {
+            "id": "/suspects/0/personId",
+            "type": "string"
+          },
+          "policePersonId": {
+            "id": "/suspects/0/policePersonId",
+            "type": "string"
+          },
+
+          "asn": {
+            "id": "/suspects/0/asn",
+            "type": "string"
+          },
+          "bailConditions": {
+            "id": "/suspects/0/bailConditions",
+            "type": "string"
+          },
+          "bailStatus": {
+            "id": "/suspects/0/bailStatus",
+            "type": ["string", "null"]
+          },
+          "bailDate": {
+            "id": "/suspects/0/bailDate",
+            "type": "string",
+            "properties": {
+              "year": {
+                "id": "/suspects/0/bailDate/year",
+                "type": "integer"
+              },
+              "month": {
+                "id": "/suspects/0/bailDate/month",
+                "type": "integer"
+              },
+              "day": {
+                "id": "/suspects/0/bailDate/day",
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false
+          },
+          "policeRemandStatus": {
+            "id": "/suspects/0/policeRemandStatus",
+            "type": "string"
+          },
+          "idpcApproved": {
+            "id": "/suspects/0/idpcApproved",
+            "type": "boolean"
+          },
+          "charges": {
+            "id": "/suspects/0/charges",
+            "type": "array",
+            "items": {
+              "id": "/suspects/0/charges/0",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "id": "/suspects/0/charges/0/id",
+                  "type": "string"
+                },
+                "twifId": {
+                  "id": "/suspects/0/charges/0/twifId",
+                  "type": "string"
+                },
+                "code": {
+                  "id": "/suspects/0/charges/0/code",
+                  "type": "string"
+                },
+                "description": {
+                  "id": "/suspects/0/charges/0/description",
+                  "type": "string"
+                },
+                "status": {
+                  "id": "/suspects/0/charges/0/status",
+                  "type": "string"
+                },
+                "categoryType": {
+                  "id": "/suspects/0/charges/0/categoryType",
+                  "type": "string"
+                },
+                "fromDate": {
+                  "id": "/suspects/0/charges/0/fromDate",
+                  "type": "string",
+                  "properties": {
+                    "year": {
+                      "id": "/suspects/0/charges/0/fromDate/year",
+                      "type": "integer"
+                    },
+                    "month": {
+                      "id": "/suspects/0/charges/0/fromDate/month",
+                      "type": "integer"
+                    },
+                    "day": {
+                      "id": "/suspects/0/charges/0/fromDate/day",
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "toDate": {
+                  "id": "/suspects/0/charges/0/toDate",
+                  "type": "string",
+                  "properties": {
+                    "year": {
+                      "id": "/suspects/0/charges/0/toDate/year",
+                      "type": "integer"
+                    },
+                    "month": {
+                      "id": "/suspects/0/charges/0/toDate/month",
+                      "type": "integer"
+                    },
+                    "day": {
+                      "id": "/suspects/0/charges/0/toDate/day",
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "particularClassification": {
+                  "id": "/suspects/0/charges/0/particularClassification",
+                  "type": "string"
+                },
+                "particularLocation": {
+                  "id": "/suspects/0/charges/0/particularLocation",
+                  "type": "object",
+                  "properties": {
+                    "address1": {
+                      "id": "/suspects/0/charges/0/particularLocation/address1",
+                      "type": "string"
+                    },
+                    "address2": {
+                      "id": "/suspects/0/charges/0/particularLocation/address2",
+                      "type": "string"
+                    },
+                    "address3": {
+                      "id": "/suspects/0/charges/0/particularLocation/address3",
+                      "type": "string"
+                    },
+                    "address4": {
+                      "id": "/suspects/0/charges/0/particularLocation/address4",
+                      "type": "string"
+                    },
+                    "postCode": {
+                      "id": "/suspects/0/charges/0/particularLocation/postCode",
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "authorisedCharge": {
+                  "id": "/suspects/0/charges/0/authorisedCharge",
+                  "type": ["object", "null"],
+                  "properties": {
+                    "id": {
+                      "id": "/suspects/0/charges/0/authorisedCharge/id",
+                      "type": "string"
+                    },
+                    "code": {
+                      "id": "/suspects/0/charges/0/authorisedCharge/code",
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "exhibits": {
+      "id": "/exhibits",
+      "type": "array",
+      "items": {
+        "id": "/exhibits/0",
+        "type": "object",
+        "properties": {
+          "id": {
+            "id": "/exhibits/0/id",
+            "type": "string"
+          },
+          "personId": {
+            "id": "/exhibits/0/personId",
+            "type": "string"
+          },
+          "exhibitMaterialId": {
+            "id": "/exhibits/0/exhibitMaterialId",
+            "type": "string"
+          },
+          "exhibitName": {
+            "id": "/exhibits/0/exhibitName",
+            "type": "string"
+          },
+          "policeName": {
+            "id": "/exhibits/0/policeName",
+            "type": "string"
+          },
+          "exhibitClassifications": {
+            "id": "/exhibits/0/exhibitClassifications",
+            "type": "array",
+            "items": {
+              "id": "/exhibits/0/exhibitClassifications/1",
+              "type": "object",
+              "properties": {
+                "classification": {
+                  "id": "/exhibits/0/exhibitClassifications/1/classification",
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "caseDocuments": {
+      "id": "/caseDocuments",
+      "type": "array",
+      "items": {
+        "id": "/caseDocuments/0",
+        "type": "object",
+        "properties": {
+          "policeMaterialId": {
+            "id": "/caseDocuments/0/policeMaterialId",
+            "type": "string"
+          },
+          "policeName": {
+            "id": "/caseDocuments/0/policeName",
+            "type": "string"
+          },
+          "description": {
+            "id": "/caseDocuments/0/description",
+            "type": "string"
+          },
+          "id": {
+            "id": "/caseDocuments/0/id",
+            "type": "string"
+          },
+          "materialId": {
+            "id": "/caseDocuments/0/materialId",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "policeSummaries": {
+      "id": "/policeSummaries",
+      "type": "array",
+      "items": {
+        "id": "/policeSummaries/0",
+        "type": "object",
+        "properties": {
+          "id": {
+            "id": "/policeSummaries/0/id",
+            "type": "string"
+          },
+          "outlineHeading": {
+            "id": "/policeSummaries/0/outlineHeading",
+            "type": "string"
+          },
+          "outlineText": {
+            "id": "/policeSummaries/0/outlineText",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "defendants": {
+      "type": "array",
+      "items": {
+        "personId": {
+          "type": "string"
+        },
+
+        "bailStatus": {
+          "type": ["string", "null"]
+        },
+        "defendantBailDocuments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "documentId": {
+                "type": "string"
+              },
+              "active": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "id",
+              "documentId",
+              "active"
+            ]
+          }
+        },
+        "custodyTimeLimitDate": {
+            "type": "string"
+          },
+        "defenceSolicitorFirm": {
+          "type": ["string", "null"]
+        },
+        "interpreter":{
+          "type": "string"
+        },
+        "offences": {
+          "type": "array",
+          "items": {
+            "offenceCode": {
+              "type": "string"
+            },
+            "plea": {
+              "type": "string"
+            },
+            "indicatedPlea": {
+              "type": "string",
+              "enum": ["NOT_GUILTY", "GUILTY", "NO_PLEA"]
+            },
+            "pleaMitigation": {
+              "type": "string"
+            },
+            "cjsCode": {
+              "type": ["string", "null"]
+            },
+            "pendingWithdrawal" : {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "noticeServedDate": {
+      "id": "/noticeServedDate",
+      "type": ["string", "null"]
+    },
+    "victims": {
+      "id": "/victims",
+      "type": "array",
+      "items": {
+        "id": "/victims/0",
+        "type": "object",
+        "properties": {
+          "id": {
+            "id": "/victims/0/id",
+            "type": "string"
+          },
+          "personId": {
+            "id": "/victims/0/personId",
+            "type": "string"
+          },
+          "policePersonId": {
+            "id": "/victims/0/policePersonId",
+            "type": "string"
+          },
+          "classifications": {
+            "id": "/victims/0/classifications",
+            "type": "array",
+            "items": {
+              "id": "/victims/0/classifications/0",
+              "type": "object",
+              "properties": {
+                "classificationType": {
+                  "id": "/victims/0/classifications/0/classificationType",
+                  "type": "string"
+                },
+                "classificationCode": {
+                  "id": "/victims/0/classifications/0/classificationCode",
+                  "type": "string"
+                },
+                "classificationValue": {
+                  "id": "/victims/0/classifications/0/classificationValue",
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "personId",
+          "policePersonId"
+        ],
+        "additionalProperties": false
+      },
+      "additionalProperties": false
+    },
+    "prosecutor": {
+      "id": "/prosecutor",
+      "type": ["string", "null"]
+    },
+    "caseMarkers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "caseMarker": {
+            "type": "string",
+            "id": "http://jsonschema.net/caseMarkers/3/caseMarker"
+          }
+        },
+        "id": "http://jsonschema.net/caseMarkers/3",
+        "required": [
+          "caseMarker"
+        ]
+      },
+      "id": "http://jsonschema.net/caseMarkers"
+    },
+    "actionPlan": {
+      "type": "object",
+      "properties": {
+        "actionItems": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "category": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "deadlineDate": {
+                "type": "string"
+              },
+              "createdDate": {
+                "type": "string"
+              },
+              "suspects": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                }
+              },
+              "status": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "category",
+              "description",
+              "deadlineDate",
+              "createdDate",
+              "status"
+            ]
+          }
+        }
+      },
+      "required": [
+        "actionItems"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "urn"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "version": 2,
+  "urn": "22C22222222",
+  "review-status": "Started",
+  "completed" : false,
+  "sensitive" : false,
+  "ownershipTransferred": false,
+  "policeOfficerInCase": {
+    "personId": "aa746921-d839-4867-bcf9-b41db8ebc852",
+    "rank": "constable",
+    "narrative": "",
+    "badgeNumber": 223
+  },
+  "policeSupervisor": {
+    "personId": "ab746921-d839-4867-bcf9-b41db8ebc852",
+    "rank": "sergeant",
+    "narrative": "",
+    "badgeNumber": 223
+  },
+  "witnesses": [
+    {
+      "id": "bbc-def-hjk-kdj",
+      "personId": "ab746921-d839-4867-bcf9-b41db8ebc852",
+      "policePersonId": "policePersonId",
+      "statements": [
+        "id5",
+        "id6"
+      ],
+      "classification": {
+        "isVictim": true,
+        "isEntitlementRequired": true,
+        "witnessExpertise": "EXPERT",
+        "witnessStatus": "INTIMIDATED"
+      }
+    }
+  ],
+  "suspects": [
+    {
+      "id": "ebabacce-1628-48b3-83b8-6f0d2412019f",
+      "personId": "ab746921-d839-4867-bcf9-b41db8ebc852",
+      "policePersonId": "policePersonId",
+      "asn": "ASN",
+      "bailConditions": "Test",
+      "bailStatus": "in custody",
+      "bailDate": {
+        "year": 2015,
+        "month": 10,
+        "day": 10
+      },
+      "policeRemandStatus": "Test",
+      "charges": [
+        {
+          "id": "39336236-3366-6161-2d64-3735352d3466",
+          "twifId": "CPP-AB746921-d839-4867-DDC9-B41BD8EBC852",
+          "code": "CJ123",
+          "description": "Assault",
+          "status": "Authorised",
+          "categoryType": "Either way",
+          "fromDate": {
+            "year": 2015,
+            "month": 10,
+            "day": 10
+          },
+          "toDate": {
+            "year": 2015,
+            "month": 10,
+            "day": 10
+          },
+          "particularClassification": "Classification",
+          "particularLocation": {
+            "address1": "14, Hampton Court",
+            "postCode": "HM1 1XH"
+          },
+          "authorisedCharge": {
+            "id": "7d635035-ef38-421f-9d88-74bacd30d318",
+            "code": "CJ12345"
+          },
+          "idpcApproved": true
+        }
+      ]
+    }
+  ],
+  "exhibits": [
+    {
+      "id": "exhibitId",
+      "personId": "cppContextPersonId",
+      "exhibitMaterialId": "materialId1",
+      "exhibitName": "descriptionOfExhibit",
+      "policeName": "policeName",
+      "exhibitClassifications": [
+        {
+          "classification": "e.g. audio tape"
+        },
+        {
+          "classification": "e.g. sensitive video"
+        }
+      ]
+    }
+  ],
+  "caseDocuments": [
+    {
+      "policeMaterialId": "policeMaterialId",
+      "policeName": "policeName",
+      "description": "description",
+      "id": "30b83084-d2fe-4a70-bbd1-fae1dfdb4b95",
+      "materialId": "670490ee-95be-4e3e-af8b-9bef865e26ba"
+    }
+  ],
+  "policeSummaries": [
+    {
+      "id": "ba9a2765-e630-4d9a-923c-6b9fd29dbfc4",
+      "outlineHeading": "KEVD",
+      "outlineText": "This evidence is key"
+    }
+  ],
+  "defendants": [
+    {
+      "personId": "ab746921-d839-4867-bcf9-b41db8ebc852",
+      "bailStatus": "conditional",
+       "defendantBailDocuments": [
+        {
+          "id": "e1a5765b-55c4-40a4-9bd9-240e67b53107",
+          "documentId": "documentMaterialId2",
+          "active": true
+        }
+      ],
+      "custodyTimeLimitDate": "2016-11-11",
+      "defenceSolicitorFirm": "xyz solicitor",
+      "interpreter": "french",
+      "offences": [
+        {
+          "id": "0baecac5-222b-402d-9047-84803679edad",
+          "offenceCode": "H8198",
+          "plea": "GUILTY",
+          "indicatedPlea": "GUILTY",
+          "offenceSequenceNumber": 1,
+          "pleaMitigation": "The dog ate my ticket",
+          "cjsCode": "OF61131",
+          "chargeDate":"2016-02-18",
+          "wording": "On 19/01/2016 At wandsworth bridge rd SW6 Being a passenger on a Public Service Vehicle operated on behalf of London Bus Services Limited being used for the carriage of passengers at separate fares did use in relation to the journey you were taking a ticket which had been issued for use by another person on terms that it is not transferable",
+          "pendingWithdrawal": false
+        }
+      ]
+    }
+  ],
+  
+  "caseMarkers" : [
+    {
+      "caseMarker" : "ASBOAppliedFor"
+    },
+    {
+      "caseMarker" : "ASBOGranted"
+    },
+    {
+      "caseMarker" : "AnimalRightsExtremism"
+    },
+    {
+      "caseMarker" : "AssetRecovery"
+    }
+  ],
+  "noticeServedDate": "2016-02-15",
+  "victims": [
+    {
+      "id": "9a475250-41e7-47f2-abc2-e4b45511a82a",
+      "personId": "ab746921-d839-4867-bcf9-b41db8ebc852",
+      "policePersonId": "policePersonId",
+      "classifications": [
+        {
+          "classificationType": "victimClassificationType",
+          "classificationCode": "victimClassificationCode",
+          "classificationValue": "victimClassificationValue"
+        }
+      ]
+    }
+  ],
+  "prosecutor": "TFL",
+  "actionPlan" : {
+    "actionItems" :[
+      {
+        "id": "7e2f843e-d639-40b3-8611-8015f3a18958",
+        "category": "categoryCode",
+        "description": "description",
+        "deadlineDate": "2015-02-15",
+        "createdDate": "2016-08-31",
+        "suspects": [
+          {
+            "id": "7e2f843e-d639-40b3-8611-8015f3a18959"
+          }
+        ],
+        "status" : "open"
+      }
+    ]
+  }
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__defendant__defendantId__pleas" class="panel-title">/cases/{caseId}/defendant/{defendantId}/pleas</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__defendant__defendantId__pleas"><span class="parent"></span>/cases/{caseId}/defendant/{defendantId}/pleas</a> <span class="methods"><a href="#cases__caseId__defendant__defendantId__pleas_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_cases__caseId__defendant__defendantId__pleas" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__defendant__defendantId__pleas_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Retrieve pleas data information ... (mapping): responseType: application/vnd.structure.query.cases-defendant-pleas+json name: structure.query.cases-defendant-pleas ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__defendant__defendantId__pleas_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/cases/{caseId}/defendant/{defendantId}/pleas</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieve pleas data information ... (mapping): responseType: application/vnd.structure.query.cases-defendant-pleas+json name: structure.query.cases-defendant-pleas ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__defendant__defendantId__pleas_get_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__defendant__defendantId__pleas_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__defendant__defendantId__pleas_get_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>The ID of the case</p></li><li><strong>defendantId</strong>: <em>required (string)</em><p>The ID of the defendant</p></li></ul></div><div class="tab-pane" id="cases__caseId__defendant__defendantId__pleas_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Type: application/vnd.structure.query.cases-defendant-pleas+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "plea": {
+      "type": "object",
+      "oneOf": [
+        {
+          "properties": {
+            "plea": {
+              "enum": ["GUILTY","GUILTY_REQUEST_HEARING"]
+            },
+            "id": {
+              "type": "string"
+            },
+            "mitigation": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "plea",
+            "id"
+          ]
+        },
+        {
+          "properties": {
+            "plea": {
+              "enum": ["NOT_GUILTY"]
+            },
+            "id": {
+              "type": "string"
+            },
+            "notGuiltyBecause": {
+              "type": "string"
+            },
+            "interpreterLanguage": {
+              "type": "string"
+            },
+            "witnessCallContactDetails": {
+              "type": "string"
+            },
+            "witnessCallInterpreterLanguage": {
+              "type": "string"
+            },
+            "evidenceOrWitnessDisagreeDetails": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "plea",
+            "id",
+            "notGuiltyBecause"
+          ]
+        }
+      ]
+    },
+    "financialExpenses": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "accommodation": {
+          "type": "number"
+        },
+        "utilityBills": {
+          "type": "number"
+        },
+        "insurance": {
+          "type": "number"
+        },
+        "councilTax": {
+          "type": "number"
+        },
+        "otherContributors": {
+          "type": "boolean"
+        },
+        "tvSubscriptions": {
+          "type": "number"
+        },
+        "travelExpenses": {
+          "type": "number"
+        },
+        "telephone": {
+          "type": "number"
+        },
+        "loanRepayments": {
+          "type": "number"
+        },
+        "countyCourtOrders": {
+          "type": "number"
+        },
+        "fines": {
+          "type": "number"
+        },
+        "childMaintenance": {
+          "type": "number"
+        },
+        "otherSignificantExpAmount": {
+          "type": "number"
+        },
+        "otherSignificantExpDetails": {
+          "type": "string"
+        }
+      }
+    },
+    "financialMeans": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "employmentStatus": {
+          "type": "string"
+        },
+        "incomePaymentFrequency": {
+          "type": "string"
+        },
+        "incomePaymentAmount": {
+          "type": "number"
+        },
+        "benefitType": {
+          "type": "string"
+        },
+        "benefitPaymentFrequency": {
+          "type": "string"
+        },
+        "benefitPaymentAmount": {
+          "type": "number"
+        },
+        "pensionCreditPaymentFrequency": {
+          "type": "string"
+        },
+        "pensionCreditPaymentAmount": {
+          "type": "number"
+        },
+        "financialProblems": {
+          "type": "boolean"
+        },
+        "financialProblemsJustification": {
+          "type": "string"
+        },
+        "financialExpenses": {
+          "$ref": "#/definitions/financialExpenses"
+        }
+      },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "employmentStatus",
+          "financialProblems"
+        ]
+      }
+  },
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "type": "string"
+    },
+    "defendantId": {
+      "type": "string"
+    },
+    "pleas": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/plea"
+      },
+      "minItems": 1
+    },
+    "financialMeans": {
+      "$ref": "#/definitions/financialMeans"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "caseId",
+    "defendantId",
+    "pleas"
+  ]
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "defendantId": "f31be425-474d-4ea4-abfa-00d785199380",
+  "pleas": [
+    {
+      "id": "590dcb09-c3d1-4cdb-b6bb-99d36b2db60d",
+      "plea": "GUILTY_REQUEST_HEARING",
+      "mitigation": "I can&#39;t think of any"
+    }
+  ],
+  "financialMeans": {
+    "id": "f5ae00eb-6438-45da-b9a5-c8612dfbc687",
+    "employmentStatus": "Employed and also receiving benefits",
+    "incomePaymentFrequency": "Fortnightly",
+    "incomePaymentAmount": 1000.2,
+    "benefitType": "Universal Credit",
+    "benefitPaymentFrequency": "Monthly",
+    "benefitPaymentAmount": 290.1,
+    "pensionCreditPaymentFrequency": "Monthly",
+    "pensionCreditPaymentAmount": "12.23",
+    "financialProblems": true,
+    "financialProblemsJustification": "CarInsurance is too high",
+    "financialExpenses": {
+      "id": "a7376d85-b0b8-48a8-8eea-dcf9a1992a57",
+      "otherSignificantExpAmount": 2020,
+      "otherSignificantExpDetails": "Parent dependency",
+      "childMaintenance": 32,
+      "fines": 32,
+      "countyCourtOrders": 35,
+      "loanRepayments": 355,
+      "telephone": 32,
+      "accommodation": 130,
+      "utilityBills": 78,
+      "insurance": 45,
+      "councilTax": 104,
+      "otherContributors": false,
+      "tvSubscriptions": 32,
+      "travelExpenses": 32
+    }
+  }
+}</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases_for_citizen" class="panel-title">/cases-for-citizen</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases_for_citizen"><span class="parent"></span>/cases-for-citizen</a> <span class="methods"><a href="#cases_for_citizen_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_cases_for_citizen" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases_for_citizen_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get case by URN and postcode ... (mapping): responseType: application/vnd.structure.query.case-by-urn-postcode+json name: structure.query.case-by-urn-postcode ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases_for_citizen_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/cases-for-citizen</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get case by URN and postcode ... (mapping): responseType: application/vnd.structure.query.case-by-urn-postcode+json name: structure.query.case-by-urn-postcode ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases_for_citizen_get_request" data-toggle="tab">Request</a></li><li><a href="#cases_for_citizen_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases_for_citizen_get_request"><h3>Query Parameters</h3><ul><li><strong>urn</strong>: <em>required (string)</em><p>URN</p></li><li><strong>postcode</strong>: <em>required (string)</em><p>Postcode</p></li></ul></div><div class="tab-pane" id="cases_for_citizen_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Type: application/vnd.structure.query.case-by-urn-postcode+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "address": {
+      "type": "object",
+      "properties": {
+        "addressLine1": {
+          "type": "string"
+        },
+        "addressLine2": {
+          "type": "string"
+        },
+        "addressLine3": {
+          "type": "string"
+        },
+        "addressLine4": {
+          "type": "string"
+        },
+        "postCode": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "addressLine1",
+        "postCode"
+      ]
+    },
+    "offence": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "wording": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "wording"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "type": "string"
+    },
+    "defendant": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "personId": {
+          "type": "string"
+        },
+        "firstName": {
+          "description": "The person fore name",
+          "type": "string"
+        },
+        "lastName": {
+          "description": "The person last name",
+          "type": "string"
+        },
+        "dateOfBirth": {
+          "description": "The person date of birth",
+          "type": "string"
+        },
+        "nationality": {
+          "description": "The person nationality",
+          "type": "string"
+        },
+        "disability": {
+          "description": "The person disability status",
+          "type": "string"
+        },
+        "ethnicity": {
+          "description": "The person ethnicity",
+          "type": "string"
+        },
+        "gender": {
+          "description": "The person gender",
+          "type": "string"
+        },
+        "address": {
+          "$ref": "#/definitions/address"
+        },
+        "offences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/offence"
+          },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "personId",
+        "firstName",
+        "lastName",
+        "dateOfBirth",
+        "address",
+        "offences"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "caseId",
+    "defendant"
+  ]
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "defendant":
+  {
+    "id": "ab746921-d839-4867-bcf9-b41db8ebc852",
+    "personId": "ab746921-d839-4867-bcf9-b41db8ebc852",
+    "firstName": "David",
+    "lastName": "LLOYD",
+    "dateOfBirth": "1980-07-15",
+    "nationality": "England",
+    "disability": "Any thing",
+    "ethnicity": "white and Black Caribbean",
+    "gender": "Male",
+    "address": {
+      "addressLine1": "14 Tottenham Court Road",
+      "addressLine2": "London",
+      "addressLine3": "England",
+      "addressLine4": "UK",
+      "postCode": "W1T 1JY"
+    },
+    "offences": [
+      {
+        "id": "0baecac5-222b-402d-9047-84803679edad",
+        "wording": "On 19/01/2016 At wandsworth bridge rd SW6 Being a passenger on a Public Service Vehicle operated on behalf of London Bus Services Limited being used for the carriage of passengers at separate fares did use in relation to the journey you were taking a ticket which had been issued for use by another person on terms that it is not transferable"
+      }
+    ]
+  }
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases_nominalview" class="panel-title">/cases/nominalview</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases_nominalview"><span class="parent"></span>/cases/nominalview</a> <span class="methods"><a href="#cases_nominalview_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_cases_nominalview" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases_nominalview_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Returns a list of cases representing minimal view for unasigned cases. ... (mapping): responseType: application/vnd.structure.query.cases-nominal+json name: structure.query.cases-nominal ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases_nominalview_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/cases/nominalview</h4></div><div class="modal-body"><div class="alert alert-info"><p>Returns a list of cases representing minimal view for unasigned cases. ... (mapping): responseType: application/vnd.structure.query.cases-nominal+json name: structure.query.cases-nominal ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases_nominalview_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases_nominalview_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Type: application/vnd.structure.query.cases-nominal+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "cases": {
+      "id": "/cases",
+      "type": "array",
+      "items": {
+        "id": "/cases/0",
+        "type": "object",
+        "properties": {
+          "urn": {
+            "id": "/cases/0/urn",
+            "type": "string"
+          },
+          "witnessStatementsCount": {
+            "id": "/cases/0/witnessStatementsCount",
+            "type": "integer"
+          },
+          "exhibitsCount": {
+            "id": "/cases/0/exhibitsCount",
+            "type": "integer"
+          },
+          "otherDocumentsCount": {
+            "id": "/cases/0/otherDocumentsCount",
+            "type": "integer"
+          },
+          "caseAppearingDate": {
+            "id": "/cases/0/caseAppearingDate",
+            "type": "string"
+          },
+          "suspects": {
+            "id": "/cases/0/suspects",
+            "type": "array",
+            "items": {
+              "id": "/cases/0/suspects/0",
+              "type": "object",
+              "properties": {
+                "personId": {
+                  "id": "/cases/0/suspects/0/personId",
+                  "type": "string"
+                },
+                "bailDate": {
+                  "id": "/cases/0/suspects/0/bailDate",
+                  "type": "string"
+                },
+                "policeRemandStatus": {
+                  "id": "/cases/0/suspects/0/policeRemandStatus",
+                  "type": "string"
+                },
+                "charges": {
+                  "id": "/cases/0/suspects/0/charges",
+                  "type": "array",
+                  "items": {
+                    "id": "/cases/0/suspects/0/charges/0",
+                    "type": "string"
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "urn",
+          "suspects"
+        ]
+      }
+    }
+  },
+  "required": [
+    "cases"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "cases": [
+    {
+      "urn": "80IN9375417",
+      "witnessStatementsCount": 2,
+      "exhibitsCount": 3,
+      "otherDocumentsCount": 1,
+      "caseAppearingDate": "2007-12-03T10:15:30",
+      "suspects": [
+        {
+          "personId": "aa746921-d839-4867-bcf9-b41db8ebc852",
+          "bailDate": "2007-12-03",
+          "policeRemandStatus": "suspect in custody",
+          "charges": [
+            "Possession or acquisition of certain prohibited weapons etc",
+            "Wounding GBH"
+          ]
+        }
+      ]
+    }
+  ]
+}</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="search" class="panel-title">/search</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_search"><span class="parent"></span>/search</a> <span class="methods"><a href="#search_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_search" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#search_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Search for cases by defendant ID ... (mapping): responseType: application/vnd.structure.query.cases-search+json name: structure.query.cases-search</p><p>(mapping): responseType: application/vnd.structure.query.cases-search-by-material-id+json name: structure.query.cases-search-by-material-id ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="search_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/search</h4></div><div class="modal-body"><div class="alert alert-info"><p>Search for cases by defendant ID ... (mapping): responseType: application/vnd.structure.query.cases-search+json name: structure.query.cases-search</p><p>(mapping): responseType: application/vnd.structure.query.cases-search-by-material-id+json name: structure.query.cases-search-by-material-id ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#search_get_request" data-toggle="tab">Request</a></li><li><a href="#search_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="search_get_request"><h3>Query Parameters</h3><ul><li><strong>q</strong>: <em>(string)</em><p>query</p></li></ul></div><div class="tab-pane" id="search_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Type: application/vnd.structure.query.cases-search+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "searchTerm": {
+      "id": "/searchTerm",
+      "type": "string"
+    },
+    "hits": {
+      "id": "/hits",
+      "type": "array",
+      "items": {
+        "id": "/hits/0",
+        "type": "object",
+        "properties": {
+          "id": {
+            "id": "/hits/0/id",
+            "type": "string"
+          },
+          "urn": {
+            "id": "/hits/0/urn",
+            "type": "string"
+          },
+          "noticeServedDate": {
+            "id": "/hits/0/noticeServedDate",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "urn",
+          "noticeServedDate"
+        ]
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "searchTerm",
+    "hits"
+  ]
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "searchTerm": "7e2f843e-d639-40b3-8611-8015f3a18958",
+  "hits": [
+    {
+      "id": "9924a3a4-e6c3-4142-b9a5-5d672bdfecac",
+      "urn": "TFL2009583",
+      "noticeServedDate": "2016-12-31"
+    },
+    {
+      "id": "bc8b6c0d-0e22-403a-b4b5-c6f80b95711d",
+      "urn": "TFL2002902",
+      "noticeServedDate": "2016-12-31"
+    }
+  ]
+}
+</code></pre><p><strong>Type: application/vnd.structure.query.cases-search-by-material-id+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "caseId": {
+      "type": "string"
+    },
+    "caseType": {
+      "enum": [
+        "CPS_PROSECUTED_CASE",
+        "TFL_PROSECUTED_CASE"
+      ]
+    }
+  },
+  "required": [
+    "caseId",
+    "caseType"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseId" : "08744ce7-5684-4137-a896-67ccf94a1728",
+  "caseType" : "TFL_PROSECUTED_CASE"
+}</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__suspect__suspectId__idpc" class="panel-title">/cases/{caseId}/suspect/{suspectId}/idpc</h3></div><div class="panel-body"><div class="top-resource-description"><p>populate the idpc with &#39;include&#39; and &#39;serve as used&#39; items (not including previous convictions)</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__suspect__suspectId__idpc"><span class="parent"></span>/cases/{caseId}/suspect/{suspectId}/idpc</a> <span class="methods"><a href="#cases__caseId__suspect__suspectId__idpc_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_cases__caseId__suspect__suspectId__idpc" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__suspect__suspectId__idpc_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>... (mapping): responseType: application/vnd.structure.query.idpc+json name: structure.query.idpc ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__suspect__suspectId__idpc_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/cases/{caseId}/suspect/{suspectId}/idpc</h4></div><div class="modal-body"><div class="alert alert-info"><p>... (mapping): responseType: application/vnd.structure.query.idpc+json name: structure.query.idpc ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__suspect__suspectId__idpc_get_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__suspect__suspectId__idpc_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__suspect__suspectId__idpc_get_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>Case ID</p></li><li><strong>suspectId</strong>: <em>required (string)</em><p>Suspect ID</p></li></ul></div><div class="tab-pane" id="cases__caseId__suspect__suspectId__idpc_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/vnd.structure.query.idpc+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "urn": {
+      "id": "/urn",
+      "type": "string"
+    },
+    "suspect": {
+      "id": "/suspect",
+      "type": "object",
+      "properties": {
+        "id": {
+          "id": "/suspect/id",
+          "type": "string"
+        },
+        "personId": {
+          "id": "/suspect/personId",
+          "type": "string"
+        },
+        "policeRemandStatus": {
+          "id": "/suspect/policeRemandStatus",
+          "type": "string"
+        },
+        "bailConditions": {
+          "id": "/suspect/bailConditions",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "policeSummaries": {
+      "id": "/policeSummaries",
+      "type": "array",
+      "items": {
+        "id": "/policeSummaries/11",
+        "type": "object",
+        "properties": {
+          "id": {
+            "id": "/policeSummaries/11/id",
+            "type": "string"
+          },
+          "outlineHeading": {
+            "id": "/policeSummaries/11/outlineHeading",
+            "type": "string"
+          },
+          "outlineText": {
+            "id": "/policeSummaries/11/outlineText",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "officerInCaseDetails": {
+      "id": "/officerInCaseDetails",
+      "type": "object",
+      "properties": {
+        "personId": {
+          "id": "/officerInCaseDetails/personId",
+          "type": "string"
+        },
+        "rank": {
+          "id": "/officerInCaseDetails/rank",
+          "type": "string"
+        },
+        "narrative": {
+          "id": "/officerInCaseDetails/narrative",
+          "type": "string"
+        },
+        "badgeNumber": {
+          "id": "/officerInCaseDetails/badgeNumber",
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "victims": {
+      "id": "/victims",
+      "type": "array",
+      "items": {
+        "id": "/victims/0",
+        "type": "object",
+        "properties": {
+          "id": {
+            "id": "/victims/0/id",
+            "type": "string"
+          },
+          "personId": {
+            "id": "/victims/0/personId",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "witnesses": {
+      "id": "/witnesses",
+      "type": "array",
+      "items": {
+        "id": "/witnesses/0",
+        "type": "object",
+        "properties": {
+          "id": {
+            "id": "/witnesses/0/id",
+            "type": "string"
+          },
+          "personId": {
+            "id": "/witnesses/0/personId",
+            "type": "string"
+          },
+          "statements": {
+            "id": "/witnesses/0/statements",
+            "type": "array",
+            "items": {
+              "id": "/witnesses/0/statements/0",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "id": "/witnesses/0/statements/0/id",
+                  "type": "string"
+                },
+                "statementNumber": {
+                  "id": "/witnesses/0/statements/0/statementNumber",
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "exhibits": {
+      "id": "/exhibits",
+      "type": "array",
+      "items": {
+        "id": "/exhibits/0",
+        "type": "object",
+        "properties": {
+          "id": {
+            "id": "/exhibits/0/id",
+            "type": "string"
+          },
+          "exhibitMaterialId": {
+            "id": "/exhibits/0/exhibitMaterialId",
+            "type": "string"
+          },
+          "policeExhibitId": {
+            "id": "/exhibits/0/policeExhibitId",
+            "type": "string"
+          },
+          "exhibitName": {
+            "id": "/exhibits/0/exhibitName",
+            "type": "string"
+          },
+          "policeReference": {
+            "id": "/exhibits/0/policeReference",
+            "type": "string"
+          },
+          "policeName": {
+            "id": "/exhibits/0/policeName",
+            "type": "string"
+          },
+          "exhibitClassifications": {
+            "id": "/exhibits/0/exhibitClassifications",
+            "type": "array",
+            "items": {
+              "id": "/exhibits/0/exhibitClassifications/1",
+              "type": "object",
+              "properties": {
+                "classification": {
+                  "id": "/exhibits/0/exhibitClassifications/1/classification",
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "caseDocuments": {
+      "id": "/caseDocuments",
+      "type": "array",
+      "items": {
+        "id": "/caseDocuments/0",
+        "type": "object",
+        "properties": {
+          "policeMaterialId": {
+            "id": "/caseDocuments/0/policeMaterialId",
+            "type": "string"
+          },
+          "policeName": {
+            "id": "/caseDocuments/0/policeName",
+            "type": "string"
+          },
+          "description": {
+            "id": "/caseDocuments/0/description",
+            "type": "string"
+          },
+          "id": {
+            "id": "/caseDocuments/0/id",
+            "type": "string"
+          },
+          "materialId": {
+            "id": "/caseDocuments/0/materialId",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "urn",
+    "suspect",
+    "policeSummaries",
+    "officerInCaseDetails",
+    "victims",
+    "witnesses",
+    "exhibits",
+    "caseDocuments"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+   "urn":"45GD6214614",
+   "suspect":{
+      "id":"ab746921-d839-4867-bcf9-b41db8ebc852",
+      "personId":"bb746921-d839-4867-bcf9-b41db8ebc852",
+      "policeRemandStatus":"Custody",
+      "bailConditions":"not to enter specified location"
+   },
+   "policeSummaries":[
+      {
+         "id":"f972d6a0-a00d-11e5-a837-0800200c9a66",
+         "outlineHeading":"KEVD",
+         "outlineText":"The police are called to attend at The County public house in Newton where a fight has broken out between a number of individuals.  One victim is severely assaulted and as a result has a broken jaw and ribs.  Two others have received cuts and bruises.  Three suspects are arrested and taken to the police station for questioning and various witnesses are also interviewed.  It transpires that one victim is the ex-girlfriend of Suspect 1.  Although not all key evidence is available the custody officer wants to apply to remand one suspect in custody as he has a violent past and there is also a fear that he will commit further offences and interfere with witnesses."
+      },
+      {
+         "id":"f972d6a0-a00d-11e5-a837-0800200c9a66",
+         "outlineHeading":"DINT",
+         "outlineText":"defendantInterview"
+      },
+      {
+         "id":"f972d6a0-a00d-11e5-a837-0800200c9a66",
+         "outlineHeading":"NEVD",
+         "outlineText":"some text"
+      },
+      {
+         "id":"f172d6a0-a00d-11e5-a837-0800200c9a66",
+         "outlineHeading":"VEVD",
+         "outlineText":"some text"
+      },
+      {
+         "id":"f272d6a0-a00d-11e5-a837-0800200c9a66",
+         "outlineHeading":"INJS",
+         "outlineText":"some text"
+      },
+      {
+         "id":"f372d6a0-a00d-11e5-a837-0800200c9a66",
+         "outlineHeading":"FFDE",
+         "outlineText":"some text"
+      },
+      {
+         "id":"f472d6a0-a00d-11e5-a837-0800200c9a66",
+         "outlineHeading":"ISS",
+         "outlineText":"some text"
+      },
+      {
+         "id":"f572d6a0-a00d-11e5-a837-0800200c9a66",
+         "outlineHeading":"OUTW",
+         "outlineText":"some text"
+      },
+      {
+         "id":"f672d6a0-a00d-11e5-a837-0800200c9a66",
+         "outlineHeading":"SIAV",
+         "outlineText":"some text"
+      },
+      {
+         "id":"f912d6a0-a00d-11e5-a837-0800200c9a66",
+         "outlineHeading":"DIP",
+         "outlineText":"some text"
+      },
+      {
+         "id":"f922d6a0-a00d-11e5-a837-0800200c9a66",
+         "outlineHeading":"ACOC",
+         "outlineText":"some text"
+      },
+      {
+         "id":"f932d6a0-a00d-11e5-a837-0800200c9a66",
+         "outlineHeading":"AREC",
+         "outlineText":"some text"
+      }
+   ],
+   "officerInCaseDetails":{
+      "personId":"ab746921-d839-4867-bcf9-b41db8ebc852",
+      "rank":"sergeant",
+      "narrative":"",
+      "badgeNumber":223
+   },
+   "victims":[
+      {
+         "id":"ab746921-d839-4867-bcf9-b41db8ebc852",
+         "personId":"bb746921-d839-4867-bcf9-b41db8ebc852"
+      }
+   ],
+   "witnesses":[
+      {
+         "id":"ab746921-d839-4867-bcf9-b41db8ebc852",
+         "personId":"bb746921-d839-4867-bcf9-b41db8ebc852",
+         "statements":[
+            {
+               "id":"237d3582-288e-41cf-97fc-60dbb99965f8",
+               "statementNumber":"statementNumber"
+            }
+         ]
+      }
+   ],
+   "exhibits":[
+      {
+         "id":"ab746921-d839-4867-bcf9-b41db8ebc852",
+         "exhibitMaterialId":"materialId1",
+         "exhibitName":"descriptionOfExhibit",
+         "policeName":"policeName",
+         "policeExhibitId":"policeExhibitId",
+         "policeReference":"policeReference",
+         "exhibitClassifications":[
+            {
+               "classification":"e.g. audio tape"
+            },
+            {
+               "classification":"e.g. sensitive video"
+            }
+         ]
+      }
+   ],
+   "caseDocuments":[
+      {
+         "policeMaterialId":"policeMaterialId",
+         "policeName":"policeName",
+         "description":"description",
+         "id":"30b83084-d2fe-4a70-bbd1-fae1dfdb4b95",
+         "materialId":"670490ee-95be-4e3e-af8b-9bef865e26ba"
+      }
+   ]
+}</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__witnesses" class="panel-title">/cases/{caseId}/witnesses</h3></div><div class="panel-body"><div class="top-resource-description"><p>return the witnesses of a case</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__witnesses"><span class="parent"></span>/cases/{caseId}/witnesses</a> <span class="methods"><a href="#cases__caseId__witnesses_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_cases__caseId__witnesses" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__witnesses_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>... (mapping): responseType: application/vnd.structure.query.case-witnesses+json name: structure.query.case-witnesses ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__witnesses_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/cases/{caseId}/witnesses</h4></div><div class="modal-body"><div class="alert alert-info"><p>... (mapping): responseType: application/vnd.structure.query.case-witnesses+json name: structure.query.case-witnesses ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__witnesses_get_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__witnesses_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__witnesses_get_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>Case ID</p></li></ul></div><div class="tab-pane" id="cases__caseId__witnesses_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/vnd.structure.query.case-witnesses+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "witnesses": {
+      "id": "/witnesses",
+      "type": "array",
+      "items": {
+        "id": "/witnesses/0",
+        "type": "object",
+        "properties": {
+          "id": {
+            "id": "/witnesses/0/id",
+            "type": "string"
+          },
+          "version": {
+            "id": "/witnesses/0/version",
+            "type": "integer"
+          },
+          "personId": {
+            "id": "/witnesses/0/personId",
+            "type": "string"
+          },
+          "policePersonId": {
+            "id": "/witnesses/0/policePersonId",
+            "type": "string"
+          },
+          "statements": {
+            "id": "/witnesses/0/statements",
+            "type": "array",
+            "items": [
+              {
+                "id": "/witnesses/0/statements/0",
+                "type": "string"
+              },
+              {
+                "id": "/witnesses/0/statements/1",
+                "type": "string"
+              }
+            ]
+          },
+          "classification": {
+            "id": "/witnesses/0/classification",
+            "type": "array",
+            "properties": {
+              "classificationCode": {
+                "id": "/witnesses/0/classification/classificationCode",
+                "type": "string"
+              },
+              "classificationValue": {
+                "id": "/witnesses/0/classification/classificationValue",
+                "type": "string"
+              },
+              "isVictim": {
+                "id": "/witnesses/0/classification/isVictim",
+                "type": "boolean"
+              },
+              "isEntitlementRequired": {
+                "id": "/witnesses/0/classification/isEntitlementRequired",
+                "type": "boolean"
+              },
+              "witnessExpertise": {
+                "id": "/witnesses/0/classification/witnessExpertise",
+                "type": "string"
+              },
+              "witnessStatus": {
+                "id": "/witnesses/0/classification/witnessStatus",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "personId",
+          "policePersonId"
+        ]
+      }
+    }
+  },
+  "required": [
+    "witnesses"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "witnesses": [
+    {
+      "id": "7e2f843e-d639-40b3-8611-8015f3a18958",
+      "version": 2,
+      "personId": "7e2f843e-d639-40b3-8611-8015f3a18958",
+      "policePersonId": "policePersonId",
+      "statements": [
+        "id5",
+        "id6"
+      ],
+      "classification": {
+        "isVictim": true,
+        "isEntitlementRequired": true,
+        "witnessExpertise": "EXPERT",
+        "witnessStatus": "INTIMIDATED"
+      }
+    }
+  ]
+}
+
+</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__documents" class="panel-title">/cases/{caseId}/documents</h3></div><div class="panel-body"><div class="top-resource-description"><p>Get list of case documents for a corresponding case</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__documents"><span class="parent"></span>/cases/{caseId}/documents</a> <span class="methods"><a href="#cases__caseId__documents_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_cases__caseId__documents" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__documents_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>... (mapping): responseType: application/vnd.structure.query.case-documents+json name: structure.query.case-documents ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__documents_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/cases/{caseId}/documents</h4></div><div class="modal-body"><div class="alert alert-info"><p>... (mapping): responseType: application/vnd.structure.query.case-documents+json name: structure.query.case-documents ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__documents_get_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__documents_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__documents_get_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>Case ID</p></li></ul></div><div class="tab-pane" id="cases__caseId__documents_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/vnd.structure.query.case-documents+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "caseDocuments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "materialId": {
+            "type": "string"
+          },
+          "policeName": {
+            "type": "string"
+          },
+          "policeMaterialId": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "documentType": {
+            "enum": ["SJPN", "CITN", "FINANCIAL_MEANS", "PLEA"]
+          }
+        },
+        "required": [
+          "id",
+          "materialId",
+          "policeName",
+          "policeMaterialId",
+          "description",
+          "documentType"
+        ]
+      }
+    }
+  },
+  "required": [
+    "caseDocuments"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "caseDocuments": [
+    {
+      "id": "fc3f8d82-d200-4cab-a492-2796e6fdf42c",
+      "materialId": "87a321ef-ea34-47d7-865d-7f430b4775be",
+      "policeName": "Richard Prett file",
+      "policeMaterialId": "x1234",
+      "description": "xyz",
+      "documentType": "PLEA"
+    }
+  ]
+}</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__police_summaries" class="panel-title">/cases/{caseId}/police-summaries</h3></div><div class="panel-body"><div class="top-resource-description"><p>Get the list of police summaries available for the specified case-id</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__police_summaries"><span class="parent"></span>/cases/{caseId}/police-summaries</a> <span class="methods"><a href="#cases__caseId__police_summaries_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_cases__caseId__police_summaries" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__police_summaries_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>... (mapping): responseType: application/vnd.structure.query.case-police-summaries+json name: structure.query.case-police-summaries ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__police_summaries_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/cases/{caseId}/police-summaries</h4></div><div class="modal-body"><div class="alert alert-info"><p>... (mapping): responseType: application/vnd.structure.query.case-police-summaries+json name: structure.query.case-police-summaries ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__police_summaries_get_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__police_summaries_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__police_summaries_get_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>Case ID</p></li></ul></div><div class="tab-pane" id="cases__caseId__police_summaries_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/vnd.structure.query.case-police-summaries+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "policeSummaries": {
+      "id": "/policeSummaries",
+      "type": "array",
+      "items": {
+        "id": "/policeSummaries/0",
+        "type": "object",
+        "properties": {
+          "outlineHeading": {
+            "id": "/policeSummaries/0/outlineHeading",
+            "type": "string"
+          },
+          "outlineText": {
+            "id": "/policeSummaries/0/outlineText",
+            "type": "string"
+          },
+          "id": {
+            "id": "/policeSummaries/0/id",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "outlineHeading",
+          "outlineText",
+          "id"
+        ]
+      }
+    }
+  },
+  "required": [
+    "policeSummaries"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "policeSummaries": [
+    {
+      "outlineHeading": "KEVD",
+      "outlineText": "this evidence is key",
+      "id": "f972d6a0-a00d-11e5-a837-0800200c9a66"
+    }
+  ]
+}</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__exhibits" class="panel-title">/cases/{caseId}/exhibits</h3></div><div class="panel-body"><div class="top-resource-description"><p>Get list of exhibits for a corresponding case</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__exhibits"><span class="parent"></span>/cases/{caseId}/exhibits</a> <span class="methods"><a href="#cases__caseId__exhibits_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_cases__caseId__exhibits" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__exhibits_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>... (mapping): responseType: application/vnd.structure.query.case-exhibits+json name: structure.query.case-exhibits ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__exhibits_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/cases/{caseId}/exhibits</h4></div><div class="modal-body"><div class="alert alert-info"><p>... (mapping): responseType: application/vnd.structure.query.case-exhibits+json name: structure.query.case-exhibits ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__exhibits_get_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__exhibits_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__exhibits_get_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>Case ID</p></li></ul><h3>Query Parameters</h3><ul><li><strong>outlineHeading</strong>: <em>(string)</em><p>Outline heading</p></li></ul></div><div class="tab-pane" id="cases__caseId__exhibits_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/vnd.structure.query.case-exhibits+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "exhibits": {
+      "id": "/exhibits",
+      "type": "array",
+      "items": {
+        "id": "/exhibits/0",
+        "type": "object",
+        "properties": {
+          "policeName": {
+            "id": "/exhibits/0/policeName",
+            "type": "string"
+          },
+          "policeExhibitId": {
+            "id": "/exhibits/0/policeExhibitId",
+            "type": "string"
+          },
+          "exhibitName": {
+            "id": "/exhibits/0/exhibitName",
+            "type": "string"
+          },
+          "exhibitTakenDate": {
+            "id": "/exhibits/0/exhibitTakenDate",
+            "type": "string"
+          },
+          "policeReference": {
+            "id": "/exhibits/0/policeReference",
+            "type": "string"
+          },
+          "exhibitMaterialId": {
+            "id": "/exhibits/0/exhibitMaterialId",
+            "type": "string"
+          },
+          "personProducingId": {
+            "id": "/exhibits/0/personProducingId",
+            "type": "string"
+          },
+          "exhibitClassifications": {
+            "id": "/exhibits/0/exhibitClassifications",
+            "type": "array",
+            "items": {
+              "id": "/exhibits/0/exhibitClassifications/1",
+              "type": "object",
+              "properties": {
+                "classification": {
+                  "id": "/exhibits/0/exhibitClassifications/1/classification",
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "policeName",
+          "policeExhibitId",
+          "exhibitName",
+          "exhibitTakenDate",
+          "policeReference",
+          "personProducingId",
+          "exhibitClassifications"
+        ]
+      }
+    }
+  },
+  "required": [
+    "exhibits"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "exhibits": [
+    {
+      "policeName": "exhibit test",
+      "policeExhibitId": "exhibitId",
+      "exhibitName": "exhibitname",
+      "exhibitTakenDate": "2010-03-07",
+      "policeReference": "XXXNNN",
+      "exhibitMaterialId": "6cb77bed-4baf-4379-b0fe-f75fcc125fbc",
+      "personProducingId": "ba9a2765-e630-4d9a-923c-6b9fd29dbfc4",
+      "exhibitClassifications": [
+        {
+          "classification": "e.g. audio tape"
+        },
+        {
+          "classification": "e.g. sensitive video"
+        }
+      ]
+    }
+  ]
+}</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="next_ready_sjp_case" class="panel-title">/next-ready-sjp-case</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_next_ready_sjp_case"><span class="parent"></span>/next-ready-sjp-case</a> <span class="methods"><a href="#next_ready_sjp_case_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_next_ready_sjp_case" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#next_ready_sjp_case_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Find the next SJP case that&#39;s ready to be resulted ... (mapping): responseType: application/vnd.structure.query.next-ready-sjp-case+json name: structure.query.next-ready-sjp-case ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="next_ready_sjp_case_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/next-ready-sjp-case</h4></div><div class="modal-body"><div class="alert alert-info"><p>Find the next SJP case that&#39;s ready to be resulted ... (mapping): responseType: application/vnd.structure.query.next-ready-sjp-case+json name: structure.query.next-ready-sjp-case ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#next_ready_sjp_case_get_request" data-toggle="tab">Request</a></li><li><a href="#next_ready_sjp_case_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="next_ready_sjp_case_get_request"><h3>Query Parameters</h3><ul><li><strong>exclude</strong>: <em>(string)</em><p>Comma-separated list of Case IDs to exclude from result</p><p><strong>Example</strong>:</p><pre>d0d4b2c3-89e3-44ff-b433-48df2a347f97,235b817b-1b90-42cc-a81c-4f76820e1e8d</pre></li></ul></div><div class="tab-pane" id="next_ready_sjp_case_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Type: application/vnd.structure.query.next-ready-sjp-case+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "excluded": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "hits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      }
+    }
+  },
+  "required": [
+    "excluded",
+    "hits"
+  ]
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "excluded": [
+    "7e2f843e-d639-40b3-8611-8015f3a18958"
+  ],
+  "hits": [
+    {
+      "id": "9924a3a4-e6c3-4142-b9a5-5d672bdfecac"
+    }
+  ]
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__defendants" class="panel-title">/cases/{caseId}/defendants</h3></div><div class="panel-body"><div class="top-resource-description"><p>Get list of case defendants for a case</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__defendants"><span class="parent"></span>/cases/{caseId}/defendants</a> <span class="methods"><a href="#cases__caseId__defendants_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_cases__caseId__defendants" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__defendants_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>... (mapping): responseType: application/vnd.structure.query.case-defendants+json name: structure.query.case-defendants ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__defendants_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/cases/{caseId}/defendants</h4></div><div class="modal-body"><div class="alert alert-info"><p>... (mapping): responseType: application/vnd.structure.query.case-defendants+json name: structure.query.case-defendants ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__defendants_get_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__defendants_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__defendants_get_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>Case ID</p></li></ul></div><div class="tab-pane" id="cases__caseId__defendants_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/vnd.structure.query.case-defendants+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "defendants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "caseId": {
+            "type": "string"
+          },
+          "personId": {
+            "type": "string"
+          },
+          "policeDefendantId": {
+            "type": "string"
+          },
+          "bailStatus": {
+            "type": "string"
+          },
+          "defendantBailDocuments": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "documentId": {
+                  "type": "string"
+                },
+                "active": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "id",
+                "documentId",
+                "active"
+              ]
+            }
+          },
+          "custodyTimeLimitDate": {
+            "type": "string"
+          },
+          "defenceSolicitorFirm": {
+            "type": "string"
+          },
+          "interpreter":{
+            "type": "string"
+          },
+          "nextHearing": {
+            "type": "object",
+            "properties": {
+              "courtID": {
+                "type": "string"
+              },
+              "courtRoom": {
+                "type": "string"
+              },
+              "typeOfCourt": {
+                "type": "string"
+              },
+              "dateAndTime": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "courtID",
+              "courtRoom",
+              "typeOfCourt",
+              "dateAndTime"
+            ]
+          },
+          "offences": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "offenceCode": {
+                  "type": "string"
+                },
+                "plea": {
+                  "type": "string"
+                },
+                "indicatedPlea": {
+                  "type": "string",
+                  "enum": ["NOT_GUILTY", "GUILTY", "NO_PLEA"]
+                },
+                "offenceSequenceNumber": {
+                  "type": "integer"
+                },
+                "pleaMitigation": {
+                  "type": "string"
+                },
+                "wording": {
+                  "type": "string"
+                },
+                "policeOffenceId": {
+                  "type": "string"
+                },
+                "cprDefendantOffenderYear": {
+                  "type": "string"
+                },
+                "cprDefendantOffenderOrganisationUnit": {
+                  "type": "string"
+                },
+                "cprDefendantOffenderNumber": {
+                  "type": "string"
+                },
+                "cprDefendantOffenderCheckDigit": {
+                  "type": "string"
+                },
+                "cjsCode": {
+                  "type": "string"
+                },
+                "sequenceNumber": {
+                  "type": "integer"
+                },
+                "asnSequenceNumber": {
+                  "type": "integer"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "category": {
+                  "type": "string"
+                },
+                "arrestDate": {
+                  "type": "string"
+                },
+                "startDate": {
+                  "type": "string"
+                },
+                "chargeDate": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "offenceCode",
+                "plea",
+                "indicatedPlea",
+                "offenceSequenceNumber",
+                "pleaMitigation",
+                "wording",
+                "policeOffenceId",
+                "cprDefendantOffenderYear",
+                "cprDefendantOffenderOrganisationUnit",
+                "cprDefendantOffenderNumber",
+                "cprDefendantOffenderCheckDigit",
+                "cjsCode",
+                "sequenceNumber",
+                "asnSequenceNumber",
+                "reason",
+                "description",
+                "category",
+                "arrestDate",
+                "startDate",
+                "chargeDate"
+              ]
+            }
+          }
+        },
+        "required": [
+          "id",
+          "caseId",
+          "personId",
+          "policeDefendantId",
+          "bailStatus",
+          "defenceSolicitorFirm",
+          "nextHearing",
+          "offences"
+        ]
+      }
+    }
+  },
+  "required": [
+    "defendants"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "defendants": [
+    {
+      "id": "ab746921-d839-4867-bcf9-b41db8ebc850",
+      "caseId": "ab746921-d839-4867-bcf9-b41db8ebc851",
+      "personId": "ab746921-d839-4867-bcf9-b41db8ebc852",
+      "policeDefendantId": "policeDefendantId",
+      "bailStatus": "in custody",
+       "defendantBailDocuments": [
+        {
+          "id": "e1a5765b-55c4-40a4-9bd9-240e67b53107",
+          "documentId": "documentMaterialId2",
+          "active": true
+        }
+      ],
+      "custodyTimeLimitDate": "2016-11-11",
+      "defenceSolicitorFirm": "xyz solicitor",
+      "interpreter": "french",
+      "nextHearing": {
+        "courtID": "B45GC00",
+        "courtRoom": "1",
+        "typeOfCourt": "Magistrates Court",
+        "dateAndTime": "2010-08-02T09:30:00"
+      },
+      "offences": [
+        {
+          "id": "0baecac5-222b-402d-9047-84803679edad",
+          "offenceCode": "H8198",
+          "plea": "GUILTY",
+          "indicatedPlea": "GUILTY",
+          "offenceSequenceNumber": 1,
+          "pleaMitigation": "The dog ate my ticket",
+          "wording": "On 19/01/2016 At wandsworth bridge rd SW6 Being a passenger on a Public Service Vehicle operated on behalf of London Bus Services Limited being used for the carriage of passengers at separate fares did use in relation to the journey you were taking a ticket which had been issued for use by another person on terms that it is not transferable",
+          "policeOffenceId": "policeOffenceId",
+          "cprDefendantOffenderYear" : "2015",
+          "cprDefendantOffenderOrganisationUnit" : "unit",
+          "cprDefendantOffenderNumber": "10",
+          "cprDefendantOffenderCheckDigit": "10",
+          "cjsCode" : "XYZ",
+          "sequenceNumber":1,
+          "asnSequenceNumber": 1,
+          "reason": "xyz reason",
+          "description": "description",
+          "category": "category",
+          "arrestDate" : "2016-06-21",
+          "startDate" :"2016-06-21",
+          "chargeDate":"2016-06-21"
+        }
+      ]
+    }
+  ]
+}</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="cases__caseId__victims" class="panel-title">/cases/{caseId}/victims</h3></div><div class="panel-body"><div class="top-resource-description"><p>return the victims of a case</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_cases__caseId__victims"><span class="parent"></span>/cases/{caseId}/victims</a> <span class="methods"><a href="#cases__caseId__victims_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_cases__caseId__victims" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#cases__caseId__victims_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>... (mapping): responseType: application/vnd.structure.query.case-victims+json name: structure.query.case-victims ...</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="cases__caseId__victims_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/cases/{caseId}/victims</h4></div><div class="modal-body"><div class="alert alert-info"><p>... (mapping): responseType: application/vnd.structure.query.case-victims+json name: structure.query.case-victims ...</p></div><ul class="nav nav-tabs"><li class="active"><a href="#cases__caseId__victims_get_request" data-toggle="tab">Request</a></li><li><a href="#cases__caseId__victims_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="cases__caseId__victims_get_request"><h3>URI Parameters</h3><ul><li><strong>caseId</strong>: <em>required (string)</em><p>Case ID</p></li></ul></div><div class="tab-pane" id="cases__caseId__victims_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/vnd.structure.query.case-victims+json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "victims": {
+      "id": "/victims",
+      "type": "array",
+      "items": {
+        "id": "/victims/0",
+        "type": "object",
+        "properties": {
+          "id": {
+            "id": "/victims/0/id",
+            "type": "string"
+          },
+          "personId": {
+            "id": "/victims/0/personId",
+            "type": "string"
+          },
+          "policePersonId": {
+            "id": "/victims/0/policePersonId",
+            "type": "string"
+          },
+          "classifications": {
+            "id": "/victims/0/classifications",
+            "type": "array",
+            "properties": {
+              "classificationType": {
+                "id": "/victims/0/classification/classificationType",
+                "type": "string"
+              },
+              "classificationCode": {
+                "id": "/victims/0/classification/classificationCode",
+                "type": "string"
+              },
+              "classificationValue": {
+                "id": "/victims/0/classification/classificationValue",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "personId",
+          "policePersonId"
+        ]
+      }
+    }
+  },
+  "required": [
+    "victims"
+  ]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "victims": [
+    {
+      "id": "9a475250-41e7-47f2-abc2-e4b45511a82a",
+      "personId": "ab746921-d839-4867-bcf9-b41db8ebc852",
+      "policePersonId": "policePersonId",
+      "classifications": [
+        {
+          "classificationType": "victimClassificationType",
+          "classificationCode": "victimClassificationCode",
+          "classificationValue": "victimClassificationValue"
+        }
+      ]
+    }
+  ]
+}
+
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#cases__caseId_">/cases/{caseId}</a></li><li><a href="#cases">/cases</a></li><li><a href="#cases__caseId__defendant__defendantId__pleas">/cases/{caseId}/defendant/{defendantId}/pleas</a></li><li><a href="#cases_for_citizen">/cases-for-citizen</a></li><li><a href="#cases_nominalview">/cases/nominalview</a></li><li><a href="#search">/search</a></li><li><a href="#cases__caseId__suspect__suspectId__idpc">/cases/{caseId}/suspect/{suspectId}/idpc</a></li><li><a href="#cases__caseId__witnesses">/cases/{caseId}/witnesses</a></li><li><a href="#cases__caseId__documents">/cases/{caseId}/documents</a></li><li><a href="#cases__caseId__police_summaries">/cases/{caseId}/police-summaries</a></li><li><a href="#cases__caseId__exhibits">/cases/{caseId}/exhibits</a></li><li><a href="#next_ready_sjp_case">/next-ready-sjp-case</a></li><li><a href="#cases__caseId__defendants">/cases/{caseId}/defendants</a></li><li><a href="#cases__caseId__victims">/cases/{caseId}/victims</a></li></ul></div></div></div></div></body></html>
