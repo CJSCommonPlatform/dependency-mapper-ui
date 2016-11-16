@@ -1,4 +1,5 @@
 define(["lodash"], function(_) {
+
     var extract = function(graphModeller, context) {
         var dependencies = context.consumedBy ? context.consumedBy : [];
 
@@ -28,6 +29,8 @@ define(["lodash"], function(_) {
                     possibleDuplicateNode.version = newNode.version;
                     possibleDuplicateNode.customHover = newNode.customHover;
                     possibleDuplicateNode.ramlDocument = newNode.ramlDocument;
+                    possibleDuplicateNode.customHover = newNode.customHover;
+                    possibleDuplicateNode.servicePomVersion = newNode.servicePomVersion;
                 } else if (!possibleDuplicateNode) {
                     currentListOfNodes.push(newNode);
                 }
