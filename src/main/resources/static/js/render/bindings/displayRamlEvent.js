@@ -1,16 +1,20 @@
 define([], function () {
+
+    var displayRamlMissingWarning = function() {
+        $("#ramlDetails").empty().html("<h1>No RAML document found</h1>");
+    }
+
     return function (e) {
-        var microserviceName = e.data.node.label;
+        var ramlDocument = e.data.node.ramlDocument;
 
         $("[data-custom-event='shrinkable']").removeClass("col-md-12").addClass("col-md-6");
         e.data.renderer.render();
 
-        if (microserviceName != "") {
-            var ramlFileName = microserviceName.replace(" ", "-");
-            $("#ramlDetails").load("/ramlReport?ramlFileName=" + ramlFileName + ".html",
+        if (ramlDocument) {
+            $("#ramlDetails").load("/ramlReport?ramlFileName=" + ramlDocument + " .row",
                 function(response, status, xhr) {
                     if (status == "error" || status == "timeout") {
-                        $("#ramlDetails").empty().html("<h1>No RAML document found</h1>");
+                        displayRamlMissingWarning();
                     }
 
                     $("#ramlDetails .container").removeClass("container");
@@ -18,6 +22,8 @@ define([], function () {
                     $("#ramlDetails title").remove();
                 }
             );
+        } else {
+            displayRamlMissingWarning();
         }
     }
 });

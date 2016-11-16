@@ -1,11 +1,12 @@
 define([], function() {
 
-    var extractNode = function(context) {
+    var extractNode = function(service) {
         return {
-            id: context.microService,
-            label: context.microService,
-            version: context.version ? context.version : undefined,
-            customHover: context.microService + (context.version ? " (v" + context.version + ")" : "")
+            id: service.microService,
+            label: service.microService,
+            version: service.version ? service.version : undefined,
+            ramlDocument: service.ramlDocument === "NA" ? undefined : service.ramlDocument,
+            customHover: service.microService + (service.version ? " (v" + service.version + ")" : "")
         }
     };
 
