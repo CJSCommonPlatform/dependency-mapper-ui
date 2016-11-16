@@ -26,6 +26,7 @@
         <dropwizard.version>1.0.0</dropwizard.version>
         <timestamp>${maven.build.timestamp}</timestamp>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+        <jackson.version>2.8.4</jackson.version>
     </properties>
 
 
@@ -41,6 +42,21 @@
             <version>${dropwizard.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>uk.gov.justice.maven</groupId>
+            <artifactId>require-latest-versions-enforcer-rule</artifactId>
+            <version>1.0.3-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
 
         <!-- Test Dependencies-->
         <dependency>
@@ -100,24 +116,28 @@
             <plugin>
                 <groupId>com.github.searls</groupId>
                 <artifactId>jasmine-maven-plugin</artifactId>
-                <version>1.3.1.6</version><!-- Old version because jasmine 2.0-2.2 depends on phantomJS 2.0.0 which does not support linux, phantomJS 2.1.1 does support linux -->
+                <version>1.3.1.6
+                </version><!-- Old version because jasmine 2.0-2.2 depends on phantomJS 2.0.0 which does not support linux, phantomJS 2.1.1 does support linux -->
 
                 <configuration>
                     <specRunnerTemplate>REQUIRE_JS</specRunnerTemplate>
                     <preloadSources>
-                        <source>https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2/require.min.js</source>
+                        <source>
+                            https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2/require.min.js
+                        </source>
                         <source>requireconfig.js</source>
                         <source>https://code.jquery.com/jquery.min.js</source>
                     </preloadSources>
 
                     <jsSrcDir>${project.basedir}/src/main/resources/static/js/</jsSrcDir>
-                    <jsTestSrcDir>${project.basedir}/src/main/resources/static/js-test/</jsTestSrcDir>
+                    <jsTestSrcDir>${project.basedir}/src/main/resources/static/js-test/
+                    </jsTestSrcDir>
                 </configuration>
 
                 <executions>
                     <execution>
                         <goals>
-                           <goal>test</goal>
+                            <goal>test</goal>
                         </goals>
                     </execution>
                 </executions>

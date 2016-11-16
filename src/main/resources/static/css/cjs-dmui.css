@@ -167,3 +167,7 @@ pre code {
     height: 800px;
     border: 3px solid #f3f3f6;
 }
+
+dl {padding: 0.5em}
+
+dd, dt {display: inline-block; }

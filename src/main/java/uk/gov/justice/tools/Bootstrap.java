@@ -13,6 +13,7 @@ import uk.gov.justice.tools.healthcheck.JsonFileHealthCheckService;
 import uk.gov.justice.tools.healthcheck.RamlReportHealthCheckService;
 import uk.gov.justice.tools.healthcheck.VersionHealthCheckService;
 import uk.gov.justice.tools.ui.ContextDependencyController;
+import uk.gov.justice.tools.ui.LatestVersionOfServiceController;
 import uk.gov.justice.tools.ui.RamlStaticFileService;
 import uk.gov.justice.tools.ui.UIConfig;
 import uk.gov.justice.tools.ui.VersionController;
@@ -56,6 +57,7 @@ public class Bootstrap extends Application<Configuration> {
         environment.jersey().register(new ContextDependencyController(uiConfig));
         environment.jersey().register(new RamlStaticFileService(uiConfig));
         environment.jersey().register(new VersionController(getVersion()));
+        environment.jersey().register(new LatestVersionOfServiceController());
 
         // register multiple health checks
         registerHealthCheckServices(environment);

@@ -1,9 +1,11 @@
 define([], function() {
+
     var extractNode = function(context) {
         return {
             id: context.microService.split("-")[0],
             label: context.microService.split("-")[0],
             version: context.version ? context.version : undefined,
+            servicePomVersion: context.servicePomVersion ? context.servicePomVersion : undefined,
             customHover: (context.microService.split("-")[0] + (context.version ? " (v" + context.version + ")" : "")) +
                          ", Service Pom "  + (context.servicePomVersion ? "(v" + context.servicePomVersion + ")" : "unknown")
         }
