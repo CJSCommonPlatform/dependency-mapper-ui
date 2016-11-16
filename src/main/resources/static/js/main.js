@@ -15,13 +15,24 @@ define(["gateway/contextGraphGateway",
         $("#content").empty();
         $("h1").text("Dependency graph");
         $("#breadcrumbs").css("display", "none");
+        $("#latestVersionOfServiceContainer").css("display", "block");
 
-        graphBuilder()
-            .withDraggableNodes()
-            .usingNoverlapLayout()
-            .withPreprocessor(enrichGraphData)
-            .withClickHandler(renderServiceGraphEvent)
-            .renderWithData(formattedContextList);
+        $.ajax({
+                   url: "/latestVersionOfService"
+               }).done(
+                   function(latestVersionOfService){
+                       $("#latestVersionOfService").text(latestVersionOfService);
+
+                       var enrichGraphDataWithServiceVersion = enrichGraphData(latestVersionOfService);
+
+                        graphBuilder()
+                            .withDraggableNodes()
+                            .usingNoverlapLayout()
+                            .withPreprocessor(enrichGraphDataWithServiceVersion)
+                            .withClickHandler(renderServiceGraphEvent)
+                            .renderWithData(formattedContextList);
+        });
+
 
         $("#breadcrumbs").off("click");
 
@@ -70,17 +81,20 @@ define(["gateway/contextGraphGateway",
 
     gateway.requestData(renderContextGraph)
 
-    var enrichGraphData = function(graph) {
+    var enrichGraphData = function(latestVersionOfService) { return function(graph) {
         return {
             edges: graph.edges,
 
             nodes: graph.nodes.map(function(n, ix) {
-                var theta = ((2 * Math.PI)/graph.nodes.length)*ix
+                var theta = ((2 * Math.PI)/graph.nodes.length)*ix;
                 n.y = Math.cos(theta);
                 n.x = Math.sin(theta);
+                if(n.servicePomVersion != latestVersionOfService){
+                    n.color = "#f00";
+                }
                 return $.extend(n, {size: 24});
             })};
-    };
+    }};
 });
 
 

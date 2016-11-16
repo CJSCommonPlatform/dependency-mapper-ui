@@ -72,6 +72,7 @@ define(["lodash",
 
             $("h1").text("Dependency graph for " + contextName);
             $("#breadcrumbs").css("display", "block");
+            $("#latestVersionOfServiceContainer").css("display", "none");
 
             var renderContextGraph = function (data) {
                 var contextPredicate = predicate(contextName);
