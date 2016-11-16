@@ -26,7 +26,7 @@ define(["lodash"], function(_) {
 
                 if (possibleDuplicateNode && !possibleDuplicateNode.version) {
                     possibleDuplicateNode.version = newNode.version;
-                    possibleDuplicateNode.customHover = newNode.id + " (v" + newNode.version + ")";
+                    possibleDuplicateNode.customHover = newNode.customHover;
                 } else if (!possibleDuplicateNode) {
                     currentListOfNodes.push(newNode);
                 }
