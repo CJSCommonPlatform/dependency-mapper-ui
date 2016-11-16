@@ -9,7 +9,7 @@ define(["data/transform", "lodash"], function (transform, _) {
             return {source: source, target: target}
         },
         extractNode: function(node) {
-            return {id: node.microService}
+            return {id: node.microService, version: node.version}
         }
     };
 
@@ -106,7 +106,7 @@ define(["data/transform", "lodash"], function (transform, _) {
                         microService: microserviceNames[1],
                         usingVersion: "1.0"
                     }
-                ],
+                ]
             }, {
                 microService: microserviceNames[1],
                 version: "2.0"
@@ -133,6 +133,12 @@ define(["data/transform", "lodash"], function (transform, _) {
                 it("then the relationship should be between the two microservices", function () {
                     expect(result.edges[0].source.microService).toBe(microserviceNames[0]);
                     expect(result.edges[0].target.microService).toBe(microserviceNames[1]);
+                });
+
+                it("then the consumed by node should have its version recorded", function () {
+                    var consumedNode = _.find(result.nodes, function(node) { return node.id === microserviceNames[1]});
+
+                    expect(consumedNode.version).toBe("2.0");
                 });
             });
 

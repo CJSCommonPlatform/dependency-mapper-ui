@@ -1,9 +1,22 @@
 define(["lodash"], function(_) {
 
-    var extract = function(graphModeller, context) {
+    var fullMicroserviceData = function(microserviceList) {
+        return function(node) {
+            var possibleFullNode = _.find(microserviceList, function(fullNode) { return node.microService === fullNode.microService});
+            if (possibleFullNode) {
+                node.version = node.version ? node.version : possibleFullNode.version;
+                node.ramlDocument = node.ramlDocument ? node.ramlDocument : possibleFullNode.ramlDocument
+                node.servicePomVersion = node.servicePomVersion ? node.servicePomVersion : possibleFullNode.servicePomVersion;
+            }
+            return node;
+        }
+    };
+
+    var extract = function(graphModeller, context, microserviceList) {
+        var enrichData = fullMicroserviceData(microserviceList);
         var dependencies = context.consumedBy ? context.consumedBy : [];
 
-        var rawNodes = _.concat(dependencies, context);
+        var rawNodes = _.map(_.concat(dependencies, context), enrichData);
         var newNodes = _.map(rawNodes, graphModeller.extractNode);
 
         var newEdges = _.filter(context.consumedBy ? _.map(context.consumedBy, _.curry(graphModeller.extractEdge)(context)) : []);
@@ -14,9 +27,9 @@ define(["lodash"], function(_) {
         };
     };
 
-    var reduceUsing = function(graphModeller) {
+    var reduceUsing = function(graphModeller, microserviceList) {
         return function (accumulatedGraph, newContext) {
-            var processedGraph = extract(graphModeller, newContext);
+            var processedGraph = extract(graphModeller, newContext, microserviceList);
 
             var currentListOfNodes = accumulatedGraph.nodes;
 
@@ -29,7 +42,6 @@ define(["lodash"], function(_) {
                     possibleDuplicateNode.version = newNode.version;
                     possibleDuplicateNode.customHover = newNode.customHover;
                     possibleDuplicateNode.ramlDocument = newNode.ramlDocument;
-                    possibleDuplicateNode.customHover = newNode.customHover;
                     possibleDuplicateNode.servicePomVersion = newNode.servicePomVersion;
                 } else if (!possibleDuplicateNode) {
                     currentListOfNodes.push(newNode);
@@ -51,6 +63,6 @@ define(["lodash"], function(_) {
 
         var filteredNodes = _(microserviceList).filter(predicate).map(preProcessor).value();
 
-        return _.reduce(filteredNodes, reduceUsing(graphModeller), emptyGraph);
+        return _.reduce(filteredNodes, reduceUsing(graphModeller, microserviceList), emptyGraph);
     }
 });
